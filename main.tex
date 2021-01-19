@@ -1,0 +1,208 @@
+\documentclass[11pt]{book}
+\pagestyle{plain}
+%\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym,amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{thmtools}
+\usepackage{wrapfig}
+\usepackage{extarrows}
+\usepackage{breqn}
+\usepackage{physics}
+\usepackage{afterpage}
+\usepackage[inline]{enumitem}
+\usepackage{mathrsfs}
+\usepackage{scalerel}
+\usepackage{stackengine,wasysym}
+\usepackage{aligned-overset}
+\usepackage{stackengine}
+\usepackage{mathtools}
+\usepackage{nccmath}
+\usepackage{url}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage[toc]{appendix}
+\usepackage{chngcntr}
+\usepackage{etoolbox}
+\usepackage{framed}
+\usepackage{mdframed}
+\usepackage{blindtext}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{aligned-overset}
+\usepackage{mathrsfs}
+\graphicspath{{images/}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\titleformat{\chapter}[block]{\huge\bfseries\itshape\raggedleft}{\chaptertitlename\  \thechapter.}{0.5ex}{}[]
+
+\titleformat{\section}[block]{\Large\bfseries\itshape}{\thesection\ }{0.5ex}{}[]
+
+\titleformat{\subsection}[block]{\large\bfseries\itshape}{\thesubsection\ }{0.5ex}{}[]
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue,
+    filecolor = blue,      
+    urlcolor = blue,
+    citecolor = blue,
+    pdftitle = {Sharelatex Example},
+    bookmarks = true,
+    pdfpagemode = FullScreen,
+}
+
+\urlstyle{same}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\setlength{\oddsidemargin}{1pt}
+\setlength{\evensidemargin}{1pt}
+\setlength{\marginparwidth}{30pt} % these gain 53pt width
+\setlength{\topmargin}{1pt}       % gains 26pt height
+\setlength{\headheight}{1pt}      % gains 11pt height
+\setlength{\headsep}{1pt}         % gains 24pt height
+%\setlength{\footheight}{12 pt} 	  % cannot be changed as number must fit
+\setlength{\footskip}{24pt}       % gains 6pt height
+\setlength{\textheight}{650pt}    % 528 + 26 + 11 + 24 + 6 + 55 for luck
+\setlength{\textwidth}{460pt}     % 360 + 53 + 47 for luck
+
+\title{Sections and Chapters}
+
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{remark}{Remark}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\numberwithin{equation}{chapter}
+
+
+\AtBeginEnvironment{subappendices}{%
+\Appendix*{Appendix}
+\addcontentsline{toc}{chapter}{Appendices}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+}
+
+\newmdenv[
+  linewidth=1.5pt, 
+  topline=false, 
+  bottomline=false, 
+  rightline=false,
+  innerleftmargin=15pt,
+  leftmargin=10pt,
+  rightmargin=0pt,
+  innerrightmargin=0pt, 
+]{claim}
+
+\def\MM{\mathfrak{M}}
+\def\BB{\mathfrak{B}}
+\def\CC{\mathfrak{C}}
+\def\leb{{\mathcal L}}
+\def\H{{\mathcal H}}
+\def\L{{\mathcal L}}
+\def\diam{{\operatorname{diam}\,}}
+\def\co{{\overline{\operatorname{co}}\,}}
+\def\dist{{\operatorname{dist}\,}}
+
+\usepackage{scalerel}
+%\usepackage[usestackEOL]{stackengine}
+\def\avint{\,\ThisStyle{\ensurestackMath{%
+  \stackinset{c}{.2\LMpt}{c}{1\LMpt}{\SavedStyle-}{\SavedStyle\phantom{\int}}}%
+  \setbox0=\hbox{$\SavedStyle\int\,$}\kern-\wd0}\int}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{{\em \thepage}}
+\fancyhead[RE]{{\em \leftmark}}
+\fancyhead[LO]{{\em \rightmark}}
+\fancyhead[RO]{{\em \thepage}}
+
+
+\counterwithout{footnote}{chapter}
+
+\def\dsp{\def\baselinestretch{1.35}\large
+\normalsize}
+%%%%This makes a double spacing. Use this with 11pt style. If you
+%%%%want to use this just insert \dsp after the \begin{document}
+%%%%The correct baselinestretch for double spacing is 1.37. However
+%%%%you can use different parameter.
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+    
+\def\U{{\mathcal U}}
+
+\begin{document}
+\frontmatter
+
+\begin{titlepage}
+	\begin{center}
+	\textbf{\LARGE{}} \\
+	\vspace{40mm}
+    \textbf{\Huge{Mathematical Analysis}} \\
+    \medskip
+    \vspace{10mm} %5mm vertical space
+    \large{\textsc{Zhen Yao}}\\
+    %\large{\textsc{University of Pittsburgh}}
+    \end{center}
+\end{titlepage}
+
+\tableofcontents{}
+\mainmatter
+
+\newpage
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+The main purpose of this book is to help prepare for the preliminary exam in Mathematical Analysis as a new mathematics PhD student. This book will follow the structure in Rudin's {\it Principles of Mathematical Analysis}\cite{1} and more contents will be added in each chapters, some are from Dr. Piotr Hajłasz's {\it Introduction to Analysis}\cite{2}.
+
+The content of real and complex number system, especially how to constructing the real number system, will not be covered in this book, since it is perfectly discussed in both Rudin's and Dr. Hajłasz's books. Thus, this book starts with the basic topology. 
+
+\null\hfill ZHEN YAO
+
+\newpage
+
+\chapter{Basic Topology}
+
+\section{Finite, Countable, and Uncountable Sets}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}
