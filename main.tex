@@ -189,7 +189,573 @@ The content of real and complex number system, especially how to constructing th
 
 \chapter{Basic Topology}
 
+\section{Functions}
+
+\begin{definition}
+Let $X$ and $Y$ be two sets, and suppose with each element $x$ of $X$ there is associated an element of $Y$, denoted by $f(x)$. Then $f$ is said to to a function from $X$ to $Y$ (or a mapping of $X$ into $Y$), and we write it as $f: X \to Y$. Also,
+\begin{enumerate}[label=(\alph*)]
+    \item the set $X$ is called the domain of $f$, and $f$ is said to be defined on $X$,
+    
+    \item the set $Y$ is called the target of $f$,
+    
+    \item the set of all values of $f(X) \coloneqq \{y \in Y \,:\, \exists x \in X, y = f(x)\}$ is called the range of $f$. If $E \subset X$, we call $f(E)$ the image of $E$ under $f$, and clearly $f(E) \subset Y$.
+    
+    \item the graph of $f$ is a subset of $X \times Y$, defined by
+    \begin{align*}
+        \operatorname{graph}(f) \coloneqq \left\{(x,f(x)) \in X \times Y \,:\, x \in X \right\}.
+    \end{align*}
+\end{enumerate}
+\end{definition}
+
+\medskip
+
+\begin{definition}
+Let $f: X \to Y$. If $f(X) = Y$, we say $f$ is onto or surjective if $f(X) = Y$. Clearly, the term of onto is more specific than into.
+
+If $E \subset Y$, $f^{-1}(E)$ denotes the set of all $x \in X$ such that $f(x) \in E$. We call $f^{-1}(E)$ the inverse image of $E$ under $f$. If for each $y \in Y$, $f^{-1}(y)$ consists of at most one element of $X$, then $f$ is said to be one-to-one or injective, i.e. if for any $x_1 \neq x_2, x_1, x_2 \in X$, then $f(x_1) \neq f(x_2)$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+A function $f:X \to Y$ that is one-to-one and onto is called a bijection. In this case, the inverse function is defined on $Y = f(X)$ and the inverse function $f^{-1}: Y \to X$ is also a bijection.
+\end{definition}
+
+\begin{definition}
+If $f: X \to Y$ and $g: Y \to Z$ are two functions, then the composition of $f$ and $g$ is the function $g \circ f: X \to Z$ defined by $(g \circ f)(x) = g(f(x))$ for $x \in X$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+If $f: X \to Y$ and $A \subset X$, then the restriction of $f$ to $A$ is $f|_A: A \to Y$ defined by $f|_A(x) = f(x)$ for all $x \in A$. In this case, we say that $f$ is an extension of $f|_A$.
+\end{definition}
+
+\medskip
+
+\begin{proposition}
+Let $f: X \to Y$ be a function and let $A, B \subset Y$. Then,
+\begin{align*}
+    f^{-1}(A \cup B) & = f^{-1}(A) \cup f^{-1}(B), \\
+    f^{-1}(A \cap B) & = f^{-1}(A) \cap f^{-1}(B), \\
+    f^{-1}(Y \setminus A) & = X \setminus f^{-1}(A).
+\end{align*}
+\end{proposition}
+
+\begin{remark}
+Given a set $E \subset X$, $E^c = X \setminus E$ denotes the complement of the set $E$ in $X$. With this notation, the last equality can be expressed as
+\begin{align*}
+    f^{-1}(A^c) = \left(f^{-1}(A)\right)^c.
+\end{align*}
+\end{remark}
+\begin{proof}
+First, if $x \in f^{-1}(A \cup B)$, then $f(x) \in A \cup B$, and hence $f(x) \in A$ or $f(x) \in B$. If $f(x) \in A$, then clearly $x \in f^{-1}(A) \subset f^{-1}(A) \cup f^{-1}(B)$. If $f(x) \in B$, then clearly $x \in f^{-1}(B) \subset f^{-1}(A) \cup f^{-1}(B)$. And hence $f^{-1}(A \cup B) \subset f^{-1}(A) \cup f^{-1}(B)$. On the other hand, if $x \in f^{-1}(A) \cup f^{-1}(B)$, then $x \in f^{-1}(A)$ or $x \in f^{-1}(B)$. If $x \in f^{-1}(A)$, then $f(x) \in A \subset A \cup B$. If $x \in f^{-1}(B)$, then $f(x) \in B \subset A \cup B$. In either case $f(x) \in A \cup B$, and hence $x \in f^{-1}(A \cup B)$. This completes the proof of the first equality.
+
+Second, if $x \in f^{-1}(A \cap B)$, then $f(x) \in A \cap B$, hence $f(x) \in A$ and $f(X) \in B$. In this case, $x \in f^{-1}(A) \cap f^{-1}(B)$. On the other hand, if $x \in f^{-1}(A) \cap f^{-1}(B)$, then $f(x) \in A$ and $f(x) \in B$. Hence, $f(x) \in A \cap B$ and this implies $x \in f^{-1}(A \cap B)$. This completes the proof of the second equality.
+
+Finally, if $x \in f^{-1}(Y \setminus A)$, then $f(x) \in Y \setminus A$, and hence $x \notin f^{-1}(A)$. This implies $x \in X \setminus f^{-1}(A)$. On the other hand, if $x \in X \setminus f^{-1}(A)$, then $f(x) \notin A$, and hence $f(x) \in Y \setminus Y$, and this implies $x \in f^{-1}(Y \setminus A)$. 
+\end{proof}
+
+\medskip
+
+\begin{proposition}
+Let $f: X \to Y$ be a function and let $A, B \subset X$. Then,
+\begin{align*}
+    f(A \cup B) = f(A) \cup f(B), \qquad f(A \cap B) \subset f(A) \cap f(B).
+\end{align*}
+If in addition $f$ is one-to-one then
+\begin{align*}
+    f(A \cap B) = f(A) \cap f(B).
+\end{align*}
+\end{proposition}
+\begin{proof}
+First, if $y \in f(A \cup B)$, then $y = f(x)$ for some $x \in A \cup B$. If $x \in A$, then $y = f(x) \in f(A)$. If $x \in B$, then $y = f(x) \in f(B)$. In either case, we have $y \in f(A) \cup f(B)$. On the other hand, if $y \in f(A) \cup f(B)$, then $y \in f(A)$ or $y \in f(B)$. If $y \in f(A)$, then $y = f(x)$ for some $x \in A$. If $y \in f(B)$, then $y = f(x)$ for some $x \in B$. In either case, we have $y = f(x) \in f(A \cup B)$.
+
+Second, if $y \in f(A \cap B)$, then $y = f(x)$ for some $x \in A \cap B$. Then, $y = f(x) \in f(A)$ and $y = f(x) \in f(B)$, hence $y \in f(A) \cap f(B)$. This implies $f(A \cap B) \subset f(A) \cap f(B)$.
+
+Finally, if $f$ is one-to-one, it remains to show that $f(A) \cap f(B) \subset f(A \cap B)$. If $y \in f(A) \cap f(B)$, then there exist $x_1 \in A$ and $x_2 \in B$ such that $y = f(x_1)$ and $y = f(x_2)$. Since $f$ is one-to-one, then $x_1 = x_2$ and clearly $x_1 = x_2 \in A \cap B$, and hence $y = f(x_1) = f(x_2) \in f(A \cap B)$. This completes the proof of $f(A) \cap f(B) \subset f(A \cap B)$.
+\end{proof}
+
+\begin{remark}
+Why $f(A) \cap f(B) \subset f(A \cap B)$ fail to hold when $f$ is not one-to-one? If $y \in f(A) \cap f(B)$, then $y = f(x_1)$ for some $x_1 \in A$ and $y = f(x_2)$ for some $x_2 \in B$. However, $x_1$ may not be equal to $x_2$ and hence we cannot claim there is a common $x \in A \cap B$ such that $y = f(x)$. And this proposition leads to the following results.
+\end{remark}
+
+\medskip
+
+\begin{proposition}
+Let $f: X \to Y$ be a function and $A_1, A_2, A_3, \cdots$ are subsets of $X$, then
+\begin{align*}
+    f \left(\bigcup^\infty_{i=1} A_i\right) = \bigcup^\infty_{i=1} f(A_i), \qquad f \left(\bigcap^\infty_{i=1} A_i\right) \subset \bigcup^\infty_{i=1} f(A_i).
+\end{align*}
+If in addition $f$ is one-to-one, then
+\begin{align*}
+    f \left(\bigcap^\infty_{i=1} A_i\right) = \bigcup^\infty_{i=1} f(A_i).
+\end{align*}
+\end{proposition}
+
+
+\medskip
+
 \section{Finite, Countable, and Uncountable Sets}
+
+\begin{definition}
+If there is a one-to-one mapping of $X$ onto $Y$, we say that $X$ and $Y$ is one-to-one correspondence, or that $X$ and $Y$ have the same cardinal number, or $X$ and $Y$ are equivalent, and we write $X \sim Y$. Clearly, this relation has the following properties:
+\begin{enumerate}[label=(\alph*)]
+    \item It is reflexive: $X \sim X$.
+    
+    \item It is symmetric: If $X \sim Y$, then $Y \sim X$.
+    
+    \item It is transitive: If $X \sim Y$ and $Y \sim Z$, then $X \sim Z$.
+\end{enumerate}
+Any relation with these three properties is called an equivalence relation.
+\end{definition}
+
+\medskip
+
+\begin{remark}
+A bijection $f:X \to Y$ is a one-to-one correspondence between $X$ and $Y$.
+\end{remark}
+
+\medskip
+
+\begin{definition}
+For any positive integer $n \in \mathbb{N}$, where $\mathbb{N}$ is the set of all positive integers, let $J_n = \{1,2,\cdots,n\}$. For any set $A$, we say:
+\begin{enumerate}[label=(\alph*)]
+    \item $A$ is finite if $A \sim J_n$ for some $n$ (the empty set $\emptyset$ is also considered to be finite).
+    
+    \item $A$ is infinite if $A$ is not finite.
+    
+    \item $A$ is countable if $A \sim \mathbb{N}$ (Countable sets are sometimes called enumerable or denumerable).
+    
+    \item $A$ is at most countable if $A$ is finite or countable.
+\end{enumerate}
+\end{definition}
+
+\medskip
+
+\begin{proposition}
+The sets $\mathbb{N}$ and $2\mathbb{N} \coloneqq \{2n \,:\, x \in \mathbb{N}\}$ have the same cardinality.
+\end{proposition}
+\begin{proof}
+Indeed, let $f(x) = 2n$ for $n \in \mathbb{N}$, then $f: \mathbb{N} \to 2\mathbb{N}$ is clearly a bijection.
+\end{proof}
+
+\medskip
+
+\begin{proposition}
+The sets $\mathbb{N}$ and $\mathbb{Z}$ have the same cardinality.
+\end{proposition}
+\begin{proof}
+Indeed, for $n \in \mathbb{N}$, let
+\begin{align*}
+    f(n) = \begin{cases}
+        \frac{n}{2}, & n \,\,\text{even}, \\
+        - \frac{n-1}{2}, & n \,\,\text{odd}.
+    \end{cases}
+\end{align*}
+Clearly, $f: \mathbb{N} \to \mathbb{Z}$ is clearly a bijection.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+A sequence is a function $f$ defined on the set $\mathbb{N}$. If $f(n) = x_n$, for $n \in \mathbb{N}$, denote the sequence $f$ by ${x_n}$, or sometimes by $\{x_1, x_2, x_3, \cdots\}$. The values of $f$, that is, $x_n$, are called the terms of the sequence. If $A$ is a set and if $x_n \in A$ for all $n \in \mathbb{N}$, then $\{x_n\}$ is said to be a sequence in $A$, or a sequence of elements of $A$.
+
+Since every countable set is the range of a one-to-one function defined on $\mathbb{N}$, we may regard every countable set as the range of a sequence of distinct terms.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_11}
+Every infinite subset of a countable set $A$ is countable.
+\end{theorem}
+\begin{proof}
+Suppose $E \subset A$, and $E$ is infinite. Arrange the elements of $A$ in a sequence $\{x_n\}$. Now, let $n_{1}$ be the smallest integer such that $x_{n_1} \in E$. After choosing $n_1, \cdots, n_{k-1}$, let $n_k$ be the smallest integer greater than $n_{k-1}$ such that $x_{n_k} \in E$. Let $f(k) = x_{n_k}$ for $k \in \mathbb{N}$, we have a one-to-one correspondence between $E$ and $\mathbb{N}$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_12}
+Let $\{E_n\}, n \in \mathbb{N}$ be a sequence of countable sequences and let 
+\begin{align}\label{th_11_equ_1}
+    S = \bigcup^\infty_{n=1} E_n.
+\end{align}
+Then $S$ is countable.
+\end{theorem}
+\begin{proof}
+Let every set $E_n$ be arranged in a sequence $\{x_{nk}\}, k \in \mathbb{N}$, and consider the infinite array:
+\begin{align*}
+    x_{11}, \quad x_{12}, \quad x_{13}, \quad x_{14}, \quad \cdots \\
+    x_{21}, \quad x_{22}, \quad x_{23}, \quad x_{24}, \quad \cdots \\
+    x_{31}, \quad x_{32}, \quad x_{33}, \quad x_{34}, \quad \cdots
+\end{align*}
+where the elements of $E_n$ form the $n$th row. These elements can be arranged into a sequence
+\begin{align*}
+    x_{11}, x_{21}, x_{12}, x_{31}, x_{22}, x_{13}, x_{41}, x_{32}, x_{23}, x_{14}, \cdots
+\end{align*}
+If any two of the set $E_n$ have elements in common, then there is a subset $T$ of $\mathbb{N}$ such that $S \sim T$, hence by Theorem \ref{th_11}, $S$ is at most countable. Also, $E_1 \subset S$ is infinite, then $S$ is also infinite, and thus countable.
+\end{proof}
+
+\medskip
+
+\begin{corollary}
+Suppose $A$ is at most countable, and for every $\alpha \in A$, $E_{\alpha}$ is at most countable. Then,
+\begin{align*}
+    T = \bigcup_{\alpha \in A} E_{\alpha}
+\end{align*}
+is at most countable.
+\end{corollary}
+\begin{proof}
+For $T$ is equivalent to a subset of \eqref{th_11_equ_1}.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_13}
+Let $A$ be a countable set, and let $E_n$ be the set of all $n$-tuples $(a_1, \cdots, a_n)$, where $a_k \in A, k = 1, \cdots, n$, and the elements $a_1, \cdots, a_n$ need not be distinct. Then $E_n$ is countable.
+\end{theorem}
+\begin{proof}
+$E_1$ is countable since $E_1 = A$. Suppose $E_{n-1}$ is countable, Then the elements of $E_n$ has form $(b,a)$, where $b \in E_{n-1}, a \in A$. For every fixed $b$, the set of pairs $(b,a)$ is equivalent to $A$, hence countable. Thus, $E_n$ is a countable union of countable sets, hence countable by Theorem \ref{th_12}.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+The set of rational numbers $\mathbb{Q}$ and $\mathbb{N}$ have the same cardinality.
+\end{theorem}
+\begin{proof}
+Each rational number $q \in \mathbb{Q}$ can be expressed as a quotient $n/m$ where $n \in \mathbb{Z}$ and $m \in \mathbb{N}$ and the greatest common divisor of $\left|n\right|$ and $m$ is $1$. Let $f: \mathbb{Q} \to \mathbb{Z}^2$ be defined by $f(q) = (n,m)$. Then the set of all pairs $(n,m)$ is countable by Theorem \ref{th_13}.
+\end{proof}
+
+\medskip
+
+Not all infinite sets are countable. The example of uncountable set is shown below.
+
+\medskip
+
+\begin{theorem}
+Let $A$ be the set of all sequences whose elements are the digits $0$ and $1$. The set $A$ is uncountable.
+\end{theorem}
+\begin{proof}
+The elements of $A$ are of form $1,0,1,1,0,\cdots$. Let $E$ be a countable subset of $A$ and let $E = \{s_k\}$. We construct a sequence $s$ as follows, if $n$th digit in $s_n$ is $1$, then let $n$th digit of $s$ be $0$, vice versa. Then the sequence $s$ differs from every element of $E$, hence $s \notin E$. However, $s \in A$, then $E$ is a proper subset of $A$.
+
+Now we have proved that every countable subset of $A$ is a proper subset of $A$, thus $A$ is uncountable. Otherwise, $A$ would be a proper subset of $A$, which is a contradiction. 
+\end{proof}
+
+\begin{remark}
+This theorem implies that with the binary representation, the set of all real numbers is uncountable.
+\end{remark}
+
+\medskip
+
+
+\section{Metric spaces}
+
+\begin{definition}
+A set $X$, whose elements are called points, is said to be a metric space if with any two points $x$ and $y$ of $X$ there is associated a real number $d(x,y): \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}$ called the distance from $x$ to $y$, which is defined as 
+\begin{align*}
+    d(x,y) = \left|x - z\right|,
+\end{align*}
+which has the following properties
+\begin{enumerate}[label=(\alph*)]
+    \item $d(x,y) > 0$ if $x\neq y$,
+    \item $d(x,y) = 0$ if $x = y$,
+    \item $d(x,y) = d(y,x)$,
+    \item $d(x,y) \leq d(x,z) + d(z,y)$.
+\end{enumerate}
+Any function with these three properties is called a distance function, or a metric. And the pair $(X,d)$ is called the metric space.
+\end{definition}
+
+\medskip
+
+\begin{example}
+Examples of metric spaces:
+\begin{enumerate}[label=(\alph*)]
+    \item $(\mathbb{R}^n,\rho_1)$, where $\rho_1(x,y) = \max_i \left|x_i - y_i\right|$.
+    
+    \item $(\mathbb{R}^n,\rho_2)$, where $\rho_2(x,y) = \sum^n_{i=1} |x_i-y_i|$, this is called taxi metric or New York metric. 
+    
+    \item $(\mathbb{R}^n,\rho_3)$, where $\rho_3(x,y) = \left\|x - y\right\| = \left(\sum^n_{i=1} (x_i - y_i)^2 \right)^{1/2}$, this is called standard Euclidean space.
+    
+    
+    \item $(X,d)$, where $X$ is arbitrary set and 
+    \begin{align*}
+        d(x,y) = \begin{cases}
+            1, & x \neq y, \\
+            0, & x = y.
+        \end{cases}
+    \end{align*} 
+    This is called discrete metric space.
+    
+    \item For $x = \{x_n\}^\infty_{n=1}$, let $l^1 = \{x \,:\, \sum^\infty_{n=1}\left|x_n\right| < \infty\}$, i.e., $l^1$ is the space of all absolutely convergent sequences. For $x, y \in l^1$, we define 
+    \begin{align*}
+        d_1(x,y) = \sum^\infty_{n=1} \left|x_n - y_n\right|.
+    \end{align*}
+    Then $(l^1,d_1)$ is a metric space.
+    
+    \item For $x = \{x_n\}^\infty_{n=1}$, let $l^2 = \{x  \,:\, \sum^\infty_{n=1}\left|x_n\right|^2 < \infty\}$. For $x, y \in l^1$, we define
+    \begin{align*}
+        d_2(x,y) = \left(\sum^\infty_{n=1} (x_n - y_n)^2\right)^{1/2}.
+    \end{align*}
+    Then $(l^2, d_2)$ is a metric space and this space is call Hilbert space.
+\end{enumerate}
+\end{example} 
+
+\medskip
+
+\begin{definition}
+By the segment $(a,b)$ we mean the set if all real numbers $x$ such that $1 < x < b$. By the interval $[a,b]$ we mean the set of all real numbers $x$ such that $1 \leq x \leq b$. 
+
+If $a_i < b_i$ for $i = 1, \cdots, k$, the set of all points $x = (x_1, \cdots, x_k) \in \mathbb{R}^k$ such that $a_i \leq x_i \leq b_i$ for $i = 1, \cdots, k$ is call a $k$-cell. 
+
+We call a set $E \subset \mathbb{R}^k$ convex if $\lambda x + (1 - \lambda)y \in E$, for any $x,y \in E$ and $0 < \lambda < 1$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+Let $X$ be a metric space. 
+\begin{enumerate}[label=(\alph*)]
+    \item A neighborhood or a ball of $x$ is a set $B(x,r)$ consisting of all $y$ such that $d(x,y) < r$, for some $r > 0$. The number $r$ is called the radius of $B(x,r)$.
+    
+    \item A point $x$ is a limit point of set $E$ if every neighborhood of $x$ contains a point $y \neq x$ such that $y \in E$.
+    
+    \item If $x\in E$ and $x$ is not a limit point of $E$, then $x$ is called an isolated point of $E$.
+    
+    \item $E$ is closed if every limit point of $E$ is a point of $E$.
+    
+    \item A point $x$ is an interior point of $E$ if there is a neighborhood (or ball) $B(x,r)$ of $x$ such that $B(x,r) \in E$.
+    
+    \item $E$ is open if every point of $E$ is an interior point of $E$.
+    
+    \item The complement of $E$ (denoted by $E^c$) is the set of all points $x\in X$ such that $x\notin E$.
+    
+    \item $E$ is perfect if $E$ is closed and if every point of $E$ is a limit point of $E$.
+    
+    \item $E$ is bounded if there is a real number $M$ and a point $x\in X$ such that $d(x, y) < M$ for all $y\in E$.
+    
+    \item $E$ is dense in $X$ if every point of $X$ is a limit point of $E$, or a point of $E$(or both).
+\end{enumerate}
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+Every neighborhood is an open set.
+\end{theorem}
+\begin{proof}
+Consider a neighborhood $B(x,r)$, it suffices to show that every point of $B$ is an interior point of $B$. Let $y$ be any point of $B(x,r)$, then there is $h > 0$ such that $d(x,y) = r - h$. For all points $s$ such that $d(y,s) < h$, we have
+\begin{align*}
+    d(x,s) \leq d(x,y) + d(y,s) \leq r - h + h = r,
+\end{align*}
+which implies $s \in E$. Thus $y$ is an interior point of $E$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $x$ is a limit point of a set $E$, then every neighborhood of $x$ contains infinitely many points of $E$.
+\end{theorem}
+\begin{proof}
+Suppose there is a neighborhood $B$ of $x$ which only contains only a finite number of points of $E$. Let $B \cap E = \{x_1, \cdots, x_n\}$, which are distinct from $x$, and let 
+\begin{align*}
+    r = \min_{1\leq i\leq n} d(x, x_n).
+\end{align*}
+Clearly, $r$ exists and $r > 0$. Hence, $B(x,r)$ contains no point of $E$ which is distinct from $x$, and then $x$ is not a limit point, a contradiction. 
+\end{proof}
+
+\medskip
+
+\begin{corollary}
+A finite point set has no limit point.
+\end{corollary}
+
+\medskip
+
+\begin{theorem}\label{th_18}
+Let $\{E_{\alpha}\}$ be a (finite or infinite) collection of sets $E_{\alpha}$. Then,
+\begin{align*}
+    \left(\bigcup_{\alpha} E_{\alpha}\right)^c = \bigcap_{\alpha} (E_{\alpha}^c).
+\end{align*}
+\end{theorem}
+\begin{proof}
+If $x \in \left(\bigcup_{\alpha} E_{\alpha}\right)^c$, then $x \notin \bigcup_{\alpha} E_{\alpha}$, hence $x \notin E_{\alpha}$ for every $\alpha$. Hence, $x \in E_{\alpha}^c$ for every $\alpha$, so $x \in \bigcap_{\alpha} (E_{\alpha}^c)$.
+On the other hand, if $x \in \bigcap_{\alpha} (E_{\alpha}^c)$, then $x \in E_{\alpha}^c$ for every $\alpha$, hence $x \notin E_{\alpha}$ for every $\alpha$. Hence, $x \notin \bigcup_{\alpha} E_{\alpha}$, and thus, $x \in \left(\bigcup_{\alpha} E_{\alpha}\right)^c$. 
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_19}
+A set $A$ is open if and only if it complement is closed.
+\end{theorem}
+\begin{proof}
+First, suppose $A^c$ is closed. For $x\in A$, then $x\notin A^c$, and $x$ is not a limit point of $E^c$. Then there exists $r>0$ such that $B(x,r) \cap A^c = \varnothing$. Then, we have $B(x,r) \subset A$. Thus $x$ is an interior point of $A$ and it follows that $A$ is open.
+
+Next, suppose $A$ is open. Let $x$ be a limit point of $A^c$. Then every neighborhood of $x$ contains a point of $A^c$, so $x$ is not a interior point of $A$. Since $A$ is open, then $x\notin A$, which means $x\in A^c$. Since $x$ is a limit point of $A^c$, then $A^c$ is closed.
+\end{proof}
+
+\medskip
+
+\begin{corollary}
+A set $F$ is closed if and only if its complement is open.
+\end{corollary}
+
+\medskip
+
+\begin{theorem}\label{th_110}
+~\begin{enumerate}[label=(\alph*)]
+    \item For any collection $\{G_{\alpha}\}$ of open sets, $\bigcup_{\alpha} G_{\alpha}$ is open.\label{th_110_a}
+    
+    \item For any collection $\{F_{\alpha}\}$ of closed sets, $\bigcap_{\alpha} F_{\alpha}$ is closed.\label{th_110_b}
+    
+    \item For any finite collection $G_1, \cdots, G_n$ of open sets, $\bigcap^n_{i=1} G_i$ is open.\label{th_110_c}
+    
+    \item For any finite collection $F_1, \cdots, F_n$ of closed sets, $\bigcup^n_{i=1} F_i$ is closed.\label{th_110_d}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Let $G = \bigcup_{\alpha} G_{\alpha}$. If $x \in G$, then $x \in G_{\alpha}$ for some $\alpha$. Since $G_{\alpha}$ is open, then $x$ is an interior point of $G_{\alpha}$, and of course an interior point of $G$. Hence $G$ is open, and this proves \ref{th_110_a}.
+
+By Theorem \ref{th_18}, 
+\begin{align}\label{th_110_equ_1}
+    \left(\bigcap_{\alpha} F_{\alpha}\right)^c = \bigcup_{\alpha} \left(F_{\alpha}^c\right),
+\end{align}
+and $F_{\alpha}^c$ is open by Theorem \ref{th_19}. Also, \ref{th_110_a} implies that \eqref{th_110_equ_1} is open and thus $\bigcap_{\alpha} F_{\alpha}$ is closed.
+
+Now let $H = \bigcap^n_{i=1} G_i$, for any $x \in H$, there is neighborhoods $B(x,r_i)$ of $x$ such that each $B(x,r_i) \subset G_i, i = 1, \cdots, n$. Let $r = \min \{r_1, \cdots, r_n\}$, then clearly $B(x,r) \subset G_i$ for every $i = 1, \cdots, n$, and hence $B(x,r) \subset G$. Thus $G$ is open.
+
+Similarly, \ref{th_110_d} follows from \ref{th_110_c} by
+\begin{align*}
+    \left(\bigcup^n_{i=1} F_{\alpha}\right)^c = \bigcap^n_{i=1} \left(F_{\alpha}^c\right)
+\end{align*}
+\end{proof}
+
+\begin{remark}
+In \ref{th_110_c} and \ref{th_110_d}, the finiteness of the union and intersection is required. For example, for $n = 1,2,3,\cdots$, let 
+\begin{align*}
+    G_n = \left(- \frac{1}{n}, \frac{1}{n}\right), 
+\end{align*}
+then $G = \bigcap^\infty_{n=1} G_n = \{0\}$, which is closed.  
+
+Similarly, for $n = 1,2,3,\cdots$, let  
+\begin{align*}
+    F_n = \left[\frac{1}{n}, 1 - \frac{1}{n}\right],
+\end{align*}
+then $F = \bigcup^\infty_{n=1} F_n = (0,1)$, which is not closed.
+\end{remark}
+
+\medskip
+
+\begin{definition}
+Given $A \subset X$, the interior of the set $A$ is defined as the set of all points $x \in A$ that has a neighborhood contained in $A$, that is
+\begin{align*}
+    \operatorname{int}(A) = \{x \in A \,:\, \exists \, r > 0, B(x,r) \subset A\}.
+\end{align*}
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+The interior $\operatorname{int}(A)$ is always open and it is the largest open set contained in $A$ in the sense that if $G \subset A$ is open, then $G \subset \operatorname{int}(A)$.
+\end{theorem}
+\begin{proof}
+Clearly, $\operatorname{int}(A)$ is open. Indeed, if $x \in \operatorname{int}(A)$, then there is $r > 0$ such that $B(x,r) \subset A$. Now consider any $y \in B(x,r/2)$, then $d(x,y) < r/2$. Then for any $z \in B(y, r/2)$, we have
+\begin{align*}
+    d(x,z) \leq d(x,y) + d(y,z) < r,
+\end{align*}
+which implies that every point in $B(x,r/2)$ is an interior point of $A$. Hence, there is a neighborhood $B(x,r/2)$ of $x$ such that $B(x,r/2) \subset \operatorname{int}(A)$, thus $\operatorname{int}(A)$ is open.
+
+Now, let $G \subset A$ be any open set. Then for any $x \in G$, there is $r > 0$ such that $B(x,r) \subset G \subset A$, hence $x \in \operatorname{int}(A)$. Thus $G \subset \operatorname{int}(A)$.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+If $X$ is a metric space, if $E \subset X$ and $E'$ denotes the set of all limit points of $E$, then the closure of $E$ is the set $\overline{E} = E \cup E'$.
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+If $X$ is a metric space and $E \subset X$, then
+\begin{enumerate}[label=(\alph*)]
+    \item $\overline{E}$ is closed, \label{th_112_a}
+    
+    \item $E = \overline{E}$ if and only if $E$ is closed, \label{th_112_b}
+    
+    \item $\overline{E} \subset F$ for every closed set $F \subset X$ that contains $E$. \label{th_112_c}
+\end{enumerate}
+By \ref{th_112_a} and \ref{th_112_c}, $\overline{E}$ is the smallest closed subset of $X$ that contains $E$.
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $x \notin \overline{E}$, then $x$ is neither a point of $E$ nor a limit point of $E$. Then there is a neighborhood $B$ of $x$ such that $B \cap E = \emptyset$. Hence, $\overline{E}^c$ is open, and thus $\overline{E}$ is closed. 
+    
+    \item If $E = \overline{E}$, then \ref{th_112_a} implies $E$ is closed. If $E$ is closed, then $E' \subset E$, hence $\overline{E} = E \cup E' = E$.
+    
+    \item If $F$ is closed and $E \subset F$, then $F' \subset F$, hence $E' \subset F'$. Thus $\overline{E} \subset F$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Let $E$ be a nonempty set of real numbers which is bounded above. Let $y = \sup E$.\footnote{Recall the {\em least upper bound} or the {\em supremum}. Suppose $S$ is an ordered set, $E \subset S$ and $E$ is bounded above. Then the supremum $\alpha \in S$ satisfies the following properties: \begin{enumerate*}
+    \item[(i)] $\alpha$ is an upper bound of $E$,
+    \item[(ii)] If $\gamma < \alpha$, then $\gamma$ is not an upper bound of $E$.
+\end{enumerate*} And we write $\alpha = \sup E$. The {\em greatest lower bound} or the {\em infimum} is defined in a similar way.}Then $y \in \overline{E}$. Hence $y \in E$ if $E$ is closed.
+\end{theorem}
+\begin{proof}
+If $y \in E$, then $y \in \overline{E}$. Assume that $y \notin E$, for every $\varepsilon > 0$, there exists $x \in E$ such that $y - \varepsilon < x < y$, otherwise $y - \varepsilon$ is an upper bound of $E$. Hence, $y$ is a limit point of $E$, and thus $y \in \overline{E}$.
+\end{proof}
+
+\begin{remark}
+Suppose $E \subset Y \subset X$. We say that $E$ is {\em open relative} to $Y$ if to each $x \in E$, there is $r > 0$ such that $y \in E$ whenever $d(x,y) < r$ and $y \in Y$. We talk about this since a set may be open relative to $Y$ without being an open subset of $X$. For example, let $E = (a,b)$, $a < b$ and $a,b \in \mathbb{R}$, $Y = \mathbb{R}$ and $X = \mathbb{R}^2$, then $(a,b)$ is an open subset of $\mathbb{R}$, but not an open subset of $\mathbb{R}^2$.
+\end{remark}
+
+\medskip
+
+\begin{theorem}
+Suppose $Y \subset X$. A subset $E$ of $Y$ is open relative to $Y$ if and only if $E = Y \cap G$ for some open subset $G$ of $X$.
+\end{theorem}
+\begin{proof}
+Suppose $E$ is open relative to $Y$. For each $x \in E$, there is $r_x > 0$ such that $y \in E$ if $d(x,y) < r_x$ and $y \in Y$. Let $G_x = \{y \in X \,:\, d(x,y) < r_x\}$, and define
+\begin{align*}
+    G = \bigcup_{x \in E} G_x.
+\end{align*}
+Then $G$ is an open subset of $X$ by Theorem \ref{th_110}. Clearly, $E \subset G \cap Y$. Also, $G_x \cap Y \subset E$ for every $x \in E$, so that $G \cap Y \subset E$. Hence, $E = G \cap Y$. 
+
+Conversely, if $G$ is open in $X$ and $E = G \cap Y$, every $x \in E$ has a neighborhood $B_x \subset G$. Then, $B_x \cap Y \subset E$, and thus $E$ is open relative to $Y$.
+\end{proof}
+
+\medskip
+
+
+\section{Compact Sets}
+
+\begin{definition}
+An open cover of a set $E$ in a metric space $X$ is a collection $\{G_{\alpha}\}$ of open subsets of $X$ such that $E \subset \bigcup_{\alpha} G_{\alpha}$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+A subset $K$ of a metric space $X$ is said to be compact if every open cover of $K$ contains a finite subcover. More explicitly, this requirement is that if $\{G_{\alpha}\}$ is an open cover of $K$, then there are finitely many $\alpha_1, \cdots, \alpha_n$ such that 
+\begin{align*}
+    K \subset \bigcup^n_{i=1} G_{\alpha_i}.
+\end{align*}
+\end{definition}
+
+\begin{remark}
+With the familiarity of continuity, compactness can also be defined as follows: $K \subset X$ is compact if every sequence in $K$ has subsequence converging to a point in $K$. We will talk more about this later.
+\end{remark}
+
+
+
+
+
+
+
 
 
 
