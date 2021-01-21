@@ -194,11 +194,11 @@ The content of real and complex number system, especially how to constructing th
 \begin{definition}
 Let $X$ and $Y$ be two sets, and suppose with each element $x$ of $X$ there is associated an element of $Y$, denoted by $f(x)$. Then $f$ is said to to a function from $X$ to $Y$ (or a mapping of $X$ into $Y$), and we write it as $f: X \to Y$. Also,
 \begin{enumerate}[label=(\alph*)]
-    \item the set $X$ is called the domain of $f$, and $f$ is said to be defined on $X$,
+    \item the set $X$ is called the domain of $f$, and $f$ is said to be defined on $X$;
     
-    \item the set $Y$ is called the target of $f$,
+    \item the set $Y$ is called the target of $f$;
     
-    \item the set of all values of $f(X) \coloneqq \{y \in Y \,:\, \exists x \in X, y = f(x)\}$ is called the range of $f$. If $E \subset X$, we call $f(E)$ the image of $E$ under $f$, and clearly $f(E) \subset Y$.
+    \item the set of all values of $f(X) \coloneqq \{y \in Y \,:\, \exists x \in X, y = f(x)\}$ is called the range of $f$. If $E \subset X$, we call $f(E)$ the image of $E$ under $f$, and clearly $f(E) \subset Y$;
     
     \item the graph of $f$ is a subset of $X \times Y$, defined by
     \begin{align*}
@@ -301,9 +301,9 @@ If in addition $f$ is one-to-one, then
 \begin{definition}
 If there is a one-to-one mapping of $X$ onto $Y$, we say that $X$ and $Y$ is one-to-one correspondence, or that $X$ and $Y$ have the same cardinal number, or $X$ and $Y$ are equivalent, and we write $X \sim Y$. Clearly, this relation has the following properties:
 \begin{enumerate}[label=(\alph*)]
-    \item It is reflexive: $X \sim X$.
+    \item It is reflexive: $X \sim X$;
     
-    \item It is symmetric: If $X \sim Y$, then $Y \sim X$.
+    \item It is symmetric: If $X \sim Y$, then $Y \sim X$;
     
     \item It is transitive: If $X \sim Y$ and $Y \sim Z$, then $X \sim Z$.
 \end{enumerate}
@@ -456,11 +456,11 @@ A set $X$, whose elements are called points, is said to be a metric space if wit
 \begin{align*}
     d(x,y) = \left|x - z\right|,
 \end{align*}
-which has the following properties
+which has the following properties:
 \begin{enumerate}[label=(\alph*)]
-    \item $d(x,y) > 0$ if $x\neq y$,
-    \item $d(x,y) = 0$ if $x = y$,
-    \item $d(x,y) = d(y,x)$,
+    \item $d(x,y) > 0$ if $x\neq y$;
+    \item $d(x,y) = 0$ if $x = y$;
+    \item $d(x,y) = d(y,x)$;
     \item $d(x,y) \leq d(x,z) + d(z,y)$.
 \end{enumerate}
 Any function with these three properties is called a distance function, or a metric. And the pair $(X,d)$ is called the metric space.
@@ -679,9 +679,9 @@ If $X$ is a metric space, if $E \subset X$ and $E'$ denotes the set of all limit
 \begin{theorem}
 If $X$ is a metric space and $E \subset X$, then
 \begin{enumerate}[label=(\alph*)]
-    \item $\overline{E}$ is closed, \label{th_112_a}
+    \item $\overline{E}$ is closed; \label{th_112_a}
     
-    \item $E = \overline{E}$ if and only if $E$ is closed, \label{th_112_b}
+    \item $E = \overline{E}$ if and only if $E$ is closed; \label{th_112_b}
     
     \item $\overline{E} \subset F$ for every closed set $F \subset X$ that contains $E$. \label{th_112_c}
 \end{enumerate}
@@ -689,9 +689,9 @@ By \ref{th_112_a} and \ref{th_112_c}, $\overline{E}$ is the smallest closed subs
 \end{theorem}
 \begin{proof}
 ~\begin{enumerate}[label=(\alph*)]
-    \item If $x \notin \overline{E}$, then $x$ is neither a point of $E$ nor a limit point of $E$. Then there is a neighborhood $B$ of $x$ such that $B \cap E = \emptyset$. Hence, $\overline{E}^c$ is open, and thus $\overline{E}$ is closed. 
+    \item If $x \notin \overline{E}$, then $x$ is neither a point of $E$ nor a limit point of $E$. Then there is a neighborhood $B$ of $x$ such that $B \cap E = \emptyset$. Hence, $\overline{E}^c$ is open, and thus $\overline{E}$ is closed; 
     
-    \item If $E = \overline{E}$, then \ref{th_112_a} implies $E$ is closed. If $E$ is closed, then $E' \subset E$, hence $\overline{E} = E \cup E' = E$.
+    \item If $E = \overline{E}$, then \ref{th_112_a} implies $E$ is closed. If $E$ is closed, then $E' \subset E$, hence $\overline{E} = E \cup E' = E$;
     
     \item If $F$ is closed and $E \subset F$, then $F' \subset F$, hence $E' \subset F'$. Thus $\overline{E} \subset F$.
 \end{enumerate}
@@ -699,7 +699,7 @@ By \ref{th_112_a} and \ref{th_112_c}, $\overline{E}$ is the smallest closed subs
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{th_113}
 Let $E$ be a nonempty set of real numbers which is bounded above. Let $y = \sup E$.\footnote{Recall the {\em least upper bound} or the {\em supremum}. Suppose $S$ is an ordered set, $E \subset S$ and $E$ is bounded above. Then the supremum $\alpha \in S$ satisfies the following properties: \begin{enumerate*}
     \item[(i)] $\alpha$ is an upper bound of $E$,
     \item[(ii)] If $\gamma < \alpha$, then $\gamma$ is not an upper bound of $E$.
@@ -750,14 +750,290 @@ A subset $K$ of a metric space $X$ is said to be compact if every open cover of 
 With the familiarity of continuity, compactness can also be defined as follows: $K \subset X$ is compact if every sequence in $K$ has subsequence converging to a point in $K$. We will talk more about this later.
 \end{remark}
 
+\medskip
+
+\begin{theorem}\label{th_115}
+Compact subsets of metric space are closed.
+\end{theorem}
+\begin{proof}
+Let $K$ be a compact subset of a metric space $X$. It suffices to prove that $K^c$ is open.
+
+Suppose that $x \in K$ and $y \in K$, and let $B(x,r_x)$ and $B(y,r_x)$ be neighborhoods of $x$ and $y$, respectively, of radius $r_x$ less than $d(x,y)/2$. Clearly, $\bigcup_x B(x,r_x)$ is an open cover. Since $K$ is compact, then there is a finite subcover $\{B\left(x_i, r_{x_i}\right)\}^n_{i=1}$ such that 
+\begin{align*}
+    K \subset \bigcup^n_{i=1} B\left(x_i, r_{x_i}\right) = W.
+\end{align*}
+Now let $r_y = \min \{r_{x_1}, \cdots, r_{x_n}\}$, then $B(y,r_y) \cap W = \emptyset$, and hence $B(y,r_y) \subset K^c$. Hence $y$ is an interior point of $K^c$, and the rest follows.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_116}
+Closed subsets of compact sets are compact.
+\end{theorem}
+\begin{proof}
+Suppose $F \subset K \subset X$, $F$ is closed (relative to $X$), and $K$ is compact. Let $\{B_{\alpha}\}$ be an open cover of $F$. If $F^c \cap \bigcup_{\alpha}B_{\alpha} = \emptyset$, then we obtain an open cover $\Omega$ of $K$. Since $K$ is compact, there is a finite subcollection $\Phi$ of $\Omega$ which covers $K$, and hence $F$. If $F^c$ is a member of $\Phi$, then we can remove it from $\Phi$ and still obtain an open cover of $F$. Thus a finite subcollection of $\{B_{\alpha}\}$ covers $F$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $F$ is closed and $K$ is compact, then $F \cap K$ is compact.
+\end{theorem}
+\begin{proof}
+Theorems \ref{th_110} \ref{th_110_b} and \ref{th_115} show that $F \cap K$ is closed, since $F \cap K \subset K$, and Theorem \ref{th_116} shows that $F \cap K$ is compact.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_118}
+If $\{K_{\alpha}\}$ is a collection of compact subsets of a metric space $X$ such that the intersection of every finite subcollection of $\{K_{\alpha}\}$ is nonempty, then $\cap_{\alpha} K_{\alpha}$ is nonempty.
+\end{theorem}
+\begin{proof}
+Fix $K_1$ and let $G_{\alpha} = K_{\alpha}^c$. Assume no point of $K_1$ belongs to every $K_{\alpha}$. Then the sets $G_{\alpha}$ form an open cover of $K_1$. Since $K_1$ is compact, there are finitely many $\alpha_1, \cdots, \alpha_n$ such that
+\begin{align*}
+    K_1 \subset \bigcup^n_{i=1} G_{\alpha_i}.
+\end{align*}
+However, this implies
+\begin{align*}
+    K_1 \cap \left(\bigcup^n_{i=1} G_{\alpha_i}\right)^c = K_1 \cap \left(\bigcap^n_{i=1} G_{\alpha_i}^c\right) = K_1 \cap \left(\bigcap^n_{i=1} K_{\alpha_i}\right) = \emptyset,
+\end{align*}
+which is a contradiction.
+\end{proof}
+
+\medskip
+
+\begin{corollary}\label{coro_118_1}
+If $\{K_n\}$ is a sequence of nonempty compact sets such that $K_n \supset K_{n+1}, n = 1,2,3,\cdots$, then $\bigcap^\infty_{n=1} K_n$ is nonempty.
+\end{corollary}
+
+\medskip
+
+\begin{theorem}\label{th_119}
+If $E$ is an infinite subset of a compact set $K$, then $E$ has a limit point in $K$.
+\end{theorem}
+\begin{proof}
+If no point in $K$ is a limit point of $E$, then each $x \in K$ would have a neighborhood $B(x,r)$ which contains at most one point of $E$, denoted by $y$, if $y \in E$. Then no finite open cover can cover $E$ and the same is true for $K$, since $E \subset K$, which is a contradiction.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_120}
+If $\{I_n\}$ is a sequence of intervals in $\mathbb{R}$ such that $I_n \supset I_{n+1}, n = 1,2,3,\cdots$, then $\bigcap^\infty_{n=1} I_n$ is nonempty.
+\end{theorem}
+\begin{proof}
+If $I_n = [a_n, b_n]$, let $E$ be the set of all $a_n$, then $E$ is nonempty and bounded above by $b_1$. Let $x = \sup E$. If $m$ and $n$ are positive integers, then 
+\begin{align*}
+    a_n \leq a_{n+m} \leq b_{n+m} \leq b_n,
+\end{align*}
+and hence $x \leq b_n$ for every $n$. Since $a_n \leq x$ for all $n$, it is clear that $x \in I_n$ for every $n$.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+Let $a_n, b_n \in \mathbb{R}$ and $a_n < b_n$ for $n = 1,2,3,\cdots$, the set of all points $x = (x_1, \cdots, x_k) \in \mathbb{R}^k$ whose coordinates satisfy the inequalities $a_n \leq x_n \leq b_n, n = 1,2,3,\cdots$ is called a $k$-cell.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_121}
+Let $k$ be a positive integer. If $\{I_n\}$ is a sequence of $k$-cells such that $I_n \supset I_{n+1}, n = 1,2,3,\cdots$, then $\bigcap^\infty_{n=1} I_n$ is nonempty.
+\end{theorem}
+\begin{proof}
+For $x = (x_1, \cdots, x_k) \in \mathbb{R}^k$, let $I_n = \{x \,:\, a_{n,j} \leq x_j \leq b_{n,j}\}, 1 \leq j \leq k, n = 1,2,3\cdots$, and let $I_{n,j} = [a_{n,j}, b_{n,j}]$. For each $j$, the sequence $\{I_{n,j}\}$ satisfies the hypotheses of Theorem \ref{th_120}, hence there are real numbers $x_j^*, 1 \leq j \leq k$ such that $a_{n,j} \leq x_j^* \leq b_{n,j}$ for $1 \leq j \leq k, n = 1,2,3\cdots$. Now let $x^* = (x_1^*,\cdots, x_k^*)$, then it is clear that $x^* \in I_n$ for all $n = 1,2,3,\cdots$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_122}
+Every $k$-cell is compact.
+\end{theorem}
+\begin{proof}
+Let $I$ be a $k$-cell, which consists of all points $x = (x_1, \cdots, x_k)$ such that $a_j \leq x_j \leq b_j$ for $1 \leq j \leq k$. Let
+\begin{align*}
+    \delta = \left(\sum^k_{j=1} (b_j - a_j)^2\right)^{1/2}.
+\end{align*}
+Then $\left|x - y\right| \leq \delta$ for all $x,y \in I$.
+
+Suppose to the contrary that there exists an open cover $\{G_{\alpha}\}$ of $I$ which contains no finite subcover of $I$. Let $c_j = (a_j + b_j)/2$. The intervals $[a_j, c_j]$ determines $2^k$ $k$-cells $Q_i$ whose union is $I$. By assumption, at least one of these $Q_i$, say $I_1$, cannot be covered by any finite subcover of $\{G_{\alpha}\}$. We now divide $I_1$ and continue this process, and we obtain a sequence $\{I_n\}$ with the following properties:
+\begin{enumerate}[label=(\alph*)]
+    \item $I \supset I_1 \supset I_2 \supset I_3 \cdots$; \label{th_122_a}
+    
+    \item $I_n$ is not covered by any finite subcollection of $\{G_{\alpha}\}$; \label{th_122_b}
+    
+    \item if $x,y \in I_n$, $\left|x - y\right| \leq 2^{-n} \delta$. \label{th_122_c}
+\end{enumerate}
+By \ref{th_122_a} and Theorem \ref{th_121}, there is $x^*$ which belongs to every $I_n$. For some $\alpha$, $x^* \in G_{\alpha}$. Since $G_{\alpha}$ is open, there is $r > 0$ such that $\left|y - x^*\right| < r$ implies that $y \in G_{\alpha}$. Letting $n$ large enough such  that $2^{-n}\delta < r$, then \ref{th_122_c} implies that $I_n \subset G_{\alpha}$, which is a contradiction to \ref{th_122_b}.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Heine-Borel]\label{th_123}
+If a set $E \subset \mathbb{R}^n$ has one of the following three properties, then it has the other two:
+\begin{enumerate}[label=(\alph*)]
+    \item $E$ is closed and bounded. \label{th_123_a}
+    
+    \item $E$ is compact. \label{th_123_b}
+    
+    \item Every infinite subset of $E$ has a limit point in $E$. \label{th_123_c}
+\end{enumerate}
+The equivalence of \ref{th_123_a} and \ref{th_123_b} is known as the Heine-Borel theorem.
+\end{theorem}
+\begin{proof}
+If \ref{th_123_a} holds, then $E \subset I$ for some $k$-cell $I$, and hence \ref{th_123_b} follows from Theorems \ref{th_122} and \ref{th_116}. Also, \ref{th_123_b} implies \ref{th_123_c} by Theorem \ref{th_119}. It remains to show that \ref{th_123_c} implies \ref{th_123_a}.
+
+Suppose to the contrary that $E$ is not not bounded, then $E$ contains points $x_n$ with $\left|x_n\right| > n, n = 1,2,3,\cdots$. The set consisting of all $x_n$ is infinite and clearly has no limit point in $\mathbb{R}^n$, hence has no limit point in $E$. Hence, \ref{th_123_c} implies that $E$ is bounded.
+
+If $E$ is not closed, then there is a point $x \in \mathbb{R}^n$ which is a limit of $E$ but $x \notin E$. For $n = 1,2,3,\cdots$, there are points $x_n \in E$ such that $\left|x_n - x\right| < 1/n$. Let $S = \{x_n\}$, then $S$ is infinite and $x$ is a limit point of $S$. Also, $x$ is the only limit point of $S$. Indeed, for any $y \in \mathbb{R}^n$, $y \neq x$, then for all but finitely many $n$,
+\begin{align*}
+    \left|x_n - y\right| & \geq \left|x_n - x\right| - \left|x - y\right| \geq \left|x - y\right| - \frac{1}{n} \geq \frac{1}{2} \left|x - y\right|,
+\end{align*}
+which implies that $y$ is not a limit point of $S$. This is a contradiction to \ref{th_123_c} since $S \subset E$.
+\end{proof}
+
+\begin{remark}
+Note that \ref{th_123_b} and \ref{th_123_c} are equivalent in any metric space but in general, \ref{th_123_a} does not implies \ref{th_123_b} and \ref{th_123_c}. More details will be discussed later.
+\end{remark}
+
+\medskip
+
+\begin{theorem}[Weierstrass]\label{}
+Every bounded infinite subset of $\mathbb{R}^n$ has a limit point in $\mathbb{R}^n$.
+\end{theorem}
+\begin{proof}
+Suppose that $E \subset \mathbb{R}^n$ is bounded, then $E$ is a subset of a $k$-cell $I \subset \mathbb{R}^n$. By Theorem \ref{th_122}, $I$ is compact, and Theorem \ref{th_123} implies that $E$ has a limit point in $I$.
+\end{proof}
+
+\medskip
 
 
 
+\section{Perfect Sets}
+
+\begin{theorem}\label{th_125}
+Let $P$ be a nonempty perfect set in $\mathbb{R}^n$, then $P$ is uncountable.
+\end{theorem}
+\begin{proof}
+Since $P$ has limit points, $P$ is infinite. Suppose $P$ is countable, then $P$ can be written as $\{x_1, x_2, x_3, \cdots\}$. Let $V_1$ be any neighborhood of $x_1$. Suppose $V_n$ has been constructed, so that $V_n \cap P \neq \emptyset$. Since every point of $P$ is a limit of $P$, there is a neighborhood $V_{n+1}$ of $x$ such that \begin{enumerate*}[label=(\roman*)]
+    \item $\overline{V}_{n+1} \subset V_n$,
+    \item $x_n \notin \overline{V}_{n+1}$,
+    \item $V_{n+1} \cap P \neq \emptyset$.\label{th_125_iii}
+\end{enumerate*}
+By \ref{th_125_iii}, $V_{n+1}$ satisfies our induction hypothesis, and the process can proceed. 
+
+Let $K_n = \overline{V}_{n} \cap P$. Since $\overline{V}_{n}$ is closed and bounded, $\overline{V}_{n}$ is compact. Since $x_n \notin K_{n+1}$, no point of $P$ lies in $\bigcap^\infty_{n=1} K_n$. Since $K_n \subset P$, this implies $\bigcap^\infty_{n=1} K_n = \emptyset$. However, each $K_n \neq \emptyset$ and $K_n \supset K_{n+1}$, and by Corollary \ref{coro_118_1}, $\bigcap^\infty_{n=1} K_n$ is nonempty, thus this is a contradiction.
+\end{proof}
+
+\medskip
+
+\begin{corollary}
+Every interval $[a,b], a < b$ is uncountable. In particular, the set $\mathbb{R}$ of all real numbers is uncountable.
+\end{corollary}
+
+\medskip
+
+\begin{example}[The Cantor set]
+The Cantor set shows that there exist perfect sets in $\mathbb{R}$ which contains no segment, and it is constructed as follows:
+\begin{enumerate}[label=(\roman*)]
+    \item Let $\mathcal{C}_1$ be the interval $[0,1]$;
+    
+    \item Remove the segment $\left(1/3,2/3\right)$, and let $\mathcal{C}_2$ be the union of the interval of $\left[0,1/3\right],\left[1/3,1\right]$;
+    
+    \item Remove the middle thirds of these two intervals and let $\mathcal{C}_3$ be the union of $\left[0,1/9\right]$, $\left[2/9,1/3\right]$, $\left[6/9,7/9\right]$ and $\left[8/9,1\right]$;
+    
+    \item Continue this way and we can get a sequence of compact sets $\mathcal{C}_n$, such that $\mathcal{C}_1\supset \mathcal{C}_2\supset \mathcal{C}_3\supset\cdots$ and $\mathcal{C}_n$ is the union of $2^n$ intervals with length $3^{-n}$.
+\end{enumerate}
+Then the {\em Cantor set} is defined as 
+\begin{align*}
+    \mathcal{C} = \bigcap^\infty_{i=1}\mathcal{C}_i.
+\end{align*}
+$\mathcal{C}$ is clearly compact and by Theorem \ref{th_118}, $\mathcal{C}$ is nonempty.
+
+No segment of the form
+\begin{align}\label{exam_12_equ1}
+    \left(\frac{3k+1}{3^n}, \frac{3k+2}{3^n}\right),
+\end{align}
+where $k,n$ are positive integers, has a point in common with $\mathcal{C}$. Since every segment $(\alpha, \beta)$ contains a segment of the form \eqref{exam_12_equ1}, if 
+\begin{align*}
+    3^{-m} < \frac{\beta - \alpha}{6},
+\end{align*}
+$\mathcal{C}$ contains no segment.
+
+To show that $\mathcal{C}$ is perfect, it is enough to show that $\mathcal{C}$ contains no isolated point. Let $x \in \mathcal{C}$, and let $S$ be any segment containing $x$. Let $I_n$ be the interval of $\mathcal{C}_n$ which contains $x$. Let $n$ large enough such that $I_n \subset S$. Let $x_n$ be an endpoint of $I_n$ such that $x_n \neq x$. It is clear that $x_n \in \mathcal{C}$ and hence $x$ is a limit point of $\mathbb{C}$. Thus $\mathbb{C}$ is perfect, and hence uncountable. 
+
+One of the most interesting facts about the Cantor set is that it provides an example as an uncountable set of measure zero.
+\end{example}
+
+\medskip
+
+Now we provide another approach to proving that the Cantor set is uncountable.
+
+\medskip
+
+\begin{proof} We use Cantor's first proof of uncountability. Let $\mathcal{C}$ be the cantor set, and let $E = \{u_1,u_2,\cdots\}$ be a countable set. We construct a point of $\mathcal{C}$ but not in $E$. First, $\mathcal{C} \subseteq [0,1/3] \cup [2/3,1]$, and point $u_1$ does not belong to both of those intervals, so there is an interval $I_1$of length $1/3$ (one of the ones in the first stage of the construction of the Cantor set) with $u_1 \notin I_1$. Now when we remove the middle third of $I_1$ we get two intervals of length $1/3^2$. As before, $u_2$ does not belong to both of these intervals, so there is an interval $I_2 \subset I_1$ of length $1/3^2$ (one of the ones in the second stage of the construction of the Cantor set) with $u_2 \notin I_2$. Continue in this way to get $I_1 \supset I_2 \supset I_3 \supset \cdots \supset I_k \supset \cdots$ where $I_k$ has length $1/3^k$ (one of the intervals in the $k$th stage of the construction of the Cantor set) and $u_k \notin I_k$. Finally, we get a point $x \in \bigcap^\infty_{k=1} I_k$ where $x \in \mathcal{C}$ but $x \neq u_k$ for all $k$.
+\end{proof}
+
+\medskip
 
 
 
+\section{Connected Sets}
 
+\begin{definition}
+Let $X$ be a metric space, and $A \subset X$. $A$ is said to be disconnected if there exist open sets $U$ and $V$ in $X$ which satisfy the following properties:
+\begin{enumerate}[label=(\alph*)]
+    \item $A \subset U \cup U$;
+    
+    \item $A \cap U \neq \emptyset$ and $A \cap V \neq \emptyset$;
+    
+    \item $A \cap (U \cap V) = \emptyset$.
+\end{enumerate}
+Moreover, $A$ is called connected if it is not disconnected.
+\end{definition}
 
+\medskip
+
+\begin{proposition}
+Prove that the space $X$ is connected if and only if the only subsets of $X$, which are open and closed at the same time, are $\emptyset$ and $X$ itself.
+\end{proposition}
+\begin{proof}
+If $X$ is connected, we need to show that if $E \subset X$ is open and closed, then $E = \emptyset$ or $E = X$. Suppose to the contrary that there is a set $E \subset X$ such that $E \neq \emptyset, E \neq X$ and $E$ is open and closed at the same time. Since $E$ is closed, then $E^c$ is open, and hence $X \subset (E \cup E^c)$. Also, $X \cap E \neq \emptyset$, $X \cap E^c \neq \emptyset$, and $X \cap (E \cap E^c) = \emptyset$. Hence $X$ is disconnected, which is a contradiction.
+
+Conversely, suppose that $X$ is disconnected, then there are two open sets $U$ and $V$ in $X$ such that $X = U \cup V$, $X \cap U \neq \emptyset$, $X \cap V \neq \emptyset$ and $X \cap (U \cap V) = \emptyset$. Hence, $U \neq \emptyset$. Also, $U$ is also closed since $V = U^c$ is open. Thus $U$ is open and closed at the same time, which is a contradiction.
+\end{proof}
+
+\medskip
+
+Next, we talk about another definition of connected sets.
+
+\medskip
+
+\begin{definition}
+Two subsets $A$ and $B$ of a metric space $X$ are said to be separated if $A \cap \overline{B} = \emptyset$ and $\overline{A} \cap B = \emptyset$. A set $E \subset X$ is said to be connected if $E$ is not a union of two nonempty separated sets (this definition is equivalent to the previous one).
+\end{definition}
+
+\begin{remark}
+Separated sets are of course disjoint, but disjoint sets need not be separated. For example, the intervals $[0,1]$ and $(1,2)$ are not separated, since $1$ is a limit point of $(1,2)$. However, $(0,1)$ and $(1,2)$ are separated.
+\end{remark}
+
+\medskip
+
+\begin{theorem}
+A subset $E \subset \mathbb{R}$ is connected if and only if it has the following property: If $x,y \in E$ and $x < z < y$, then $z \in E$.
+\end{theorem}
+\begin{proof}
+Suppose there exist $x, y \in E$ and $z \in (x,y)$, but $z \notin E$. Then $E = U \cup V$, where 
+\begin{align*}
+    U = (-\infty, z) \cap E,\qquad V = (z, \infty) \cap E.
+\end{align*}
+Since $x \in U$ and $y \in V$, $U$ and $V$ are nonempty. Also, since $U \cap V = \emptyset$, $E \cap (U \cap V) = \emptyset$, and hence $E$ is disconnected, which is a contradiction.
+
+Conversely, suppose that $E$ is disconnected. Then there are nonempty separated sets $U$ and $V$ such that $E = U \cup V$. Let $x \in U$ and $y \in V$, and without loss of generality we assume that $x < y$. Let
+\begin{align*}
+    z = \sup (U \cap [x,y]).
+\end{align*}
+By Theorem \ref{th_113}, $z \in \overline{U}$, hence $z \notin V$. In particular, $x \leq z < y$. If $z \notin U$, it follows that $x < z < y$ and $z \notin E$. If $z \in U$, then $z \notin \overline{V}$, hence there exists $z_1$ such that $z < z_1 < y$ and $z_1 \notin E$, which is a contradiction.
+\end{proof}
 
 
 
