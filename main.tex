@@ -1043,6 +1043,182 @@ By Theorem \ref{th_113}, $z \in \overline{U}$, hence $z \notin V$. In particular
 
 
 
+
+\newpage
+
+\chapter{Numerical Sequences and Series}
+
+\section{Convergent Sequences}
+
+\begin{definition}
+A sequence $\{x_n\}$ in a metric space $X$ is said to converge if there is a point $x \in X$ with the following property: For every $\varepsilon > 0$, there is an integer $N$ such that for all $n \geq N$, $d(x_n,x) < \varepsilon$. (Here $d$ denotes the distance in $X$.)
+
+In this case, we also say that $\{x_n\}$ converges to $x$, or $x$ is the limit of $\{x_n\}$, and we write $x_n \to x$, or
+\begin{align*}
+    \lim_{n\to\infty} x_n = x.
+\end{align*}
+
+If $\{x_n\}$ does not converge, we say it diverge\footnote{The formal definition of being divergent can be expressed as: If for every $x \in X$, there exists $\varepsilon > 0$ such that for all $N \in \mathbb{N}$, there is $n \geq N$, $d(x_n,x) > \varepsilon$.}.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_21}
+Let $\{x_n\}$ be a sequence in a metric space $X$.
+\begin{enumerate}[label=(\alph*)]
+    \item $\{x_n\}$ converges to $x \in X$ if and only if every neighborhood of $x$ contains $x_n$ for all but finitely many $n$.
+    
+    \item If $x \in X$, $x' \in X$ and if $\{x_n\}$ converges to $x$ and to $x'$, then $x = x'$.
+    
+    \item If $\{x_n\}$ converges, then $\{x_n\}$ is bounded.
+    
+    \item If $E \subset X$ and $x$ is a limit point of $E$, then there is a sequence $\{x_n\}$ in $E$ such that $\lim_{n\to\infty} x_n = x$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Suppose $x_n \to x$ and let $V$ be a neighborhood of $x$. For some $\varepsilon > 0$, $d(x,y) < \varepsilon, y \in X$ implies that $y \in V$. Corresponding to this $\varepsilon$, there is $N > 0$ such that for all $n \geq N$, $d(x_n,x) < \varepsilon$. Hence for all $n \geq N$, $x_n \in V$.
+    
+    Conversely, suppose every neighborhood of $x$ contains all but finitely many $x_n$. Fix $\varepsilon > 0$, and let $V$ be the set of all $y \in X$ such that $d(x,y) < \varepsilon$. By assumption, there is $N > 0$ which depends on $V$, such that for $n \geq N$, $x_n \in V$. Hence $d(x_n, x) < \varepsilon$ for $n \geq N$, which implies that $x_n \to x$.
+    
+    \item Let $\varepsilon > 0$ be given, then there are integers $N, N'$ such that for all $n \geq N$, $d(x_n,x) < \varepsilon/2$ and for all $n \geq N'$, $d(x_n,x') < \varepsilon/2$. Hence if $n \geq \max \{N, N'\}$, we have
+    \begin{align*}
+        d(x,x') \leq d(x,x_n) + d(x_n,x') < \varepsilon.
+    \end{align*}
+    Since $\varepsilon$ is arbitrary, we conclude that $d(x,x') = 0$.
+    
+    \item Let $\varepsilon = 1$, then there is an integer $N$ such that for all $n \geq N$, $d(x_n, x) < 1$. Let \begin{align*}
+        r = \max\{1, d(x_1,x), \cdots, d(x_N,x)\},
+    \end{align*}
+    then $d(x_n,x) \leq r$ for all $n = 1,2,3,\cdots$.
+    
+    \item Since $x$ is a limit point of $E$, then for neighborhood of $x$ with radius $1/n, n = 1,2,3,\cdots$, there is a point $x_n \in E$ such that $d(x_n,x) < 1/n$. For any $\varepsilon > 0$, let $N > 1/\varepsilon$, then for all $n \geq N$, $d(x_n, x) < \varepsilon$, which implies $x_n \to x$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+Next, we talk about some important properties about convergent sequences.
+
+\medskip
+
+\begin{theorem}\label{th_22}
+Suppose $\{a_n\}$ and $\{b_n\}$ are two complex sequences, and $\lim_{n\to\infty} a_n = a$ and $\lim_{n\to\infty} b_n = b$. Then,
+\begin{enumerate}[label=(\alph*)]
+    \item $\lim_{n\to\infty} (a_n + b_n) = a + b$; \label{th_22_a}
+    
+    \item $\lim_{n\to\infty} c a_n = ca$, $\lim_{n\to\infty} (c + a_n) = c + a_n$, for any $c \in \mathbb{R}$; \label{th_22_b}
+    
+    \item $\lim_{n\to\infty} a_n b_n = ab$; \label{th_22_c}
+    
+    \item $\lim_{n\to\infty} a_n/b_n = a/b$, provided $b_n \neq 0$ for all $n$ and $b \neq 0$. \label{th_22_d}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item and \ref{th_22_b} are trivial.
+    
+    \setcounter{enumi}{2}
+    \item For every $\varepsilon > 0$, there are integers $N_1$ and $N_2$ such that for all $n \geq N_1$, $\left|a_n - a\right| < \sqrt{\varepsilon}$ and for all $n \geq N_2$, $\left|b_n - b\right| < \sqrt{\varepsilon}$. Let $N = \max \{N_1, N_2\}$, for all $n \geq N$, we have
+    \begin{align*}
+        \left|(a_n - a)(b_n - b)\right| < \varepsilon,
+    \end{align*}
+    which implies that $\lim_{n\to\infty} (a_n - a)(b_n - b) = 0$. Also, by \ref{th_22_a} and \ref{th_22_b},
+    \begin{align*}
+        \lim_{n\to\infty} (a_nb_n - ab) = \lim_{n\to\infty} \left[(a_n - a)(b_n - b) + a(b_n - b) + b(a_n - a)\right] = 0.
+    \end{align*}
+    
+    \item For $\varepsilon = \left|b\right|/2$, there is an integer $N_1$ such that for all $n \geq N_1$, $ \left|b_n - b\right| < \left|b\right|/2$, and hence $\left|b_n\right| > \left|b\right|/2$ for $n \geq N_1$. 
+    
+    Now for any $\varepsilon > 0$, there is an integer $N_2$ such that for all $n \geq N_2$, $\left|b_n - b\right| < \left|b\right|^2\varepsilon/2$. Let $N = \max \{N_1, N_2\}$, then for all $n \geq N$, 
+    \begin{align*}
+        \left|\frac{1}{b_n} - \frac{1}{b}\right| = \left|\frac{b_n - b}{b_n b}\right| < \frac{2}{\left|b\right|^2} \left|b_n - b\right| < \varepsilon.
+    \end{align*}
+    Hence, $\lim_{n\to\infty} 1/b_n = 1/b$, and by \ref{th_22_c}, $\lim_{n\to\infty} a_n/b_n = a/b$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+Now we can discuss the sequences in $\mathbb{R}^k$.
+
+\medskip
+
+\begin{theorem}
+~\begin{enumerate}[label=(\alph*)]
+    \item Suppose $x_n \in \mathbb{R}^k, n = 1,2,3,\cdots$ and $x_k = (x_{1,n}, \cdots, x_{k,n})$. Then $\{x_n\}$ converges to $x = (x_1, \cdots, x_k)$ if and only if 
+    \begin{align*}
+        \lim_{n\to\infty} x_{j,n} = x_j, \quad 1 \leq j \leq k.
+    \end{align*}
+    
+    \item Suppose $\{x_n\}, \{y_n\}$ are sequences in $\mathbb{R}^k$, $\{\beta_n\}$ is a sequence of real numbers, and $x_n \to x, y_n \to y, \beta_n \to \beta$. Then,
+    \begin{align*}
+        \lim_{n\to\infty} (x_n + y_n) = x + y, \quad \lim_{n\to\infty} x_n \cdot y_n = x \cdot y, \quad \lim_{n\to\infty} \beta_n x_n = \beta x.
+    \end{align*}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The proof is trivial and we skip it here.
+\end{proof}
+
+\medskip
+
+Now we talk some important results and applications about convergent sequences.
+
+\medskip
+
+\begin{theorem}
+If $a_n \leq b_n \leq c_n$ and $\lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = g \in \mathbb{R}$, then $\lim_{n\to\infty} b_n = g$.
+\end{theorem}
+
+\medskip
+
+\begin{theorem}
+For $a > 0$, $\lim_{n\to\infty} \sqrt[n]{a} = 1$.
+\end{theorem}
+\begin{proof}
+If $a > 1$, let $x_n = \sqrt[n]{a} - 1$. By the Binomial formula,\footnote{For $a, b \in \mathbb{R}$ and $n \in \mathbb{N}$, \begin{align*}
+    (a + b)^n = \sum^n_{k=1} \binom{n}{k} a^{n-k}b^{k} = \sum^n_{k=1} \frac{n!}{k!(n-k)!} a^{n-k}b^{k}.
+\end{align*}}we have $a = (1 + x_n)^n \geq 1 + nx_x$, and hence
+\begin{align*}
+    0 < x_n < \frac{a - 1}{n},
+\end{align*}
+since the right hand side converges to $0$ as $n \to \infty$, we could conclude that $\sqrt[n]{a} - 1 \to 0$, which implies $\lim_{n\to\infty} \sqrt[n]{a} = 1$.
+
+If $a = 1$, then $\sqrt[n]{a} = 1 \to 1$. If $0 < a < 1$, then $1/a > 1$ and hence $\sqrt[n]{1/a} \to 1$. Thus, by Theorem \ref{th_22} \ref{th_22_d},
+\begin{align*}
+    \lim_{n\to\infty} \sqrt[n]{a} = \lim_{n\to\infty} \frac{1}{\sqrt[n]{1/a}} = 1.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+For $n \in \mathbb{N}$, $\lim_{n\to\infty} \sqrt[n]{n} = 1$.
+\end{theorem}
+\begin{proof}
+Let $x_n = \sqrt[n]{n} - 1$, then $x_n > 0$ and applying the Binomial formula implies that 
+\begin{align*}
+    n = (1 + x_n)^n \geq \binom{n}{2} 1^{n-1} x_n^2 = \frac{n(n-1)}{2} x_n^2,
+\end{align*}
+and hence
+\begin{align*}
+    0 \leq x_n \leq \sqrt{\frac{2}{n-1}}.
+\end{align*}
+Since both the left and right hand sides converges to $0$, we have $\sqrt[n]{n} - 1 \to 0$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
