@@ -1058,7 +1058,7 @@ In this case, we also say that $\{x_n\}$ converges to $x$, or $x$ is the limit o
     \lim_{n\to\infty} x_n = x.
 \end{align*}
 
-If $\{x_n\}$ does not converge, we say it diverge\footnote{The formal definition of being divergent can be expressed as: If for every $x \in X$, there exists $\varepsilon > 0$ such that for all $N \in \mathbb{N}$, there is $n \geq N$, $d(x_n,x) > \varepsilon$.}.
+If $\{x_n\}$ does not converge, we say it diverge\footnote{The formal definition of being divergent can be expressed as: If for every $x \in X$, there exists $\varepsilon > 0$ such that for all $N \in \mathbb{N}$, there is $n \geq N$, $d(x_n,x) > \varepsilon$. Also, we say a sequence $\{x_n\}$ diverges to $+\infty$ if for all $M > 0$, there is an integer $N > 0$ such that for all $n \geq N$, $x_n > M$. Then we write $\lim_{n\to\infty} x_n = + \infty$. Similarly, we could define a sequence that diverges to $-\infty$.}.
 \end{definition}
 
 \medskip
@@ -1173,40 +1173,285 @@ If $a_n \leq b_n \leq c_n$ and $\lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = 
 
 \medskip
 
-\begin{theorem}
-For $a > 0$, $\lim_{n\to\infty} \sqrt[n]{a} = 1$.
+We now talk about some special sequences which will be used frequently.
+
+\medskip
+
+\begin{theorem}\label{th_25}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $a > 0$, then $\displaystyle  \lim_{n\to\infty} \frac{1}{n^a} = 0$.\label{th_25_a}
+    
+    \item If $a > 0$, $\displaystyle  \lim_{n\to\infty} \sqrt[n]{a} = 1$.\label{th_25_b}
+    
+    \item For $n \in \mathbb{N}$, $\displaystyle  \lim_{n\to\infty} \sqrt[n]{n} = 1$.\label{th_25_c}
+    
+    \item If $a > 0$ and $k$ is real, then $\displaystyle \lim_{n\to\infty} \frac{n^k}{(1 + a)^n} = 0$.\label{th_25_d}
+    
+    \item If $a > 1$, then $\lim_{n\to\infty} a^{-n} = 0$. If $\left|a\right| < 1$, then $\displaystyle \lim_{n\to\infty} a^n = 0$.\label{th_25_e}
+\end{enumerate}
 \end{theorem}
 \begin{proof}
-If $a > 1$, let $x_n = \sqrt[n]{a} - 1$. By the Binomial formula,\footnote{For $a, b \in \mathbb{R}$ and $n \in \mathbb{N}$, \begin{align*}
+~\begin{enumerate}[label=(\alph*)]
+    \item For every $\varepsilon > 0$, let $N > (1/\varepsilon)^{1/a}$, then for all $n \geq N$, 
+    \begin{align*}
+        \frac{1}{n^a} < \frac{1}{\left[(1/\varepsilon)^{1/a}\right]^a} = \varepsilon.
+    \end{align*}
+    
+    \item If $a > 1$, let $x_n = \sqrt[n]{a} - 1$. By the Binomial formula,\footnote{For $a, b \in \mathbb{R}$ and $n \in \mathbb{N}$, \begin{align*}
     (a + b)^n = \sum^n_{k=1} \binom{n}{k} a^{n-k}b^{k} = \sum^n_{k=1} \frac{n!}{k!(n-k)!} a^{n-k}b^{k}.
-\end{align*}}we have $a = (1 + x_n)^n \geq 1 + nx_x$, and hence
-\begin{align*}
-    0 < x_n < \frac{a - 1}{n},
-\end{align*}
-since the right hand side converges to $0$ as $n \to \infty$, we could conclude that $\sqrt[n]{a} - 1 \to 0$, which implies $\lim_{n\to\infty} \sqrt[n]{a} = 1$.
+    \end{align*}}we have $a = (1 + x_n)^n \geq 1 + nx_x$, and hence
+    \begin{align*}
+        0 < x_n < \frac{a - 1}{n},
+    \end{align*}
+    since the right hand side converges to $0$ as $n \to \infty$, we could conclude that $\sqrt[n]{a} - 1 \to 0$, which implies $\lim_{n\to\infty} \sqrt[n]{a} = 1$.
 
-If $a = 1$, then $\sqrt[n]{a} = 1 \to 1$. If $0 < a < 1$, then $1/a > 1$ and hence $\sqrt[n]{1/a} \to 1$. Thus, by Theorem \ref{th_22} \ref{th_22_d},
+    If $a = 1$, then $\sqrt[n]{a} = 1 \to 1$. If $0 < a < 1$, then $1/a > 1$ and hence $\sqrt[n]{1/a} \to 1$. Thus, by Theorem \ref{th_22} \ref{th_22_d},
+    \begin{align*}
+        \lim_{n\to\infty} \sqrt[n]{a} = \lim_{n\to\infty} \frac{1}{\sqrt[n]{1/a}} = 1.
+    \end{align*}
+    
+    \item Let $x_n = \sqrt[n]{n} - 1$, then $x_n > 0$ and applying the Binomial formula implies that 
+    \begin{align*}
+        n = (1 + x_n)^n \geq \binom{n}{2} 1^{n-1} x_n^2 = \frac{n(n-1)}{2} x_n^2,
+    \end{align*}
+    and hence
+    \begin{align*}
+        0 \leq x_n \leq \sqrt{\frac{2}{n-1}}.
+    \end{align*}
+    Since both the left and right hand sides converges to $0$, we have $\sqrt[n]{n} - 1 \to 0$.
+    
+    \item Let $m$ be an integer such that $m > k$. For $n > 2m$, we have
+    \begin{align*}
+        (1 + a)^n > \binom{n}{m}a^m = \frac{n!}{m!(n-m)!} a^m > \frac{n^m a^m}{2^m m!}.
+    \end{align*}
+    Hence, 
+    \begin{align*}
+        0 < \frac{n^k}{(1 + a)^n} < \frac{2^m m!}{a^m} n^{k - m} \xrightarrow[]{n\to\infty} 0.
+    \end{align*}
+    
+    \item If $a > 1$, the Binomial formula implies 
+    \begin{align*}
+        a^n = (1 + (a - 1))^n \geq 1 + n(a - 1),
+    \end{align*}
+    and hence
+    \begin{align*}
+        0 < a^{-n} \frac{1}{1 + n(a - 1)} \xrightarrow[]{n\to\infty} 0.
+    \end{align*}
+    
+    If $a = 0$, then it is clear that $a^n = 0$ and if $0 < \left|a\right| < 1$, then $1/\left|a\right| > 1$. Hence,
+    \begin{align*}
+        \left|a^n - 0\right| = \left(\frac{1}{\left|a\right|}\right)^{-n} \xrightarrow[]{n\to\infty} 0.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{definition}
+The extended real line $\overline{\mathbb{R}}$ is defined as $\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, \infty\}$.
+\end{definition}
+
+\medskip
+
+Some important results about convergent sequences will be shown below.
+
+\medskip
+
+\begin{theorem}\label{th_26}
+If $\lim_{n\to\infty} a_n = a \in \overline{\mathbb{R}}$, then
 \begin{align*}
-    \lim_{n\to\infty} \sqrt[n]{a} = \lim_{n\to\infty} \frac{1}{\sqrt[n]{1/a}} = 1.
+    \lim_{n\to\infty} \frac{a_1 + a_2 + \cdots + a_n}{n} = a.
+\end{align*}
+\end{theorem}
+\begin{proof}
+Since $a_n \to a$, then for every $\varepsilon > 0$, there is an integer $N_1$ such that for all $n \geq N_1$, $\left|a_n - a\right| < \varepsilon$. Also, since $\{a_n\}$ is convergent, there is $M > 0$ such that $\left|a_n\right| \leq M$ for all $n$ and $\left|a\right| < M$. Now, let $N = \max \left\{2N_1 M/\varepsilon, N_1\right\}$, then for all $n \geq N$, we have
+\begin{align*}
+    \left|\frac{a_1 + \cdots + a_n}{n} - a\right| & = \left|\frac{(a_1-a) + \cdots + (a_n-a)}{n}\right| \\
+    & \leq \left|\frac{(a_1-a) + \cdots + (a_{N_1}-a)}{n}\right| + \left|\frac{(a_{N_1+1}-a) + \cdots + (a_n-a)}{n}\right| \\
+    & \leq \frac{2N_1M}{n} + \frac{n - N_1}{n} \varepsilon \leq 2 \varepsilon.
 \end{align*}
 \end{proof}
 
 \medskip
 
-\begin{theorem}
-For $n \in \mathbb{N}$, $\lim_{n\to\infty} \sqrt[n]{n} = 1$.
+\begin{theorem}\label{th_27}
+If $\lim_{n\to\infty} a_n = a \in \overline{\mathbb{R}}$, and $a_n > 0$ for all $n$, then
+\begin{align*}
+    \lim_{n\to\infty} \sqrt[n]{a_1 a_2 \cdots a_n} = a.
+\end{align*}
 \end{theorem}
 \begin{proof}
-Let $x_n = \sqrt[n]{n} - 1$, then $x_n > 0$ and applying the Binomial formula implies that 
+Since $a_n \to a$, then for every $\varepsilon > 0$, there is an integer $N$ such that for all $n \geq N$, $\left|a_n - a\right| < \varepsilon$. Hence, for any $n > N$, since $a_1 a_2 \cdots a_N (g+\varepsilon)^{-N} > 0$, by Theorem \ref{th_25} \ref{th_25_b}, we have
 \begin{align*}
-    n = (1 + x_n)^n \geq \binom{n}{2} 1^{n-1} x_n^2 = \frac{n(n-1)}{2} x_n^2,
+    \limsup_{n\to\infty} \sqrt[n]{a_1 a_2 \cdots a_n} & = \limsup_{n\to\infty} \sqrt[n]{a_1 a_2 \cdots a_N} \sqrt[n]{a_{N+1}\cdots a_n} \\
+    & \leq \limsup_{n\to\infty} \sqrt[n]{a_1 a_2 \cdots a_N} \sqrt[n]{(g+\varepsilon)^{n-N}} \\
+    & = \limsup_{n\to\infty} \sqrt[n]{a_1 a_2 \cdots a_N (g+\varepsilon)^{-N}} \sqrt[n]{(g+\varepsilon)^n} \\
+    & = (g+\varepsilon) \cdot \limsup_{n\to\infty} \sqrt[n]{a_1 a_2 \cdots a_N (g+\varepsilon)^{-N}} = g+\varepsilon.
 \end{align*}
-and hence
-\begin{align*}
-    0 \leq x_n \leq \sqrt{\frac{2}{n-1}}.
-\end{align*}
-Since both the left and right hand sides converges to $0$, we have $\sqrt[n]{n} - 1 \to 0$.
+Similarly, we can prove that $g - \varepsilon \leq \liminf_{n\to\infty} \sqrt[n]{a_1 a_2 \cdots a_n}$, and the result follows.
 \end{proof}
+
+\begin{remark}
+We could only write $\limsup$ and $\liminf$ in the above theorem, since we do not know if the limit exists before we prove it. 
+\end{remark}
+
+\medskip
+
+\begin{theorem}
+If $a_n > 0$ for all $n$ and $\lim_{n\to\infty} a_{n+1}/a_n = a \in \overline{\mathbb{R}}$, then $\lim_{n\to\infty} \sqrt[n]{a_n} = a$.
+\end{theorem}
+\begin{proof}
+Since $\lim_{n\to\infty} a_{n+1}/a_n = a$, then the following sequence also converges to $a$:
+\begin{align*}
+    a_1, \frac{a_2}{a_1}, \cdots, \frac{a_n}{a_{n-1}}, \cdots.
+\end{align*}
+Hence, Theorem \ref{th_27} implies
+\begin{align*}
+    \lim_{n\to\infty} \sqrt[n]{a_n} & = \lim_{n\to\infty} \sqrt[n]{a_1 \cdot \frac{a_2}{a_1} \cdots \frac{a_n}{a_{n-1}}} = a.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Stolz]\label{th_29}
+Suppose that $\{x_n\}$ and $\{y_n\}$ are two sequences of real numbers that satisfy the following properties:
+\begin{enumerate}[label=(\alph*)]
+    \item there is $N$ such that $0 < y_n < y_{n+1}$ for all $n \geq N$;  \label{th_29_a}
+    
+    \item $\displaystyle \lim_{n\to\infty} y_n = \infty$. \label{th_29_b}
+\end{enumerate}
+If
+\begin{align*}
+    \lim_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = g \in \overline{\mathbb{R}},
+\end{align*}
+then 
+\begin{align*}
+    \lim_{n\to\infty} \frac{x_n}{y_n} = g.
+\end{align*}
+\end{theorem}
+\begin{proof}
+First we assume that $g$ is finite, that is $g \in \mathbb{R}$. For every $\varepsilon > 0$, there is an integer $N > 0$ such that for all $n \geq N$, 
+\begin{align}\label{th_29_equ1}
+    \left|\frac{x_{n+1} - x_n}{y_{n+1} - y_n} - g\right| < \frac{\varepsilon}{2}.
+\end{align}
+Note that if $b,d > 0$ and $a,b < c < d$, then
+\begin{align}\label{th_29_equ2}
+    \frac{a}{b} < \frac{a+c}{b+d} < \frac{c}{d}.
+\end{align}
+
+Applying \eqref{th_29_equ2} to \eqref{th_29_equ1} with induction implies that for all $n > N$ we have
+\begin{align*}
+    \frac{x_n - x_N}{y_n - y_N} = \frac{\sum^{n-1}_{i=N} (x_{i+1} - x_i)}{\sum^{n-1}_{i=N} (y_{i+1} - y_i)} \in \left(g - \frac{\varepsilon}{2}, g + \frac{\varepsilon}{2}\right),
+\end{align*}
+which is equivalent to that for all $n > N$,
+\begin{align}
+    \left|\frac{x_n - x_N}{y_n - y_N} - g\right| < \frac{\varepsilon}{2}.
+\end{align}
+Also, 
+\begin{align*}
+    \frac{x_n}{y_n} - g = \frac{x_N - gy_N}{y_n} + \left(1 - \frac{y_N}{y_n}\right) \left(\frac{x_n - x_N}{y_n - y_N} - g\right).
+\end{align*}
+Since $\left|1 - y_n/y_n\right| < 1$ for $n > N$, we have
+\begin{align}
+    \left|\frac{x_n}{y_n} - g\right|  \leq \left|\frac{x_N - gy_N}{y_n}\right| + \left|\frac{x_n - x_N}{y_n - y_N} - g\right|.
+\end{align}
+
+Let $N_1 > N$ be such that for all $n > N_1$,
+\begin{align}
+    \left|\frac{x_N - gy_N}{y_n}\right| < \frac{\varepsilon}{2},
+\end{align}
+and the existence of $N_1$ follows from \ref{th_29_b}. Hence for all $n > N_1$, we have
+\begin{align*}
+    \left|\frac{x_n}{y_n} - g\right| \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+\end{align*}
+
+Now we consider the case $g = \infty$, then there is an integer $N_2 > 0$ such that for $n \geq N_2$,
+\begin{align*}
+    x_n - x_{n-1} > y_n - y_{n-1} > 0,
+\end{align*}
+and hence $\lim_{n\to\infty} x_n = \infty$. Since
+\begin{align*}
+    \lim_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = \infty,
+\end{align*}
+we have
+\begin{align*}
+    \lim_{n\to\infty} \frac{y_n - y_{n-1}}{x_n - x_{n-1}} = 0.
+\end{align*}
+And the assumptions of Stolz's theorem are satisfied and hence
+\begin{align*}
+    \lim_{n\to\infty} \frac{y_n}{x_n} = 0,
+\end{align*}
+and thus 
+\begin{align*}
+    \lim_{n\to\infty} \frac{x_n}{y_n} = \infty.
+\end{align*}
+\end{proof}
+
+\medskip
+
+The Stolz's theorem can be useful, and as an example, we use it as a second method to prove Theorem \ref{th_26}.
+
+\medskip
+
+\begin{proof}[Second Proof of Theorem \ref{th_26}]
+Let $x_n = a_1 + a_2 + \cdots + a_n$, and $y_n = n$, then
+\begin{align*}
+    \lim_{n\to\infty} \frac{a_1 + a_2 + \cdots + a_n}{n} = \lim_{n\to\infty} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = \lim_{n\to\infty} a_n = a.
+\end{align*}
+\end{proof}
+
+\medskip
+
+
+\section{Subsequences}
+
+\begin{definition}
+Given a sequence $\{x_n\}$, consider a sequence $\{n_k\}$ of positive integers such that $n_1 < n_2 < n_3 < \cdots$, then the sequence $\{x_{n_k}\}$ is called a subsequence of $\{x_n\}$. If $\{x_{n_k}\}$ converges, its limit is called a subsequential limit of $\{x_n\}$.
+\end{definition}
+
+
+\medskip
+
+\begin{theorem}\label{th_210}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $\{x_n\}$ is a sequence in a compact metric space $X$, then some subsequence of $\{x_n\}$ converges to a point of $X$. \label{th_210_a}
+    
+    \item Every bounded sequence in $\mathbb{R}^n$ contains a convergent subsequence. \label{th_210_b}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $E$ be the range of $\{x_n\}$. If $E$ is finite then there is a $x \in E$ and a sequence $\{n_k\}$ with $n_1 < n_2 < n_3 < \cdots$, such that $x_{n_1} = x_{n_2} = \cdots = x$. The subsequence $\{x_{n_k}\}$ obtained converges to $x$. If $E$ is infinite, Theorem \ref{th_119} implies that $E$ has a limit point $x \in X$. Choose $n_1$ such that $d(x,x_{n_1}) < 1$, and let $n_2 > n_1$ be such that $d(x,x_{n_2}) < 1/2$. Continue this process and we have $\{x_{n_k}\}$ such that $d(x,x_{n_k}) < 1/k$, and clearly $x_{n_k} \to x$.
+    
+    \item This follows from \ref{th_210_a}, since by Theorem \ref{th_123}, every bounded subset of $\mathbb{R}^n$ belongs to a compact subset of $\mathbb{R}^n$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+The subsequential limits of a sequence $\{x_n\}$ in a metric space $X$ forms a closed subset of $X$.
+\end{theorem}
+\begin{proof}
+Let $E$ be the set of all subsequential limits of $\{x_n\}$ and suppose $x$ is a limit point in $E$. We need to show that $x \in E$.
+
+Choose $n_1$ such that $x_{n_1} \neq X$. If no such point exists, then $E$ has only one point, hence closed. Let $\delta = d(x, x_{n_1})$. Suppose $n_1, \cdots, n_m$ are chosen. Since $x$ is a limit point in $E$, then there is a point $\widetilde{x} \in E$ such that $d(x, \widetilde{x}) < \delta/2^m$. Since $\widetilde{x} \in E$, there exists $n_{m+1} > n_m$ such that $d(\widetilde{x},x_{n_{m+1}}) < \delta/2^m$. Hence,
+\begin{align*}
+    d(x,x_{n_{m+1}}) \leq \frac{\delta}{2^{m-1}},
+\end{align*}
+for $m = 1,2,\cdots$, which implies $\{x_{n_k}\}$ converges to $x$. Hence $x \in E$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
