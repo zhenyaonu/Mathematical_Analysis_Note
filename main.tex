@@ -1427,6 +1427,16 @@ Given a sequence $\{x_n\}$, consider a sequence $\{n_k\}$ of positive integers s
 \end{enumerate}
 \end{proof}
 
+\begin{remark}
+If the bounded sequence belongs to $\mathbb{R}$ in \ref{th_210_b}, then the result is well known as Bolzano-Weierstrass theorem.
+\end{remark}
+
+\medskip
+
+\begin{theorem}[Bolzano-Weierstrass]
+Every bounded sequence of real numbers has a convergent subsequence.
+\end{theorem}
+
 \medskip
 
 \begin{theorem}
@@ -1443,12 +1453,93 @@ for $m = 1,2,\cdots$, which implies $\{x_{n_k}\}$ converges to $x$. Hence $x \in
 \end{proof}
 
 
+\medskip
 
 
+\section{Cauchy Sequences}
 
+\begin{definition}
+A sequence $\{x_n\}$ in a metric space $X$ is said to be a Cauchy sequence if for every $\varepsilon > 0$, there is an integer $N > 0$ such that $d(x_n, x_m) < \varepsilon$ for all $n, m \geq N$.
+\end{definition}
 
+\medskip
 
+\begin{definition}
+Let $E$ be a nonempty subset of a metric space $X$, and let $S$ be the set of all real numbers of the the form $d(x,y)$ for $x,y \in E$. Then $\sup S$ is called the diameter of $E$, denoted by $\diam E$.
+\end{definition}
 
+\medskip
+
+\begin{remark}
+If $\{x_n\}$ is a sequence in $X$ and if $E_n$ consists of the points $x_n, x_{n+1}, x_{n+2}, \cdots$, it is clear that $\{x_n\}$ is a Cauchy sequence if and only if $\lim_{n\to\infty} \diam E_n = 0$.
+\end{remark}
+
+\medskip
+
+\begin{theorem}\label{th_213}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $\overline{E}$ is the closure of a set $E \subset X$, then $\diam \overline{E} = \diam E$. \label{th_213_a}
+    
+    \item If $K_n$ is a sequence of compact sets in $X$ such that $K_n \supset K_{n+1}$ for $n = 1,2,3,\cdots$ and if
+    \begin{align*}
+        \lim_{n\to\infty} \diam K_n = 0,
+    \end{align*}
+    then $\bigcap^\infty_{n=1} K_n$ consists of exactly one point. \label{th_213_b}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Since $E \subset \overline{E}$, then $\diam E \leq \diam \overline{E}$. For every $\varepsilon > 0$, let $x,y \in \overline{E}$, and there are $x',y' \in E$ such that $d(x,x') < \varepsilon$, $d(y,y') < \varepsilon$. Hence, 
+    \begin{align*}
+        d(x,y) \leq d(x,x') + d(x',y') + d(y',y) \leq d(x',y') + 2 \varepsilon,
+    \end{align*}
+    and it follows that $\diam \overline{E} \leq \diam E + 2 \varepsilon$. Since $\varepsilon$ is arbitrary, $\diam \overline{E} \leq \diam E$. Thus $\diam \overline{E} = \diam E$.
+    
+    \item Let $K = \bigcap^\infty_{n=1} K_n$ and by Theorem \ref{th_118}, $K$ is not empty. Suppose that $K$ contains more than one point, then $\diam K > 0$. However, for each $n$, $K_n \supset K$ so that $\diam K_n \geq \diam K$, which is a contradiction to $\lim_{n\to\infty} \diam K_n = 0$. 
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_214}
+~\begin{enumerate}[label=(\alph*)]
+    \item In any metric space $X$, every convergent sequence is a Cauchy sequence. \label{th_214_a}
+    
+    \item If $X$ is a compact metric space and if $\{x_n\}$ is a Cauchy sequence in $X$, then $\{x_n\}$ converges to some point of $X$. \label{th_214_b}
+    
+    \item In $\mathbb{R}^n$, every Cauchy sequence converges. \label{th_214_c}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $x_n \to x$ and for every $\varepsilon > 0$, there is an integer $N > 0$ such that $d(x,x_n) < \varepsilon$ for all $n \geq N$. Hence, 
+    \begin{align*}
+        d(x_n,x_m) \leq d(x_n,x) + d(x_m,x) < 2 \varepsilon,
+    \end{align*}
+    for $n,m \geq N$. Hence $\{x_n\}$ is a Cauchy sequence.
+    
+    \item Let $\{x_n\}$ be a Cauchy sequence in $X$. Let $E_n = \{x_n, x_{n+1}, \cdots\}$ for $n = 1,2,3,\cdots$. By Theorem \ref{th_213} \ref{th_213_b}, \begin{align}\label{th_214_equ1}
+        \lim_{n\to\infty} \diam \overline{E}_n = 0.
+    \end{align}
+    Note that each $\overline{E}_n$ is compact by Theorem \ref{th_116} and also $\overline{E}_n \supset \overline{E}_{n+1}$. Also, Theorem \ref{th_213} \ref{th_213_b} implies there is a unique point $x \in X$ such that $x = \bigcap^\infty_{n=1} E_n$. 
+    
+    For every $\varepsilon > 0$, \eqref{th_214_equ1} implies that there is an integer $N > 0$ such that $\diam \overline{E}_n < \varepsilon$ for all $n \geq N$. Since $x \in \overline{E}_n$, it follows that $d(x,y) < \varepsilon$ for every $y \in \overline{E}_n$. Hence $d(x,x_n) < \varepsilon$ for all $n \geq N$, and this is precisely that $x_n \to x$. 
+    
+    \item Let $\{x_n\}$ be a Cauchy sequence in $\mathbb{R}^n$. Define $E_n$ as above. Then for $\varepsilon = 1$, there is an integer $N > 0$ such that $\diam \overline{E}_N < 1$. The range of $\{x_n\}$ is the union of $E_N$ and the finite set $\{x_1, \cdots, x_{N-1}\}$, and hence $\{x_n\}$ is bounded. Also, then range of $\{x_n\}$ is closed and hence compact, then \label{th_214_c} follows from \label{th_214_b}.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{definition}
+A metric space $X$ in which every Cauchy sequence converges is said to be complete.
+\end{definition}
+
+\medskip
+
+\begin{remark}
+Being complete means every Cauchy sequence in $X$ also converges in $X$. Hence, Theorem \ref{th_214} implies that all compact metric and all Euclidean spaces are complete. 
+\end{remark}
 
 
 
