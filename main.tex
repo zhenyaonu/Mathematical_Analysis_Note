@@ -1066,13 +1066,13 @@ If $\{x_n\}$ does not converge, we say it diverge\footnote{The formal definition
 \begin{theorem}\label{th_21}
 Let $\{x_n\}$ be a sequence in a metric space $X$.
 \begin{enumerate}[label=(\alph*)]
-    \item $\{x_n\}$ converges to $x \in X$ if and only if every neighborhood of $x$ contains $x_n$ for all but finitely many $n$.
+    \item $\{x_n\}$ converges to $x \in X$ if and only if every neighborhood of $x$ contains $x_n$ for all but finitely many $n$. \label{th_21_a}
     
-    \item If $x \in X$, $x' \in X$ and if $\{x_n\}$ converges to $x$ and to $x'$, then $x = x'$.
+    \item If $x \in X$, $x' \in X$ and if $\{x_n\}$ converges to $x$ and to $x'$, then $x = x'$. \label{th_21_b}
     
-    \item If $\{x_n\}$ converges, then $\{x_n\}$ is bounded.
+    \item If $\{x_n\}$ converges, then $\{x_n\}$ is bounded. \label{th_21_c}
     
-    \item If $E \subset X$ and $x$ is a limit point of $E$, then there is a sequence $\{x_n\}$ in $E$ such that $\lim_{n\to\infty} x_n = x$.
+    \item If $E \subset X$ and $x$ is a limit point of $E$, then there is a sequence $\{x_n\}$ in $E$ such that $\lim_{n\to\infty} x_n = x$. \label{th_21_d}
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -1439,7 +1439,7 @@ Every bounded sequence of real numbers has a convergent subsequence.
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{th_212}
 The subsequential limits of a sequence $\{x_n\}$ in a metric space $X$ forms a closed subset of $X$.
 \end{theorem}
 \begin{proof}
@@ -1538,8 +1538,134 @@ A metric space $X$ in which every Cauchy sequence converges is said to be comple
 \medskip
 
 \begin{remark}
-Being complete means every Cauchy sequence in $X$ also converges in $X$. Hence, Theorem \ref{th_214} implies that all compact metric and all Euclidean spaces are complete. 
+Being complete means every Cauchy sequence in $X$ also converges in $X$. Hence, Theorem \ref{th_214} implies that all compact metric and all Euclidean spaces (including $\mathbb{R}^n$) are complete. 
 \end{remark}
+
+\medskip
+
+\begin{definition}
+A sequence $\{x_n\}$ of real numbers is said to be
+\begin{enumerate}[label=(\alph*)]
+    \item monotonically increasing if $x_n \leq x_{n+1}$ for $n = 1,2,3,\cdots$;
+    
+    \item monotonically decreasing if $x_n \geq x_{n+1}$ for $n = 1,2,3,\cdots$.
+\end{enumerate}
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_215}
+Suppose $\{x_n\}$ is monotonic. Then $\{x_n\}$ converges if and only if it is bounded.
+\end{theorem}
+\begin{proof}
+Suppose $x_n \leq x_{n+1}$. Let $E$ be the range of $\{x_n\}$. If $\{x_n\}$ is bounded, let $s = \sup E$, then $s_n \leq s$ for all $n = 1,2,3,\cdots$. For every $\varepsilon > 0$, there is an integer $N > 0$ such that $s - \varepsilon < x_N < s$, for otherwise $s - \varepsilon$ would be the least upper bound. Since $\{x_n\}$ increases, for all $n \geq N$, $s - \varepsilon < x_n < s$, which shows that $\{x_n\}$ converges.
+
+The converse follows from Theorem \ref{th_21} \ref{th_21_c}.
+\end{proof}
+
+
+\medskip
+
+
+
+\section{Upper and Lower Limits}
+
+\begin{definition}\label{def_28}
+Let $\{x_n\}$ be a sequence of real numbers. Let $E$ be the set of all $x \in \overline{\mathbb{R}}$ such that $x_{n_k} \to x$ for some subsequence $\{x_{n_k}\}$. The set contains all subsequential limits, plus possibly the numbers $+\infty$, $-\infty$. Let
+\begin{align*}
+    x^* = \sup E, \qquad x_* = \inf E.
+\end{align*}
+The numbers $x^*$ and $x_*$ are called the upper and lower limits of $\{x_n\}$, we use the notation
+\begin{align*}
+    \limsup_{n\to\infty} x_n = x^*, \qquad \liminf_{n\to\infty} x_n = x_*.
+\end{align*}
+\end{definition}
+
+\begin{remark}
+The upper limit $\limsup_{n\to\infty} x_n$ is the largest possible limit (including $+\infty$) of any subsequence of $\{x_n\}$, and the lower limit $\liminf_{n\to\infty} x_n$ is the smallest possible limit (including $-\infty$). Hence we could also define $\limsup$ and $\liminf$ as below:
+\begin{enumerate}[label=(\alph*)]
+    \item If $\{x_n\}$ is bounded from above, then \begin{align*}
+        \limsup_{n\to\infty} x_n \coloneqq \inf_{n \in \mathbb{N}} \sup_{k \geq n} x_k,
+    \end{align*}
+    and this number exists since $\{x_n\}$ is bounded from above. If $\{x_n\}$ is not bounded above, then $\limsup x_n \coloneqq +\infty$.
+    
+    \item If $\{x_n\}$ is bounded from below, then \begin{align*}
+        \liminf_{n\to\infty} x_n \coloneqq \sup_{n \in \mathbb{N}} \inf_{k \geq n} x_k.
+    \end{align*}
+    If $\{x_n\}$ is not bounded from below, then $\liminf x_n \coloneqq -\infty$.
+\end{enumerate}
+\end{remark}
+
+\medskip
+
+\begin{lemma}
+Let $\{x_n\} \subset \mathbb{R}$ be a sequence.
+\begin{enumerate}[label=(\alph*)]
+    \item If $\sup_{k \geq n} x_k$ exists, then
+    \begin{align*}
+        \limsup_{n\to\infty} x_n = \lim_{n\to\infty} \sup_{k \geq n} x_k.
+    \end{align*}
+    
+    \item If $\inf_{k \geq n} x_k$ exists, then
+    \begin{align*}
+        \liminf_{n\to\infty} x_n = \lim_{n\to\infty} \inf_{k \geq n} x_k.
+    \end{align*}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $a_n = \sup_{k\geq n}x_k$. If $\{a_n\}$ is not bounded from above, then $\{x_n\}$ is not bounded above, hence $\lim a_n = \limsup x_n = + \infty$. 
+    
+    If $\{a_n\}$ is bounded from above, then it is a bounded and monotonically decreasing sequence. By Theorem \ref{th_215}, $\{a_n\}$ is convergent and
+    \begin{align*}
+        \lim_{n\to\infty} a_n = \inf_{n \in \mathbb{N}} \sup_{k \geq n} x_k = \limsup_{n\to\infty} x_n.
+    \end{align*}
+    
+    \item By the similar argument as above.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_216}
+Let $\{x_n\} \subset \mathbb{R}$ be a sequence. Let $E$ and $x^*$ be the same as in Definition \ref{def_28}. Then $X^*$ has the following properties:
+\begin{enumerate}[label=(\alph*)]
+    \item $x^* \in E$. \label{th_216_a}
+    
+    \item If $x > x^*$, there is an integer $N$ such that $x_n < x$ for $n \geq N$. \label{th_216_b}
+\end{enumerate}
+Moreover, $x^*$ is the only number which satisfies \ref{th_216_a} and \ref{th_216_b}. An analogous result is true for $x_*$.
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $x^* = + \infty$, then $E$ is not bounded and hence $\{x_n\}$ is not bounded and there is a subsequence $\{x_{n_k}\}$ such that $x_{n_k} \to + \infty$. If $x^*$ is finite, then $E$ is bounded above, and hence at least one subsequential limit exists. \ref{th_216_a} follows from Theorem \ref{th_212} and \ref{th_113}. If $x^* = - \infty$, then $E$ only contains one element $- \infty$, and there is no subsequential limit. Hence for any $M$, $x_n > M$ for at most a finite number of values of $n$, so $x_n \to - \infty$.
+    
+    \item Suppose there is a number $x > x^*$ such that $x_n \geq x$ for infinitely many $n$, then there is $y \in E$ such that $y \geq x > x^*$, contradiction.
+\end{enumerate}
+To show the uniqueness, suppose there are two numbers $x_1$ and $x_2$ which satisfy \ref{th_216_a} and \ref{th_216_b}, and suppose $x_1 < x_2$. Choose $x$ such that $x_1 < x < x_2$. Since $x_1$ satisfies \ref{th_216_b}, we have $x_n < x$ for all $n \geq N$, hence $x_2$ cannot satisfy \ref{th_216_a}.
+\end{proof}
+
+\medskip
+
+We will also present another proof of part \ref{th_216_a} when $\{x_n\}$ is bounded in the above theorem.
+
+\medskip
+
+\begin{proof}[Second Proof of \ref{th_216_a}]
+Let $x^* = \sup E$. It suffices to show that there is a subsequence converging to $x^*$. 
+
+Let $k \in \mathbb{N}$. Since $x - 1/k < x^*$, there is a subsequence with limit larger than $x^* - 1/k$, in particular, infinitely many $x_n$ are larger than $x^* - 1/k$. Hence there is $n_1$ such that $x_{n_1} > x^* - 1$, and there is $n_2 > n_1$ such that $x_{n_2} > x^* - 1/2$. Continue this process and we can have a subsequence $\{x_{n_k}\}$ such that $x_{n_k} > x^* - 1/k$ for $k = 1,2,3,\cdots$. Also, $\{x_{n_k}\}$ is bounded, os it has a convergent subsequence $\{x_{n_{k_l}}\}$. Clearly, $\lim_{l\to\infty} x_{n_{k_l}} \leq x^*$. 
+
+Note that $k_l \geq l$, so for $l \geq i$
+\begin{align*}
+    x_{n_{k_l}} \geq x^* - \frac{1}{k_l} \geq x^* - \frac{1}{l} \geq x^* - \frac{1}{i},
+\end{align*}
+and hence
+\begin{align*}
+    x^* \geq \lim_{l\to\infty} x_{n_{k_l}} \geq x^* - \frac{1}{i},
+\end{align*}
+letting $i \to \infty$ implies $\lim_{l\to\infty} x_{n_{k_l}} = x^*$.
+\end{proof}
 
 
 
