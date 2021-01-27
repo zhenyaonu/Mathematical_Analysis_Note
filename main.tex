@@ -1669,8 +1669,147 @@ letting $i \to \infty$ implies $\lim_{l\to\infty} x_{n_{k_l}} = x^*$.
 
 
 
+\medskip
 
 
+\section{Series}
+
+\begin{definition}
+Given a sequence $\{x_n\}$, we use the notation
+\begin{align*}
+    \sum^m_{n=k} x_n
+\end{align*}
+to denote the sum $x_k + a_{k+1} + \cdots + a_m$. With $\{x_n\}$ we associate a sequence $\{s_n\}$, which is defined as
+\begin{align*}
+    s_n = \sum^n_{k=1} x_k.
+\end{align*}
+For $\{s_n\}$ we also use the symbolic expression 
+\begin{align}\label{sec_25_equ1}
+    \sum^\infty_{n=1} x_n
+\end{align}
+to denote $x_1 + x_2 + x_3 + \cdots$.
+\end{definition}
+
+The symbol \eqref{sec_25_equ1} is called an {\em infinite series}, or just a {\em series}. $s_n$ are called the {\em partial sums} of the series. If $\{s_n\}$ converges to $x$, then we say the series converges, and write
+\begin{align*}
+    \sum^\infty_{n=1} x_n = x.
+\end{align*}
+
+\medskip
+
+\begin{theorem}
+Given a sequence $\{x_n\}$, $\sum x_n$ converges if and only if for every $\varepsilon > 0$ there is an integer $N > 0$ such that if $m \geq n \geq N$,
+\begin{align*}
+    \left|\sum^m_{k=n} x_k\right| \leq \varepsilon.
+\end{align*}
+This is called the Cauchy criterion. In particular, letting $m = n$ implies that for $n \geq N$, $\left|x_n\right| \leq \varepsilon$. In other words:
+\end{theorem}
+
+\medskip
+
+\begin{theorem}
+If $\sum x_n$ converges, then $\lim_{n\to\infty} x_n = 0$.
+\end{theorem}
+
+\medskip
+
+\begin{remark}
+In general, the condition $\lim_{n\to\infty} x_n = 0$ is not sufficient to ensure the convergence of $\sum x_n$. For example, the series
+\begin{align*}
+    \sum^\infty_{n=1} \frac{1}{n}
+\end{align*}
+diverges, which we will prove it later. 
+\end{remark}
+
+\medskip
+
+\begin{theorem}\label{th_219}
+If $x_n \geq 0, n = 1,2,3,\cdots$, then $\sum x_n$ converges if and only if the sequence of partial sums is bounded. 
+\end{theorem}
+\begin{proof}
+$x_n \geq 0$ implies that $s_n = \sum^n_{k=1} x_k$ is an increasing sequence, and hence $\{s_n\}$ converges if and only if it is bounded.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Comparison test]\label{th_220}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $\left|x_n\right| \leq c_n$ for all $n > N$, where $N$ is some fixed integer, and if $\sum c_n$ converges, then $\sum x_n$ converges. \label{th_220_a}
+    
+    \item If $x_n \geq d_n \geq 0$ for all $n \geq N$, and if $\sum d_n$ diverges, then $\sum x_n$ diverges. \label{th_220_b}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Part \ref{th_220_b} is obvious, and we only prove part \ref{th_220_a}. Given $\varepsilon > 0$, there is an integer $\widetilde{N} \geq N$ such that for all $m \geq n \geq \widetilde{N}$, 
+\begin{align*}
+    \sum^m_{k=n} c_k < \varepsilon,
+\end{align*}
+hence
+\begin{align*}
+    \left|\sum^m_{k=n} x_k\right| \leq \sum^m_{k=n} \left|x_k\right| \leq \sum^m_{k=n} c_k < \varepsilon,
+\end{align*}
+which implies that $\{x_n\}$ converges.
+\end{proof}
+
+\medskip
+
+
+
+\section{Series of Nonnegative Terms}
+
+\begin{theorem}[Geometric series]\label{th_221}
+If $0 \leq x < 1$, then
+\begin{align*}
+    \sum^\infty_{n=0} x^n = \frac{1}{1 - x}.
+\end{align*}
+If $x > 1$, the series diverges.
+\end{theorem}
+\begin{proof}
+If $0 \leq x < 1$, we have
+\begin{align*}
+    s_n \coloneqq \sum^n_{k=1} x^k = \frac{1 - x^{n+1}}{1 - x},
+\end{align*}
+and hence letting $n \to \infty$ implies the result. For $x = 1$, we have $\sum^\infty_{n=0} x^n = 1 + 1 + 1 + \cdots$, which diverges. 
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Cauchy Condensation test]\label{th_222}
+Suppose $a_1 \geq a_2 \geq a_3 \geq \cdots \geq 0$. Then the series $\sum^\infty_{n=0} a_n$ converges if and only if the series $\sum^\infty_{n=0} 2^n a_{2^n}$ converges.
+\end{theorem}
+\begin{proof}
+By Theorem \ref{th_219}, it suffices to show the boundness of the partial sums. Let
+\begin{align*}
+    s_n & = a_1 + a_2 + \cdots + a_n, \\
+    t_k & = a_1 + 2a_2 + \cdots + 2^k a_{2^k}.
+\end{align*}
+For $n < 2^k$, we have
+\begin{align}\label{th_222_equ1}
+    s_n & \leq a_1 + (a_2 + a_3) + \cdots + (a_{2^k} + \cdots + a_{2^{k+1}-1}) \\
+    & \leq a_1 + 2a_2 + \cdots + 2^k a_{2^k} = t_k,
+\end{align}
+and hence $s_n \leq t_k$. 
+
+On the other hand, if $n > 2^k$,
+\begin{align}\label{th_222_equ2}
+    s_n & \geq a_1 + a_2 + (a_3 + a_4) + \cdots + (a_{2^{k-1}+1} + \cdots a_{2^k}) \\
+    & \geq \frac{1}{2}a_1 + a_2 + 2 a_4 + \cdots + 2^{k-1} a_{2^k} = \frac{1}{2} t_k.
+\end{align}
+Hence \eqref{th_222_equ1} and \eqref{th_222_equ2} implies that $\{s_n\}$ and $\{t_k\}$ are either both bounded or both unbounded. This completes the proof.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[$p$-Series test]\label{th_223}
+$\displaystyle \sum \frac{1}{n^p}$ converges if $p > 1$ and diverges if $p \leq 1$.
+\end{theorem}
+\begin{proof}
+If $p \leq 1$, then $1/n^p \geq 1/n$, and since $\sum 1/n$ diverges, $\sum 1/n^p$ also diverges. For $p > 1$, we apply the Cauchy Condensation test, and let $a_n = 1/n^p$, then
+\begin{align*}
+    \sum^\infty_{k=0} 2^k \frac{1}{2^{kp}} = \sum^\infty_{k=0} 2^{(1-p)k}.
+\end{align*}
+Now $2^{1-p} < 1$ if and only if $1 - p < 0$, and the result follows by comparison with the geometric series (take $x = 2^{1-p}$ in Theorem \ref{th_221}).
+\end{proof}
 
 
 
