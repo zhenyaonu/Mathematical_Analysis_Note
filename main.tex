@@ -2004,12 +2004,65 @@ In particular, $\left|a_{n}\right| < \left|a_N\right| \beta^{-N} \cdot \beta^n$ 
 If $\alpha > 1$, then there is an integer $N > 0$ such that for all $n \geq N$, $\left|a_{n+1}\right| > \left|a_n\right|$ and hence the condition $a_n \to 0$ does not hold. 
 \end{proof}
 
+\medskip
 
+\begin{theorem}
+For any sequence $\{a_n\}$ of positive numbers,
+\begin{align*}
+    \liminf_{n\to\infty} \frac{a_{n+1}}{a_n} & \leq \liminf_{n\to\infty} \sqrt[n]{a_n}, \\
+    \limsup_{n\to\infty} \sqrt[n]{a_n} & \leq \limsup_{n\to\infty} \frac{a_{n+1}}{a_n}.
+\end{align*}
+\end{theorem}
+\begin{proof}
+For the second inequality, let $\alpha = \limsup_{n\to\infty} a_{n+1}/a_n$. If $\alpha = + \infty$, we are done. If $\alpha < \infty$, let $\beta > \alpha$. There is an integer $N > 0$ such that for all $n \geq N$,
+\begin{align*}
+    \frac{a_{n+1}}{a_n} \leq \beta.
+\end{align*}
+For $n \geq N$, we have $a_n \leq a_N \beta^{-N} \beta^n$, and hence $\sqrt[n]{a_n} \leq \sqrt[n]{a_N \beta^{-N}} \beta$. Since $a_N \beta^{-N} > 0$, we have
+\begin{align*}
+    \limsup_{n\to\infty} \sqrt[n]{a_n} \leq \limsup_{n\to\infty} \sqrt[n]{a_N \beta^{-N}} \beta = \beta,
+\end{align*}
+and this holds for all $\beta \geq \alpha$, thus 
+\begin{align*}
+    \limsup_{n\to\infty} \sqrt[n]{a_n} \leq \alpha.
+\end{align*}
 
+The proof of the first inequality is similar.
+\end{proof}
 
+\begin{remark}
+This theorem shows that the Ratio Test is easier to apply than the Root Test, since it is usually easier to compute ratio than $n$th roots. However, the Ratio Test has wider application, i.e., when the Ratio Test shows convergence, the Root Test does too, and when the Root Test is inconclusive, the Ratio Test is too. We show some examples below to see this explicitly. 
+\end{remark}
 
+\medskip
 
-
+\begin{example}
+~\begin{enumerate}[label=(\alph*)]
+    \item Consider the series
+    \begin{align*}
+        \sum^\infty_{n=1} a_n = \frac{1}{2} + \frac{1}{2} + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{2^3} + \frac{1}{3^3} + \frac{1}{2^4} + \frac{1}{3^4} + \cdots,
+    \end{align*}
+    and we have
+    \begin{align*}
+        \liminf_{n\to\infty} \frac{a_{n+1}}{a_n} = \lim_{n\to\infty} \frac{2^n}{3^n} = 0, \quad & \liminf_{n\to\infty} \sqrt[n]{a_n} = \lim_{n\to\infty} \sqrt[2n]{\frac{1}{3^n}} = \frac{1}{\sqrt{3}}, \\
+        \limsup_{n\to\infty} \frac{a_{n+1}}{a_n} = \lim_{n\to\infty} \frac{3^n}{2^{n+1}} = + \infty, \quad & \limsup_{n\to\infty} \sqrt[n]{a_n} = \lim_{n\to\infty} \sqrt[2n]{\frac{1}{2^n}} = \frac{1}{\sqrt{2}}.
+    \end{align*}
+    The Root Test shoes convergence, however, the Ratio Test does not apply here.
+    
+    \item The same it true for the series
+    \begin{align*}
+        \sum^\infty_{n=1} a_n = \frac{1}{2} + 1 + \frac{1}{8} + \frac{1}{4} + \frac{1}{32} + \frac{1}{16} + \frac{1}{128} + \frac{1}{64} + \cdots,
+    \end{align*}
+    and we have
+    \begin{align*}
+        \liminf_{n\to\infty} \frac{a_{n+1}}{a_n} = \frac{1}{8}, \quad \limsup_{n\to\infty} \frac{a_{n+1}}{a_n} = 2,
+    \end{align*}
+    but we also have
+    \begin{align*}
+        \limsup_{n\to\infty} \sqrt[n]{a_n} = \lim_{n\to\infty} \sqrt[n]{\frac{1}{2^n}} = \frac{1}{2}, \quad \liminf_{n\to\infty} \sqrt[n]{a_n} = \lim_{n\to\infty} \sqrt[n+2]{\frac{1}{2^n}} = \frac{1}{2}.
+    \end{align*}
+\end{enumerate}
+\end{example}
 
 
 
