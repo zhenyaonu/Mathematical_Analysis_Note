@@ -1179,15 +1179,15 @@ We now talk about some special sequences which will be used frequently.
 
 \begin{theorem}\label{th_25}
 ~\begin{enumerate}[label=(\alph*)]
-    \item If $a > 0$, then $\displaystyle  \lim_{n\to\infty} \frac{1}{n^a} = 0$.\label{th_25_a}
+    \item If $a > 0$, then $ \lim_{n\to\infty} \displaystyle \frac{1}{n^a} = 0$.\label{th_25_a}
     
-    \item If $a > 0$, $\displaystyle  \lim_{n\to\infty} \sqrt[n]{a} = 1$.\label{th_25_b}
+    \item If $a > 0$, $\lim_{n\to\infty} \displaystyle \sqrt[n]{a} = 1$.\label{th_25_b}
     
-    \item For $n \in \mathbb{N}$, $\displaystyle  \lim_{n\to\infty} \sqrt[n]{n} = 1$.\label{th_25_c}
+    \item For $n \in \mathbb{N}$, $ \lim_{n\to\infty} \displaystyle \sqrt[n]{n} = 1$.\label{th_25_c}
     
-    \item If $a > 0$ and $k$ is real, then $\displaystyle \lim_{n\to\infty} \frac{n^k}{(1 + a)^n} = 0$.\label{th_25_d}
+    \item If $a > 0$ and $k$ is real, then $ \lim_{n\to\infty} \displaystyle \frac{n^k}{(1 + a)^n} = 0$.\label{th_25_d}
     
-    \item If $a > 1$, then $\lim_{n\to\infty} a^{-n} = 0$. If $\left|a\right| < 1$, then $\displaystyle \lim_{n\to\infty} a^n = 0$.\label{th_25_e}
+    \item If $a > 1$, then $\lim_{n\to\infty} a^{-n} = 0$. If $\left|a\right| < 1$, then $\lim_{n\to\infty} a^n = 0$.\label{th_25_e}
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -1318,7 +1318,7 @@ Suppose that $\{x_n\}$ and $\{y_n\}$ are two sequences of real numbers that sati
 \begin{enumerate}[label=(\alph*)]
     \item there is $N$ such that $0 < y_n < y_{n+1}$ for all $n \geq N$;  \label{th_29_a}
     
-    \item $\displaystyle \lim_{n\to\infty} y_n = \infty$. \label{th_29_b}
+    \item $\lim_{n\to\infty} y_n = \infty$. \label{th_29_b}
 \end{enumerate}
 If
 \begin{align*}
@@ -1949,20 +1949,20 @@ Now we talk about two useful theorems that can be used to determine if the serie
 \begin{theorem}[Root Test]
 Given $\sum^\infty_{n=1} a_n$.
 \begin{enumerate}[label=(\alph*)]
-    \item If $\displaystyle \limsup_{n\to\infty} \sqrt[n]{\left|a_n\right|} < 1$, then $\sum^\infty_{n=1} a_n$ converges absolutely.
+    \item If $\limsup_{n\to\infty}\displaystyle  \sqrt[n]{\left|a_n\right|} < 1$, then $\sum^\infty_{n=1} a_n$ converges absolutely.
     
-    \item If $\displaystyle \limsup_{n\to\infty} \sqrt[n]{\left|a_n\right|} > 1$, then $\sum^\infty_{n=1} a_n$ diverges.
+    \item If $\limsup_{n\to\infty}\displaystyle  \sqrt[n]{\left|a_n\right|} > 1$, then $\sum^\infty_{n=1} a_n$ diverges.
 \end{enumerate}
 \end{theorem}
 \begin{remark}
-If $\displaystyle \limsup_{n\to\infty} \sqrt[n]{\left|a_n\right|} = 1$, the test gives no information. For example, consider the series
+If $\limsup_{n\to\infty}\displaystyle  \sqrt[n]{\left|a_n\right|} = 1$, the test gives no information. For example, consider the series
 \begin{align}\label{remark_28_equ1}
     \sum^\infty_{n=1} \frac{1}{n}, \quad \sum^\infty_{n=1} \frac{1}{n^2}.
 \end{align}
-For each of these sequences $\displaystyle \limsup_{n\to\infty} \sqrt[n]{\left|a_n\right|} = 1$, but the first diverges and the second converges.
+For each of these sequences $ \limsup_{n\to\infty} \displaystyle\sqrt[n]{\left|a_n\right|} = 1$, but the first diverges and the second converges.
 \end{remark}
 \begin{proof}
-Let $\alpha = \displaystyle \limsup_{n\to\infty} \sqrt[n]{\left|a_n\right|}$. If $\alpha < 1$, then there is $\beta$ such that $\alpha < \beta < 1$. Then by Theorem \ref{th_216} \ref{th_216_b}, there is an integer $N > 0$ such that for all $n \geq N$, 
+Let $\alpha = \limsup_{n\to\infty}\displaystyle  \sqrt[n]{\left|a_n\right|}$. If $\alpha < 1$, then there is $\beta$ such that $\alpha < \beta < 1$. Then by Theorem \ref{th_216} \ref{th_216_b}, there is an integer $N > 0$ such that for all $n \geq N$, 
 \begin{align*}
     \sqrt[n]{\left|a_n\right|} < \beta,
 \end{align*}
@@ -1980,14 +1980,14 @@ and hence $\left|a_n\right| > 1$ for infinitely many numbers of $n$, so the cond
 \begin{theorem}[Ratio Test]
 Given $\sum^\infty_{n=1} a_n$.
 \begin{enumerate}[label=(\alph*)]
-    \item If $\displaystyle \lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| < 1$, then $\sum^\infty_{n=1} a_n$ converges absolutely.
+    \item If $\lim_{n\to\infty}\displaystyle  \left|\frac{a_{n+1}}{a_n}\right| < 1$, then $\sum^\infty_{n=1} a_n$ converges absolutely.
     
-    \item If $\displaystyle \lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| > 1$, then $\sum^\infty_{n=1} a_n$ diverges.
+    \item If $\lim_{n\to\infty}\displaystyle  \left|\frac{a_{n+1}}{a_n}\right| > 1$, then $\sum^\infty_{n=1} a_n$ diverges.
 \end{enumerate}
 \end{theorem}
 
 \begin{remark}
-If $\displaystyle \lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| = 1$, the test gives no information, and the series in \eqref{remark_28_equ1}  this.
+If $\lim_{n\to\infty}\displaystyle  \left|\frac{a_{n+1}}{a_n}\right| = 1$, the test gives no information, and the series in \eqref{remark_28_equ1}  this.
 \end{remark}
 
 \begin{proof}
@@ -2064,8 +2064,270 @@ This theorem shows that the Ratio Test is easier to apply than the Root Test, si
 \end{enumerate}
 \end{example}
 
+\medskip
+
+\begin{theorem}
+Let $\{a_n\}, \{b_n\}$ be two sequences such that $a_n, b_n > 0$, and there is an integer $N > 0$ such that for all $n \geq N$,
+\begin{align*}
+    \frac{a_{n+1}}{a_n} \leq  \frac{b_{n+1}}{b_n}.
+\end{align*}
+If $\sum^\infty_{n=1} b_n$ converges, then $\sum^\infty_{n=1} a_n$ converges.
+\end{theorem}
+\begin{proof}
+Let $c_n = a_n/b_n$, then for all $n \geq N$,
+\begin{align*}
+    c_{n+1} = \frac{a_{n+1}}{b_{n+1}} \leq \frac{a_n}{b_n} = c_n,
+\end{align*}
+which implies $\{c_n\}$ is decreasing starting from $n = N$. Hence $\{c_n\}$ is bounded, that is there is $M$ such that $c_n \leq M$ for all $n$. Hence $a_n = c_n b_n \leq M b_n$. Since $\sum^\infty_{n=1} Mb_n = M \sum^\infty_{n=1} b_n$ converges, by the Comparison Test, $\sum^\infty_{n=1} a_n$ converges too.
+\end{proof}
+
+\medskip
 
 
+\section{Power Series}
+
+\begin{definition}
+Given a sequence $\{c_n\}$ of complex numbers, the series
+\begin{align*}
+    \sum^\infty_{n=0} c_n z^n
+\end{align*}
+is called a power series. The numbers $c_n$ are called the coefficients of the series, $z$ is a complex number.
+\end{definition}
+
+\medskip
+
+\begin{theorem}[Cauchy-Hadamard]
+Given $\sum^\infty_{n=0} c_n z^n$, let
+\begin{align*}
+    \alpha = \limsup_{n\to\infty} \sqrt[n]{\left|c_n\right|}, \quad R = \frac{1}{\alpha}.
+\end{align*}
+If $\alpha = 0, R = + \infty$, if $\alpha = + \infty, R = 0$. Then $\sum^\infty_{n=0} c_n z^n$ converges if $\left|z\right| < R$ and diverges if $\left|z\right| > R$.
+\end{theorem}
+\begin{proof}
+Let $a_n = c_n z^n$, and applying the Root Test yields
+\begin{align*}
+    \limsup_{n\to\infty} \sqrt[n]{\left|a_n\right|} = \left|z\right| \cdot \limsup_{n\to\infty} \sqrt[n]{\left|c_n\right|} = \frac{\left|z\right|}{R}.
+\end{align*}
+Hence $\left|z\right|/R < 1$ implies the convergence and $\left|z\right|/R > 1$ implies the divergence.
+\end{proof}
+
+\begin{remark}
+$R$ is called the radius of convergence of $\sum^\infty_{n=0} c_n z^n$.
+\end{remark}
+
+\medskip
+
+
+\section{Summation by Parts}
+
+\begin{theorem}
+Given two sequences $\{a_n\}, \{b_n\}$, let
+\begin{align*}
+    A_n = \sum^n_{k=0} a_k,
+\end{align*}
+if $n \geq 0$. Also let $A_{-1} = 0$. Then, if $0 \leq m \leq n$, we have
+\begin{align}\label{th_233_equ1}
+    \sum^n_{k=m} a_k b_k = \sum^{n-1}_{k=m} A_k(b_k - b_{k+1}) + A_n b_n - A_{m-1} b_m.
+\end{align}
+\end{theorem}
+\begin{proof}
+\begin{align*}
+    \sum^n_{k=m} a_k b_k = \sum^n_{k=m} (A_k - A_{k-1}) b_k = \sum^n_{k=m} A_k b_k - \sum^{n-1}_{k=m-1} A_k b_{k+1},
+\end{align*}
+and the last term is clearly equal to the right hand side of \eqref{th_233_equ1}.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_234}
+Suppose
+\begin{enumerate}[label=(\alph*)]
+    \item the partial sum $A_n$ of $\sum^\infty_{n=0} a_n$ form a bounded sequence;
+    
+    \item $b_0 \geq b_1 \geq b_2 \geq \cdots$;
+    
+    \item $\lim_{n\to\infty} b_n = 0$.
+\end{enumerate}
+Then $\sum^\infty_{n=0} a_n b_n$ converges.
+\end{theorem}
+\begin{proof}
+Let $M > 0$ be such that $\left|A_n\right| \leq M$ for all $n$. Since $\lim_{n\to\infty} b_n = 0$ and $\{b_n\}$ is decreasing, for every $\varepsilon > 0$, there is an integer $N > 0$ such that $b_N \leq \varepsilon/(2M)$. Now for $n \geq m \geq N$, we have
+\begin{align*}
+    \left|\sum^n_{k=m} a_nb_n\right| & = \left|\sum^{n-1}_{k=m} A_k(b_k - b_{k+1}) + A_n b_n - A_{m-1} b_m\right| \\
+    & \leq M \left|\sum^{n-1}_{k=m} (b_k - b_{k+1}) + b_n - b_m\right| \\
+    & = 2M b_m \leq 2M b_N \leq \varepsilon.
+\end{align*}
+Now convergence of $\sum^\infty_{n=0} a_n b_n$ follows from the Cauchy criterion.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Leibnitz]
+Suppose
+\begin{enumerate}[label=(\alph*)]
+    \item $\left|c_1\right| \geq \left|c_2\right| \geq \left|c_2\right| \geq \cdots$;
+    
+    \item $c_{2k-1} \geq 0, c_{2k} \leq 0, k = 1,2,3,\cdots$;
+    
+    \item $\lim_{n\to\infty} c_n = 0$.
+\end{enumerate}
+Then $\sum^\infty_{n=0} c_n$ converges.
+\end{theorem}
+\begin{proof}
+Apply Theorem \ref{th_234} with $a_n = (-1)^{n+1}$ and $b_n = \left|c_n\right|$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Suppose the radius of convergence of $\sum^\infty_{n=0} c_n z^n$ is $1$, and suppose $c_0 \geq c_1 \geq c_2 \geq \cdots$, $\lim_{n\to\infty} c_n = 0$. Then $\sum^\infty_{n=0} c_n z^n$ converges at every point on the circle $\left|z\right| = 1$, expect possibly at $z = 1$.
+\end{theorem}
+\begin{proof}
+Let $a_n = z^n$, $b_n = c_n$, and if $\left|z\right| = 1, z \neq 1$, we have
+\begin{align*}
+    \left|A_n\right| = \left|\sum^n_{k=0} z^k\right| = \left|\frac{1 - z^{n+1}}{1 - z}\right| \leq \frac{2}{\left|1 - z\right|}.
+\end{align*}
+Hence the assumptions of Theorem \ref{th_234} are satisfied and the convergence follows.
+\end{proof}
+
+\medskip
+
+
+
+\section{Addition and Multiplication of Series}
+
+\begin{theorem}
+If $\sum^\infty_{n=0} a_n = A$, and $\sum^\infty_{n=0} b_n = B$, then $\sum^\infty_{n=0} (a_n + b_n) = A + B$, and $\sum^\infty_{n=0} ca_n = cA$, for any fixed $c$.
+\end{theorem}
+\begin{proof}
+Let
+\begin{align*}
+    A_n = \sum^n_{k=0} a_k, \quad B_n = \sum^n_{k=0} b_k.
+\end{align*}
+Then
+\begin{align*}
+    A_n + B_n = \sum^n_{k=0} (a_k + b_k).
+\end{align*}
+Since $\lim_{n\to\infty} A_n = A$ and $\lim_{n\to\infty} B_n = B$, we have 
+\begin{align*}
+    \lim_{n\to\infty}(A_n + B_n) = A + B.
+\end{align*}
+Proof of the second equality is easy.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Given $\sum^\infty_{n=0} a_n$ and $\sum^\infty_{n=10} b_n$, let
+\begin{align*}
+    c_n = \sum^n_{k=0} a_k b_{n-k}, \,\, n = 1,2,3,\cdots,
+\end{align*}
+and call $\sum^\infty_{n=0} c_n$ the product of the two given series.
+\end{theorem}
+
+
+\begin{theorem}
+If the series $\sum^\infty_{n=0} a_n$ converges absolutely and the series $\sum^\infty_{n=0} b_n$ converges, then
+\begin{align*}
+    \left(\sum^\infty_{n=0} a_n\right) \left(\sum^\infty_{n=0} b_n\right) = \sum^\infty_{n=0} c_n,
+\end{align*}
+where 
+\begin{align*}
+    c_n = \sum^n_{k=0} a_k b_{n-k}.
+\end{align*}
+\end{theorem}
+\begin{proof}
+Let
+\begin{align*}
+    A_n = \sum^n_{k=0} a_n, \quad B_n = \sum^n_{k=0} b_n, \quad C_n = \sum^n_{k=0} c_n, 
+\end{align*}
+and $A = \sum^\infty_{n=0} a_n, B = \sum^\infty_{n=0} b_n$. Also, we define $\beta_n = B_n - B$. Then,
+\begin{align*}
+    C_n & = a_0b_0 + (a_0b_1 + a_1b_0) + \cdots + (a_0b_n + a_1b_{n-1} + \cdots + a_nb_0) \\
+    & = a_0 B_n + a_1 B_{n-1} + \cdots + a_n B_0 \\
+    & = a_0 (B + \beta_n) + a_1 (B + \beta_{n-1}) + \cdots + a_n (B + \beta_0) \\
+    & = A_n B + a_0 \beta_n + a_1 \beta_{n-1} + \cdots a_n \beta_0.
+\end{align*}
+Let
+\begin{align*}
+    \gamma_n = a_0 \beta_n + a_1 \beta_{n-1} + \cdots a_n \beta_0,
+\end{align*}
+and it suffices to show that $\lim_{n\to\infty} \gamma_n = 0$, since $A_nB \to AB$. Since $\sum a_n$ converges absolutely, let
+\begin{align*}
+    \alpha = \sum^\infty_{n=0} \left|a_n\right|.
+\end{align*}
+For any $\varepsilon > 0$, since $\sum b_n$ converges, $\beta_n \to 0$, then there is an integer $N > 0$ such that for all $n \geq N$, $\left|\beta_n\right| < \varepsilon$, and hence
+\begin{align*}
+    \left|\gamma_n\right| & \leq \left|a_n \beta_0 + \cdots + a_{n-N} \beta_N\right| + \left|a_{n-N+1} \beta_{N+1} + \cdots + a_0 \beta_n\right| \\
+    & \leq \left|a_n \beta_0 + \cdots + a_{n-N} \beta_N\right| + \alpha \varepsilon.
+\end{align*}
+Keeping $N$ fixed and letting $n \to \infty$ implies
+\begin{align*}
+    \limsup_{n\to\infty} \left|\gamma_n\right| \leq \alpha \varepsilon,
+\end{align*}
+since $a_k \to 0$ as $k \to \infty$. Since $\varepsilon$ is arbitrary, $\lim_{n\to\infty} \gamma_n = 0$.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+Let $\sum^\infty_{n=1} a_n$ be a series and let $\phi: \mathbb{N} \to \mathbb{N}$, then a series $\sum^\infty_{n=1} a_{\phi(n)}$ is obtained from $\sum^\infty_{n=1} a_n$ by rearrangement of the elements. 
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+If $\sum^\infty_{n=1} a_n$ converges absolutely and $\phi: \mathbb{N} \to \mathbb{N}$ is a bijection, then $\sum^\infty_{n=1} a_{\phi(n)}$ converges and 
+\begin{align*}
+    \sum^\infty_{n=1} a_{\phi(n)} = \sum^\infty_{n=1} a_n.
+\end{align*}
+\end{theorem}
+\begin{proof}
+By Cauchy criterion, for every $\varepsilon > 0$, there is an integer $N > 0$ such that for all $n \geq N$,
+\begin{align*}
+    \left|a_N\right| + \left|a_{N+1}\right| + \cdots + \left|a_n\right| < \varepsilon.
+\end{align*}
+Let $A_n = \sum^n_{k=1} a_k$ and $R_n = \sum^n_{k=1} a_{\phi(k)}$. Chooses $p$ so large such that
+\begin{align*}
+    \{1,2,\cdots,N-1\} \subset \{\phi(1),\phi(2),\cdots,\phi(p)\}.
+\end{align*}
+If $n > p$, then the numbers $a_1,a_2, \cdots, a_{N-1}$ will cancel out in the difference of the partial sums
+\begin{align*}
+    A_n - R_n = \sum^n_{k=1} a_k - \sum^n_{k=1} a_{\phi(k)}.
+\end{align*}
+And the remaining terms will be $a_i$ with $i \geq N$ and the signs are $+$ or $-$. Hence there is an integer $m > N$ such that 
+\begin{align*}
+    \left|A_n - R_n\right| \leq \sum^m_{k=N} \left|a_k\right| < \varepsilon.
+\end{align*}
+We proved that for every $\varepsilon > 0$, there is an integer $N > 0$ such that for all $n \geq N$, $\left|A_n - R_n\right| < \varepsilon$, which implies that $R_n$ converges to the same limit as $A_n$.
+\end{proof}
+
+\medskip
+
+\begin{example}
+Consider the series
+\begin{align*}
+    1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} + \cdots.
+\end{align*}
+The series is convergent conditionally, but not absolutely. Let $\{s_n\}$ be the sequence of its partial sums. It follows that
+\begin{align*}
+    \frac{5}{6} = 1 - \frac{1}{2} + \frac{1}{3} = s_3 > s_5 > s_7 > \cdots.
+\end{align*}
+Now we change the order of elements as follows
+\begin{align*}
+    \underbrace{1 + \frac{1}{3} - \frac{1}{2}}_{>\,0} + \underbrace{\frac{1}{5} + \frac{1}{7} - \frac{1}{4}}_{>\,0} + \underbrace{\frac{1}{9} + \frac{1}{11} - \frac{1}{6}}_{>\,0} + \cdots.
+\end{align*}
+and clearly the series cannot converges to $5/6$.
+\end{example}
+
+\medskip
+
+\begin{theorem}[Riemann]
+If a series $\sum^\infty_{n=1} a_n$ converges conditionally, but not absolutely, then for every $g \in \overline{\mathbb{R}}$, there is a bijection $\phi: \mathbb{N} \to \markright{N}$ such that
+\begin{align*}
+    \sum^\infty_{n=1} a_{\phi(n)} = g.
+\end{align*}
+\end{theorem}
 
 
 
