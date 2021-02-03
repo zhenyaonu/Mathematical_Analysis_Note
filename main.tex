@@ -1468,8 +1468,6 @@ A sequence $\{x_n\}$ in a metric space $X$ is said to be a Cauchy sequence if fo
 Let $E$ be a nonempty subset of a metric space $X$, and let $S$ be the set of all real numbers of the the form $d(x,y)$ for $x,y \in E$. Then $\sup S$ is called the diameter of $E$, denoted by $\diam E$.
 \end{definition}
 
-\medskip
-
 \begin{remark}
 If $\{x_n\}$ is a sequence in $X$ and if $E_n$ consists of the points $x_n, x_{n+1}, x_{n+2}, \cdots$, it is clear that $\{x_n\}$ is a Cauchy sequence if and only if $\lim_{n\to\infty} \diam E_n = 0$.
 \end{remark}
@@ -2328,6 +2326,350 @@ If a series $\sum^\infty_{n=1} a_n$ converges conditionally, but not absolutely,
     \sum^\infty_{n=1} a_{\phi(n)} = g.
 \end{align*}
 \end{theorem}
+
+
+
+
+\chapter{Continuity}
+
+
+\section{Limits of Functions}
+
+\begin{definition}
+Let $X$ and $Y$ be metric spaces, suppose $E \subset X$, $f$ maps $E$ into $Y$, and $x_0$ is a limit point of $E$. We write $f(x) \to y_0$ as $x \to x_0$, or
+\begin{align*}
+    \lim_{x \to x_0} f(x) = y_0,
+\end{align*}
+if for every $\varepsilon > 0$, there exists a $\delta > 0$ such that $d_Y(f(x), y_0) < \varepsilon$ for all points $x \in E$ for which $0 < d_X(x,x_0) < \delta$.
+
+The symbols $d_X$ and $d_Y$ refer to the distance in $X$ and $Y$, respectively. 
+\end{definition}
+
+\begin{remark}
+Note that $x_0 \in X$, but $x_0$ need not be a point of $E$. 
+\end{remark}
+
+\medskip
+
+\begin{theorem}\label{th_31}
+Let $X$, $Y$, $E$, $f$ and $x_0$ be as in the definition above. Then $\lim_{x \to x_0} f(x) = y_0$ if and only if $\lim_{n \to \infty} f(x_n) = y_0$ for every sequence $\{x_n\}$ in $E$ such that $\lim_{n\to\infty} x_n = x_0$ and $x_n \neq x$.
+\end{theorem}
+\begin{proof}
+Suppose $\lim_{x \to x_0} f(x) = y_0$. Let $\{x_n\}$ be a sequence in $E$ such that $x_n \neq x$ and $\lim_{n\to\infty} x_n = x_0$. For every $\varepsilon > 0$, there exists $\delta > 0$ such that $d_Y(f(x),y_0) < \varepsilon$ for all $x \in E$ with $d_X(x,x_0) < \delta$. Also, there exists an integer $N > 0$ such that for all $n \geq N$, $d_X(x_n,x_0) < \delta$. Hence, for all $n \geq N$, we have $d_Y(x_n,x_0) < \varepsilon$, which implies $\lim_{n \to \infty} f(x_n) = y_0$.
+
+Conversely, suppose $\lim_{x \to x_0} f(x) \neq y_0$. Then there exists some $\varepsilon$ such that for every $\delta > 0$, there is a point $x \in E$ for which $d_X(x,x_0) < \delta$ but $d_Y(f(x),y_0) > \varepsilon$. Taking $\delta = 1/n, n = 1,2,3,\cdots$, we obtain a sequence $\{x_n\}$ in $E$ such that $\lim_{n\to\infty} x_n = x_0$ but $\lim_{n\to\infty} f(x_n) \neq y_0$, which is a contradiction.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $f$ has a limit at $x_0$, this limit is unique. 
+\end{theorem}
+\begin{proof}
+It follows from Theorem \ref{th_21} \ref{th_21_b} and Theorem \ref{th_31}.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Suppose $E \subset X$, a metric space, $x_0$ is a limit point of $E$. $f$ and $g$ are complex functions on $E$, and
+\begin{align*}
+    \lim_{x\to x_0} f(x) = A, \quad \lim_{x\to x_0} g(x) = B.
+\end{align*}
+Then,
+\begin{enumerate}[label=(\alph*)]
+    \item $\lim_{x\to x_0} (f + g)(x) = A + B$;
+    
+    \item $\lim_{x\to x_0} (fg)(x) = AB$;
+    
+    \item $\lim_{x\to x_0} \displaystyle \left(\frac{f}{g}\right)(x) = \frac{A}{B}$, if $B \neq 0$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The proof is obvious.
+\end{proof}
+
+
+
+\medskip
+
+
+
+\section{Continuous Functions}
+
+\begin{definition}
+Suppose $X$ and $Y$ are metric spaces, $E \subset X$ and $x_0 \in E$, and $f: E \to Y$. Then $f$ is said to be continuous at $x_0$ if for every $\varepsilon > 0$, there exists a $\delta > 0$ such that 
+\begin{align*}
+    d_Y(f(x),f(x_0)) < \varepsilon,
+\end{align*}
+for all points $x \in E$ for which $d_X(x,x_0) < \delta$. 
+
+If $f$ is continuous at every point of $E$, then $f$ is said to be continuous on $E$.
+\end{definition}
+
+\begin{remark}
+If $x_0$ is an isolated point of $E$, then the definition implies that every function $f$ which has $E$ as its domain is continuous at $x_0$. Indeed, for every $\varepsilon > 0$, we can choose $\delta > 0$ os that the only point $x \in E$ for which $d_X(x,x_0) < \delta$ is $x = x_0$, then $d_Y(f(x),f(x_0)) = 0 < \varepsilon$.
+\end{remark}
+
+\medskip
+
+\begin{theorem}
+With the same assumption in the above definition, and also assume that $x_0$ is a limit point of $E$. Then $f$ is continuous at $x_0$ if and only if $\lim_{x\to x_0} f(x) = f(x_0)$.
+\end{theorem}
+
+\medskip
+
+\begin{theorem}
+Suppose $X, Y, Z$ are metric spaces, $E \subset X$, $f: E \to Y$ and $g: f(E) \to Z$, and $h$ is the mapping of $E$ into $Z$ defined by
+\begin{align*}
+    h(x) = g(f(x)).
+\end{align*}
+If $f$ is continuous at a point $x_0 \in E$ and if $g$ is continuous at the point $f(x_0)$, then $h$ is continuous at $x_0$.
+\end{theorem}
+\begin{proof}
+For every $\varepsilon > 0$, since $g$ is continuous at $f(x_0)$, there exists $\eta > 0$ such that 
+\begin{align*}
+    d_Z(g(y),g(x_0)) < \varepsilon,
+\end{align*}
+if $d_Y(y,f(x_0)) < \eta$ for $y \in f(E)$. Since $f$ is continuous at $x_0$, there exists a $\delta > 0$ such that
+\begin{align*}
+    d_Y(f(x),f(x_0)) < \eta,
+\end{align*}
+if $d_X(x,x_0) < \delta$ for $x \in E$. It follows that
+\begin{align*}
+    d_Z(h(x),h(x_0)) = d_Z(g(f(x)), g(f(x_0))) < \varepsilon,
+\end{align*}
+if $d_X(x,x_0) < \delta$ for $x \in E$. Thus $h$ is continuous at $x_0$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_36}
+A mapping $f$ of a metric space $X$ into a metric space $Y$ is continuous if and only if $f^{-1}(V)$ is open in $X$ for every open set $V$ in $Y$.
+\end{theorem}
+\begin{proof}
+Suppose $f$ is continuous on $X$ and $V$ is an open set in $Y$. We need to show that every point of $f^{-1}(V)$ is an interior point of $f^{-1}(V)$. So suppose $x \in X$, and $f(x) \in V$. Since $V$ is open, there exists $\varepsilon > 0$ such that for all points $y$ with $d_Y(f(x),y) < \varepsilon$, $y \in V$. Since $f$ is continuous, then there exists a $\delta > 0$ such that $d_Y(f(x), f(x')) < \varepsilon$ if $d_X(x,x') < \delta$. Hence $x' \in f^{-1}(V)$ if $d_X(x,x') < \delta$.
+
+Conversely, suppose $f^{-1}(V)$ is open in $X$ for every open set $V$ in $Y$. For $x \in X$ and every $\varepsilon > 0$, let $V$ be the set of all $y \in Y$ such that $d_Y(y,f(x)) < \varepsilon$. Clearly $V$ is open, hence $f^{-1}(V)$ is open, hence there exits $\delta > 0$ such that $x' \in f^{-1}(V)$ if $d_X(x,x') < \delta$. But if $x' \in f^{-1}(V)$, then $f(x') \in V$, so $d_Y(f(x), f(x')) < \varepsilon$.
+\end{proof} 
+
+\medskip
+
+\begin{corollary}
+A mapping $f$ of a metric space $X$ into a metric space $Y$ is continuous if and only if $f^{-1}(V)$ is closed in $X$ for every closed set $V$ in $Y$.
+\end{corollary}
+\begin{proof}
+If follows from the theorem, since a set is closed if and only if its complement is open, and since $f^{-1}(E^c) = \left(f^{-1}(E)\right)^c$ for every $E \subset X$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_37}
+Let $f$ and $g$ be complex continuous functions on a metric space $X$. Then $f + g$, $fg$ and $f/g$ are continuous on $X$, when $g(x) \neq 0$ for all $x \in X$.
+\end{theorem}
+
+\medskip
+
+\begin{theorem}\label{th_38}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $f_1, \cdots, f_n$ be real functions on a metric space $X$, and let $f: X \to \mathbb{R}^k$ be defined by
+    \begin{align*}
+        f(x) = \left(f_1(x), \cdots, f_n(x)\right),
+    \end{align*}
+    then $f$ is continuous if and only if each of the functions $f_1, \cdots, f_n$ is continuous. \label{th_38_a}
+    
+    \item If $f,g: X \to \mathbb{R}^n$ are continuous mappings, then $f + g$ and $fg$ are continuous. \label{th_38_b}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Part \ref{th_38_a} follows from the inequalities
+\begin{align*}
+    \left|f_i(x) - f_i(y)\right| \leq \left|f(x) - f(y)\right| = \left(\sum^n_{i=1} \left|f_i(x) - f_i(y)\right|^2\right)^{1/2},
+\end{align*}
+for $i = 1,2,\cdots,n$. Part \ref{th_38_b} follows from \ref{th_38_a} and Theorem \ref{th_37}.
+\end{proof}
+
+\medskip
+
+
+
+
+\section{Continuity and Compactness}
+
+\begin{definition}
+Suppose $E \subset X$. A mapping $f: E \to \mathbb{R}^n$ is said to be bounded if there is a real number $M$ such that $\left|f(x)\right| \leq M$ for all $x \in E$. 
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_39}
+Suppose $f$ is a continuous mapping of a compact metric space $X$ into a metric space $Y$, then $f(X)$ is compact.
+\end{theorem}
+\begin{proof}
+Let $\{V_{\alpha}\}$ be an open cover of $f(X)$. Since $f$ is continuous, by Theorem \ref{th_36}, each $f^{-1}(V_{\alpha})$ is open. Since $X$ is compact, there is a finite subcoverings $\{V_{\alpha_1}, \cdots, V_{\alpha_n}\}$ such that
+\begin{align*}
+    X \subset \bigcup^n_{i=1} f^{-1}(V_{\alpha_i}).
+\end{align*}
+Since $f\left(f^{-1}(E)\right) \subset E$ for every $E \subset Y$, hence we have
+\begin{align*}
+    f(X) \subset \bigcup^n_{i=1} V_{\alpha_i},
+\end{align*}
+and hence there is a finite subcoverings that covers $f(X)$, which implies $f(X)$ is compact.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_310}
+If $f$ is a continuous mapping of a compact metric space $X$ into $\mathbb{R}^n$, then $f(X)$ is closed and bounded. Thus, $f$ is bounded.
+\end{theorem}
+\begin{proof}
+It follows from Theorem \ref{th_123}.
+\end{proof}
+
+\begin{remark}
+This result is important when $f$ is a real function.
+\end{remark}
+
+\medskip
+
+\begin{theorem}\label{th_311}
+Suppose $f$ is a continuous real function on a compact metric space $X$, and
+\begin{align*}
+    M = \sup_{x\in X} f(x), \quad m = \inf_{x\in X} f(x).
+\end{align*}
+Then there exist points $x_1, x_2 \in X$ such that $f(x_1) = M$ and $f(x_2) = m$.
+\end{theorem}
+\begin{proof}
+By Theorem \ref{th_310}, $f(X)$ is a bounded and closed subset of $\mathbb{R}$, hence $f(X)$ contains $M$ and $m$ by Theorem \ref{th_113}.
+\end{proof}
+
+\begin{remark}
+This theorem can also be stated as follows: There exists $x_1, x_2 \in X$ such that $f(x_2) \leq f(x) \leq f(x_1)$ for all $x \in X$, that is, $f$ attains its maximum and minimum. Now we provide another proof to this theorem.
+\end{remark}
+
+\medskip
+
+\begin{proof}[Second Proof of Theorem \ref{th_311}]
+clearly there is a sequence $\{x_n\} \in X$ such that $\lim_{n\to\infty} f(x_n) = \sup_{x\in X} f(x)$ (even if the supremum equals $\infty$).  Since the sequence $\{x_n\}$ is bounded, then it has a convergent subsequence $\{x_{n_k}\}$ by Theorem \ref{th_210}, for which $x_{n_k} \to x_1 \in X$ and hence by the continuity of $f$,
+\begin{align*}
+    \sup_{x \in X} f(x) = \lim_{n\to\infty} f(x_{n_k}) = f(x_1).
+\end{align*}
+Similarly, there is $x_2 \in X$ such that $f(x_2) = \inf_{x\in X} f(x)$. 
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Suppose $f$ is a continuous one-to-one mapping of a compact metric space $X$ onto a metric space $Y$. Then the inverse mapping $f^{-1}$ defined on $Y$ given by
+\begin{align*}
+    f^{-1}(f(x)) = x, \,\, x \in X,
+\end{align*}
+is a continuous mapping of $Y$ onto $X$.
+\end{theorem}
+\begin{proof}
+Applying Theorem \ref{th_36} to $f^{-1}$ rather than $f$, and it suffices to show that $f(V)$ is open whenever $V$ is open on $X$. Fix such a set $V$.
+
+The complement $V^c$ of $V$ is closed in $X$, hence compact by Theorem \ref{th_116}, hence $f(V^c)$ is a compact subset of $Y$ by Theorem \ref{th_39}. Since $f$ is one-to-one and onto, $f(V)$ is the complement of $f(V^c)$. Hence $f(V)$ is open.
+\end{proof}
+
+\medskip
+
+
+\section{Uniform Continuity}
+
+\begin{definition}
+Let $f: X \to Y$. We say that $f$ is uniformly continuous on $X$ if for every $\varepsilon > 0$ there exists $\delta > 0$ such that 
+\begin{align*}
+    d_Y(f(x),f(y)) < \varepsilon,
+\end{align*}
+for all $x,y \in X$ for which $d_X(x,y) < \delta$.
+\end{definition}
+
+\begin{remark}
+The continuity and uniformly continuity are equivalent on compact sets, which will be shown in the next theorem.
+\end{remark}
+
+\medskip
+
+\begin{theorem}\label{th_313}
+Let $f$ be a continuous mapping of a compact metric space $X$ into a metric space $Y$. Then, $f$ is uniformly continuous.
+\end{theorem}
+\begin{proof}
+Let $\varepsilon > 0$ be given. Since $f$ is continuous, then for each $x \in X$, there is $\phi(x)$ such that
+\begin{align}\label{th_313_equ1}
+    d_Y(f(x),f(y)) < \frac{\varepsilon}{2},
+\end{align}
+for all $y \in X$ with $d_X(x,y) < \phi(x)$. Let $B_x = \{y \in X \,:\, d_X(x,y) < \phi(x)/2\}$. Clearly $\{B_x\}$ is an open cover of $X$, and since $X$ is compact, there is a finite subcovering $\{B_{x_1}, \cdots, B_{x_n}\}$ such that 
+\begin{align*}
+    X \subset \bigcup^n_{i=1} B_{x_i}.
+\end{align*}
+Let $\delta = \min\{\phi(x_1), \cdots, \phi(x_n)\}/2$. Now for any $x,y \in X$ such that $d_X(x,y) < \delta$. Also, there is $j \in \{1,\cdots,n\}$ such that $x \in B_{x_j}$, hence $d_X(x,x_j) < \phi(x_j)/2$. And we have
+\begin{align*}
+    d_X(y, x_j) \leq d_X(y,x) + d_X(x, x_j) < \delta + \frac{\phi(x_j)}{2} \leq \phi(x_j).
+\end{align*}
+Finally, \eqref{th_313_equ1} implies
+\begin{align*}
+    d_Y(f(x),f(y)) \leq d_Y(f(x), f(x_j)) + d_Y(f(x_j), f(y)) < \varepsilon,
+\end{align*}
+and thus $f$ is uniformly continuous.
+\end{proof}
+
+
+
+\begin{proof}[Second Proof of Theorem \ref{th_313}]
+Suppose to the contrary that $f$ is not uniformly continuous, that is, there exists $\varepsilon > 0$ such that for all $\delta > 0$, there are $x,y \in X$ such that $d_Y(f(x),f(y)) \geq \varepsilon$ if $d_X(x,y) < \delta$. 
+
+Taking $\delta = 1/n$, then there exist sequences $\{x_n\}$ and $\{y_n\}$ such that $d_Y(f(x_n),f(y_n)) \geq \varepsilon$ if $d_X(x_n,y_n) < 1/n$. Since $X$ is compact, then $\{x_n\}$ has a subsequence $\{x_{n_k}\}$ such that $x_{n_k} \to x_0 \in X$. Since $d_X(x_{n_k},y_{n_k}) < 1/n_k$, $y_{n_k}$ also converges to $x_0$. By the continuity of $f$, we have 
+\begin{align*}
+    \lim_{k\to\infty} f(x_{n_k}) = f(x_0), \quad \lim_{k\to\infty} f(y_{n_k}) = f(x_0),
+\end{align*}
+and this contradicts with $_Y(f(x_{n_k}),f(y_{n_k})) \geq \varepsilon$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_314}
+Let $E$ be a noncompact set in $\mathbb{R}$. Then,
+\begin{enumerate}[label=(\alph*)]
+    \item there exists a continuous function on $E$ which is not bounded; \label{th_314_a}
+    
+    \item there exists a continuous and bounded function on $E$ which has no maximum. \label{th_314_b}
+\end{enumerate}
+If, in addition, $E$ is bounded, then
+\begin{enumerate}[label=(\alph*)]
+    \setcounter{enumi}{2}
+    \item there exists a continuous function on $E$ which is not uniformly continuous. \label{th_314_c}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Suppose first that $E$ is bounded, so that there exists a limit point $x_0$ of $E$ which is not a point of $E$. Consider
+\begin{align*}
+    f(x) = \frac{1}{x - x_0}, \,\, x \in E.
+\end{align*}
+Clearly $f$ is continuous but not unbounded. Also, $f$ is not uniformly continuous. Now consider 
+\begin{align*}
+    g(x) = \frac{1}{1 + (x - x_0)^2}, \,\, x \in E.
+\end{align*}
+Hence $g$ is continuous on $E$ and is bounded, since $0 < g(x) < 1$. It is clear that
+\begin{align*}
+    \sup_{x\in E} g(x) = 1,
+\end{align*}
+and thus $g$ has no maximum on $E$. 
+
+Now suppose $E$ is unbounded. Then $f(x) = x$ proves part \ref{th_314_a}, and 
+\begin{align*}
+    h(x) = \frac{x^2}{1 + x^2}, \,\, x \in E,
+\end{align*}
+proves part \ref{th_314_b}. For part \ref{th_314_c}, let $E = \mathbb{Q} \cap [0,2]$, and clearly $E$ is bounded. Now define $f$ on $E$ as
+\begin{align*}
+    l(x) = \begin{cases}
+        0, & 0 \leq x < \sqrt{2}, \\
+        1, & \sqrt{2} < x \leq 2.
+    \end{cases}
+\end{align*}
+Clearly $l$ is continuous on $E$, since $f^{-1}(\{0\})$ and $f^{-1}(\{1\})$ are closed in $\mathbb{Q}$. However, $f$ is not uniformly continuous.
+\end{proof}
+
 
 
 
