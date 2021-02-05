@@ -233,7 +233,7 @@ If $f: X \to Y$ and $A \subset X$, then the restriction of $f$ to $A$ is $f|_A: 
 
 \medskip
 
-\begin{proposition}
+\begin{proposition}\label{prop_11}
 Let $f: X \to Y$ be a function and let $A, B \subset Y$. Then,
 \begin{align*}
     f^{-1}(A \cup B) & = f^{-1}(A) \cup f^{-1}(B), \\
@@ -1018,7 +1018,7 @@ Separated sets are of course disjoint, but disjoint sets need not be separated. 
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{th_126}
 A subset $E \subset \mathbb{R}$ is connected if and only if it has the following property: If $x,y \in E$ and $x < z < y$, then $z \in E$.
 \end{theorem}
 \begin{proof}
@@ -1247,7 +1247,7 @@ We now talk about some special sequences which will be used frequently.
 
 \medskip
 
-\begin{definition}
+\begin{definition}\label{def_22}
 The extended real line $\overline{\mathbb{R}}$ is defined as $\overline{\mathbb{R}} = \mathbb{R} \cup \{-\infty, \infty\}$.
 \end{definition}
 
@@ -2455,7 +2455,7 @@ Conversely, suppose $f^{-1}(V)$ is open in $X$ for every open set $V$ in $Y$. Fo
 
 \medskip
 
-\begin{corollary}
+\begin{corollary}\label{coro_361}
 A mapping $f$ of a metric space $X$ into a metric space $Y$ is continuous if and only if $f^{-1}(V)$ is closed in $X$ for every closed set $V$ in $Y$.
 \end{corollary}
 \begin{proof}
@@ -2666,8 +2666,246 @@ proves part \ref{th_314_b}. For part \ref{th_314_c}, let $E = \mathbb{Q} \cap [0
         0, & 0 \leq x < \sqrt{2}, \\
         1, & \sqrt{2} < x \leq 2.
     \end{cases}
-\end{align*}
+ \end{align*}
 Clearly $l$ is continuous on $E$, since $f^{-1}(\{0\})$ and $f^{-1}(\{1\})$ are closed in $\mathbb{Q}$. However, $f$ is not uniformly continuous.
+\end{proof}
+
+\medskip
+
+
+
+\section{Continuity and Connectedness}
+
+\begin{theorem}\label{th_315}
+If $f: X \to Y$ is a continuous mapping, and if $E \subset X$ is connected, then $f(E)$ is connected.
+\end{theorem}
+\begin{proof}
+Suppose to the contrary that $f(E) = A \cup B$, where $A$ and $B$ are nonempty separated subsets of $Y$. Let $G = E \cap f^{-1}(A)$ and $H = E \cap f^{-1}(B)$.
+
+Then $E = G \cup H$ and neither $G$ nor $H$ is empty. Since $A \subset \overline{A}$, we have $G \subset f^{-1}(\overline{A})$. By the continuity of $f$ and Corollary \ref{coro_361}, $f^{-1}(\overline{A})$ is closed, and hence $\overline{G} \subset f^{-1}(\overline{A})$. It follows that $f(\overline{G}) \subset \overline{A}$. Since $f(H) = B$ and $\overline{A} \cap B$ is empty, we have $\overline{G} \cap H$ is empty. The same argument implies that $G \cap \overline{H}$ is empty. Hence $G$ and $H$ are separated, which is a contradiction.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Intermediate Value Property]\label{th_316}
+Let $f$ be a continuous real function on $[a,b]$. If $f(a) < f(b)$ and if $c$ is a number such that $f(a) < c < f(b)$, then there exists a point $x \in (a,b)$ such that $f(x) = c$. 
+\end{theorem}
+
+\begin{remark}
+A similar result holds if $f(a) > f(b)$. Hence this theorem says that a continuous real function assumes all intermediate values on an interval.
+\end{remark}
+
+\begin{proof}
+By Theorem \ref{th_126}, $[a,b]$ is connected, hence Theorem \ref{th_315} shows that $f([a,b])$ is connected, and applying Theorem \ref{th_126} again implies the theorem.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Theorem \ref{th_316}]
+Let $A = \{t \in [a,b] \,:\, f(t) < c\}$. Then the set $A$ is nonempty, since $a \in A$. Also, the set $A$ is bounded from above by $b$, so $z = \sup A \leq b$. Since $a \in A$ and $z = \sup A$, we have $a \leq z$. By Theorem \ref{th_126}, $z \in [a,b]$.
+
+It remains to prove that $f(z) = c$. Consider the case when $f(z) < c$. And $z \leq b$, let $\varepsilon = c - f(z)$. Since $f$ is continuous, there is a $\delta > 0$ such that if $z < t < z + \delta$, then
+\begin{align*}
+    \left|f(z) - f(t)\right| < \varepsilon = c - f(z),
+\end{align*}
+and hence $f(t) < c$. Then $t \in A$ and this is a contradiction with the fact that $z = \sup A$. The case when $f(z) > c$ is similar.
+\end{proof}
+
+\medskip
+
+ 
+
+\section{One-sided Limits}
+
+
+\begin{definition}
+Let $f$ be defined on $(a,b)$ and let $x_0 \in [a,b)$. We say that $g \in \mathbb{R}$ is the right-hand limit of $f$ at $x_0$ if for every $\varepsilon > 0$, there is a $\delta > 0$ such that for all $x \in (a,b)$, $\left|f(x) - g\right| < \varepsilon$ if $x_0 < x < x_0 + \delta$. Then we write
+\begin{align*}
+    \lim_{x \to x_0^+} f(x) = g.
+\end{align*}
+Similarly, we can define the left-hand limit
+\begin{align*}
+    \lim_{x \to x_0^-} f(x) = g.
+\end{align*}
+It is clear that for any point $x_0 \in (a,b)$, $\lim_{x \to x_0}f(x)$ exists if and only if 
+\begin{align*}
+    \lim_{x \to x_0^+} f(x) = \lim_{x \to x_0^-} f(x) = g.
+\end{align*}
+\end{definition}
+
+\medskip
+
+\begin{definition}
+Let $f$ be defined on $(a,b)$. If $f$ is discontinuous at $x_0$ and if $\lim_{x \to x_0^+} f(x)$ and $\lim_{x \to x_0^-} f(x)$ exist, then $f$ is said to have a discontinuity of the first kind, or a simple discontinuity. Otherwise, the discontinuity is said to be of the second kind.
+
+There are two ways in which a function can have a simple discontinuity: either 
+\begin{align*}
+    \lim_{x \to x_0^+} f(x) \neq \lim_{x \to x_0^-} f(x),
+\end{align*}
+or
+\begin{align*}
+    \lim_{x \to x_0^+} f(x) = \lim_{x \to x_0^-} f(x) \neq f(x_0).
+\end{align*}
+\end{definition}
+
+\medskip
+
+\begin{definition}
+Let $f$ be real on $(a,b)$, then $f$ is said to be monotonically increasing on $(a,b)$ if $a < x < y < b$ implies $f(x) \leq f(y)$. Similarly we can define the monotonically decreasing function.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_317}
+Let $f$ be monotonically increasing on $(a,b)$. Then $\lim_{t \to x^{+}} f(x)$, $\lim_{t \to x^{-}} f(x)$ exist at every point $x$ of $(a,b)$. More precisely,
+\begin{align}\label{th_317_equ1}
+    \sup_{a < t < x} f(t) = \lim_{t \to x^-} f(x) \leq f(x) \leq \lim_{t \to x^+} f(x) = \inf_{x < t < b} f(t).
+\end{align}
+Furthermore, if $a < x < y < b$, then
+\begin{align}\label{th_317_equ2}
+    \lim_{t \to x^+} f(x) \leq \lim_{t \to y^-} f(y).
+\end{align}
+\end{theorem}
+\begin{proof}
+By hypothesis, the set $E = \{f(t) \,:\, a < t < x\}$ is bounded from above by $f(x)$ and hence has a least upper bound, denoted by $A = \sup E$. Clearly $A \leq f(x)$. We need to show that $A = \lim_{t\to x^-} f(x)$.
+
+Let $\varepsilon > 0$ and since $A = \sup E$, then there exists a $\delta > 0$ such that for $x - \delta \in (a,x)$, we have
+\begin{align*}
+    A - \varepsilon < f(x - \delta) \leq A.
+\end{align*}
+Since $f$ is monotonically increasing, then for $t \in (x - \delta, x)$, we have
+\begin{align*}
+    f(x - \delta) < f(t) < A.
+\end{align*}
+Hence for this $\varepsilon > 0$, there is a $\delta > 0$ such that for $t \in (x - \delta, x)$, we have
+\begin{align*}
+    \left|f(t) - A\right| < \varepsilon,
+\end{align*}
+and hence $A = \lim_{t\to x^-} f(x)$. And the second part of \eqref{th_317_equ1} can be proved in the same way.
+
+Next if $a < x < y < b$, since $f$ is monotonically increasing, we have
+\begin{align*}
+    \lim_{t\to x^+} f(x) = \inf_{x < t < b} f(t) = \inf_{x < t < y} f(t).
+\end{align*}
+Similarly, we have
+\begin{align*}
+    \lim_{t\to y^-} f(y) = \sup_{a < t < y} f(t) = \sup_{x < t < y} f(t).
+\end{align*}
+Hence, by \eqref{th_317_equ1}, we have
+\begin{align*}
+    \sup_{x < t < y} f(t) \leq inf_{x < t < y} f(t),
+\end{align*}
+and thus \eqref{th_317_equ2} follows.
+\end{proof}
+
+\medskip
+
+\begin{corollary}
+Monotonic functions have no discontinuities of the second kind.
+\end{corollary}
+
+\medskip
+
+\begin{theorem}
+Let $f$ be monotonic on $(a,b)$. Then the set of points of $(a,b)$ at which $f$ is discontinuous is at most countable.
+\end{theorem}
+\begin{proof}
+Suppose that $f$ is increasing and $E$ is the set of points at which $f$ is discontinuous. With every point $x \in E$, there is a rational number $r(x)$ such that 
+\begin{align*}
+    \lim_{t\to x^-} f(t) < r(x) < \lim_{t\to x^+} f(t),
+\end{align*}
+since $f$ only have discontinuities of the first kind. If $x_1 < x_2$, then
+\begin{align*}
+    \lim_{t\to x_1^+} f(t) \leq \lim_{t\to x_2^-} f(t),
+\end{align*}
+hence $r(x_1) \neq r(x_2)$ if $x_1 \neq x_2$. We have established a one-to-one correspondence between $E$ and a subset of $\mathbb{Q}$, which is countable.
+\end{proof}
+
+\medskip
+
+\section{Limits Involving Infinity}
+
+\begin{definition}
+For any real number $a$, the set $\{x \,:\, x > c\}$ is called a neighborhood of $+ \infty$ and is written as $(a, \infty)$. Similarly, the set $(- \infty, a)$ is a neighborhood of $- \infty$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+Let $f: A \to \mathbb{R}$, $A \subset \mathbb{R}$ be given and let $x_0$ be a limit point of $A$. We say that $f$ diverges to $\infty$ at $x_0$ if for all $M > 0$, there is a $\delta > 0$ such that $f(x) > M$ for all $x \in A$ for which $\left|x - x_0\right| < \delta$. Then we write
+\begin{align*}
+    \lim_{x \to x_0} f(x) = \infty.
+\end{align*}
+Similarly we can define limit to $- \infty$.
+\end{definition}
+
+\medskip
+
+\begin{definition}
+Let $f: A \to \mathbb{R}$, $A \subset \mathbb{R}$ is unbounded from above, that is every interval $(M, \infty)$ contains points of $A$. We say $g \in \mathbb{R}$ is the limit of $f$ as $x \to \infty$, if for every $\varepsilon > 0$, there exist $M > 0$ such that for all $x > M, x \in A$, $\left|f(x) - g\right| < \varepsilon$. Then we write
+\begin{align*}
+    \lim_{x \to \infty} f(x) = g.
+\end{align*}
+Similarly, we define limit at $-\infty$, $\lim_{x \to -\infty} f(x) = g$. 
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_319}
+$\lim_{x\to\infty} \displaystyle \left(1 + \frac{1}{x}\right)^x = e$.
+\end{theorem}
+\begin{proof}
+Let $x_n \to \infty$, and let $k_n = \floor*{x_n}$ be the integer part of $x_n$. Hence, $k_n \leq x_n < k_n + 1$, and hence
+\begin{align*}
+    1 + \frac{1}{k_n + 1} < 1 + \frac{1}{x_n} \leq 1 + \frac{1}{k_n},
+\end{align*}
+and then 
+\begin{align*}
+    \left(1 + \frac{1}{k_n + 1}\right)^{k_n} < \left(1 + \frac{1}{x_n}\right)^{x_n} \leq \left(1 + \frac{1}{k_n}\right)^{k_n+1},
+\end{align*}
+and this can be written as
+\begin{align}\label{th_319_equ1}
+    \left(1 + \frac{1}{k_n + 1}\right)^{k_n+1} \frac{1}{1 + \frac{1}{k_n + 1}} < \left(1 + \frac{1}{x_n}\right)^{x_n} \leq \left(1 + \frac{1}{k_n}\right)^{k_n} \left(1 + \frac{1}{k_n}\right).
+\end{align}
+Letting $k_n \to \infty$ as $n \to \infty$, the right-hand side and left-hand side of \eqref{th_319_equ1} converges to $e$. Thus,
+\begin{align*}
+    \lim_{n\to\infty} \left(1 + \frac{1}{x_n}\right)^{x_n} = e,
+\end{align*}
+which implies
+\begin{align*}
+    \lim_{x\to\infty} \left(1 + \frac{1}{x}\right)^{x} = e.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{proposition}\label{prop_31}
+If $\lim_{x\to\infty} f(x) = g \in \overline{\mathbb{R}}$, where $\overline{\mathbb{R}}$ is the same as in Definition \ref{def_22}, then
+\begin{align*}
+    \lim_{x \to 0^+} f\left(\frac{1}{x}\right) = g.
+\end{align*}
+\end{proposition}
+
+\medskip
+
+\begin{theorem}
+$\lim_{x\to 0} \left(1 + x\right)^{1/x} = e$.
+\end{theorem}
+
+\begin{remark}
+We consider two-sided limit here, that is $x$ can be negative.
+\end{remark}
+
+\begin{proof}
+By Theorem \ref{th_319} and Proposition \ref{prop_31}, we have
+\begin{align*}
+    \lim_{x\to 0^+} \left(1 + x\right)^{1/x} = \lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^{x} = e.
+\end{align*}
+It remains to prove the left-hand limit. We have
+\begin{align*}
+    \lim_{x\to 0^-} \left(1 + x\right)^{1/x} & = \lim_{x\to 0^+} \left(1 - x\right)^{-1/x} = \lim_{x\to \infty} \left(1 - \frac{1}{x}\right)^{-x} \\
+    & = \lim_{x\to \infty} \left(\frac{x}{x-1}\right)^x = \lim_{x\to \infty} \left(1 + \frac{1}{x-1}\right)^{x-1} \left(1 + \frac{1}{x-1}\right) = e.
+\end{align*}
 \end{proof}
 
 
