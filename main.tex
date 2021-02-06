@@ -1523,7 +1523,7 @@ If $\{x_n\}$ is a sequence in $X$ and if $E_n$ consists of the points $x_n, x_{n
     
     For every $\varepsilon > 0$, \eqref{th_214_equ1} implies that there is an integer $N > 0$ such that $\diam \overline{E}_n < \varepsilon$ for all $n \geq N$. Since $x \in \overline{E}_n$, it follows that $d(x,y) < \varepsilon$ for every $y \in \overline{E}_n$. Hence $d(x,x_n) < \varepsilon$ for all $n \geq N$, and this is precisely that $x_n \to x$. 
     
-    \item Let $\{x_n\}$ be a Cauchy sequence in $\mathbb{R}^n$. Define $E_n$ as above. Then for $\varepsilon = 1$, there is an integer $N > 0$ such that $\diam \overline{E}_N < 1$. The range of $\{x_n\}$ is the union of $E_N$ and the finite set $\{x_1, \cdots, x_{N-1}\}$, and hence $\{x_n\}$ is bounded. Also, then range of $\{x_n\}$ is closed and hence compact, then \label{th_214_c} follows from \label{th_214_b}.
+    \item Let $\{x_n\}$ be a Cauchy sequence in $\mathbb{R}^n$. Define $E_n$ as above. Then for $\varepsilon = 1$, there is an integer $N > 0$ such that $\diam \overline{E}_N < 1$. The range of $\{x_n\}$ is the union of $E_N$ and the finite set $\{x_1, \cdots, x_{N-1}\}$, and hence $\{x_n\}$ is bounded. Also, then range of $\{x_n\}$ is closed and hence compact, then \ref{th_214_c} follows from  \ref{th_214_b}.
 \end{enumerate}
 \end{proof}
 
@@ -2672,6 +2672,50 @@ Clearly $l$ is continuous on $E$, since $f^{-1}(\{0\})$ and $f^{-1}(\{1\})$ are 
 
 \medskip
 
+\begin{theorem}\label{th_315_added}
+Let $X,Y$ be two metric spaces, and $f: X \to Y$ be uniformly continuous. If $\{x_n\}$ is a Cauchy sequence in $X$, then $\{f(x_n)\}$ is a Cauchy sequence in $Y$.
+\end{theorem}
+\begin{proof}
+For any $\varepsilon > 0$, since $f$ is uniformly continuous, then there is a $\delta$ such that $d_Y(f(x), f(y)) < \varepsilon$ for all $x,y \in A$ if $d_X(x,y) < \delta$. Since $\{x_n\}$ is a Cauchy sequence, then for the $\delta$ as before, there is an integer $N = N(\delta)$ such that $d_X(x_n, x_m) < \delta$ for all $n,m \geq N$. Hence $d_Y(f(x_n),f(x_m)) < \varepsilon$ for all $n, m \geq N$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Extension Theorem]\label{th_316_added}
+Let $Y$ be a complete metric space, and $X$ a metric space. Let $A \subset X$ and $f: A \to Y$ be a uniformly continuous function, then there is a unique uniformly continuous function $g: \overline{A} \to Y$ such that $g(x) = f(x)$.
+\end{theorem}
+\begin{proof}
+Let $\overline{x} \in \overline{A}$ and let sequence $\{x_n\} \in A$ such that $\lim_{n\to\infty} x_n = \overline{x}$. By Theorem \ref{th_315_added}, $\{f(x_n)\}$ is a Cauchy sequence in $Y$, and hence convergent. If $\{y_n\}$ is another sequence in $X$ such that $\lim_{n\to\infty} y_n = \overline{x}$, then $\lim_{n\to\infty} f(x_n) = \lim_{n\to\infty} f(y_n)$. This is easy to verify.
+
+Now let $g(\overline{x}) = \lim_{n\to\infty} f(x_n)$. If $\overline{x} \in A$, then we can let $x_n = \overline{x}$, and clearly $f(\overline{x}) = g(\overline{x})$. It remains to prove that $g$ is uniformly continuous. For every $\varepsilon > 0$, since $f$ is uniformly continuous, there is a $\delta > 0$ such that 
+\begin{align*}
+    d_Y(f(x),f(y)) < \frac{\varepsilon}{3},
+\end{align*}
+for all $x,y \in A$ for which $d_X(x,y) < \delta$. Now let $\overline{x}, \overline{y} \in \overline{A}$ and $d_X(\overline{x}, \overline{y}) < \delta/3$. And there are sequence $\{x_n\}, \{y_n\} \in A$ such that $x_n \to \overline{x}, y_n \to \overline{y}$. Then there are $x_k$ and $y_k$ such that
+\begin{align}\label{th_316_added_equ1}
+    d_X(x_k,\overline{x}) < \frac{\delta}{3}, \quad d_X(y_k,\overline{y}) < \frac{\delta}{3}, 
+\end{align}
+and 
+\begin{align}\label{th_316_added_equ2}
+    d_Y(g(\overline{x}),f(x_k)) < \frac{\varepsilon}{3}, \quad d_Y(g(\overline{y}),f(y_k)) < \frac{\varepsilon}{3}.
+\end{align}
+Indeed, since $x_n \to \overline{x}$ and $g(\overline{x}) = \lim_{n\to\infty} f(x_n)$. Then for $\varepsilon/3$, there is an integer $N_1$ such that $d_Y(g(\overline{x}), f(x_n)) < \varepsilon/3$ for all $n \geq N_1$. Also, for $\delta/3$, there is an integer $N_2$ such that $d_X(x_n, \overline{x}) < \delta/3$ for all $n \geq N_2$. Similarly there are $N_3, N_4$ for $y_n$ and letting $k \geq \max\{N_1, N_2, N_3, N_4\}$ gives \eqref{th_316_added_equ1} and \eqref{th_316_added_equ2}. Hence we have
+\begin{align*}
+    d_X(x_k, y_k) \leq d_X(x_k,\overline{x}) + d_X(\overline{x},\overline{y}) + d_X(\overline{y}, y_k) < \frac{\delta}{3} + \frac{\delta}{3} + \frac{\delta}{3} = \delta,
+\end{align*}
+and by uniformly continuity of $f$, we have
+\begin{align*}
+    d_Y(f(x_k), f(y_k)) < \frac{\varepsilon}{3}.
+\end{align*}
+Finally we have
+\begin{align*}
+    d_Y(g(\overline{x}),g(\overline{y})) \leq d_Y(g(\overline{x}),f(x_k)) + d_Y(f(x_k), f(y_k)) + d_Y(f(y_k), g(\overline{y})) < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon,
+\end{align*}
+and thus $g$ is uniformly continuous.
+\end{proof}
+ 
+
+\medskip
 
 
 \section{Continuity and Connectedness}
@@ -2713,7 +2757,10 @@ and hence $f(t) < c$. Then $t \in A$ and this is a contradiction with the fact t
 
 \medskip
 
- 
+
+
+
+
 
 \section{One-sided Limits}
 
@@ -2907,6 +2954,174 @@ It remains to prove the left-hand limit. We have
     & = \lim_{x\to \infty} \left(\frac{x}{x-1}\right)^x = \lim_{x\to \infty} \left(1 + \frac{1}{x-1}\right)^{x-1} \left(1 + \frac{1}{x-1}\right) = e.
 \end{align*}
 \end{proof}
+
+
+
+
+
+
+
+
+\chapter{Differentiation}
+
+\section{The Derivative of Real Functions}
+
+\begin{definition}
+Let $f$ be a real function defined on $[a,b]$. For any $x \in [a,b]$ define 
+\begin{align}\label{def_41_equ1}
+    f'(x) = \lim_{t \to x} \frac{f(t) - f(x)}{t - x}, \,\, a < t < b, t \neq x, \nu
+\end{align}
+provided this limit exists. We associate with the function $f$ a function $f'$ whose domain is the set of points at which the limit \eqref{def_41_equ1} exists, and $f'$ is called the derivative of $f$.
+
+If $f'$ is defined at a point $x$, we say that $f$ is differentiable at $x$. If $f'$ is defined at every point of a set $E \subset [a,b]$, we sat that $f$ is differentiable on $E$.
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+Let $f$ be defined on $[a,b]$. If $f$ is differentiable at a point $x \in [a,b]$, then $f$ is is continuous at $x$.
+\end{theorem}
+\begin{proof}
+As $t \to x$, we have 
+\begin{align*}
+    f(t) - f(x) = \frac{f(t) - f(x)}{t - x} \cdot (t - x) \to f'(x) \cdot 0 = 0.
+\end{align*}
+\end{proof}
+
+\begin{remark}
+The converse of this theorem is not true. It is easy to construct continuous functions which is not differentiable at an isolated point. 
+\end{remark}
+
+\medskip
+
+\begin{definition}
+We say that a function $f(h)$ is of order $O(h^{\alpha})$ if there is $\varepsilon > 0$ and $M > 0$ such that 
+\begin{align*}
+    \frac{\left|f(h)\right|}{\left|h\right|^{\alpha}} \leq M,
+\end{align*}
+for all $0 < \left|h\right| < \varepsilon$. We sat that $f(h)$ is of order $o(h^{\alpha})$ if 
+\begin{align*}
+    \frac{\left|f(h)\right|}{\left|h\right|^{\alpha}} \to 0,
+\end{align*}
+as $h \to 0$. Clearly, the condition $o(h^{\alpha})$ is stronger than $O(h^{\alpha})$. 
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_42}
+Let $f: E \to \mathbb{R}$, $E \subset \mathbb{R}$ and $x \in  \operatorname{int}(E)$. Then the following conditions are equivalent:
+\begin{enumerate}[label=(\alph*)]
+    \item $f$ is differentiable at $x$. \label{th_42_a}
+    
+    \item There is $L \in \mathbb{R}$ such that $f(x+h) = f(x) + Lh + o(h)$. \label{th_42_b}
+    
+    \item There is $L \in \mathbb{R}$ and a function $\psi$ that is continuous at $x$, $\psi(x) = 0$ such that $f(x+h) = f(x) + Lh + h\psi(h)$. \label{th_42_c}
+\end{enumerate}
+Moreover, $L = f'(x)$.
+\end{theorem}
+\begin{proof}
+\ref{th_42_c} $\Rightarrow$ \ref{th_42_b} Since 
+\begin{align*}
+    \frac{h \psi(h)}{h} = \psi(h) \xrightarrow[]{h \to 0} 0,
+\end{align*}
+we conclude that $h\psi(h)$ is order $o(h)$.\\
+\ref{th_42_b} $\Rightarrow$ \ref{th_42_a} Assume that $f$ satisfies $f(x+h) = f(x) + Lh + o(h)$. Then 
+\begin{align*}
+    \frac{f(x+h) - f(x)}{h} = L + \frac{o(h)}{h} \xrightarrow[]{h \to 0} L,
+\end{align*}
+so $f$ is differentiable at $x$ and $f'(x) = L$.\\
+\ref{th_42_a} $\Rightarrow$ \ref{th_42_c} Since $f$ is differentiable at $x$, then we have
+\begin{align*}
+    \lim_{h\to 0} \frac{f(x+h) - f(x)}{h} = f'(x),
+\end{align*}
+and hence
+\begin{align*}
+    \lim_{h\to 0} \frac{f(x+h) - f(x) - f'(x)h}{h} = 0.
+\end{align*}
+And this implies
+\begin{align*}
+    \psi(h) = \begin{cases}
+        \frac{f(x+h) - f(x) - f'(x)h}{h}, & h \neq 0, \\
+        0, & h = 0,
+    \end{cases}
+\end{align*}
+is continuous at $0$ and $\psi(0) = 0$. Clearly,
+\begin{align*}
+    f(x+h) = f(x) + f'(x)h + \psi(h) h.
+\end{align*}
+Thus \ref{th_42_c} follows $L = f'(x)$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_43}
+Suppose $f$ and $g$ are defined on $[a,b]$ and are differentiable at a point $x \in [a,b]$. Then, $f + g$, $fg$ and $f/g$ are differentiable at $x$, and
+\begin{enumerate}[label=(\alph*)]
+    \item $(f + g)'(x) = f'(x) + g'(x)$. \label{th_43_a}
+    
+    \item $(fg)'(x) = f'(x)g(x) + f(x)g'(x)$. \label{th_43_b}
+    
+    \item $\displaystyle \left(\frac{f}{g}\right)'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}$. \label{th_43_c}
+\end{enumerate}
+In part \ref{th_43_c}, we assume $g(x) \neq 0$.
+\end{theorem}
+\begin{proof}
+Part \ref{th_43_a} is clear. Now let $h = fg$, then
+\begin{align*}
+    h(t) - h(x) = f(t)[g(t) - g(x)] + g(x)[f(t) - f(x)],
+\end{align*}
+Since $f, g$ are continuous and $f',g'$ are defined on $x$, by Theorem \ref{th_22} we have
+\begin{align*}
+    \frac{h(t) - h(x)}{t - x} = f(t) \frac{g(t) - g(x)}{t - x} + g(x) \frac{f(t) - f(x)}{t - x} \xrightarrow[]{t \to x} f(x)g'(x) + g(x) f'(x).
+\end{align*}
+Now let $h = f/g$, again by Theorem \ref{th_22} we have
+\begin{align*}
+    \frac{h(t) - h(x)}{t - x} = \frac{1}{g(t)g(x)} \left[g(x) \frac{f(t) - f(x)}{t - x} - f(x) \frac{g(t) - g(x)}{t - x} \right] \xrightarrow[]{t \to x} \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Chain Rule]
+Suppose $f$ is continuous on $[a,b]$, $f'(x)$ exists at some point $x \in [a,b]$, $g$ is defined on an interval $I$ which contains the range of $f$ and $g$ is differentiable at the point $f(x)$. If $h(t) = g(f(t))$ for $a \leq t \leq b$, then $h$ is differentiable at $x$, then
+\begin{align*}
+    h'(x) = g'(f(x)) f'(x).
+\end{align*}
+\end{theorem}
+\begin{proof}
+Let $f(x) = y$. Since $g$ is differentiable at $y$, Theorem \ref{th_42} implies that 
+\begin{align*}
+    g(y') = g(y) + g'(y)(y' - y) + (y' - y) \psi(y' - y),
+\end{align*}
+where $\psi$ is continuous at $0$ and $\psi(0) = 0$. Substituting $y$ by $f(x)$ and $y'$ by $f(x')$ gives
+\begin{align*}
+    g(f(x')) = g(f(x)) + g'(f(x))(f(x') - f(x)) + (f(x') - f(x)) \psi(f(x') - f(x)),
+\end{align*}
+and hence
+\begin{align*}
+    \frac{(g \circ f)(x') - (g \circ f)(x)}{x' - x} = g'(f(x))\frac{f(x') - f(x)}{x' - x} + \frac{f(x') - f(x)}{x' - x} \psi(f(x') - f(x)).
+\end{align*}
+Since $f(x') \to f(x)$ and $\psi(f(x') - f(x)) \to 0$ as $x' \to x$, thus we have
+\begin{align*}
+    \lim_{x' \to x} \frac{(g \circ f)(x') - (g \circ f)(x)}{x' - x}  = g'(f(x)) f'(x).
+\end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
