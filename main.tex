@@ -3107,10 +3107,116 @@ Since $f(x') \to f(x)$ and $\psi(f(x') - f(x)) \to 0$ as $x' \to x$, thus we hav
 \end{align*}
 \end{proof}
 
+\medskip
 
 
 
 
+
+\section{Mean Value Theorem}
+
+\begin{definition}
+Let $f$ be a real function defined on a metric space $X$. We say that $f$ has a local maximum at a point $x_0 \in X$ if there exists $\delta > 0$ such that $f(x) \leq f(x_0)$ for all $x \in X$ with $d_X(x,x_0) < \delta$.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_45}
+Let $f$ be defined on $[a,b]$, if $f$ has a local maximum or a local minimum at a point $x \in (a,b)$, then $f'(x) = 0$.
+\end{theorem}
+\begin{proof}
+Choose $\delta$ as in the above definition. If $x - \delta < t < x$, then we have
+\begin{align*}
+    \lim_{t\to x^-}\frac{f(t) - f(x)}{t - x} \geq 0,
+\end{align*}
+and for $x < t < x + \delta$, we have
+\begin{align*}
+    \lim_{t\to x^+}\frac{f(t) - f(x)}{t - x} \leq 0.
+\end{align*}
+Two inequalities implies that $f'(x) = 0$. Similar argument would implies the theorem for local minimum.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Rolle]\label{th_46}
+If $f: [a,b] \to \mathbb{R}$ is continuous and differentiable in $(a,b)$ and $f(a) = f(b)$, then there is $c \in (a,b)$ such that $f'(c) = 0$.
+\end{theorem}
+\begin{proof}
+If $f$ is constant, then the result is obvious. Since $f$ is continuous on $[a,b]$, by Theorem \ref{th_311}, $f$ attains its maximum and minimum, that is there are $c_1$ and $c_2$ such that
+\begin{align*}
+    f(c_1) = \sup_{x\in[a,b]} f(x), \quad f(c_2) = \inf_{x\in[a,b]} f(x).
+\end{align*}
+Since $f$ is not constant, then either $f(c_1) > f(a)$ or $f(c_2) < f(a)$. Suppose $f(c_1) > f(a)$, then $f'(c_1) = 0$ by the previous theorem.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Cauchy Mean Value]\label{th_47}
+Suppose $f$ and $g$ are continuous real functions on $[a,b]$ which are differentiable in $(a,b)$, and $g'(x) \neq 0$ for all $x \in (a,b)$, then there is a point $c \in (a,b)$ at which 
+\begin{align*}
+    \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
+\end{align*}
+\end{theorem}
+\begin{remark}
+Note that differentiability is not required at the endpoints.
+\end{remark}
+\begin{proof}
+Let
+\begin{align*}
+    h(t) = [f(b) - f(a)]g(t) - [g(b) - g(a)]f(t), \,\, a \leq t \leq b.
+\end{align*}
+Clearly $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and
+\begin{align*}
+    h(a) = f(b)g(a) - f(a)g(b) = h(b).
+\end{align*}
+By Rolle theorem \ref{th_46}, there is $c \in (a,b)$ such that $h(c) = 0$ and the theorem follows.
+\end{proof}
+
+\medskip
+
+This theorem is the {\em generalized mean value theorem}, and the following is the easy one, the one called {\em mean value theorem}.
+
+\medskip
+
+\begin{theorem}[Mean Value]
+If $f: [a,b] \to \mathbb{R}$ is continuous and differentiable on $(a,b)$, then there is a point $c \in (a,b)$ such that
+\begin{align*}
+    f(b) - f(a) = (b - a) f'(c).
+\end{align*}
+\end{theorem}
+\begin{proof}
+Take $g(x) = x$ in Theorem \ref{th_47}.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Suppose $f$ is differentbale in $(a,b)$.
+\begin{enumerate}[label=(\alph*)]
+    \item If $f'(x) \geq 0$ for all $x \in (a,b)$, then $f$ is monotonically increasing.
+    
+    \item If $f'(x) = 0$ for all $x \in (a,b)$, then $f$ is constant.
+    
+    \item If $f'(x) \leq 0$ for all $x \in (a,b)$, then $f$ is monotonically decreasing.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+All conclusions follows from
+\begin{align*}
+    f(x_1) - f(x_2) = (x_1 - x_2) f'(c),
+\end{align*}
+for any $x_1, x_2 \in (a,b)$ and for some $c$ between $x_1$ and $x_2$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $f: [a,b] \to \mathbb{R}$ is differentiable in $(a,b)$ and the derivative is bounded, $\left|f'(x)\right| \leq M$ for all $x \in (a,b)$, then 
+\begin{align*}
+    \left|f(x) - f(y)\right| \leq M \left|x - y\right|,
+\end{align*}
+for all $x,y \in (a,b)$. Hence $f$ is Lipschitz and thus uniformly continuous.
+\end{theorem}
 
 
 
