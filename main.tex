@@ -3178,7 +3178,7 @@ This theorem is the {\em generalized mean value theorem}, and the following is t
 
 \medskip
 
-\begin{theorem}[Mean Value]
+\begin{theorem}[Mean Value]\label{th_48}
 If $f: [a,b] \to \mathbb{R}$ is continuous and differentiable on $(a,b)$, then there is a point $c \in (a,b)$ such that
 \begin{align*}
     f(b) - f(a) = (b - a) f'(c).
@@ -3217,7 +3217,13 @@ If $f: [a,b] \to \mathbb{R}$ is differentiable in $(a,b)$ and the derivative is 
 \end{align*}
 for all $x,y \in (a,b)$. Hence $f$ is Lipschitz and thus uniformly continuous.
 \end{theorem}
-
+\begin{proof}
+By Theorem \ref{th_48}, $f(x) - f(y) = f(c)'(x - y)$ for all $x,y \in [a,b]$ and for some $c$ between $x$ and $y$. Hence,
+\begin{align*}
+    \left|f(x) - f(y)\right| \leq \left|f(c)'\right| \left|x - y\right|,
+\end{align*}
+and the uniform continuity follows.
+\end{proof}
 
 
 
