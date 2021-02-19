@@ -3571,6 +3571,127 @@ Hence, $L(P_1,f,\alpha) \leq U(P_2,f,\alpha)$. Taking $\inf$ and $\sup$ over all
 
 \medskip
 
+\begin{theorem}\label{th_53}
+$f \in \mathcal{R}(\alpha)$ if and only if for every $\varepsilon > 0$, there exists a partition $P$ such that 
+\begin{align}\label{th_53_equ1}
+    U(P,f\alpha) - L(P,f,\alpha) < \varepsilon.
+\end{align}
+\end{theorem}
+\begin{proof}
+For every partition $P$, 
+\begin{align*}
+    L(P,f,\alpha) \leq \underline{\int} f \,d\alpha \leq \overline{\int} f \,d\alpha \leq U(P,f,\alpha).
+\end{align*}
+Hence \eqref{th_53_equ1} implies that
+\begin{align*}
+    0 < \overline{\int} f \,d\alpha - \underline{\int} f \,d\alpha < \varepsilon,
+\end{align*}
+and since this holds for all $\varepsilon > 0$, we have 
+\begin{align*}
+    \overline{\int} f \,d\alpha = \underline{\int} f \,d\alpha,
+\end{align*}
+and hence $f \in \mathcal{R}(\alpha)$.
+
+Conversely, suppose $f \in \mathcal{R}(\alpha)$ and let $\varepsilon > 0$, then there exist partitions $P_1$ and $P_2$ such that
+\begin{align*}
+    U(P_1,f,\alpha) & < \int f \,d\alpha + \frac{\varepsilon}{2}, \\
+    L(P_2,f,\alpha) & > \int f \,d\alpha - \frac{\varepsilon}{2}.
+\end{align*}
+Let $P = P_1 \cup P_2$, then Theorem \ref{th_51} implies
+\begin{align*}
+    U(P,f,\alpha) \leq U(P_1,f,\alpha) < \int f \,d\alpha + \frac{\varepsilon}{2} < L(P_2,f,\alpha) + \varepsilon \leq L(P,f,\alpha) + \varepsilon,
+\end{align*}
+and hence \eqref{th_53_equ1} holds.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_54}
+~\begin{enumerate}[label=(\alph*)]
+    \item If \eqref{th_53_equ1} holds for some $P$ and some $\varepsilon$, then \eqref{th_53_equ1} holds for every refinement of $P$, with the same $\varepsilon$. \label{th_54_a}
+    
+    \item If \eqref{th_53_equ1} holds for $P = \{x_0, x_1, \cdots, x_n\}$ and if $s_i, t_i$ are arbitrary points in $[x_{i-1},x_i]$, then
+    \begin{align*}
+        \sum^n_{i=1} \left|f(s_i) - f(s_i)\right| \Delta \alpha_i < \varepsilon.
+    \end{align*} \label{th_54_b}
+    
+    \item If $f \in \mathcal{R}(\alpha)$ and the assumption of \ref{th_54_b} holds, then
+    \begin{align*}
+        \left|\sum^n_{i=1} f(t_i) \Delta \alpha_i - \int^b_a f \,d\alpha \right| < \varepsilon.
+    \end{align*} \label{th_54_c}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Theorem \ref{th_51} implies \ref{th_54_a}. Under the assumption of \ref{th_54_b}, $f(s_i), f(t_i) \in [m_i, M_i]$, and then 
+\begin{align*}
+    \left|f(s_i) - f(t_i)\right| \leq M_i - m_i,
+\end{align*}
+hence we have
+\begin{align*}
+    \sum^n_{i=1} \left|f(s_i) - f(s_i)\right| \Delta \alpha_i \leq U(P,f,\alpha) - L(P,f,\alpha) < \varepsilon.
+\end{align*}
+And the inequalities
+\begin{align*}
+    L(P,f,\alpha) \leq \sum f(t_i) \Delta \alpha_i \leq U(P,f,\alpha)
+\end{align*}
+and 
+\begin{align*}
+    L(P,f,\alpha) \leq \int f \,d\alpha \leq U(P,f,\alpha)
+\end{align*}
+prove \ref{th_54_c}.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $f$ is continuous on $[a,b]$, then $f \in \mathcal{R}(\alpha)$ on $[a,b]$.
+\end{theorem}
+\begin{proof}
+Let $\varepsilon > 0$, and let $\eta > 0$ such that $\left|\alpha(b) - \alpha(a)\right| \eta < \varepsilon$. Since $f$ is uniformly continuous on $[a,b]$, then there is a $\delta > 0$ such that $\left|f(x) - f(y)\right| < \eta$ if $\left|x - y\right| < \delta$. Let $P$ be any partition of $[a,b]$ such that $\Delta x_i < \delta$ for all $i$, then $M_i - m_i \leq \eta$ for all $i = 1,2,\cdots,n$. Hence,
+\begin{align*}
+    U(P,f,\alpha) - L(P,f,\alpha) & \leq \eta \sum^n_{i=1} \Delta \alpha_i = \eta \left|\alpha(b) - \alpha(a)\right| < \varepsilon,
+\end{align*}
+and by Theorem \ref{th_53}, $f \in \mathcal{R}(\alpha)$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $f$ is monotonic on $[a,b]$ and if $\alpha$ is continuous on $[a,b]$, then $f \in \mathcal{R}(\alpha)$. (We still assume that $\alpha$ is monotonic.)
+\end{theorem}
+\begin{proof}
+Let $\varepsilon > 0$, and for any positive integer $n$, choose a partition such that
+\begin{align*}
+    \Delta \alpha_i = \frac{\alpha(b) - \alpha(a)}{n}.
+\end{align*}
+We assume that $f$ is monotonically increasing, then $M_i = f(x_i), m_i = f(x_{i-1})$ for $i = 1,2,\cdots,n$, and hence for $n$ large enough,
+\begin{align*}
+    U(P,f,\alpha) - L(P,f,\alpha) & = \frac{\alpha(b) - \alpha(a)}{n} \sum^n_{i=1} \left(f(x_i) - f(x_{i-1})\right) \\
+    & = \frac{\alpha(b) - \alpha(a)}{n}  \left(f(b) - f(a)\right) < \varepsilon.
+\end{align*}
+Thus  $f \in \mathcal{R}(\alpha)$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Suppose $f$ is bounded on $[a,b]$, $f$ has only finitely many points of discontinuity on $[a,b]$, and $\alpha$ is continuous at every point at which $f$ is discontinuous. Then $f \in \mathcal{R}(\alpha)$.
+\end{theorem}
+\begin{proof}
+Let $\varepsilon > 0$, and let $M = \sup \left|f(x)\right|$. Also let $E$ be the set of points at which $f$ is discontinuous. Since $E$ is finite and $\alpha$ is continuous at every point of $E$, we can cover $E$ by finitely many disjoint intervals $[u_i,v_i] \subset [a,b]$ such that the sum of the corresponding differences $\alpha(v_i) - \alpha(u_i)$ is less than $\varepsilon$. 
+
+Removing the segments $(u_i,v_i)$ from $[a,b]$. Then $K \coloneqq [a,b] \setminus \bigcup (u_i,v_i)$ is compact, and hence $f$ is uniformly continuous on $K$, and there exists $\delta > 0$ such that $\left|f(x) - f(y)\right| < \varepsilon$ if $x,y \in K$ and $\left|x - x\right| < \delta$. Now we form a partition $P$, where each $u_i,v_i$ appear in $P$ and no segment $(u_i,v_i)$ is in $P$. If $x_{i-1}$ is not one of the $u_i$, then $\Delta x_i < \delta$. 
+Also, $M_i - m_i \leq 2M$ for every $i$ and $M_i - m_i < \varepsilon$ unless $x_{i-1}$ is one of the $u_i$. Hence, we have
+\begin{align*}
+    U(P,f,\alpha) - L(P,f,\alpha) \leq \left(\alpha(b) - \alpha(a)\right) \varepsilon + 2M \varepsilon,
+\end{align*}
+and since $\varepsilon > 0$ is arbitrary, $f \in \mathcal{R}(\alpha)$.
+\end{proof}
+
+\medskip
+
+
+
 
 
 
