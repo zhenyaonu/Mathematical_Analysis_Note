@@ -4164,6 +4164,118 @@ and thus the upper limit is equal to the lower limit, which implies the equality
 
 
 
+\chapter{Sequences and Series of Functions}
+
+\section{Pointwise and Uniform Convergence}
+
+\begin{definition}
+Suppose $\{f_n\}, n = 1,2,\cdots$, is sequence of functions defined on a set $E$, and suppose that the sequence of numbers $\{f_n(x)\}$ converges for every $x \in E$. Then we can define a function $f$ by
+\begin{align*}
+    f(x) = \lim_{n\to\infty} f_n(x), \,\, x \in E.
+\end{align*}
+Then we say that $\{f_n\}$ converges on $E$ and that $f$ is the limit, or the limit function of $\{f_n\}$. Sometimes we say that $\{f_n\}$ converges to $f$ pointwise on $E$.
+\end{definition}
+
+\medskip
+
+In other words, $\{f_n\}$ converges to $f$ pointwise on $E$ if for all $x \in E$, and let $\varepsilon > 0$ be arbitrary, then there is an integer $N > 0$ such that $\left|f_n(x) - f(x)\right| < \varepsilon$ for all $n \geq N$.
+
+\medskip
+
+\begin{definition}
+If $\sum f_n(x)$ converges for every $x \in E$, and if we define
+\begin{align*}
+    f(x) = \sum^\infty_{n=1} f_n(x),  \,\, x \in E,
+\end{align*}
+the function $f$ is called the sum of the series $\sum f_n$.
+\end{definition}
+
+\medskip
+
+The main problem is that if $f_n$ are continuous, or differentiable, or integrable, is it the same for the limit function? For example, to say $f$ is continuous at a point $x$ means
+\begin{align*}
+    \lim_{t\to x} f(t) = f(x),
+\end{align*}
+and under these assumptions, it means
+\begin{align*}
+    \lim_{t\to x} \lim_{n\to\infty} f_n(t) = \lim_{n\to\infty} \lim_{t\to x} f_n(t).
+\end{align*}
+
+\medskip
+
+\begin{example}
+For $m = 1,2,\cdots, n = 1,2,\cdots$, let
+\begin{align*}
+    s_{m,n} = \frac{m}{m + n}.
+\end{align*}
+Then for every fixed $n$, $\lim_{m\to\infty} s_{m,n} = 1$, and hence
+\begin{align*}
+    \lim_{n\to\infty} \lim_{m\to\infty} s_{m,n} = 1.
+\end{align*}
+On the other hand, for every fixed $m$, $\lim_{n\to\infty} s_{m,n} = 0$, and hence
+\begin{align*}
+    \lim_{m\to\infty} \lim_{n\to\infty} s_{m,n} = 0.
+\end{align*}
+\end{example}
+
+\medskip
+
+\begin{example}
+Let
+\begin{align*}
+    f_n(x) = \frac{x^2}{\left(1 + x^2\right)^n},
+\end{align*}
+for real $x$ and $n = 0,1,2,\cdots$. Define
+\begin{align*}
+    f(x) = \sum^\infty_{n=0} f_n(x).
+\end{align*}
+Since $f_n(0) = 0$, $f(0) = 0$. For $x \neq 0$, since $x^2/(1 + x^2) < 1$ and by Theorem \ref{th_221}, we have
+\begin{align*}
+    f(x) = \sum^\infty_{n=0} \frac{x^2}{\left(1 + x^2\right)^n} = x^2 \frac{1}{1 - \frac{1}{1 + x^2}} = 1 + x^2.
+\end{align*}
+Hence, 
+\begin{align*}
+    f(x) = \begin{cases}
+        0, & x = 0, \\
+        1 + x^2, & x \neq 0,
+    \end{cases}
+\end{align*}
+so that a convergent sequence of continuous functions may have a discontinuous sum.
+\end{example}
+
+\medskip
+
+\begin{definition}
+We say a sequence of functions $\{f_n\}, n = 1,2,\cdots$ converges uniformly on $E$ to a function $f$ if for every $\varepsilon > 0$, there is an integer $N > 0$ such that for all $x \in E$, we have $\left|f_n(x) - f(x)\right| \leq \varepsilon$ for all $n \geq N$. 
+
+We say that the series $\sum f_n(x)$ converges uniformly on $E$ if the sequence $\{s_n\}$ of partial sums defined by
+\begin{align*}
+    s_n(x) = \sum^n_{i=1} f_i(x)
+\end{align*}
+converges uniformly on $E$.
+\end{definition}
+
+\medskip
+
+The {\em Cauchy criterion} for uniform convergence is as follows.
+
+\medskip
+
+\begin{theorem}[Cauchy Criterion]
+The sequence of functions $\{f_n\}$ converges uniformly on $E$ if and only if for every $\varepsilon > 0$, there exists an integer $N > 0$ such that for all $x \in E$, if all $m,n \geq N$, we have $\left|f_n(x) - f_m(x)\right| \leq \varepsilon$.
+\end{theorem}
+\begin{proof}
+Suppose $\{f_n\}$ converges uniformly on $E$, and let $f$ be the limit function. Then for any $\varepsilon > 0$, there is an integer $N > 0$ such that for all $x \in E$ and all $n \geq N$,
+\begin{align*}
+    \left|f_n(x) - f(x)\right| \leq \frac{\varepsilon}{2},
+\end{align*}
+and hence if $n,m > N$, we have
+\begin{align*}
+    \left|f_n(x) - f_m(x)\right| \leq \left|f_n(x) - f(x)\right| + \left|f_m(x) - f(x)\right| < \varepsilon.
+\end{align*}
+
+
+\end{proof}
 
 
 
