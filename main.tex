@@ -451,7 +451,7 @@ This theorem implies that with the binary representation, the set of all real nu
 
 \section{Metric spaces}
 
-\begin{definition}
+\begin{definition}\label{def_19}
 A set $X$, whose elements are called points, is said to be a metric space if with any two points $x$ and $y$ of $X$ there is associated a real number $d(x,y): \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}$ called the distance from $x$ to $y$, which is defined as 
 \begin{align*}
     d(x,y) = \left|x - z\right|,
@@ -1975,7 +1975,7 @@ and hence $\left|a_n\right| > 1$ for infinitely many numbers of $n$, so the cond
 
 \medskip
 
-\begin{theorem}[Ratio Test]
+\begin{theorem}[Ratio Test]\label{th_229}
 Given $\sum^\infty_{n=1} a_n$.
 \begin{enumerate}[label=(\alph*)]
     \item If $\lim_{n\to\infty}\displaystyle  \left|\frac{a_{n+1}}{a_n}\right| < 1$, then $\sum^\infty_{n=1} a_n$ converges absolutely.
@@ -2094,7 +2094,7 @@ is called a power series. The numbers $c_n$ are called the coefficients of the s
 
 \medskip
 
-\begin{theorem}[Cauchy-Hadamard]
+\begin{theorem}[Cauchy-Hadamard]\label{th_232}
 Given $\sum^\infty_{n=0} c_n z^n$, let
 \begin{align*}
     \alpha = \limsup_{n\to\infty} \sqrt[n]{\left|c_n\right|}, \quad R = \frac{1}{\alpha}.
@@ -4261,7 +4261,7 @@ The {\em Cauchy criterion} for uniform convergence is as follows.
 
 \medskip
 
-\begin{theorem}[Cauchy Criterion]
+\begin{theorem}[Cauchy Criterion]\label{th_61}
 The sequence of functions $\{f_n\}$ converges uniformly on $E$ if and only if for every $\varepsilon > 0$, there exists an integer $N > 0$ such that for all $x \in E$, if all $m,n \geq N$, we have $\left|f_n(x) - f_m(x)\right| \leq \varepsilon$.
 \end{theorem}
 \begin{proof}
@@ -4273,9 +4273,449 @@ and hence if $n,m > N$, we have
 \begin{align*}
     \left|f_n(x) - f_m(x)\right| \leq \left|f_n(x) - f(x)\right| + \left|f_m(x) - f(x)\right| < \varepsilon.
 \end{align*}
-
-
 \end{proof}
+
+\medskip
+
+\begin{corollary}\label{coro_611}
+Suppose $\lim_{n\to\infty} f_n(x) = f(x)$ for every $x \in E$. Let
+\begin{align*}
+    M_n = \sup_{x \in E} \left|f_n(x) - f(x)\right|.
+\end{align*}
+Then $f_n$ converges to $f$ uniformly on $E$ if and only if $M_n \to 0$ as $n \to \infty$.
+\end{corollary}
+
+\medskip
+
+\begin{theorem}[Weierstrass $M$-test]\label{th_62}
+Suppose $\{f_n\}$ is a sequence of functions defined on $E$ and suppose $\left|f_n(x)\right| \leq M_n$ for all $x \in E$ and all $n \in \mathbb{N}$. Then $\sum f_n$ converges uniformly on $E$ if $\sum M_n$ converges. 
+\end{theorem}
+\begin{proof}
+If $\sum M_n$ converges, then for any $\varepsilon > 0$, we have
+\begin{align*}
+    \left|\sum^m_{i=n} f_n(x)\right| \leq \sum^m_{i=n} M_n < \varepsilon,
+\end{align*}
+for all $x \in E$ and for $m,n$ large enough. Uniform convergence follows from Theorem \ref{th_61}.
+\end{proof}
+
+\medskip
+
+
+
+
+
+
+
+\section{Uniform Convergence and Continuity}
+
+\begin{theorem}\label{th_63}
+Let $f_n: E \to \mathbb{R}$ be a sequence of continuous functions that converges uniformly to $f_: E \to \mathbb{R}$, then $f$ is continuous.
+\end{theorem}
+\begin{proof}
+Since $f_n$ converges uniformly to $f$, for any $\varepsilon > 0$, there is $N > 0$ such that $\left|f_n(x) - f(x)\right| < \varepsilon/3$ for any $x \in E$ if $n \geq N$. Also, by continuity of $f_n$, there is a $\delta > 0$ such that $\left|x - y\right| < \delta$ implies $\left|f_n(x) - f_n(y)\right| < \varepsilon/3$. Then for any $y \in E$ such that $\left|x - y\right| < \delta$ and for all $n \geq N$, we have
+\begin{align*}
+    \left|f(x) - f(y)\right| < \left|f(x) - f_n(x)\right| + \left|f_n(x) - f_n(y)\right| + \left|f_n(y) - f(y)\right| < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon,
+\end{align*}
+which prove that $f$ is continuous at $x$. Since $x$ is arbitrary, $f$ is continuous on $E$.
+\end{proof}
+
+\medskip
+
+
+\begin{corollary}\label{coro_631}
+If $f_n: E \to \mathbb{R}$ are continuous functions and the series $f = \sum^\infty_{n=1} f_n$ converges uniformly, then $f: E \to \mathbb{R}$ is continuous.
+\end{corollary}
+
+\medskip
+
+Theorem \ref{th_63} is a direct result following the following theorem.
+
+\medskip
+
+\begin{theorem}\label{th_64}
+Suppose $f_n \to f$ uniformly on a set $E$ in a metric space. Let $x$ be a limit point of $E$, and suppose $\lim_{t\to x} f_n(t) = A_n$, then $\{A_n\}$ converges and
+\begin{align}\label{th_64_equ1}
+    \lim_{t\to x} f(t) = \lim_{n\to\infty} A_n.
+\end{align}
+In other words,
+\begin{align*}
+    \lim_{t\to x} \lim_{n\to\infty} f_n(t) = \lim_{n\to\infty} \lim_{t\to x} f_n(t).
+\end{align*}
+\end{theorem}
+\begin{proof}
+For any $\varepsilon > 0$, since $\{f_n\}$ converges uniformly, there exists $N > 0$ such that for all $n,m > N$ and all $t \in E$, we have $\left|f_n(t) - f_m(t)\right| < \varepsilon$. Letting $t \to x$ implies $\left|A_n - A_m\right| < \varepsilon$ for $n,m > N$, and hence $\{A_n\}$ is a Cauchy sequence and clearly it converges, say to $A$. 
+
+Now choose $n$ large enough such that $\left|f_n(t) - f(t)\right| < \varepsilon/3$ for all $t \in E$, and such that $\left|A_n - A\right| < \varepsilon/3$. For this $n$, there exists a neighborhood $V$ of $x$ such that $\left|f_n(t) - A_n\right| < \varepsilon/3$ for $t \in V \cap E$. Hence, for this $n$ and $t \in V \cap E$, we have
+\begin{align*}
+    \left|f(t) - A\right| \leq \left|f(t) - f_n(t)\right| + \left|f_n(t) - A_n\right| + \left|A_n - A\right| < \varepsilon,
+\end{align*}
+which implies \eqref{th_64_equ1}.
+\end{proof}
+
+\medskip
+
+With this theorem, we can reformulate Corollary \ref{coro_631} in the terms of exchanging the order of the limit and the sum:
+\begin{align}\label{th_64_equ2}
+    \lim_{x\to x_0} \sum^\infty_{n=1} f_n(x) = \sum^\infty_{n=1} \lim_{x\to x_0} f_n(x).
+\end{align}
+Indeed, since $f_n$ are continuous, the right hand side is just $\sum^\infty_{n=1} f_n(x_0) = f(x_0)$. On the other hand,  the left side is equal to $\lim_{x \to x_0} f(x)$. And \eqref{th_64_equ2} is a different representation of $\lim_{x\to x_0} f(x) = f(x_0)$, which is continuity of $f$ at $x_0$.
+
+\medskip
+
+In Theorem \ref{th_229}, we talked about Ratio Test and computed the radius of convergence of the power series in Theorem \ref{th_232}, now we have the following results.
+
+\begin{theorem}
+If $\lim_{n\to\infty} \displaystyle \left|\frac{c_{n+1}}{c_n}\right| = \lambda \in [0,\infty]$, then the radius of convergence of the series $\sum^\infty_{n=0} c_n x^n$ equals $R = 1/\lambda$, where we adopt the convention $1/0 = \infty$ and $1/\infty = 0$.
+\end{theorem}
+
+\medskip
+
+\begin{remark}
+This theorem is easy to use, but it applies to only few power series for which the limit of $\left|c_{n+1}/c_n\right|$ exists. However, Cauchy-Hadamard theorem (Theorem \ref{th_232}) works for {\em all} power series.
+\end{remark}
+
+\medskip
+
+\begin{theorem}
+Suppose $K$ is compact, and
+\begin{enumerate}[label=(\alph*)]
+    \item $\{f_n\}$ is a sequence of continuous functions on $K$,
+    
+    \item $\{f_n\}$ converges pointwise to a continuous function $f$ on $K$,
+    
+    \item $f_n(x) \geq f_{n+1}(x)$ for all $x \in K$, $n = 1,2,3,\cdots$.
+\end{enumerate}
+Then $f_n \to f$ uniformly on $K$.
+\end{theorem}
+\begin{proof}
+Let $g_n = f_n - f$. Then $g_n$ is continuous and $g_n \to 0$ pointwise, also $g_n \geq g_{n+1}$. It suffices to prove that $g_n \to 0$ uniformly on $K$.
+
+For any $\varepsilon > 0$. Let $K_n$ be the set of all $x \in K$ for which $g_n(x) \geq \varepsilon$. By Corollary \ref{coro_361}, $K_n$ is closed and hence compact (Theorem \ref{th_116}). Since $g_n \geq g_{n+1}$, we have $K_n \supset K_{n+1}$. Fix $x \in K$, and since $g_n(x) \to 0$, then $x \notin K_n$ for $n$ large enough. Hence $x \notin \bigcup K_n$. In other words, $\bigcup K_n = \emptyset$, and hence $k_N = \emptyset$ for some $N$. Thus $0 \leq g_n(x) < \varepsilon$ for all $x \in K$ and all $n \geq N$, and the theorem follows. 
+\end{proof}
+
+\medskip
+
+\begin{remark}
+The compactness is needed here. For example, if
+\begin{align*}
+    f_n(x) = \frac{1}{nx + 1}, \,\, 0 < x < 1, n = 1,2,3,\cdots,
+\end{align*}
+then $f_n(x) \to 0$ monotonically in $(0,1)$, but the convergence is not uniform.
+\end{remark}
+
+\medskip
+
+\begin{definition}
+If $X$ is a metric space, $C(X)$ will denote the set of all complex valued, continuous, bounded functions on domain $X$.
+\end{definition}
+
+\medskip
+
+We associate with each $f \in C(X)$ its {\em supremum norm}:
+\begin{align*}
+    \left\|f\right\| = \sup_{x \in X} \left|f(x)\right|.
+\end{align*}
+Since $f$ is assumed to be bounded, $\left\|f\right\| < \infty$. It is obvious that $\left\|f\right\| = 0$ if and only if $f = 0$. Also, we have
+\begin{align*}
+    \left\|f + g\right\| \leq \left\|f\right\| + \left\|g\right\|.
+\end{align*}
+If we define the distance between $f$ and $g$ by $d_\infty(f,g) = \left\|f - g\right\|$, it follows from Definition \ref{def_19}, $(C(X),d)$ is a {\em metric space}.
+
+\medskip
+
+\begin{theorem}
+The above metric makes $C(X)$ into a complete metric space.
+\end{theorem}
+\begin{proof}
+Let $\{f_n\}$ be a Cauchy sequence in $C(X)$. Then for any $\varepsilon > 0$, there is a $N > 0$ such that $\left\|f_n - f_m\right\| < \varepsilon$ if $n,m \geq N$. Then $f_n$ converges uniformly to a function $f$ on $X$. By Theorem \ref{th_63}, $f$ is continuous. Also, $f$ is bounded, since for $\varepsilon = 1$, there is $n$ such that $\left\|f - f_n\right\| < 1$ for all $x \in X$ and $f_n$ is bounded. Thus, $f \in C(X)$, and hence $C(X)$ is complete.
+\end{proof}
+
+
+\medskip
+
+
+
+
+\section{Uniform Convergence and Integration}
+
+\begin{theorem}\label{th_68}
+Let $\alpha$ be monotonically increasing on $[a,b]$. Suppose $f_n \in \mathscr{R}(\alpha)$ on $[a,b]$ and suppose $f_n \to f$ uniformly on $[a,b]$. Then $f \in \mathscr{R}(\alpha)$, and
+\begin{align*}
+    \int^b_a f \,d\alpha = \lim_{n\to\infty} \int^b_a f_n \,d\alpha.
+\end{align*}
+The existence of limit is in the conclusion.
+\end{theorem}
+\begin{proof}
+It suffices to prove for real functions $f_n$. Let $\varepsilon_n = \sup \left|f_n(x) - f(x)\right|, x \in [a,b]$. Then,
+\begin{align*}
+    f_n - \varepsilon_n \leq f \leq f_n + \varepsilon_n,
+\end{align*}
+and hence
+\begin{align}\label{th_68_equ1}
+    \int^b_a (f_n - \varepsilon_n) \,d\alpha \leq \underline{\int}^b_a f \,d\alpha \leq \overline{\int}^b_a f \,d\alpha \leq \int^b_a (f_n + \varepsilon_n) \,d\alpha.
+\end{align}
+Then we have
+\begin{align*}
+    0 \leq \overline{\int}^b_a f \,d\alpha - \underline{\int}^b_a f \,d\alpha \leq 2 \varepsilon_n [\alpha(b) - \alpha(a)],
+\end{align*}
+and since $\varepsilon_n \to 0$ as $n \to \infty$ (Corollary \ref{coro_611}), the upper and lower integrals of $f$ are equal. Hence $f \in \mathscr{R}(\alpha)$, and \eqref{th_68_equ1} implies
+that 
+\begin{align*}
+    \left|\int^b_a f \,d\alpha - \int^b_a f_n \,d\alpha \right| \leq \varepsilon_n [\alpha(b) - \alpha(a)],
+\end{align*}
+and the theorem follows.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $f_n \in \mathscr{R}(\alpha)$ on $[a,b]$ and if the series
+\begin{align*}
+    f(x) = \sum^\infty_{n=1} f_n(x), \,\, x \in [a,b]
+\end{align*}
+converges uniformly on $[a,b]$, then
+\begin{align*}
+    \int^b_a f \,d\alpha = \sum^\infty_{n=1} \int^b_a f_n \,d\alpha.
+\end{align*}
+In other words, the order of the sum and integral can be changed.
+\end{theorem}
+
+\medskip
+
+
+
+\section{Uniform Convergence and Differentiation}
+
+\begin{theorem}\label{th_610}
+Suppose $\{f_n\}$ is a sequence of differentiable functions\footnote{We do not assume that the derivatives of $f_n$ are continuous, the result is still true if we only assume the differentiability of $f_n$. However, the assumption of continuous differentiability is sufficient for most of the applications.}on $[a,b]$ and such that $\{f_n(x_0)\}$ converges for some point $x_0 \in [a,b]$. If $\{f_n'\}$ converges uniformly on $[a,b]$, then $\{f_n\}$ converges uniformly on $[a,b]$ to a function $f$, and 
+\begin{align*}
+    f'(x) = \lim_{n\to\infty} f_n'(x),
+\end{align*}
+for all $x \in [a,b]$.
+\end{theorem}
+\begin{proof}
+For any $\varepsilon > 0$. Choose $N > 0$ such that for all $n,m \geq N$, we have
+\begin{align}\label{th_610_equ1}
+    \left|f_n(x_0) - f_m(x_0)\right| < \frac{\varepsilon}{2},
+\end{align}
+and
+\begin{align}\label{th_610_equ2}
+    \left|f_n'(t) - f_m'(t)\right| < \frac{\varepsilon}{2(b - a)}, \,\, t \in [a,b].
+\end{align}
+Applying the Mean Value theorem \ref{th_47} to $f_n - f_m$, and \eqref{th_610_equ2} implies that 
+\begin{align}\label{th_610_equ3}
+    \left|f_n(x) - f_m(x) - f_n(t) + f_m(t)\right| < \frac{\varepsilon \left|x - t\right|}{2(b - a)} < \frac{\varepsilon}{2},
+\end{align}
+for any $x,t \in [a,b]$, if $n,m \geq N$. Also, by \eqref{th_610_equ1} and \eqref{th_610_equ3}, we have
+\begin{align*}
+    \left|f_n(x) - f_m(x)\right| \leq \left|f_n(x) - f_m(x) - f_n(x_0) + f_m(x_0)\right| + \left|f_n(x_0) - f_m(x_0)\right| < \varepsilon,
+\end{align*}
+for any $x \in [a,b]$ and $n,m \geq N$. Hence $\{f_n\}$ converges uniformly on $[a,b]$.
+
+Let $f(x) = \lim_{n\to\infty} f_n(x)$ for all $x \in [a,b]$. For a fixed point $x \in [a,b]$, we define
+\begin{align}\label{th_610_equ4}
+    \phi_n(t) = \frac{f_n(t) - f_n(x)}{t - x}, \quad \phi(t) = \frac{f(t) - f(x)}{t - x},
+\end{align}
+for $t \in [a,b], t \neq x$. Clearly, $\lim_{t\to x} \phi_n(t) = f_n'(x)$ for $n = 1,2,3,\cdots$. And \eqref{th_610_equ3} implies
+\begin{align}
+    \left|\phi_n(t) - \phi_m(t)\right| < \frac{\varepsilon}{2(b - a)},
+\end{align}
+for $n,m \geq N$, and hence $\{\phi_n\}$ converges uniformly for $t \neq x$. Since $\{f_n\}$ converges uniformly to $f$, we concluded from \eqref{th_610_equ4} that $\phi_n \to \phi$ uniformly for $t \in [a,b], t \neq x$. By Theorem \ref{th_64}, we have
+\begin{align*}
+    \lim_{t\to x} \phi(t) = \lim_{t\to x} \lim_{n\to\infty} \phi_n(t) = \lim_{n\to\infty} \lim_{t\to x} \phi_n(t) = \lim_{n\to\infty} f_n'(x),
+\end{align*}
+and hence
+\begin{align*}
+    f'(x) = \lim_{t\to x} \phi(t) = \lim_{n\to\infty} f_n'(x).
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{corollary}
+If $f_n: (a,b) \to \mathbb{R}$ is a sequence of continuously differentiable functions that converges at some point $x_0 \in (a,b)$ and if the sequence $\{f_n'\}$ converges uniformly on every interval $[\alpha,\beta] \subset (a,b)$, then $\{f_n\}$ converges uniformly to a continuously differentiable function $f$ on every interval $[\alpha,\beta] \subset (a,b)$ and
+\begin{align*}
+    f'(x) = \lim_{n\to\infty} f_n'(x),
+\end{align*}
+for all $x \in (a,b)$.
+\end{corollary}
+
+\medskip
+
+Applying this corollary to a sequence of partial sums we obtain the following result.
+
+\medskip
+
+\begin{theorem}
+If $f_n: (a,b) \to \mathbb{R}$ is a sequence of continuously differentiable functions that the series $\sum^\infty_{n=1} f_n(x_0)$ converges at some point $x_0 \in (a,b)$ and if the sequence $\sum^\infty_{n=1} f_n'$ converges uniformly on every interval $[\alpha,\beta] \subset (a,b)$, then $\sum^\infty_{n=1} f_n$ converges uniformly to a continuously differentiable function $f$ on every interval $[\alpha,\beta] \subset (a,b)$ and
+\begin{align*}
+    \left(\sum^\infty_{n=1} f_n(x)\right)' = \sum^\infty_{n=1} f_n'(x),
+\end{align*}
+for all $x \in (a,b)$.
+\end{theorem}
+
+\medskip
+
+Here is another easy but useful result following an induction argument.
+
+\medskip
+
+\begin{theorem}\label{th_612}
+If $f_n \in C^\infty(a,b)$\footnote{We say that $f \in C^r(\Omega)$, where $r \geq 1$ is an integer, if all derivative of order less than or equal to $r$ are continuous. Also, $f \in C^\infty(\Omega)$ if $f$ is infinitely times differentiable.}and for every $k = 0,1,2,\cdots$, the series $\sum^\infty_{n=1} f_n^{(k)}$ converges uniformly on every interval $[\alpha,\beta] \subset (a,b)$, then $f(x) = \sum^\infty_{n=1} f_n(x) \in C^\infty(a,b)$ and
+\begin{align*}
+    \left(\sum^\infty_{n=1} f_n(x)\right)^{(k)} = \sum^\infty_{n=1} f_n^{(k)}(x),
+\end{align*}
+for all $x \in (a,b)$ and all $k \in \mathbb{N}$.
+\end{theorem}
+
+\medskip
+
+It follows from $p$-Series Test (Theorem \ref{th_223}) that 
+\begin{align}\label{th_613_equ1}
+    \zeta(x) = \sum^\infty_{n=1} \frac{1}{n^x}
+\end{align}
+is well-defined for $x > 1$. Next we discuss an application of Theorem \ref{th_612}.
+
+\medskip
+
+\begin{theorem}
+$\zeta \in C^\infty(1,\infty)$.
+\end{theorem}
+\begin{proof}
+In order to prove the convergence of derivatives of \eqref{th_613_equ1}, we need the following lemma.
+
+\medskip
+
+\begin{lemma}\label{lemma_61}
+If $a > 1$ and $k \geq 1$, then
+\begin{align*}
+    \sum^\infty_{k=2} \frac{(\log n)^k}{n^a} < \infty.
+\end{align*}
+\end{lemma}
+\begin{proof}
+Let $\varepsilon > 0$ be such that $a - \varepsilon > 1$. We claim that
+\begin{align}\label{th_613_equ2}
+    \lim_{n\to\infty} \frac{(\log n)^k}{n^\varepsilon} = 0.
+\end{align}
+Indeed, it suffices to show that
+\begin{align*}
+    \lim_{x\to\infty} \frac{(\log x)^k}{x^\varepsilon} = \lim_{x\to\infty} \left(\frac{\log x}{x^{\varepsilon/k}} \right)^k = 0,
+\end{align*}
+and this follows from L'Hospital's Rule, 
+\begin{align*}
+    \lim_{x\to\infty} \frac{\log x}{x^{\varepsilon/k}} = \lim_{x\to\infty} \frac{1/x}{\varepsilon/k x^{\varepsilon/k - 1}} = \lim_{x\to\infty} \frac{1}{\varepsilon/k x^{\varepsilon/k}} = 0.
+\end{align*}
+This implies \eqref{th_613_equ2}. And hence \eqref{th_613_equ2} is bounded, say by $M > 0$. Then by Theorem \ref{th_223}, we have
+\begin{align*}
+    \sum^\infty_{k=2} \frac{(\log n)^k}{n^a} = \sum^\infty_{k=2} \frac{(\log n)^k}{n^\varepsilon} \frac{1}{n^{a - \varepsilon}} \leq M \sum^\infty_{k=2} \frac{1}{n^{a - \varepsilon}} < \infty,
+\end{align*}
+since $a - \varepsilon > 1$.
+\end{proof}
+
+\medskip
+
+Now we resume the proof of the theorem. By Theorem \ref{th_612}, it suffices to prove that for every $k \geq 1$ and $a > 1$, the series
+\begin{align}\label{th_613_equ3}
+    \sum^\infty_{n=1} \left(\frac{1}{n^x}\right)^{(k)}
+\end{align}
+converges uniformly on $[a,\infty)$. For $k = 0$, since $a > 1$, we have
+\begin{align*}
+    \sum^\infty_{n=1} \left|\frac{1}{n^x}\right| \leq \sum^\infty_{n=1} \left|\frac{1}{n^a}\right| < \infty.
+\end{align*}
+Hence the series $\zeta(x) = \sum^\infty_{n=1} \frac{1}{n^x}$ converges uniformly on $[a,\infty)$ by $M$-test (Theorem \ref{th_62}). For $k \geq 1$, we have
+\begin{align*}
+    \sum^\infty_{n=1} \left(\frac{1}{n^x}\right)^{(k)} = \sum^\infty_{n=1} \frac{(- \log n)^k}{n^x},
+\end{align*}
+and by Lemma \ref{lemma_61}, we have
+\begin{align*}
+    \sum^\infty_{n=1} \left|\left(\frac{1}{n^x}\right)^{(k)}\right| \leq \sum^\infty_{n=1} \frac{(\log n)^k}{n^x} < \infty,
+\end{align*}
+and hence the series \eqref{th_613_equ3} converges uniformly on $[a,\infty)$ by $M$-test for all $a > 1$. Thus, by Theorem \ref{th_612}, $\zeta \in C^\infty(1,\infty)$.
+\end{proof}
+
+\medskip
+
+
+
+\section{Equicontinuous Families of Functions}
+
+\begin{definition}
+Let $\{f_n\}$ be a sequence of functions defined on a set $E$. We say $\{f_n\}$ is pointwise bounded on $E$ if the sequence $\{f_n(x)\}$ is bounded for every $x \in E$, that is, if there exists a finite-valued function $\phi$ defined on $E$ such that $\left|f_n(x)\right| < \phi(x)$ for every $x \in E$ and $n = 1,2,3,\cdots$. 
+
+We say $\{f_n\}$ is uniformly bounded on $E$ if there exists a number $M$ such that $\left|f_n(x)\right| < M$ for every $x \in E$ and $n = 1,2,3,\cdots$. 
+\end{definition}
+
+\medskip
+
+\begin{example}
+Let $f_n(x) = \sin nx, 0 \leq x \leq 2\pi, n = 1,2,3,\cdots$. Suppose there exists a sequence $\{n_k\}$ such that $\{\sin n_kx\}$ converges for every $x \in [0,2\pi]$. In this case, we have
+\begin{align*}
+    \lim_{k\to\infty} \left(\sin n_kx - \sin n_{k+1}x\right) = 0,
+\end{align*}
+and hence
+\begin{align*}
+    \lim_{k\to\infty} \left(\sin n_kx - \sin n_{k+1}x\right)^2 = 0,
+\end{align*}
+for every $x \in [0,2\pi]$. By Lebesgue's Dominated Convergence theorem (which will be discussed later), we have
+\begin{align*}
+    \lim_{k\to\infty} \int^{2\pi}_0 \left(\sin n_kx - \sin n_{k+1}x\right)^2 = 0.
+\end{align*}
+However, we have
+\begin{align*}
+    \lim_{k\to\infty} \int^{2\pi}_0 \left(\sin n_kx - \sin n_{k+1}x\right)^2 = 2\pi,
+\end{align*}
+which is contradiction.
+\end{example}
+
+\medskip
+
+This is an example showing that if $\{f_n\}$ is a uniformly bounded on a compact set $E$, there may not exist a subsequence which converges pointwise on $E$. Another question is whether every convergent sequence contains a
+uniformly convergent subsequence. Our next example will show that this need not be so, even if the sequence is uniformly bounded on a compact set.
+
+\medskip
+
+\begin{example}
+Let
+\begin{align*}
+    f_n(x) = \frac{x^2}{x^2 + (1 - nx)^2}, \quad 0 \leq x \leq 1, n = 1,2,3,\cdots.
+\end{align*}
+Then $\left|f_n(x)\right| \leq 1$, so that $\{f_n\}$ is uniformly bounded on $[0,1]$. Also, $\lim_{n\to\infty} f_n(x) = 0$ for every $x \in [0,1]$. However, $f_n(1/n) = 1$, and thus no subsequence can converges uniformly on $[0,1]$.
+\end{example}
+
+\medskip
+
+\begin{example}
+Another example is for $x \in [0,1]$,
+\begin{align*}
+    f_n(x) = \begin{cases}
+        nx - 1, & \frac{1}{n} \leq x \leq \frac{2}{n}, \\
+        -nx + 3, & \frac{2}{n} < x \leq \frac{3}{n}, \\
+        0, & \text{otherwise}.
+    \end{cases}
+\end{align*}
+Clearly $f_n$ converges to $0$ pointwise, but not uniformly, since $f_n(2/n) = 1$ for all $n$.
+\end{example}
+
+\medskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
