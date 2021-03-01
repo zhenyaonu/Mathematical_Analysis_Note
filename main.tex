@@ -4656,7 +4656,10 @@ and hence
 \begin{align*}
     \lim_{k\to\infty} \left(\sin n_kx - \sin n_{k+1}x\right)^2 = 0,
 \end{align*}
-for every $x \in [0,2\pi]$. By Lebesgue's Dominated Convergence theorem (which will be discussed later), we have
+for every $x \in [0,2\pi]$. By Lebesgue's dominated convergence theorem\footnote{{\bf Lebesgue's dominated convergence theorem:} Suppose that $\{f_n\}$ is a sequence of complex valued functions on $X$ defined a.e. If $f(x) = \lim_{n\to\infty} f_n(x)$ for almost all $x \in X$, and if there is a function $g \in L^1(\mu)$ such that $\left|f_n(x)\right| \leq g(x)$ for all $n = 1,2,3,\cdots$, then $f \in L^1(\mu)$,
+\begin{align*}
+    \lim_{n\to\infty} \int_X \left|f - f_n\right|\,d\mu = 0,\quad \text{and} \quad \lim_{n\to\infty} \int_X f_n\,d\mu = \int_X f\,d\mu.
+\end{align*}}(which will be discussed later), we have
 \begin{align*}
     \lim_{k\to\infty} \int^{2\pi}_0 \left(\sin n_kx - \sin n_{k+1}x\right)^2 = 0.
 \end{align*}
@@ -4674,7 +4677,7 @@ uniformly convergent subsequence. Our next example will show that this need not 
 
 \medskip
 
-\begin{example}
+\begin{example}\label{ex_64}
 Let
 \begin{align*}
     f_n(x) = \frac{x^2}{x^2 + (1 - nx)^2}, \quad 0 \leq x \leq 1, n = 1,2,3,\cdots.
@@ -4698,11 +4701,178 @@ Clearly $f_n$ converges to $0$ pointwise, but not uniformly, since $f_n(2/n) = 1
 
 \medskip
 
+\begin{definition}
+A family $\mathscr{F}$ of complex functions $f$ defined on a set $E$ in a metric space $X$ is said to be equicontinuous on $E$ if for every $\varepsilon > 0$, there exists a $\delta > 0$ such that $\left|f(x) - f(y)\right| < \varepsilon$ whenever $d_X(x,y) < \delta$ for $x,y \in E$ and for every $f \in \mathscr{F}$.
+\end{definition}
+
+\begin{remark}
+Clearly, every member of an equicontinuous family is uniformly continuous. The sequence in Example \ref{ex_64} is not equicontinuous.
+\end{remark}
+
+\medskip
+
+\begin{theorem}\label{th_614}
+If $\{f_n\}$ is a pointwise bounded sequence of complex functions on a countable set $E$, then $\{f_n\}$ has a subsequence $\{f_{n_k}\}$ such that $\{f_{n_k}(x)\}$ converges for every $x \in E$.
+\end{theorem}
+\begin{proof}
+Let $\{x_i\}, i = 1,2,3,\cdots$, be the points of $E$. Since $\{f_n(x_1)\}$ is bounded, there exists a subsequence $\{f_{1,k}\}$ such that $\{f_{1,k}(x_1)\}$ converges as $k \to \infty$.
+
+Now consider sequences $S_1, S_2, S_3, \cdots$, where
+\begin{align*}
+    S_1: f_{1,1}, f_{1,2}, f_{1,3}, \cdots \\
+    S_2: f_{2,1}, f_{2,2}, f_{2,3}, \cdots \\
+    S_3: f_{3,1}, f_{3,2}, f_{3,3}, \cdots \\
+    \cdots
+\end{align*}
+and these sequences have the following properties:
+\begin{enumerate}[label=(\alph*)]
+    \item $S_n$ is a subsequence of $S_{n-1}$ for $n = 2,3,4,\cdots$.
+    
+    \item $\{f_{n,k}(x_n)\}$ converges as $k \to \infty$, since the boundeness of $\{f_n(x_n)\}$ makes it possible to choose $S_n$ in this way.
+    
+\end{enumerate}
+Now we choose the diagonal of the array, that is, we consider the sequence
+\begin{align*}
+    S: f_{1,1}, f_{2,2}, f_{3,3}, \cdots,
+\end{align*}
+Clearly $S$ is a subsequence of $S_n, n = 1,2,3,\cdots$. Hence $\{f_{n,n}(x_i)\}$ converges as $n \to \infty$ for every $x_i \in E$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+If $K$ is a compact metric space, if $f_n \in C(X)$ for $n = 1,2,3,\cdots$ and if $\{f_n\}$ converges uniformly on $K$, then $\{f_n\}$ is equicontinuous on $K$.
+\end{theorem}
+\begin{proof}
+For any $\varepsilon > 0$. Since $\{f_n\}$ converges uniformly, then there is an integer $N > 0$ such that $\left|f_n(x) - f_N(x)\right| < \varepsilon$ for all $x \in K$ if $n \geq N$. Since continuous functions are uniformly continuous on a compact set, there is a $\delta_i > 0$ such that $\left|f_i(x) - f_i(y)\right| < \varepsilon$ if $d(x,y) < \delta_i$ for $1 \leq i \leq N$. Now let $\delta = \min\{\delta_1, \cdots, \delta_N\}$, then for this $\delta$, 
+\begin{align}\label{th_615_equ1}
+    \left|f_i(x) - f_i(y)\right| < \varepsilon, \,\, i = 1,2,\cdots,N,
+\end{align}
+if $d(x,y) < \delta$ for all $x,y \in K$. Now if $n > N$ and $d(x,y) < \delta$, we have
+\begin{align*}
+    \left|f_n(x) - f_n(y)\right| \leq \left|f_n(x) - f_N(x)\right| + \left|f_N(x) - f_N(y)\right| + \left|f_N(y) - f_n(y)\right| < 3\varepsilon,
+\end{align*}
+and along with \eqref{th_615_equ1}, the theorem follows.
+\end{proof}
+
+\medskip
+
+Before talking about Arzelà-Ascoli theorem, we need to discuss some material from the theory of the metric spaces.
+
+\medskip
+
+\begin{definition}
+$C(K,\mathbb{R})$ is the metric space of all continuous functions $f: E \to \mathbb{R}$ with the metric
+\begin{align*}
+    d_{\infty}(f,g) = \sup_{x \in E} \left|f(x) - g(x)\right|.
+\end{align*}
+\end{definition}
+
+\begin{remark}
+The compactness of $K$ is needed. Indeed, if $f(x) = 0$ and $g(x) = 0$ for $x \in \mathbb{R}$, clearly $f,g \in C(\mathbb{R},\mathbb{R})$, but 
+\begin{align*}
+    d_{\infty}(f,g) = \sup_{x \in \mathbb{R}} \left|x\right| = \infty,
+\end{align*}
+so $d_{\infty}$ is not a metric in $C(\mathbb{R},\mathbb{R})$.
+\end{remark}
+
+\medskip
+
+\begin{lemma}\label{lemma_62}
+Suppose $f_n, f \in C(K,\mathbb{R}), n = 1,2,3,\cdots$. Then $f_n$ pointwise converges to $f$ in $C(K,\mathbb{R})$ if and only if $f_n$ uniformly converges to $f$ in $C(K,\mathbb{R})$.
+\end{lemma}
+\begin{proof}
+Suppose $f_n \to f$ pointwise in $C(K,\mathbb{R})$, then $d_{\infty}(f_n,f) \to 0$ as $n \to \infty$. For any $\varepsilon > 0$, there is an integer $N > 0$ such that for all $n \geq N$, $d_{\infty}(f_n,f) < \varepsilon$. This implies that for this $\varepsilon$ and $N$, for any $x \in E$ and $n \geq N$, $\left|f_n(x) - f(x)\right| \leq d_{\infty}(f_n,f) < \varepsilon$, which proves the uniform convergence.
+
+Conversely, if $f_n$ uniformly converges to $f$ in $C(K,\mathbb{R})$, then for any $\varepsilon > 0$, there is an integer $N > 0$ such that for any $x \in E$ and $n \geq N$, $\left|f_n(x) - f(x)\right| < \varepsilon$. Taking supremum on the left hand side over all $x \in E$ implies $d_\infty(f_n,f) < \varepsilon$ for all $n \geq N$, which proves the pointwise convergence.
+\end{proof}
+
+\medskip
+
+\begin{theorem}\label{th_616}
+Suppose $K \subset X$ is compact. Then $C(K,\mathbb{R})$ is a complete metric space.
+\end{theorem}
+\begin{proof}
+Suppose $\{f_n\}$ is a Cauchy seuqnece in $C(K,\mathbb{R})$, then for any $\varepsilon > 0$, there is an integer $N > 0$ such that $d_{\infty}(f_n,f_m) < \varepsilon$ if $n,m \geq N$. Then, for all $x \in E$, 
+\begin{align}\label{th_616_equ1}
+    \left|f_n(x) - f_m(x)\right| \leq d_{\infty}(f_n,f_m) < \varepsilon,
+\end{align}
+if $n,m \geq N$. Hence $\{f_n(x)\}$ is a Cauchy sequence for every $x \in E$ and hence is convergent. Denote the limit by 
+\begin{align*}
+    f(x) = \lim_{n\to\infty} f_n(x).
+\end{align*}
+Letting $m \to \infty$ and fix $n$ in \eqref{th_616_equ1} implies for $\varepsilon$ as before, there is $N > 0$ such that for all $n \geq N$ and all $x \in E$, we have
+\begin{align*}
+    \left|f_n(x) - f(x)\right| < \varepsilon,
+\end{align*}
+and hence $f_n$ uniformly converges to $f$. By  Theorem \ref{th_63}, $f$ is continuous and hence $f \in C(K,\mathbb{R})$. Thus $C(K,\mathbb{R})$ is complete.
+\end{proof}
 
 
 
+\medskip
 
+\begin{theorem}[Arzelà-Ascoli]\label{th_617}
+Let $K \subset X$ be compact, then the set $\mathcal{F} \subset C(K,\mathbb{R}^n)$ is compact if and only if it is bounded, closed and equicontinuous.
+\end{theorem}
+\begin{proof}
+Suppose $\mathcal{F}$ is compact, then $\mathcal{F}$ is closed and bounded. It remains to prove that $\mathcal{F}$ is equicontinuous. Suppose $\mathcal{F}$ is not equicontinuous, then there exists $\varepsilon > 0$ and for all $\delta > 0$, there is $f \in \mathcal{F}$ and $x, y \in E$ such that $d(x,y) < \delta$ but $\left|f(x) - f(y)\right| \geq \varepsilon$. 
 
+In particular, let $\delta = 1/n, n = 1,2,3,\cdots$, we can find $f_n \in \mathcal{F}$ and $x_n, y_n \in E$ such that
+\begin{align}\label{th_617_equ1}
+    d(x_n,y_n) < 1/n, \quad \text{and} \quad \left|f_n(x_n) - f_n(y_n)\right| \geq \varepsilon.
+\end{align}
+Since $\mathcal{F}$ is compact, by Theorem \ref{th_616}, $\{f_n\}$ has a convergent subsequence $\{f_{n_k}\}$ uniformly converging to $f$. By Theorem \ref{th_63}, $f$ is also continuous on $E$, then as $n_k \to \infty$, we have
+\begin{align*}
+    \left|f_{n_k}(x_{n_k}) - f_{n_k}(y_{n_k})\right| \leq \underbrace{\left|f_{n_k}(x_{n_k}) - f(x_{n_k})\right|}_{\to\,0} + \underbrace{\left|f(x_{n_k}) - f(y_{n_k})\right|}_{\to\,0} + \underbrace{\left|f(y_{n_k}) - f_{n_k}(y_{n_k})\right|}_{\to\,0} \to 0,
+\end{align*}
+which is a contradiction to \eqref{th_617_equ1}. Hence $\mathcal{F}$ is equicontinuous.
+
+Conversely, suppose $\mathcal{F}$ is bounded, closed and equicontinuous. Let $\{f_n\}$ be a sequence in $\mathcal{F}$, and it suffices to show that $\{f_n\}$ has uniformly convergent subsequence in $\mathcal{F}$. Since $K$ is compact, $K$ has a countable dense subset,\footnote{{\em A compact set $K$ has a countable dense subset.} For any $\varepsilon > 0$, there is an integer $N > 0$ such that $1/N < \varepsilon$, let $U_n = \left\{B(x,1/n) \,:\, x \in K, n \geq N\right\}$, and then $U_n$ is an open covering of $K$, and hence there is a finite subcovering $F_n = \bigcup^N_{k=1} B(x_{n_k},1/n_k)$ of $K$. Hence $A = \{x_{n_k}\}^N_{k=1}$ is a countable set. To see that $A$ is dense in $K$, for any $y \in K$, there is a $x_{n_j} \in A$ such that $y \in B(x_{n_j},1/n_j)$ and $1/n_j < 1/N < \varepsilon$. Hence $y \in A \cap B(x_{n_j}, \varepsilon)$, and thus $A$ is dense.}which can be expressed as $\{x_1, x_2, x_3, \cdots\}$. Next we can use the diagonal method as in Theorem \ref{th_614} to show there is a subsequence that converges to $f$, and thus $K$ is compact.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Theorem \ref{th_617}]\cite{4}
+Now we provide another approach to prove the Arzelà-Ascoli theorem with only using basic definitions. To see that $\mathcal{F}$ is equicontinuous, for any $\varepsilon > 0$, since $\mathcal{F}$ is compact, there are $f_1, \cdots, f_N \in C(K,\mathbb{R}^n)$ such that
+\begin{align*}
+    \mathcal{F} \subset B(f_1,\varepsilon/3) \cup \cdots \cup B(f_N,\varepsilon/3).
+\end{align*}
+Also, each $f_N$ is uniformly continuous since $K$ is compact, and hence there is a $\delta > 0$ such that for all $1 \leq n \leq N$ and all $x, y \in E$, 
+\begin{align*}
+    \left|f_n(x) - f_n(y)\right| < \frac{\varepsilon}{3},
+\end{align*}
+if $d(x,y) < \delta$. For any $f \in \mathcal{F}$, there is $1 \leq j \leq N$ such that $f \in B(f_j,\varepsilon/3)$, and hence $d_\infty(f,f_j) < \varepsilon/3$. Now, for any $x, y \in K$, if $d(x,y) < \delta$, we have
+\begin{align*}
+    \left|f(x) - f(y)\right| & \leq \left|f(x) - f_j(x)\right| + \left|f_j(x) - f_j(y)\right| + \left|f_j(y) - f(y)\right| \\
+    & \leq d_\infty(f,f_j) + \left|f_j(x) - f_j(y)\right| + d_\infty(f,f_j) < \varepsilon,
+\end{align*}
+which proves that $\mathcal{F}$ is equicontinuous.
+
+Conversely, it suffices to show that $\mathcal{F}$ is complete and totally bounded. Let $\{f_n\}$ be a Cauchy sequence in $\mathcal{F}$, and since $C(K,\mathbb{R}^n)$ is complete, $f_n$ converges to some $f \in C(K,\mathbb{R}^n)$. Since $\mathcal{F}$ is closed, $f \in \mathcal{F}$ and hence $\mathcal{F}$ is complete.
+
+It remains to prove that $\mathcal{F}$ is totally bounded. For any $\varepsilon > 0$, since $\mathcal{F}$ is equicontinuous, there is a $\delta > 0$ such that for all $x,y \in K$ and all $f \in \mathcal{F}$, 
+\begin{align*}
+    \left|f(x) - f(y)\right| < \frac{\varepsilon}{4},
+\end{align*}
+if $d(x,y) < \delta$. Then the collection $\{B(x,\delta)\}_{x \in K}$ is an open covering of $K$, and since $K$ is compact, there are $x_1, \cdots, x_N$ such that
+\begin{align*}
+    K \subset \bigcup^N_{i=1} B(x_i,\delta).
+\end{align*}
+Since $\mathcal{F}$ is bounded, the set $F = \{f(x_i) \,:\, 1 \leq i \leq N, f \in \mathcal{F}\}$ is bounded and hence $F$ is totally bounded. Then there are points $y_1, \cdots, y_M$ such that
+\begin{align*}
+    F \subset \bigcup^M_{i=1} B\left(y_i, \frac{\varepsilon}{4}\right).
+\end{align*}
+For any map $\varphi: \{1,\cdots,N\} \to \{1,\cdots,M\}$, deifne
+\begin{align*}
+    \mathcal{F}_{\varphi} = \left\{f \in \mathcal{F} \,:\, f(x_i) \in B\left(y_{\varphi(i)}, \frac{\varepsilon}{4}\right), i = 1,\cdots,N \right\}.
+\end{align*}
+Note there are only finitely many sets $\mathcal{F}_{\varphi}$, and every $f \in \mathcal{F}$ belongs to one of the sets $\mathcal{F}_{\varphi}$. We claim that the diameter of $\mathcal{F}_{\varphi}$ is finite. Indeed, take $f, g \in \mathcal{F}_{\varphi}$ and $x \in K$. Then $x \in B(x_i,\delta)$ for some $i$ and 
+\begin{align*}
+    \left|f(x) - g(x)\right| \leq \left|f(x) - f(x_i)\right| + \left|f(x_i) - y_{\varphi(i)}\right| + \left|y_{\varphi(i)} - g(x_i)\right| + \left|g(x_i) - g(x)\right| < 4 \cdot \frac{\varepsilon}{4} = \varepsilon.
+\end{align*}
+Hence $d_{\infty}(f,g) < \varepsilon$ and hence $\mathcal{F}$ can be covered by finitely many sets of diameter less than $\varepsilon$. Thus $\mathcal{F}$ is totally bounded and the compactness follows.
+\end{proof}
 
 
 
