@@ -676,7 +676,7 @@ If $X$ is a metric space, if $E \subset X$ and $E'$ denotes the set of all limit
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{th_112}
 If $X$ is a metric space and $E \subset X$, then
 \begin{enumerate}[label=(\alph*)]
     \item $\overline{E}$ is closed; \label{th_112_a}
@@ -5046,6 +5046,192 @@ and the theorem follows.
 \end{proof}
 
 \medskip
+
+Next, we present the original proof in Rudin's book.
+
+\medskip
+
+\begin{proof}[Second Proof of Theorem \ref{th_619}]
+Without loss of generality, we assume that $[a,b] = [0,1]$ and even more, we could assume $f(0) = f(1) = 0$. Since if the theorem is proved in this case, consider
+\begin{align*}
+    g(x) = f(x) - f(0) - x \left(f(1) - f(0)\right),
+\end{align*}
+for $0 \leq x \leq 1$. Clearly, $g(0) = g(1) = 0$. If $g$ is the limit of a uniformly convergent sequence of polynomials, the same it true for $f$, since $f - g$ is a polynomial.
+
+Furthermore, we define $f(x) = 0$ for $x \notin [0,1]$, then $f$ is uniformly continuous on $\mathbb{R}$. Let $Q_n(x) = c_n (1 - x^2)^n, n = 1,2,3,\cdots$, where $c_n$ is chosen such that
+\begin{align*}
+    \int^1_{-1} Q_n(x) \,dx = 1, \,\, n = 1,2,3,\cdots.
+\end{align*}
+For the order of magnitude of $c_n$, we have
+\begin{align*}
+    \int^1_{-1} (1 - x^2)^n \,dx & = 2 \int^1_0 (1 - x^2)^n \,dx \geq 2 \int^{1/\sqrt{n}}_0 (1 - x^2) \,dx \geq 2 \int^{1/\sqrt{n}}_0 (1 - nx^2)^n \,dx > \frac{1}{\sqrt{n}},
+\end{align*}
+and $c_n$ need to satisfy $c_n < \sqrt{n}$. 
+
+For any $\delta > 0$, since $c_n < \sqrt{n}$, $Q_n(x) \leq \sqrt{n} (1 - \delta^2)^n$ for $\delta \leq \left|x\right| \leq 1$, and hence $Q_n(x) \to 0$ uniformly in $\delta \leq \left|x\right| \leq 1$. Now let
+\begin{align*}
+    P_n(t) = \int^1_{-1} f(x+t) Q_n(t) \,dt,
+\end{align*}
+for $0 \leq x \leq 1$. By the change of variable and $f = 0$ outside $[0,1]$, we have
+\begin{align*}
+    P_n(x) = \int^{1-x}_{-x} f(x+t) Q_n(t) \,dt = \int^1_0 f(t) Q_n(t - x) \,dt,
+\end{align*}
+and the right hand side is a polynomial in $x$. 
+
+Given any $\varepsilon > 0$, choose $\delta > 0$ such that $\left|f(x) - f(y)\right| < \varepsilon/2$ if $\left|x - y\right| < \delta$. Let $M = \sup \left|f(x)\right|$, then for any $x \in [0,1]$, we have
+\begin{align*}
+    \left|P_n(x) - f(x)\right| & = \left|\int^1_0 \left(f(x+t) - f(x)\right) Q_n(t) \,dt \right| \\
+    & \leq \int^1_0 \left|f(x+t) - f(x)\right| Q_n(t) \,dt \\
+    & \leq 2M \int^{-\delta}_{-1} Q_n(t) \,dt + \frac{\varepsilon}{2} \int^{\delta}_{-\delta} Q_n(t) \,dt + 2M \int^1_{\delta} Q_n(t) \,dt \\
+    & \leq 4M \sqrt{n} (1 - \delta^2)^n + \frac{\varepsilon}{2} < \varepsilon,
+\end{align*}
+for $n$ large enough.
+\end{proof}
+
+\medskip
+
+\begin{definition}\label{def_68}
+A family $\mathscr{A}$ of complex functions defined on a set $E$ is said to be an algebra if for all $f, g \in \mathscr{A}$ and all complex constant $c$,
+\begin{enumerate}[label=(\alph*)]
+    \item $f + g \in \mathscr{A}$, \label{def_68_a}
+    
+    \item $fg \in \mathscr{A}$, \label{def_68_b}
+    
+    \item $cf \in \mathscr{A}$, \label{def_68_c}
+\end{enumerate}
+that is, $\mathscr{A}$ is closed under addition, multiplication and scalar multiplication. Also, for algebra of real functions, \ref{def_68_c} is only required to hold for real number $c$.
+
+If $\mathscr{A}$ has the property that $f \in \mathscr{A}$ whenever $f_n \in \mathscr{A}$ and $f_n \to f$ uniformly on $E$, then $\mathscr{A}$ is said to be uniformly closed.
+
+Let $\mathscr{B}$ be the set of all functions which are limits of uniformly convergent sequences of $\mathscr{A}$. Then $\mathscr{B}$ is called the uniform closure of $\mathscr{A}$.
+\end{definition}
+
+\medskip
+
+\begin{remark}
+The set of all polynomials is an algebra, and then the Weiestrass theorem \ref{th_619} can be stated as the set of continuous functions on $[a,b]$ is the uniform closure of the set of polynomials on $[a,b]$.
+\end{remark}
+
+\medskip
+
+\begin{theorem}
+Let $\mathscr{B}$ be the uniform closure of an algebra $\mathscr{A}$ of bounded functions, then $\mathscr{B}$ is a uniformly closed algebra.
+\end{theorem}
+\begin{proof}
+If $f,g \in \mathscr{B}$, then there exist uniformly convergent sequences $\{f_n\}, \{g_n\}$ in $\mathscr{A}$ such that $f_n \to f$ and $g_n \to g$. Since $\mathscr{A}$ is bounded, it is clear that $f_n + g_n \to f + g$, $f_ng_n \to fg$ and $cf_n \to cf$ where the convergence is uniform in each case. Hence $f + g, fg, cf \in \mathscr{B}$, which implies $\mathscr{B}$ is an algebra. By Theorem \ref{th_112}, $\mathscr{B}$ is uniformly closed.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+Let $\mathscr{A}$ be a family of functions on a set $E$. Then $\mathscr{A}$ is said to separate points on $E$ if for every $x_1, x_2 \in E$ and $x_1 \notin x_2$, there corresponds a function $f \in \mathscr{A}$ such that $f(x_1) = f(x_2)$.
+
+If to each $x \in E$ there corresponds a function $g \in \mathscr{A}$ such that $g(x) \neq 0$, we say that $\mathscr{A}$ vanishes at no point of $E$.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_622}
+Suppose $\mathscr{A}$ is an algebra of functions on a set $E$, $\mathscr{A}$ separates points on $E$ and $\mathscr{A}$ vanishes at no point of $E$. Suppose $x_1, x_2$ are distinct points of $E$, and $c_1, c_2$ are constants. Then $\mathscr{A}$ contains a function $f$ such that $f(x_1) = c_1$ and $f(x_2) = c_2$.
+\end{theorem}
+\begin{proof}
+Since $\mathscr{A}$ is an algebra, then $\mathscr{A}$ contains functions $g,h$ and $k$ such that
+\begin{align*}
+    g(x_1) \neq g(x_2), \quad h(x_1) \neq 0, \quad k(x_2) \neq 0.
+\end{align*}
+Let $u = gk - g(x_1)k$ and $v = gh - g(x_2)h$. Clearly, $u,v \in \mathscr{A}$ and $u(x_1) = v(x_2) = 0$, $u(x_2) \neq 0$, $v(x_2) \neq 0$. Then the function defined as
+\begin{align*}
+    f = \frac{c_1v}{v(x_1)} + \frac{c_2u}{u(x_2)}
+\end{align*}
+has the desired properties.
+\end{proof}
+
+\medskip
+
+Now we can talk about the Stone's generalization of the Weierstrass theorem.
+
+\medskip
+
+\begin{theorem}[Stone-Weiestrass]\label{th_623}
+Let $\mathscr{A}$ be an algebra of real functions on a compact set $K$. If $\mathscr{A}$ separates points on $K$ and if $\mathscr{A}$ vanishes on point of $K$, then the uniform closure $\mathscr{B}$ of $\mathscr{A}$ consists of all real functions on $K$.
+\end{theorem}
+\begin{remark}
+The theorem can also be stated as: if $\mathscr{A} \subset C(K,\mathbb{R})$ satisfies the above assumptions, then $\mathscr{A}$ is a dense subset of $C(K,\mathbb{R})$, i.e. $\overline{\mathscr{A}} = C(K,\mathbb{R})$.
+
+Note that the set $\mathscr{A} = \{f: [a,b] \to \mathbb{R} \,:\, f \,\, \text{is continuous}\}$ satisfies all above properties, and hence Weiestrass theorem \ref{th_619} follows from this theorem.
+\end{remark}
+\begin{proof}
+We will divide the proof into four steps.
+\begin{enumerate}[label=(\Roman*)]
+    \item If $f \in \mathscr{B}$, then $\left|f\right| \in \mathscr{B}$. Let $a = \sup \left|f(x)\right|, x \in K$. By Theorem \ref{th_619}, for every $\varepsilon > 0$, there is a polynomial $P_n$ such that
+    \begin{align*}
+        \left|P_n(y) - \left|y\right|\right| < \varepsilon, \quad -a \leq y \leq a.
+    \end{align*}
+    Since $\mathscr{B}$ is an algebra, $P_n(f(x)) \in \mathscr{B}$. Hence we have 
+    \begin{align*}
+        \left|P_n(f(x)) - \left|f(x)\right|\right| < \varepsilon, \quad x \in K.
+    \end{align*}
+    Since $\mathscr{B}$ is uniformly closed, $\left|f\right| \in \mathscr{B}$.
+    
+    \item If $f \in \mathscr{B}$ and $g \in \mathscr{B}$, then $\max (f,g) \in \mathscr{B}$ and $\min (f,g) \in \mathscr{B}$. Indeed, 
+    \begin{align*}
+        \max(f,g) & = \frac{f + g}{2} + \frac{\left|f - g\right|}{2}, \\
+        \min(f,g) & = \frac{f + g}{2} - \frac{\left|f - g\right|}{2}.
+    \end{align*}
+    
+    \item Given a real continuous function $f$ on $K$, a point $x \in K$ and $\varepsilon > 0$, there is a function $g_x \in \mathscr{B}$ such that $g_x(x) = f(x)$ and
+    \begin{align}\label{th_623_equ1}
+        g_x(t) > f(t) - \varepsilon, \quad t \in K.
+    \end{align}
+    Since $\mathscr{A} \subset \mathscr{B}$ and by Theorem \ref{th_622}, fir every $y \in K$, there is a function $h_y \in \mathscr{B}$ such that
+    \begin{align*}
+        h_y(x) = f(x), \quad h_y(y) = f(y).
+    \end{align*}
+    By continuity of $h_y$, there is an open set $U_y$ of $y$ such that $h_y(t) > f(t) - \varepsilon$ for $t \in U_y$. Since $K$ is finite, there is a finite covering of points $y_1, \cdots, y_n$ such that 
+    \begin{align*}
+        K \subset \bigcup^n_{i=1} U_{y_i}.
+    \end{align*}
+    Let $g_x = \max \{h_{y_1}, \cdots, h_{y_n}\}$, and clearly $g_x \in \mathscr{B}$ and satisfies \eqref{th_623_equ1}. 
+    \label{th_623_3}
+    
+    \item Given a real continuous function $f$ on $K$ and $\varepsilon > 0$, there is a function $h \in \mathscr{B}$ such that
+    \begin{align}\label{th_623_equ2}
+        \left|h(x) - f(x)\right| < \varepsilon, \quad x \in K.
+    \end{align}
+    Indeed, consider $g_x$ for each $x \in K$ in Step \ref{th_623_3}. By the continuity of $g_x$, there exists open sets $V_x$ of $x$ such that $g_x(t) < f(t) + \varepsilon$ for $t \in V_x$. Since $K$ is compact, there is a finite covering of points $x_1, \cdots, x_m$ such that
+    \begin{align*}
+        K \subset \bigcup^m_{i=1} V_{x_i}.
+    \end{align*}
+    Let $h = \min \{g_{x_1}, \cdots, g_{x_m}\}$, and clearly $h \in \mathscr{B}$ and satisfies \eqref{th_623_equ2}.
+\end{enumerate}
+Since $\mathscr{B}$ is uniformly closed, \eqref{th_623_equ2} is equivalent to the conclusion of the theorem.
+\end{proof}
+
+\medskip
+
+\begin{remark}
+This theorem does not hold for complex algebras. However, the theorem does hold for complex algebras if an extra condition is satisfied on $\mathscr{A}$, that $\mathscr{A}$ being self-adjoint, that is, for every $f \in \mathscr{A}$, its complex conjugate $\overline{f} \in \mathscr{A}$, where $\overline{f}(x) = \overline{f(x)}$. Then we have the following result.
+\end{remark}
+
+\medskip
+
+\begin{theorem}[Stone-Weiestrass]\label{th_624}
+Let $\mathscr{A}$ be a self-adjoint algebra of complex functions on a compact set $K$. If $\mathscr{A}$ separates points on $K$ and if $\mathscr{A}$ vanishes on point of $K$, then the uniform closure $\mathscr{B}$ of $\mathscr{A}$ consists of all complex functions on $K$.
+\end{theorem}
+\begin{proof}
+Let $\mathscr{A}_R$ be the set of all real functions on $K$ which belong to $\mathscr{A}$. If $f \in \mathscr{A}$, then $f = u + iv$, with $u,v$ being real functions. Then $u = (f + \overline{f})/2$ and $u \in \mathscr{A}_R$. If $x_1 \neq x_2$, there exists $f \in \mathscr{A}$ such that $f(x_1) = 1, f(x_2) = 0$ and hence $0 = u(x_1) \neq u(x_2) = 1$, which implies that $\mathscr{A}_R$ separates points on $K$. If $x \in K$, then $g(x) \neq 0$ for some $g \in \mathscr{A}$ and there is a complex number $\lambda$ such that $\lambda g(x) > 0$. If $f = \lambda g$ and $f = u + iv$, then $u(x) > 0$, and hence $\mathscr{A}_R$ vanishes at no point of $K$.
+
+Hence $\mathscr{A}_R$ satisfies the properties of Theorem \ref{th_623} and it follows that all real continuous functions on $K$ belong to the uniform closure of $\mathscr{A}_R$, and hence in $\mathscr{B}$. If $f$ is a complex continuous function on $K$ and $f = u + iv$, then $u,v \in \mathscr{B}$, hence $f \in \mathscr{B}$.
+\end{proof}
+
+
+
+
+
+
+
+
+
 
 
 
