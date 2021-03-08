@@ -2133,7 +2133,7 @@ which implies $\{c_n\}$ is decreasing starting from $n = N$. Hence $\{c_n\}$ is 
 
 \section{Power Series}
 
-\begin{definition}
+\begin{definition}\label{def_212}
 Given a sequence $\{c_n\}$ of complex numbers, the series
 \begin{align*}
     \sum^\infty_{n=0} c_n z^n
@@ -3200,7 +3200,7 @@ Since $f$ is not constant, then either $f(c_1) > f(a)$ or $f(c_2) < f(a)$. Suppo
 
 \medskip
 
-\begin{theorem}[Cauchy Mean Value]\label{th_47}
+\begin{theorem}[Cauchy Mean Value theorem]\label{th_47}
 Suppose $f$ and $g$ are continuous real functions on $[a,b]$ which are differentiable in $(a,b)$, and $g'(x) \neq 0$ for all $x \in (a,b)$, then there is a point $c \in (a,b)$ at which 
 \begin{align*}
     \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
@@ -3227,7 +3227,7 @@ This theorem is the {\em generalized mean value theorem}, and the following is t
 
 \medskip
 
-\begin{theorem}[Mean Value]\label{th_48}
+\begin{theorem}[Mean Value theorem]\label{th_48}
 If $f: [a,b] \to \mathbb{R}$ is continuous and differentiable on $(a,b)$, then there is a point $c \in (a,b)$ such that
 \begin{align*}
     f(b) - f(a) = (b - a) f'(c).
@@ -4861,6 +4861,11 @@ and hence $f_n$ uniformly converges to $f$. By  Theorem \ref{th_63}, $f$ is cont
 
 \medskip
 
+
+
+
+\section{Arzelà-Ascoli Theorem}
+
 \begin{theorem}[Arzelà-Ascoli]\label{th_617}
 Let $K \subset X$ be compact, then the set $\mathcal{F} \subset C(K,\mathbb{R}^n)$ is compact if and only if it is bounded, closed and equicontinuous.
 \end{theorem}
@@ -4982,7 +4987,7 @@ This theorem can be equivalent stated as: there is a sequence $\{p_n\}$ of polyn
 \end{remark}
 
 \begin{proof}
-It suffices to prove it for $[a,b] = [0,1]$. Indeed, if $f: [a,b] \to \mathbb{R}$ is continuous and $L:[0,1] \to \mathbb{R}$ is defined by $L(x) = a + (b-a)x$, then $f \circ L:[0,1] \to \mathbb{R}$ is continuous. And $q_{\varepsilon}$ is a polynomial such that $\left|(f \circ L)(x) - q_{\varepsilon}(x)\right| < \varepsilon$ for every $x \in [0,1]$, then take 
+It suffices to prove it for $[a,b] = [0,1]$. Indeed, if $f: [a,b] \to \mathbb{R}$ is continuous and $L:[0,1] \to \mathbb{R}$ is defined by $L(x) = a + (b-a)x$, then $f \circ L:[0,1] \to \mathbb{R}$ is continuous. And $q_{\varepsilon}$ is a polynomial such that $\left|(f \circ L)(x) - q_{\varepsilon}(x)\right| < \varepsilon$ for every $x \in [0,1]$, then taking 
 \begin{align*}
     p_{\varepsilon}(x) = q_{\varepsilon} \left(\frac{x - a}{b - a}\right)
 \end{align*}
@@ -5223,6 +5228,304 @@ Let $\mathscr{A}_R$ be the set of all real functions on $K$ which belong to $\ma
 
 Hence $\mathscr{A}_R$ satisfies the properties of Theorem \ref{th_623} and it follows that all real continuous functions on $K$ belong to the uniform closure of $\mathscr{A}_R$, and hence in $\mathscr{B}$. If $f$ is a complex continuous function on $K$ and $f = u + iv$, then $u,v \in \mathscr{B}$, hence $f \in \mathscr{B}$.
 \end{proof}
+
+
+
+\medskip
+
+\section{Power Series}
+
+\begin{definition}
+Power series of the form
+\begin{align*}
+    f(x) = \sum^\infty_{n=0} c_n x^n,
+\end{align*}
+is defined in Definition \ref{def_212}, more generally, it can also be defined as
+\begin{align*}
+    f(x) = \sum^\infty_{n=0} c_n (x - a)^n,
+\end{align*}
+which is called analytic function.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_625}
+Suppose the series
+\begin{align}\label{th_625_equ1}
+    \sum^\infty_{n=0} c_n x^n
+\end{align}
+converges for $\left|x\right| < R$, and define
+\begin{align}\label{th_625_equ2}
+    f(x) = \sum^\infty_{n=0} c_n x^n, \quad \left|x\right| < R.
+\end{align}
+Then \eqref{th_625_equ1} converges uniformly on $[-R + \varepsilon, R - \varepsilon]$ for any $\varepsilon > 0$. Then $f$ is continuous and differentiable in $(-R,R)$, and
+\begin{align}\label{th_625_equ3}
+    f'(x) = \sum^\infty_{n=1} n c_n x^{n-1}, \quad \left|x\right| < R.
+\end{align}
+\end{theorem}
+\begin{proof}
+For any $\varepsilon > 0$, and $\left|x\right| \leq R - \varepsilon$, we have $\left|c_nx^n\right| \leq \left|c_n(R - \varepsilon)^n\right|$, and since
+\begin{align*}
+    \sum^\infty_{n=0} c_n(R - \varepsilon)^n
+\end{align*}
+converges absolutely, the series \eqref{th_625_equ2} converges uniformly on $[-R + \varepsilon, R - \varepsilon]$ by $M$-test (Theorem \ref{th_62}). Since $\sqrt[n]{n} \to 1$ as $n \to \infty$, we have
+\begin{align*}
+    \limsup_{n\to\infty} \sqrt[n]{n\left|c_n\right|} = \limsup_{n\to\infty} \sqrt[n]{\left|c_n\right|},
+\end{align*}
+and hence \eqref{th_625_equ2} and \eqref{th_625_equ3} have the same radius of convergence $R$, defined as in Theorem \ref{th_232}.\footnote{The radius of convergence for \eqref{th_625_equ1} and \eqref{th_625_equ2} are
+\begin{align*}
+    R = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{\left|c_n\right|}}, \quad \overline{R} = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{n\left|c_n\right|}}.
+\end{align*}
+In order to prove that $R = \overline{R}$, we need to show that $\left|x\right| < R$ implies \eqref{th_625_equ3} converges and $\left|x\right| > R$ implies \eqref{th_625_equ3} diverges. If $\left|x\right| < R$, there is $r$ such that $\left|x\right| < r < R$ and then $\left|n c_n x^{n-1}\right| = n \left|c_n r^{n-1}\right| \left|x/r\right|^{n-1}$. Since $\sum^\infty_{n=0} c_n r^n$ converges by assumption, $c_n r^{n-1} = c_nr^n/r$ converges to zero as $n \to \infty$ by Theorem \ref{th_218} and hence form a bounded sequence, that is $\left|c_n r^{n-1}\right| \leq M$ for all $n$. Therefore, $\sum^\infty_{n=0} nM \left|x/r\right|^{n-1}$ converges by Ratio Test since $\left|x/r\right| < 1$, and the convergence of \eqref{th_625_equ3} follows. If $\left|x\right| > R$, the divergence is obvious.}Then \eqref{th_625_equ3} converges uniformly on $[-R + \varepsilon, R - \varepsilon]$ for every $\varepsilon > 0$ and by Theorem \ref{th_610}, \eqref{th_625_equ3} holds for $\left|x\right| \leq R - \varepsilon$. Since $\varepsilon$ is arbitrary, \eqref{th_625_equ3} holds for $\left|x\right| \leq R$. 
+
+Thus the continuity of $f$ exists by the existence of $f'$.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Second Proof of Theorem \ref{th_625}]
+We discuss another approach to prove the term by term differentiability of the series $f(x)$. Fix $x_0 \in (-R,R)$. For $x \neq x_0$, we have
+\begin{align*}
+    \frac{f(x) - f(x_0)}{x - x_0} = \sum^\infty_{n=1} c_n \frac{x^n - x_0^n}{x - x_0} = \sum^\infty_{n=1} c_n \left(x^{n-1} + x_0 x^{n-2} + \cdots + x x_0^{n-2} + x_0^{n-1}\right).
+\end{align*}
+Let $G(x)$ denote the right hand side and let $r$ be such that $\left|x_0\right| < r < R$. We need to prove that $G(x)$ converges uniformly on $[-r,r]$. Observe that
+\begin{align*}
+    \left|c_n \left(x^{n-1} + x_0 x^{n-2} + \cdots + x x_0^{n-2} + x_0^{n-1}\right)\right| \leq n \left|c_n\right| r^{n-1}.
+\end{align*}
+Since $\sum^\infty_{n=1} n c_n r^{n-1}$ converges absolutely on $[-r,r]$, $G(x)$ converges uniformly on $[-r,r]$ by $M$-test. Therefore $G(x)$ is continuous on $[-r,r]$ and in particular, continuous at $x_0$, and hence
+\begin{align*}
+    f'(x_0) = \lim_{x\to x_0} \frac{f(x) - f(x_0)}{x - x_0} = \lim_{x \to x_0} G(x) = G(x_0) = \sum^\infty_{n=1} n c_n x_0^{n-1}.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{corollary}\label{coro_6251}
+If $f(x) = \sum^\infty_{n=0} c_n x^n$ has the radius of convergence $R > 0$, then the function $f(x)$ is of class $C^\infty(-R,R)$ and
+\begin{align*}
+    f(x) = \sum^\infty_{n=0} \frac{f^{(n)}}{n!} x^n,
+\end{align*}
+for all $x \in (-R,R)$.
+\end{corollary}
+\begin{proof}
+We can apply Theorem \ref{th_625} to the series of derivatives
+\begin{align*}
+    \left(\sum^\infty_{n=1} n c_n x^{n-1} \right)' = \sum^\infty_{n=2} n (n-1) c_n x^{n-2},
+\end{align*}
+and continue this process for all $k$-th derivatives. Also, we have
+\begin{align*}
+    f^{(k)}(x) = \sum^\infty_{n=k} n (n-1) \cdots (n-k+1) c_n x^{n-k},
+\end{align*}
+taking $x = 0$ implies $f^{(k)}(0) = k! c_k$, which proves the corollary.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Abel]\label{th_626}
+If $0 < R < \infty$ the radius of convergence of the series
+\begin{align*}
+    f(x) = \sum^\infty_{n=0} c_n x^n,
+\end{align*}
+and the series converges at $x = R$ (or at $x = -R$), then the function $f:(-R,R] \to \mathbb{R}$ is left continuous at $x = R$ (or $f:[-R,R) \to \mathbb{R}$ is right continuous at $x = -R$). In other words,
+\begin{align*}
+    \sum^\infty_{n=0} c_n R^n = \lim_{x \to R^-} c_n x^n, \quad \text{or} \quad \sum^\infty_{n=0} c_n (-R)^n = \lim_{x \to -R^+} c_n x^n.
+\end{align*}
+\end{theorem}
+\begin{proof}
+If the series converges at $x = -R$, then the series $f(-x) = \sum^\infty_{n=0} c_n (-1)^n x^n$ converges at $x = R$, so it suffices to prove the series converges at $x = R$ only. Also, if the series has the radius of convergence $0 < R < \infty$, then the series $f(Rx) = \sum^\infty_{n=0} c_n R^n x^n$ has the radius of convergence $1$. The without loss of generality, we may assume $R = 1$ and the series converges at $x = 1$. Then we need to prove that
+\begin{align}\label{th_626_equ1}
+    \lim_{x \to 1^-} \sum^\infty_{n=0} c_n x^n = \sum^\infty_{n=0} c_n.
+\end{align}
+Let $s_n = c_0 + c_1 + \cdots + c_n, s_{-1} = 0$ and $s = \sum^\infty_{n=0} c_n$. For $\left|x\right| < 1$, we have
+\begin{align*}
+    \sum^m_{n=0} c_n x^n & = \sum^m_{n=0} \left(s_n - s_{n-1}\right) x^n \\
+    & = \left(s_0 + s_1 x + \cdots + s_m x^m\right) - \left(s_{-1} + s_0 x + \cdots + s_{m-1}x^m\right) \\
+    & = (1 - x) s_0 + (1 - x)xs_1 + \cdots + (1 - x)x^{m-1} + s_m x^m \\
+    & = (1 - x) \sum^{m-1}_{n=0} s_n x^n + s_m x^m,
+\end{align*}
+and hence
+\begin{align*}
+    - s_m x^m + \sum^m_{n=0} c_n x^n = (1 - x) \sum^{m-1}_{n=0} s_n x^n.
+\end{align*}
+For $\left|x\right| < 1$, the left hand side converges as $m \to \infty$, since the series converges to $f(x)$ and $s_m x^m \to 0$. Hence the right hand side converges too, which yields
+\begin{align*}
+    f(x) = (1 - x) \sum^{\infty}_{n=0} s_n x^n, \quad \left|x\right| < 1.
+\end{align*}
+Since $(1 - x) \sum^\infty_{n=0} x^n = 1$ for $\left|x\right| < 1$, we have
+\begin{align*}
+    s = (1 - x) \sum^\infty_{n=0} s x^n,
+\end{align*}
+and hence
+\begin{align*}
+    \left|f(x) - s\right| = \left|(1 - x) \sum^{\infty}_{n=0} (s_n - s) x^n\right|.
+\end{align*}
+
+For any $\varepsilon > 0$, there is an integer $N > 0$ such that $\left|s_n - s\right| < \varepsilon/2$ for all $n \geq N$. Let
+\begin{align*}
+    0 < \delta < \frac{\varepsilon}{2 \sum^N_{n=0}\left|s_n - s\right|},
+\end{align*}
+then for any $x \in (1 - \delta,1)$, we have
+\begin{align*}
+    \left|f(x) - s\right| & \left|(1 - x) \sum^{N}_{n=0} (s_n - s) x^n\right| + \left|(1 - x) \sum^{\infty}_{n=N+1} (s_n - s) x^n\right| \\
+    & \leq \left|1 - x\right| \sum^N_{n=0} \left|s_n - s\right| \left|x\right|^n + \frac{\varepsilon}{2} \left|(1 - x) \sum^{\infty}_{n=N+1} x^n\right| \\
+    & \leq \delta \sum^N_{n=0} \left|s_n - s\right| + \frac{\varepsilon}{2} \cdot 1 < \varepsilon,
+\end{align*}
+which proves \eqref{th_626_equ1}.
+\end{proof}
+
+\medskip
+
+
+
+\section{Taylor's Theorems}
+
+In Corollary \ref{coro_6251}, we proved that if a power series $f(x) = \sum^\infty_{n=0} c_n x^n$ has radius of convergence $R > 0$, then $f$ is infinitely differentiable on $(-R,R)$ and
+\begin{align*}
+    f(x) = \sum^\infty_{k=0} \frac{f^{(k)}(0)}{k!} x^k,
+\end{align*}
+for all $x \in (-R,R)$. Therefore, if $f: I \to \mathbb{R}$ is defined on an open interval $I$ and $n$-times differentiable at $0 \in I$, it is natural to consider the {\em Maclaurin polynomial} defined by
+\begin{align*}
+    \sum^n_{k=0} \frac{f^{(k)}(0)}{k!} x^k = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \cdots + \frac{f^{(n)}(0)}{n!}x^n.
+\end{align*}
+The difference between the Maclaurin polynomial and $f$ is called the {\em remainder term} $R_n(x)$, which is defined by the equality
+\begin{align}\label{sec_68_equ1}
+    f(x) = \sum^n_{k=0} \frac{f^{(k)}(0)}{k!} x^k + R_n(x),
+\end{align}
+for all $x \in I$. 
+
+\medskip
+
+\begin{lemma}\label{lemma_63}
+If $f$ is $(n-1)$-times differentiable in an open interval $I$ and $n$-times differentiable at $x = 0 \in I$, then the remainder $R_n(x)$ defined in \eqref{sec_68_equ1} is $n$-times differentiable at $0$ and $R_n(0) = R_n'(0) = \cdots = R_n^{(n)}(0) = 0$.
+\end{lemma}
+\begin{proof}
+Since $f$ is $n$-times differentiable at $0$ and the Maclaurin polynomial is infinitely differentiable, $R_n(x)$ is $n$-times differentiable. 
+
+Now we have
+\begin{align*}
+    R_n(x) = f(x) - \sum^n_{k=0} \frac{f^{(k)}(0)}{k!} x^k,
+\end{align*}
+and then $R_n(0) = f(0) - f(0) = 0$. Taking the derivative on the both sides yields
+\begin{align*}
+    R_n'(x) = f'(x) - \sum^n_{k=1} \frac{f^{(k)}(0)}{(k-1)!} x^{k-1},
+\end{align*}
+and then $R_n'(0) = f'(0) - f'(0) = 0$. We can continue this process and the lemma follows from the induction.
+\end{proof}
+
+\medskip
+
+In \eqref{sec_68_equ1}, all derivatives of $f$ are computed at $x = 0$. We may consider the formula when the derivatives are computed at other point $x \in I$. Then if $f$ is $n$-times differentiable at $x \in I$, then the {\em Taylor polynomial} and the corresponding remainder term are defined as
+\begin{align}\label{sec_68_equ2}
+    f(x + h) = \sum^n_{k=0} \frac{f^{(k)}(x)}{k!} h^k + R_n(h).
+\end{align}
+Taylor's polynomial is defined for all $h$ and the remainder $R_n(h)$ is only defined for $h$ for which $x + h \in I$. And Lemma \ref{lemma_63} implies the following result.
+
+\medskip
+
+\begin{lemma}\label{lemma_64}
+If $f$ is $(n-1)$-times differentiable in an open interval $I$ and $n$-times differentiable at $x \in I$, then the remainder $R_n(h)$ defined in \eqref{sec_68_equ2} is $n$-times differentiable at $0$ and $R_n(0) = R_n'(0) = \cdots = R_n^{(n)}(0) = 0$.
+\end{lemma}
+
+\medskip
+
+Recall that in Theorem \ref{th_42}, if $f$ is differentiable at $x \in I$, then there is a function $\psi$ that is continuous at $0$, $\psi(0) = 0$ and
+\begin{align*}
+    f(x + h) = f(x) + f'(x) h + h \psi(h) = f(x) + f'(x) h + o(h),
+\end{align*}
+and in this case, $f(x) + f'(x) h$ is the Taylor polynomial of degree $n = 1$, and $R_1(h) = h \psi(h) = o(h)$ is the remainder term.
+
+\medskip
+
+\begin{theorem}[Taylor's theorem with Peano's remainder]\label{th_627}
+If $f: I \to \mathbb{R}$ is $(n-1)$-times differentiable in an open interval $I$ and if $f$ is $n$-times differentiable at $x \in I$, then there is a function $\psi$, continuous at $0$, $\psi(0) = 0$ such that
+\begin{align}\label{th_627_equ1}
+    f(x + h) = f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n + h^n \psi(h),
+\end{align}
+for $x + h \in I$. In particular, $h^n \psi(h) = o(h^n)$.
+\end{theorem}
+\begin{proof}
+Let
+\begin{align*}
+    R_n(h) = f(x + h) - \sum^n_{k=0} \frac{f^{(k)}(x)}{k!} h^k,
+\end{align*}
+and define
+\begin{align*}
+    \psi(h) = \begin{cases}
+        \frac{R_n(h)}{h^n}, & h \neq 0, \\
+        0, & h = 0.
+    \end{cases}
+\end{align*}
+Hence \eqref{th_627_equ1} is obvious and it remains to show that $R_n(h) = o(h^n)$. It suffices to show that $R_n(h)/h^n = \psi(h) \to 0$ as $h \to 0$. By Lemma \ref{lemma_64}, we have
+\begin{align*}
+    R_n(0) = R_n'(0) = \cdots = R_n^{(n)}(0) = 0.
+\end{align*}
+By L'Hospital's Rule (Theorem \ref{th_412}), we have
+\begin{align*}
+    \lim_{h \to 0} \frac{R_n(h)}{h^n} = \lim_{h \to 0} \frac{R_n'(h)}{nh^{n-1}} = \cdots = \lim_{h \to 0} \frac{R_n^{(n-1)}(h)}{(n-1)!h} \coloneqq M,
+\end{align*}
+and the above equality holds if the limit on the right hand side exists.\footnote{Note that we cannot appluy L'Hospital's Rule again, since by definition, $R_n^{(n-1)}$ is not necessarily differentiable expect $x = 0$, and this is because $f$ is only $(n-1)$-times differentiable at $x \neq 0$.}By the definition of the derivative, we have
+\begin{align*}
+    M = \lim_{h \to 0} \frac{f^{(n-1)}(x+h) - f^{(n-1)}(x) - f^{(n)}(x)h}{(n-1)!h} = 0,
+\end{align*}
+thus the theorem follows.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Taylor's theorem with Lagrange and Cauchy remainders]\label{th_628}
+If $f: I \to \mathbb{R}$ is $(n+1)$-times differentiable in an open interval $I$. If $x, x + h \in I$, then there are $\theta_1, \theta_2 \in (0,1)$ such that the remainder term $R_n(h)$ in
+\begin{align*}
+    f(x + h) = f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n + R_n(h)
+\end{align*}
+equals
+\begin{align*}
+    R_n(h) = \frac{f^{(n+1)(x+\theta_1 h)}}{(n+1)!} h^{n+1} = \frac{f^{(n+1)(x+\theta_2 h)}}{(n+1)!} (1-\theta_2)^n h^{n+1}.
+\end{align*}
+The first remainder is called Lagrange remainder and the second one is Cauchy remainder.
+\end{theorem}
+\begin{proof}
+Fix $x$ and $h$ and for $t \in [0,1]$, define a new function
+\begin{align*}
+    g(t) = f(x+th) + f'(x+th)h(1-t) + \frac{f''(x+th)}{2!} h^2 (1-t)^2 + \cdots + \frac{f^{(n)}(x+th)}{n!} h^n (1-t)^n.
+\end{align*}
+Clearly we have 
+\begin{align*}
+    g(1) - g(0) = f(x+h) - \left(f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n\right) = R_n(h).
+\end{align*}
+By the Mean Value theorem \ref{th_48}, $g(1) - g(0) = g(\theta)$ for some $\theta \in (0,1)$. Note that
+\begin{align*}
+    g'(t) & = f'(x+th)h + \left(f''(x+th)h^2(1-t) - f'(x+th)h\right) \\
+    & + \left(\frac{f'''(x+th)}{2!} h^3 (1-t)^2 - f''(x+th)h^2(1-t)\right) + \cdots \\
+    & + \left(\frac{f^{(n)}(x+th)}{n!} h^{n+1} (1-t)^n - \frac{f^{(n)}(x+th)}{(n-1)!} h^n (1-t)^{n-1}\right) \\
+    & = \frac{f^{(n)}(x+th)}{n!} h^{n+1} (1-t)^n,
+\end{align*}
+and hence we have
+\begin{align*}
+    R_n(h) = g(1) - g(0) = g'(\theta) = \frac{f^{(n)}(x+\theta h)}{n!} h^{n+1} (1-\theta)^n,
+\end{align*}
+for some $\theta \in (0,1)$. This proves the Cauchy remainder.
+
+Now apply Cauchy Mean Value theorem \ref{th_47} to function $g(t)$ and $u(t) = -(1 - t)^{n+1}$, then there is $\widetilde{\theta} \in (0,1)$ such that
+\begin{align*}
+    R_n(h) = g(1) - g(0) = \frac{g(1) - g(0)}{u(1) - u(0)} = \frac{g'(\widetilde{\theta})}{u'(\widetilde{\theta})} = \frac{\frac{f^{(n)}(x+\widetilde{\theta} h)}{n!} h^{n+1} (1-\widetilde{\theta})^n}{(n+1)(1 - \widetilde{\theta})^n} = \frac{f^{(n)}(x+\widetilde{\theta} h)}{(n+1)!} h^{n+1},
+\end{align*}
+and this proves the Lagrange remainder.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
