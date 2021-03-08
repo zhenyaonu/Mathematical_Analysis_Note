@@ -454,7 +454,7 @@ This theorem implies that with the binary representation, the set of all real nu
 \begin{definition}\label{def_19}
 A set $X$, whose elements are called points, is said to be a metric space if with any two points $x$ and $y$ of $X$ there is associated a real number $d(x,y): \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}$ called the distance from $x$ to $y$, which is defined as 
 \begin{align*}
-    d(x,y) = \left|x - z\right|,
+    d(x,y) = \left\|x - z\right\|,
 \end{align*}
 which has the following properties:
 \begin{enumerate}[label=(\alph*)]
@@ -5517,20 +5517,75 @@ and this proves the Lagrange remainder.
 
 
 
+\chapter{Functions of Several Variables}
 
+\section{Linear Transformations}
 
+\begin{definition}
+~\begin{enumerate}[label=(\alph*)]
+    \item A nonempty set $X \subset \mathbb{R}^n$ is a vector space if $\mathbf{x} + \mathbf{y} \in X$ and $c\mathbf{x} \in X$ for any $\mathbf{x}, \mathbf{y} \in X$ and for all scalar $c$.
+    
+    \item If $\mathbf{x}_1, \cdots, \mathbf{x}_k \in \mathbb{R}^n$ and $c_1, \cdots, c_k$ are scalars, then the vector 
+    \begin{align*}
+        c_1 \mathbf{x}_1 + \cdots + c_k \mathbf{x}_k
+    \end{align*}
+    is called a linear combination of $\mathbf{x}_1, \cdots, \mathbf{x}_k$. If $S \subset \mathbb{R}^n$ and $E$ is the set of all linear combinations of elements of $S$, we say that $S$ spans $E$.
+\end{enumerate}
+\end{definition}
 
+\begin{remark}
+A normed vector space $X$ is a vector space over the real or complex numbers (field $K = \mathbb{R}$ or $\mathbb{C}$), on which a norm is defined. A norm is a real-valued function defined on the vector space that is commonly denoted by $\left\|\cdot\right\|: X \to \mathbb{R}$ that satisfies
+\begin{enumerate}[label=(\roman*)]
+    \item $\left\|x + y\right\| \leq \left\|x\right\| + \left\|y\right\|$ for all $x,y \in X$. \label{remark_71a} 
+    
+    \item $\left\|\alpha x\right\| = \left|\alpha\right| \left\|x\right\|$ for $x \in X$ and $\alpha$ is a scalar. \label{remark_71b}
+    
+    \item $\left\|x\right\| = 0$ if and only if $x = 0$. \label{remark_71c}
+\end{enumerate}
 
+Recall Definition \ref{def_19} of the metric space. By \ref{remark_71a}, the triangle inequality $\left\|x - y\right\| \leq \left\|x - z\right\| + \left\|z - y\right\|$ holds. Combined with \ref{remark_71b} and \ref{remark_71c}, we have that every normed vector space can be considered as a metric space, with distance between $x$ and $y$ being defined by $\left\|\cdot\right\|$ as above.
+\end{remark}
 
+\medskip
 
+\begin{definition}
+A normed vector space $X$ with norm $\left\|\cdot\right\|$ is a Banach space if it is a complete metric space with respect to the metric $d(x,y) = \left\|x - y\right\|$.
+\end{definition}
 
+\medskip
 
+\begin{definition}
+A mapping $A$ of a vector space $X$ into a vector space $Y$ is said to be linear transformation if 
+\begin{align*}
+    A(\mathbf{x}_1 + \mathbf{x}_2) = A \mathbf{x}_1 + A \mathbf{x}_2, \qquad A(c\mathbf{x}) = c A \mathbf{x},
+\end{align*}
+for all $\mathbf{x}, \mathbf{x}_1, \mathbf{x}_2 \in X$ and all scalars $c$. 
+\end{definition}
 
+\begin{remark}
+Note that a linear transformation $A$ of $X$ into $Y$ is determined by its action on any basis: if $\mathbf{x}_1, \cdots, \mathbf{x}_n$ is a basis of $X$, then every $\mathbf{x} \in X$ can be uniquely represented as 
+\begin{align*}
+    \mathbf{x} = \sum^n_{i=1} c_i \mathbf{x}_i,
+\end{align*}
+and the linearity of $A$ allows to compute $A\mathbf{x}$ from the vectors $A\mathbf{x}_1, \cdots, A\mathbf{x}_n$ and the scalars $c_1, \cdots, c_n$ by
+\begin{align*}
+    A\mathbf{x} = \sum^n_{i=1} c_i A \mathbf{x}_i.
+\end{align*}
+Also observe that $A0 = 0$.
+\end{remark}
 
+\medskip
 
+\begin{theorem}
+A linear transformation $A$ on a finite-dimensional vector space $X$ is one-to-one if and only if the range of $A$ is $X$.
+\end{theorem}
+\begin{proof}
+Let $\mathbf{x}_1, \cdots, \mathbf{x}_n$ be a basis of $X$. The linearity of $A$ shows that the range $R_A$ is the span of $A\mathbf{x}_1, \cdots, A\mathbf{x}_n$. Then $R_A = X$ if and only if $Q$ is linearly independent. We need to prove that $A$ is one-to-one if and only if $A\mathbf{x}_1, \cdots, A\mathbf{x}_n$ are linearly independent.
 
+Suppose $A$ is one-to-one, and $\sum^n_{i=1} c_i A \mathbf{x}_i = 0$. Then $A \left(\sum^n_{i=1} c_i \mathbf{x}_i\right) = 0$ and hence $\sum^n_{i=1} c_i \mathbf{x}_i = 0$. Clearly $c_1 = \cdots = c_n = 0$, which shows that $A\mathbf{x}_1, \cdots, A\mathbf{x}_n$ are linearly independent.
 
-
+Conversely, suppose $A \left(\sum^n_{i=1} c_i \mathbf{x}_i\right) = 0$. Then $\sum^n_{i=1} c_i A \mathbf{x}_i = 0$, and hence $c_1 = \cdots = c_n = 0$. This implies $A\mathbf{x} = 0$ only if $\mathbf{x} = 0$. Now if $A\mathbf{x} = A\mathbf{y}$, then $A(\mathbf{x} - \mathbf{y}) = 0$ and hence $\mathbf{x} = \mathbf{y}$, thus $A$ is one-to-one.
+\end{proof}
 
 
 
