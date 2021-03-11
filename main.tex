@@ -5847,7 +5847,75 @@ This is equivalent to
 which proves the theorem.
 \end{proof}
 
+\medskip
 
+\begin{definition}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, be differentiable at $\mathbf{x}_0$. We define gradient as a vector whose components are partial derivatives of $f$ at $\mathbf{x}_0$:
+\begin{align*}
+    \nabla f(\mathbf{x}_0) = \left(\frac{\partial f}{\partial x_1}(\mathbf{x}_0), \cdots, \frac{\partial f}{\partial x_n}(\mathbf{x}_0)\right).
+\end{align*}
+\end{definition}
+
+\medskip
+
+\begin{proposition}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, be differentiable at $\mathbf{x}_0$, then
+\begin{align*}
+    Df(\mathbf{x}_0) \mathbf{v} = \nabla f(\mathbf{x}_0) \cdot \mathbf{v},
+\end{align*}
+for all $\mathbf{v} \in \mathbb{R}^n$. On the right hand side, we have the scalar product of vectors in $\mathbb{R}^n$.
+\end{proposition}
+\begin{proof}
+Since
+\begin{align*}
+    Df(\mathbf{x}_0) = \left[\frac{\partial f}{\partial x_1}(\mathbf{x}_0), \cdots, \frac{\partial f}{\partial x_n}(\mathbf{x}_0)\right],
+\end{align*}
+then for all $\mathbf{v} = \left[v_1, \cdots, v_n\right]^T$, we have
+\begin{align*}
+    Df(\mathbf{x}_0) \mathbf{v} = \left[\frac{\partial f}{\partial x_1}(\mathbf{x}_0), \cdots, \frac{\partial f}{\partial x_n}(\mathbf{x}_0)\right] 
+    \begin{bmatrix}
+        v_1 \\
+        \vdots \\
+        v_n
+    \end{bmatrix} = \frac{\partial f}{\partial x_1}(\mathbf{x}_0) v_1 + \cdots + \frac{\partial f}{\partial x_n}(\mathbf{x}_0) v_n = \nabla f(\mathbf{x}_0) \cdot \mathbf{v}.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{definition}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, and a unit vector $\mathbf{v} \in \mathbb{R}^n$, we define the directional derivative at $\mathbf{x}_0 \in \Omega$ by
+\begin{align*}
+    D_{\mathbf{v}} f(\mathbf{x}_0) = \lim_{t \to 0} \frac{f(\mathbf{x}_0 + t \mathbf{v}) - f(\mathbf{x}_0)}{t}, 
+\end{align*}
+provided the limit exists.
+\end{definition}
+
+\medskip
+
+\begin{proposition}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, be differentiable at $\mathbf{x}_0$, then for every unit vector $\mathbf{v} \in \mathbb{R}^n$, we have
+\begin{align*}
+    D_{\mathbf{v}} f(\mathbf{x}_0) = Df(\mathbf{x}_0) \mathbf{v} = \nabla f(\mathbf{x}_0) \cdot \mathbf{v}.
+\end{align*}
+\end{proposition}
+\begin{proof}
+Since $f$ is differentiable at $\mathbf{x}_0$, we have
+\begin{align*}
+    \lim_{t\to 0} \frac{\left|f(\mathbf{x} + t\mathbf{v}) - f(\mathbf{x}_0) - Df(\mathbf{x})(t\mathbf{v})\right|}{\left|t\mathbf{v}\right|} = 0,
+\end{align*}
+and since $\left|\mathbf{v}\right| = 1$, we have
+\begin{align*}
+    \lim_{t\to 0} \frac{f(\mathbf{x} + t\mathbf{v}) - f(\mathbf{x}_0) - t \cdot Df(\mathbf{x})\mathbf{v}}{t} = 0,
+\end{align*}
+which is equivalent to
+\begin{align*}
+    \lim_{t\to 0} \frac{f(\mathbf{x} + t\mathbf{v}) - f(\mathbf{x}_0)\mathbf{v}}{t} = Df(\mathbf{x}) \mathbf{v},
+\end{align*}
+and the left side is exactly $D_{\mathbf{v}} f(\mathbf{v}_0)$.
+\end{proof}
+
+\medskip
 
 
 
