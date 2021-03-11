@@ -5576,7 +5576,7 @@ Also observe that $A0 = 0$.
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{th_71}
 A linear transformation $A$ on a finite-dimensional vector space $X$ is one-to-one if and only if the range of $A$ is $X$.
 \end{theorem}
 \begin{proof}
@@ -5586,6 +5586,269 @@ Suppose $A$ is one-to-one, and $\sum^n_{i=1} c_i A \mathbf{x}_i = 0$. Then $A \l
 
 Conversely, suppose $A \left(\sum^n_{i=1} c_i \mathbf{x}_i\right) = 0$. Then $\sum^n_{i=1} c_i A \mathbf{x}_i = 0$, and hence $c_1 = \cdots = c_n = 0$. This implies $A\mathbf{x} = 0$ only if $\mathbf{x} = 0$. Now if $A\mathbf{x} = A\mathbf{y}$, then $A(\mathbf{x} - \mathbf{y}) = 0$ and hence $\mathbf{x} = \mathbf{y}$, thus $A$ is one-to-one.
 \end{proof}
+
+\medskip
+
+\begin{definition}\label{def_74}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $L(X,Y)$ be the set of all linear transformation of the vector space $X$ into $Y$. When $X = Y$, instead of $L(X,X)$, we simply write $L(X)$. 
+    
+    \item If $X,Y,Z$ are vector spaces, and if $A \in L(X,Y)$ and $B \in L(Y,Z)$, we define the product $BA$ to be the composition of $A$ and :
+    \begin{align*}
+        (BA)\mathbf{x} = B(A\mathbf{x}), \quad \mathbf{x} \in X,
+    \end{align*}
+    then $BA \in L(X,Z)$. (Note that $BA$ need to to be the same as $AB$, even if $X = Y = Z$.)
+    
+    \item For $A \in L(\mathbb{R}^n,\mathbb{R}^m)$, define the operator norm $\left\|A\right\|$ of $A$ by
+    \begin{align*}
+        \left\|A\right\| = \sup_{\left|\mathbf{x}\right|=1} \left|A\mathbf{x}\right|.
+    \end{align*}
+    Note that the inequality $\left|A\mathbf{x}\right| \leq \left\|A\right\| \left|\mathbf{x}\right|$ holds for all $\mathbf{x} \in \mathbb{R}^n$. Also, if $\lambda$ is such that $\left|A\mathbf{x}\right| \leq \lambda \left|\mathbf{x}\right|$ for all $\mathbf{x} \in \mathbb{R}^n$, then $\left\|A\right\| \leq \lambda$.
+\end{enumerate}
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+~\begin{enumerate}[label=(\alph*)]
+    \item If $A \in L(\mathbb{R}^n,\mathbb{R}^m)$, then $\left\|A\right\| < \infty$ and $A$ is a uniformly continuous mapping of $\mathbb{R}^n$ into $\mathbb{R}^m$.
+    
+    \item If $A, B \in L(\mathbb{R}^n,\mathbb{R}^m)$ and $c$ is a scalar, then
+    \begin{align*}
+        \left\|A + B\right\| \leq \left\|A\right\| + \left\|B\right\|, \quad \left\|cA\right\| = \left|c\right| \left\|A\right\|.
+    \end{align*}
+    
+    \item If $A \in L(\mathbb{R}^n,\mathbb{R}^m)$ and $B \in L(\mathbb{R}^m,\mathbb{R}^k)$, then
+    \begin{align*}
+        \left\|BA\right\| \leq \left\|B\right\| \left\|A\right\|.
+    \end{align*}
+\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $\{e_1, \cdots, e_n\}$ be the standard basis of $\mathbb{R}^n$ and suppose $\mathbf{x} = \sum^n_{i=1} c_i e_i$ and $\left|\mathbf{x}\right| = 1$, then $\left|c_i\right| \leq 1$ for $i = 1,2,\cdots,n$. Then we have
+    \begin{align*}
+        \left|A\mathbf{x}\right| = \left|\sum^n_{i=1} c_i Ae_i\right| \leq \sum^n_{i=1} \left|c_i\right| \left|A e_i\right| \leq \sum^n_{i=1} \left|A e_i\right|,
+    \end{align*}
+    and hence $\left\|A\right\| \leq \sum \left|A e_i\right| < \infty$. 
+    
+    Since $\left|A\mathbf{x} - A\mathbf{y}\right| \leq \left\|A\right\| \left|\mathbf{x} - \mathbf{y}\right|$, $A$ is uniformly continuous.
+    
+    \item It follows from
+    \begin{align*}
+        \left|(A+B)\mathbf{x}\right| = \left|A\mathbf{x} + B\mathbf{x}\right| \leq \left|A\mathbf{x}\right| + \left|B\mathbf{x}\right| \leq \left(\left\|A\right\| + \left\|B\right\|\right) \left|\mathbf{x}\right|.
+    \end{align*}
+    
+    \item Finally, it follows from
+    \begin{align*}
+        \left|(BA)\mathbf{x}\right| = \left|B(A\mathbf{x})\right| \leq \left\|B\right\| \left|A\mathbf{x}\right| \leq \left\|A\right\| \left\|B\right\| \left|\mathbf{x}\right|.
+    \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+With the distance between $A$ and $B$ defined as $\left\|A - B\right\|$, $L(\mathbb{R}^n,\mathbb{R}^m)$ is a metric space. Indeed, if $A, B, C \in L(\mathbb{R}^n,\mathbb{R}^m)$, we have the triangle inequality
+\begin{align*}
+    \left\|A - C\right\| = \left\|(A - B) + (B - C)\right\| \leq \left\|A - B\right\| + \left\|B - C\right\|.
+\end{align*}
+Also, it is obvious that $\left\|A - B\right\|$ has the other properties of a metric.
+\end{remark}
+
+\medskip
+
+\begin{definition}
+Suppose $\{\mathbf{x}_1, \cdots, \mathbf{x}_n\}$ and $\{\mathbf{y}_1, \cdots, \mathbf{y}_m\}$ are bases of vector spaces $X$ and $Y$. Then every $A \in L(X,Y)$ determines a set of numbers $a_{ij}$ such that
+\begin{align*}
+    A\mathbf{x}_j = \sum^m_{i=1} a_{ij} \mathbf{y}_i, \quad 1 \leq j \leq n.
+\end{align*}
+We arrange these numbers in an array of $m$ rows and $n$ columns, called an $m$ by $n$ matrix:
+\begin{align*}
+    A = \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{pmatrix}.
+\end{align*}
+\end{definition}
+
+\medskip
+
+If $\mathbf{x} = \sum^n_{j=1} c_j \mathbf{x}_j$, we have
+\begin{align*}
+    A\mathbf{x} = \sum^m_{i=1} \left(\sum^m_{i=1} a_{ij} c_j\right) \mathbf{y}_i.
+\end{align*}
+Also, the Cauchy-Schwarz inequality shows that
+\begin{align*}
+    \left|A\mathbf{x}\right|^2 = \sum^m_{i=1} \left(\sum^n_{j=1} a_{ij} c_j\right)^2 \leq \sum^m_{i=1} \left(\sum^n_{j=1} a_{ij}^2 \cdot \sum^n_{i=1} c_j\right) = \sum_{i,j} a_{ij}^2 \left|\mathbf{x}\right|^2,
+\end{align*}
+and hence
+\begin{align*}
+    \left\|A\right\| \leq \left(\sum_{i,j} a_{ij}^2\right)^{1/2}.
+\end{align*}
+
+\medskip
+
+
+\section{Differentiation}
+
+\begin{definition}\label{def_76}
+Suppose $\Omega \subset \mathbb{R}^n$ is an open set and $f: \Omega \to \mathbb{R}^m$. If there exists a linear transformation $A \in L(\mathbb{R}^n,\mathbb{R}^m)$ such that
+\begin{align}\label{def_76_equ1}
+    \lim_{\mathbf{h}\to 0} \frac{\left|f(\mathbf{x} + \mathbf{h}) - f(\mathbf{x}) - A\mathbf{h}\right|}{\left|\mathbf{h}\right|} = 0,
+\end{align}
+then we say $f$ is differentiable at $\mathbf{x}$, and we write $A = Df(\mathbf{x})$. If $f$ is differentiable at every $\mathbf{x} \in \Omega$, we say that $f$ is differentiable in $\Omega$.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_73}
+Suppose $\Omega$ and $f$ are defined as in Definition \ref{def_76}, $\mathbf{x} \in \Omega$, and \eqref{def_76_equ1} holds for $A_1$ and $A_2$, then $A_1 = A_2$. In other words, $Df(\mathbf{x})$ is uniquely defined.
+\end{theorem}
+\begin{proof}
+Let $B = A_1 - A_2$, then we have
+\begin{align*}
+    \left|B\mathbf{h}\right| \leq \left|f(\mathbf{x} + \mathbf{h}) - f(\mathbf{x}) - A_1 \mathbf{h}\right| + \left|f(\mathbf{x} + \mathbf{h}) - f(\mathbf{x}) - A_2 \mathbf{h}\right|,
+\end{align*}
+and hence $\left|B\mathbf{h}\right|/\left|\mathbf{h}\right| \to 0$ as $\left|\mathbf{h}\right| \to 0$. For fixed $\mathbf{h} \neq 0$, we have
+\begin{align}\label{th_73_equ1}
+    \lim_{t\to 0} \frac{\left|B(t\mathbf{h}) \right|}{\left|t\mathbf{h} \right|} = 0,
+\end{align}
+and hence the linearity of $B$ shows that \eqref{th_73_equ1} is independent of $t$. Thus $B\mathbf{h} = 0$ for all $\mathbf{h} \in \mathbb{R}^n$, and hence $B = 0$.
+\end{proof}
+
+\medskip
+
+\begin{proposition}\label{prop_71}
+A mapping $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, is differentiable at $\mathbf{x}_0 \in \Omega$ if and only if there are $\varepsilon > 0$, a continuous function $\varphi: B^n(0,\varepsilon) \to \mathbb{R}^m$ such that $\varphi(0) = 0$, where $B^n(0,\varepsilon) = \left\{\mathbf{h} \in \mathbb{R}^n \,:\, \left|\mathbf{h}\right| < \varepsilon\right\}$ and a linear mapping $L: \mathbb{R}^n \to \mathbb{R}^m$ such that
+\begin{align}\label{prop_71_equ1}
+    f(\mathbf{x}_0 + \mathbf{h}) = f(\mathbf{x}_0) + L\mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|,
+\end{align}
+for all $\mathbf{h}$ for which $\left|\mathbf{h}\right| < \varepsilon$. Then, $Df(\mathbf{x}_0) = L$.
+\end{proposition}
+\begin{remark}
+Compare this theorem with Theorem \ref{th_42} \ref{th_42_c}.
+\end{remark}
+\begin{proof}
+Suppose \ref{prop_71_equ1} holds, then
+\begin{align*}
+    \varphi(\mathbf{h}) = \frac{f(\mathbf{x}_0 + \mathbf{h}) - f(\mathbf{x}_0) - L\mathbf{h}}{\left|\mathbf{h}\right|},
+\end{align*}
+letting $\mathbf{h} = \mathbf{x} - \mathbf{x}_0$ implies
+\begin{align*}
+    \frac{f(\mathbf{x}) - f(\mathbf{x}_0) - L(\mathbf{x} - \mathbf{x}_0)}{\left|\mathbf{x} - \mathbf{x}_0\right|} = \varphi(\mathbf{x} - \mathbf{x}_0) \to 0,
+\end{align*}
+as $\mathbf{x} \to \mathbf{x}_0$. Hence by definition, $f$ is differentiable at $\mathbf{x}_0$ and $Df(\mathbf{x}_0) = L$.
+
+Conversely, let $L = Df(\mathbf{x}_0)$ and define 
+\begin{align*}
+    \varphi(\mathbf{h}) = \begin{cases}
+        \frac{f(\mathbf{x}_0 + \mathbf{h}) - f(\mathbf{x}_0) - L\mathbf{h}}{\left|\mathbf{h}\right|}, & \mathbf{h} \neq 0, \\
+        0 \in \mathbb{R}^m, & \mathbf{h} = 0 \in \mathbb{R}^n.
+    \end{cases}
+\end{align*}
+Let $\varepsilon > 0$ be such that $\left|\mathbf{h}\right| < \varepsilon$ implies $\mathbf{x}_0 + \mathbf{h} \in \Omega$, then $\varphi$ is well defined for all $\mathbf{h}$ with $\left|\mathbf{h}\right| < \varepsilon$. Clearly, $\varphi$ is continuous with $\varphi(0) = 0$ and
+\begin{align*}
+    f(\mathbf{x}_0 + \mathbf{h}) = f(\mathbf{x}_0) + L\mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Chain Rule]\label{th_74}
+Let $\Omega \subset \mathbb{R}^n$ be open and $f: \Omega \to \mathbb{R}^m$ be differentiable at $\mathbf{x}_0 \in \Omega$. Let $G \subset \mathbb{R}^m$ be an open set containing $f(\Omega)$ and $g: G \to \mathbb{R}^k$ be differentiable at $f(\mathbf{x}_0)$. Then the mapping $g \circ f: \Omega \to \mathbb{R}^k$ is differentiable at $\mathbf{x}_0$ and
+\begin{align*}
+    D(g \circ f)(\mathbf{x}_0) = Dg(f(\mathbf{x}_0)) \cdot Df(\mathbf{x}_0).
+\end{align*}
+On the right hand side, we have the product of two linear transformation, as defined in Definition \ref{def_74}.
+\end{theorem}
+\begin{proof}
+Let $D(g(f(\mathbf{x}_0)) = A$ and $Df(\mathbf{x}_0) = B$. By Proposition \ref{prop_71}, we have
+\begin{align*}
+    g(f(\mathbf{x}_0 + \mathbf{k})) & = g(f(\mathbf{x}_0)) + A \mathbf{k} + \psi(\mathbf{k}) \left|\mathbf{k}\right|, \\
+    f(\mathbf{x}_0 + \mathbf{h}) & = f(\mathbf{x}_0) + B \mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|.
+\end{align*}
+Then we have
+\begin{align*}
+    g(f(\mathbf{x}_0 + \mathbf{h})) & = g(f(\mathbf{x}_0) + B \mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|) \\
+    & = g(f(\mathbf{x}_0)) + A(B \mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|) + \psi(B \mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|) \left|B \mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|\right| \\
+    & = g(f(\mathbf{x}_0)) + AB \mathbf{h} + \eta(\mathbf{h}) \left|\mathbf{h}\right|,
+\end{align*}
+where $\eta(\mathbf{h}) = A \varphi(\mathbf{h}) + \psi(B \mathbf{h} + \varphi(\mathbf{h}) \left|\mathbf{h}\right|) \left|B \mathbf{h}/\left|\mathbf{h}\right| + \varphi(\mathbf{h})\right|$. Clearly, $\eta(\mathbf{h}) \to 0$ as $\mathbf{h} \to 0$, and letting $\eta(0) = 0$ gives continuity of $\eta$. Hence,
+\begin{align*}
+    g(f(\mathbf{x}_0 + \mathbf{h})) = g(f(\mathbf{x}_0)) + AB \mathbf{h} + \eta(\mathbf{h}) \left|\mathbf{h}\right|,
+\end{align*}
+and thus $g \circ f$ is differentiable at $\mathbf{x}_0$ and $D(g \circ f)(\mathbf{x}_0) = AB = Dg(f(\mathbf{x}_0)) \cdot Df(\mathbf{x}_0)$.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open. Let $\{e_1, \cdots, e_n\}$ and $\{u_1, \cdots, u_m\}$ be the standard bases of $\mathbb{R}^n$ and $\mathbb{R}^m$. The components of $f$ are real functions $f_1, \cdots, f_m$ defined by
+\begin{align*}
+    f(\mathbf{x}) = \sum^m_{i=1} f_i(\mathbf{x}) u_i, \quad \mathbf{x} \in \Omega.
+\end{align*}
+We write it $f = (f_1, \cdots, f_m)$. For $\mathbf{x} \in \Omega$, $1 \leq i \leq m$ and $1 \leq j \leq n$, we define
+\begin{align*}
+    \left(D_jf_i\right)(\mathbf{x}) = \lim_{t\to 0} \frac{f_i(\mathbf{x} + te_j) - f_i(\mathbf{x})}{t},
+\end{align*}
+provided the limit exists. $\left(D_jf_i\right)(\mathbf{x})$ is the derivative of $f_i$ with respect to $x_j$, where $\mathbf{x} = (x_1, \cdots, x_n)$. Then the notation
+\begin{align*}
+    \frac{\partial f_i}{\partial x_j}
+\end{align*}
+is often used, and it is called a partial derivative.
+\end{definition}
+
+\medskip
+
+\begin{theorem}\label{th_75}
+Let $f = (f_1, \cdots, f_m): \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, be differentiable at $\mathbf{x}_0 \in \Omega$, then
+\begin{align*}
+    Df(\mathbf{x}_0)e_j = \sum^m_{i=1} \frac{\partial f_i}{\partial x_j}(\mathbf{x}_0) u_i, \quad 1 \leq j \leq m.
+\end{align*}
+In other words,
+\begin{align*}
+    Df(\mathbf{x}_0) = \begin{pmatrix}
+        \frac{\partial f_1}{\partial x_1}(\mathbf{x}_0) & \frac{\partial f_1}{\partial x_2}(\mathbf{x}_0) & \cdots & \frac{\partial f_1}{\partial x_n}(\mathbf{x}_0) \\
+        \frac{\partial f_2}{\partial x_1}(\mathbf{x}_0) & \frac{\partial f_2}{\partial x_2}(\mathbf{x}_0) & \cdots & \frac{\partial f_2}{\partial x_n}(\mathbf{x}_0) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial x_1}(\mathbf{x}_0) & \frac{\partial f_n}{\partial x_2}(\mathbf{x}_0) & \cdots & \frac{\partial f_n}{\partial x_n}(\mathbf{x}_0)
+    \end{pmatrix},
+\end{align*}
+and this matrix is called Jacobian matrix of $f$ at $\mathbf{x}_0$.
+\end{theorem}
+\begin{proof}
+Since
+\begin{align*}
+    \lim_{\mathbf{x} \to \mathbf{x}_0} \frac{\left|f(\mathbf{x}) - f(\mathbf{x}_0) - Df(\mathbf{x}_0) (\mathbf{x} - \mathbf{x}_0)\right|}{\left|\mathbf{x} - \mathbf{x}_0\right|} = 0,
+\end{align*}
+then in particular for $\mathbf{x} = \mathbf{x}_0 + he_j$, we have
+\begin{align*}
+    \lim_{h \to 0} \frac{f(x_1,\cdots,x_j+h, \cdots,x_n) - f(x_1,\cdots,x_n) - Df(\mathbf{x}_0)(he_j)}{h} = 0,
+\end{align*}
+and hence
+\begin{align*}
+    \lim_{h \to 0} \frac{f(x_1,\cdots,x_j+h, \cdots,x_n) - f(x_1,\cdots,x_n)}{h} = Df(\mathbf{x}_0)e_j.
+\end{align*}
+This is equivalent to
+\begin{align*}
+    \lim_{h \to 0} \begin{pmatrix}
+        \frac{f_1(\mathbf{x}_0 + he_j) - f_1(\mathbf{x}_0)}{h} \\
+        \vdots \\
+        \frac{f_m(\mathbf{x}_0 + he_j) - f_m(\mathbf{x}_0)}{h}
+    \end{pmatrix} = \begin{pmatrix}
+        \frac{\partial f_1}{\partial x_j}(\mathbf{x}_0) \\
+        \vdots \\
+        \frac{\partial f_n}{\partial x_j}(\mathbf{x}_0)
+    \end{pmatrix},
+\end{align*}
+which proves the theorem.
+\end{proof}
+
+
+
 
 
 
