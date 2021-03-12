@@ -3200,7 +3200,7 @@ Since $f$ is not constant, then either $f(c_1) > f(a)$ or $f(c_2) < f(a)$. Suppo
 
 \medskip
 
-\begin{theorem}[Cauchy Mean Value theorem]\label{th_47}
+\begin{theorem}[Cauchy Mean Value]\label{th_47}
 Suppose $f$ and $g$ are continuous real functions on $[a,b]$ which are differentiable in $(a,b)$, and $g'(x) \neq 0$ for all $x \in (a,b)$, then there is a point $c \in (a,b)$ at which 
 \begin{align*}
     \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
@@ -3227,7 +3227,7 @@ This theorem is the {\em generalized mean value theorem}, and the following is t
 
 \medskip
 
-\begin{theorem}[Mean Value theorem]\label{th_48}
+\begin{theorem}[Mean Value]\label{th_48}
 If $f: [a,b] \to \mathbb{R}$ is continuous and differentiable on $(a,b)$, then there is a point $c \in (a,b)$ such that
 \begin{align*}
     f(b) - f(a) = (b - a) f'(c).
@@ -3440,7 +3440,7 @@ Since $P^{(k)}(\alpha) = f^{(k)}(\alpha)$ for $k = 0,1,\cdots,n-1$, we have
 \begin{align*}
     g(\alpha) = g'(\alpha) = g''(\alpha) = \cdots = g^{(n-1)}(\alpha) = 0.
 \end{align*}
-Also, $g(\beta) = 0$, hence by the mean value theorem $g'(x_1) = 0$ for some $x_1$ between $\alpha$ and $\beta$. Since $g'(\alpha) = 0$, hence $g''(x_2) = 0$ for some $x_2$ between $\alpha$ and $x_1$. After $n$ steps we have $g^{(n)}(x_n) = 0$ for some $x_n$ between $\alpha$ and $x_{n-1}$, and hence $f^{(n)}(x_n) = n!M$.
+Also, $g(\beta) = 0$, hence by the Mean Value theorem $g'(x_1) = 0$ for some $x_1$ between $\alpha$ and $\beta$. Since $g'(\alpha) = 0$, hence $g''(x_2) = 0$ for some $x_2$ between $\alpha$ and $x_1$. After $n$ steps we have $g^{(n)}(x_n) = 0$ for some $x_n$ between $\alpha$ and $x_{n-1}$, and hence $f^{(n)}(x_n) = n!M$.
 \end{proof}
 
 \medskip
@@ -3490,7 +3490,7 @@ Thus we can see that L'Hospital's rule fails in this case. However, there is a c
 
 \medskip
 
-\begin{theorem}[Mean Value]
+\begin{theorem}[Mean Value]\label{th_414}
 Suppose $f$ is a continuous mapping of $[a,b]$ into $\mathbb{R}^n$ and $f$ is differentiable in $(a,b)$. Then there exists $x \in (a,b)$ such that
 \begin{align*}
     \left|f(b) - f(a)\right| \leq (b - a) \left|f'(x)\right|.
@@ -4002,7 +4002,7 @@ If $f \in \mathscr{R}$ on $[a,b]$ and if there is a differentiable function $F$ 
 \end{align*}
 \end{theorem}
 \begin{proof}
-Let $\varepsilon > 0$ be given, choose a partition $P = \{x_0,x_1,\cdots,x_n\}$ of $[a,b]$ such that $U(P,f) - L(P,f) < \varepsilon$. By the mean value theorem, there are $t_i \in [x_{i-1},x_i]$ such that 
+Let $\varepsilon > 0$ be given, choose a partition $P = \{x_0,x_1,\cdots,x_n\}$ of $[a,b]$ such that $U(P,f) - L(P,f) < \varepsilon$. By the Mean Value theorem, there are $t_i \in [x_{i-1},x_i]$ such that 
 \begin{align*}
     F(x_i) - F(x_{i-1}) = f(t_i) \Delta x_i, \,\, i = 1,2,\cdots,n.
 \end{align*}
@@ -5805,9 +5805,9 @@ is often used, and it is called a partial derivative.
 
 \begin{theorem}\label{th_75}
 Let $f = (f_1, \cdots, f_m): \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, be differentiable at $\mathbf{x}_0 \in \Omega$, then
-\begin{align*}
+\begin{align}\label{th_75_equ1}
     Df(\mathbf{x}_0)e_j = \sum^m_{i=1} \frac{\partial f_i}{\partial x_j}(\mathbf{x}_0) u_i, \quad 1 \leq j \leq m.
-\end{align*}
+\end{align}
 In other words,
 \begin{align*}
     Df(\mathbf{x}_0) = \begin{pmatrix}
@@ -5916,6 +5916,132 @@ and the left side is exactly $D_{\mathbf{v}} f(\mathbf{v}_0)$.
 \end{proof}
 
 \medskip
+
+\begin{theorem}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, be differentiable at $\mathbf{x}_0$, then $f$ is continuous at $\mathbf{x}_0$. In particular, there is a constant $M > 0$ and $\delta > 0$ such that $\left|\mathbf{x} - \mathbf{x}_0\right| < \delta$ implies 
+\begin{align*}
+    \left|f(\mathbf{x}) - f(\mathbf{x}_0)\right| \leq M \left|\mathbf{x} - \mathbf{x}_0\right|.
+\end{align*}
+In other words, $f$ satisfies a local Lipschitz continuity at $\mathbf{x}_0$.
+\end{theorem}
+\begin{proof}
+Since $f$ is differentiable at $\mathbf{x}_0$, we have
+\begin{align*}
+    \lim_{\mathbf{x} \to \mathbf{x}_0} \frac{\left|f(\mathbf{x}) - f(\mathbf{x}_0) - Df(\mathbf{x}_0) (\mathbf{x} - \mathbf{x}_0)\right|}{\left|\mathbf{x} - \mathbf{x}_0\right|} = 0,
+\end{align*}
+then there is $\delta > 0$ such that $\left|\mathbf{x} - \mathbf{x}_0\right| < \delta$ implies
+\begin{align*}
+    \left|f(\mathbf{x}) - f(\mathbf{x}_0) - Df(\mathbf{x}_0) (\mathbf{x} - \mathbf{x}_0)\right| < \left|\mathbf{x} - \mathbf{x}_0\right|.
+\end{align*}
+By the triangle inequality, we have
+\begin{align*}
+    \left|f(\mathbf{x}) - f(\mathbf{x}_0)\right| & \leq \left|f(\mathbf{x}) - f(\mathbf{x}_0) - Df(\mathbf{x}_0) (\mathbf{x} - \mathbf{x}_0)\right| + \left|Df(\mathbf{x}_0) (\mathbf{x} - \mathbf{x}_0)\right| \\
+    & \leq \left|\mathbf{x} - \mathbf{x}_0\right| + \left\|Df(\mathbf{x})\right\| \left|\mathbf{x} - \mathbf{x}_0\right| \\
+    & = \left(\left\|Df(\mathbf{x})\right\| + 1\right) \left|\mathbf{x} - \mathbf{x}_0\right|,
+\end{align*}
+for $\left|\mathbf{x} - \mathbf{x}_0\right| < \delta$. Letting $M = \left\|Df(\mathbf{x})\right\| + 1$ yields the theorem.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is convex and open, and $f$ is differentiable in $\Omega$. If there is a real number $M > 0$ such that $\left\|Df(\mathbf{x})\right\| \leq M$ for every $\mathbf{x} \in \Omega$, then 
+\begin{align*}
+    \left|f(\mathbf{x}) - f(\mathbf{y})\right| \leq M \left|\mathbf{x} - \mathbf{y}\right|,
+\end{align*}
+for all $\mathbf{x}, \mathbf{y} \in \Omega$.
+\end{theorem}
+\begin{proof}
+Fix $\mathbf{x}, \mathbf{y} \in \Omega$, let $\gamma(t) = (1 - t)\mathbf{x} + t\mathbf{y}$ for $t \in \mathbb{R}$ such that $\gamma(t) \in \Omega$. Since $\Omega$ is convex, $\gamma(t) \in \Omega$ for $0 \leq t \leq 1$. Let $g(t) = f(\gamma(t))$, and by the Chain Rule, we have $Dg(t) = Df(\gamma(t)) \cdot (\mathbf{y} - \mathbf{x})$, and hence
+\begin{align*}
+    \left|Dg(t)\right| \leq \left\|Df(\gamma(t))\right\| \left|\mathbf{y} - \mathbf{x}\right| \leq M \left|\mathbf{y} - \mathbf{x}\right|,
+\end{align*}
+for all $t \in [0,1]$. By Theorem \ref{th_414}, we have
+\begin{align*}
+    \left|f(\mathbf{x}) - f(\mathbf{y})\right| = \left|g(0) - g(1)\right| \leq M \left|\mathbf{y} - \mathbf{x}\right|.
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{corollary}
+If $Df(\mathbf{x}) = 0$ for all $\mathbf{x} \in \Omega$, then $f$ is constant.
+\end{corollary}
+\begin{proof}
+Note the above theorem holds now for $M = 0$.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+A differentiable mapping $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open, is said to be continuously differentiable in $\Omega$ if $Df$ is a continuous mapping of $\Omega$ into $\mathbb{R}^m$. And we say that $f$ is a $C^1$-mapping, or $f \in C^1(\Omega)$.
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open. Then $f \in C^1(\Omega)$ if and only if the partial derivative $\partial f_i/\partial x_j$ exists and continuous on $\Omega$ for all $1 \leq i \leq m$ and $1 \leq i \leq n$.
+\end{theorem}
+\begin{proof}
+Suppose $f \in C^1(\Omega)$ and by \eqref{th_75_equ1}, we have
+\begin{align*}
+    \frac{\partial f_i}{\partial x_j}(\mathbf{x}) = \left(Df(\mathbf{x}) e_j\right) \cdot u_i,
+\end{align*}
+for all $i,j$ and all $\mathbf{x} \in \Omega$. Hence 
+\begin{align*}
+    \frac{\partial f_i}{\partial x_j}(\mathbf{x}) - \frac{\partial f_i}{\partial x_j}(\mathbf{y}) = \left\{[Df(\mathbf{x}) - Df(\mathbf{y})] e_j\right\} \cdot u_i,
+\end{align*}
+and since $\left|e_j\right| = \left|u_i\right| = 1$, we have
+\begin{align*}
+    \left|\frac{\partial f_i}{\partial x_j}(\mathbf{x}) - \frac{\partial f_i}{\partial x_j}(\mathbf{y})\right| \leq \left|[Df(\mathbf{x}) - Df(\mathbf{y})] e_j\right| \leq \left|Df(\mathbf{x}) - Df(\mathbf{y})\right|,
+\end{align*}
+and the continuity of $\partial f_i/\partial x_j$ follows.
+
+Conversely, it suffices to prove it when $m = 1$. Fix $\mathbf{x} \in \Omega$ and $\varepsilon > 0$. Since $\Omega$ is open and there is an open ball $B(\mathbf{x}, r) \subset \Omega$ such that
+\begin{align*}
+    \left|\frac{\partial f_i}{\partial x_j}(\mathbf{y}) - \frac{\partial f_i}{\partial x_j}(\mathbf{x})\right| < \frac{\varepsilon}{n},
+\end{align*}
+for $\mathbf{y} \in B$ and $1 \leq j \leq n$. Suppose $\mathbf{h} = \sum^n_{i=1} h_i e_i$ and $\left|\mathbf{h}\right| < r$. Let $\mathbf{v}_0 = 0$ and $\mathbf{v}_k = \sum^k_{i=1} h_i e_i$ for $1 \leq k \leq n$, then
+\begin{align*}
+    f(\mathbf{x} + \mathbf{h}) - f(\mathbf{x}) = \sum^n_{i=1} \left(f(\mathbf{x} + \mathbf{v}_j) - f(\mathbf{x} + \mathbf{v}_{j-1})\right).
+\end{align*}
+Since $\left|\mathbf{v}_k\right| < r$ for $1 \leq k \leq n$ and $S$ is convex, the segments connecting $\mathbf{x} + \mathbf{v}_j$ and $\mathbf{x} + \mathbf{v}_{j-1}$ lie in $S$. Since $\mathbf{v}_j = \mathbf{v}_{j-1} + h_j e_j$, by the Mean Value theorem \ref{th_48}, we have
+\begin{align*}
+    f(\mathbf{x} + \mathbf{v}_j) - f(\mathbf{x} + \mathbf{v}_{j-1}) = h_j\frac{\partial f}{\partial x_j}(\mathbf{x} + \mathbf{v}_{j-1} + \theta_j h_j e_j), \quad j = 1,\cdots,n,
+\end{align*}
+for some $\theta_j \in (0,1)$. Then we have
+\begin{align*}
+    \left|f(\mathbf{x} + \mathbf{h}) - f(\mathbf{x}) - \sum^n_{i=1} h_i \frac{\partial f}{\partial x_j}(\mathbf{x}) \right| & = \left|\sum^n_{i=1} h_i \left( \frac{\partial f}{\partial x_j}(\mathbf{x} + \mathbf{v}_{j-1} + \theta_j h_j e_j) - \frac{\partial f}{\partial x_j}(\mathbf{x}) \right) \right| < \sum^n_{i=1} h_i \frac{\varepsilon}{n} < \left|\mathbf{h}\right| \varepsilon,
+\end{align*}
+for all $\mathbf{h}$ such that $\left|\mathbf{h}\right| < r$. This implies that $f$ is differentiable at $\mathbf{x}$ and $Df$ is the linear function which assigns $\sum^n_{i=1} h_i (\partial f/\partial x_j)(\mathbf{x})$ to the vector $\mathbf{h} = \sum^n_{i=1} h_i e_i$ and thus the theorem follows.
+\end{proof}
+
+\medskip
+
+Now we discuss another Mean Value theorem.
+
+\medskip
+
+\begin{theorem}[Mean Value]\label{th_79}
+Let $f: \Omega \to \mathbb{R}^m$ be differentiable on an open set $\Omega \subset \mathbb{R}^n$. Then for any $\mathbf{x}, \mathbf{y} \in \Omega$ such that the segment connecting $\mathbf{x}$ and $\mathbf{y}$ lies in $\Omega$, then there is a point $\mathbf{c}$ on this segment such that
+\begin{align*}
+    f(\mathbf{y}) - f(\mathbf{x}) = Df(\mathbf{c}) \cdot (\mathbf{y} - \mathbf{x}).
+\end{align*}
+\end{theorem}
+\begin{proof}
+Let $h(t) = f((1 - t)\mathbf{x} + t\mathbf{y}), t \in [0,1]$. Clearly, $h$ is differentiable and by the Chain Rule, we have
+\begin{align*}
+    h'(t) = Df((1 - t)\mathbf{x} + t\mathbf{y}) \cdot (\mathbf{y} - \mathbf{x}).
+\end{align*}
+Now by the Mean Value theorem of one variable (see Theorem \ref{th_48}), for some $t \in (0,1)$, we have
+\begin{align*}
+    f(\mathbf{y}) - f(\mathbf{x}) = h(1) - h(0) = h'(t) = Df((1 - t)\mathbf{x} + t\mathbf{y}) \cdot (\mathbf{y} - \mathbf{x}),
+\end{align*}
+and letting $\mathbf{c} = (1 - t)\mathbf{x} + t\mathbf{y}$ proves the theorem.
+\end{proof}
+
+
+
 
 
 
