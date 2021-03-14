@@ -3200,7 +3200,7 @@ Since $f$ is not constant, then either $f(c_1) > f(a)$ or $f(c_2) < f(a)$. Suppo
 
 \medskip
 
-\begin{theorem}[Cauchy Mean Value]\label{th_47}
+\begin{theorem}[Cauchy Mean Value Theorem]\label{th_47}
 Suppose $f$ and $g$ are continuous real functions on $[a,b]$ which are differentiable in $(a,b)$, and $g'(x) \neq 0$ for all $x \in (a,b)$, then there is a point $c \in (a,b)$ at which 
 \begin{align*}
     \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
@@ -3223,11 +3223,11 @@ By Rolle theorem \ref{th_46}, there is $c \in (a,b)$ such that $h(c) = 0$ and th
 
 \medskip
 
-This theorem is the {\em generalized mean value theorem}, and the following is the easy one, the one called {\em mean value theorem}.
+This theorem is the {\em generalized Mean Value theorem}, and the following is the easy one, the one called {\em mean value theorem}.
 
 \medskip
 
-\begin{theorem}[Mean Value]\label{th_48}
+\begin{theorem}[Mean Value Theorem]\label{th_48}
 If $f: [a,b] \to \mathbb{R}$ is continuous and differentiable on $(a,b)$, then there is a point $c \in (a,b)$ such that
 \begin{align*}
     f(b) - f(a) = (b - a) f'(c).
@@ -3490,7 +3490,7 @@ Thus we can see that L'Hospital's rule fails in this case. However, there is a c
 
 \medskip
 
-\begin{theorem}[Mean Value]\label{th_414}
+\begin{theorem}[Mean Value Theorem]\label{th_414}
 Suppose $f$ is a continuous mapping of $[a,b]$ into $\mathbb{R}^n$ and $f$ is differentiable in $(a,b)$. Then there exists $x \in (a,b)$ such that
 \begin{align*}
     \left|f(b) - f(a)\right| \leq (b - a) \left|f'(x)\right|.
@@ -5944,7 +5944,7 @@ for $\left|\mathbf{x} - \mathbf{x}_0\right| < \delta$. Letting $M = \left\|Df(\m
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{th_77}
 Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is convex and open, and $f$ is differentiable in $\Omega$. If there is a real number $M > 0$ such that $\left\|Df(\mathbf{x})\right\| \leq M$ for every $\mathbf{x} \in \Omega$, then 
 \begin{align*}
     \left|f(\mathbf{x}) - f(\mathbf{y})\right| \leq M \left|\mathbf{x} - \mathbf{y}\right|,
@@ -6022,7 +6022,7 @@ Now we discuss another Mean Value theorem.
 
 \medskip
 
-\begin{theorem}[Mean Value]\label{th_79}
+\begin{theorem}[Mean Value Theorem]\label{th_79}
 Let $f: \Omega \to \mathbb{R}^m$ be differentiable on an open set $\Omega \subset \mathbb{R}^n$. Then for any $\mathbf{x}, \mathbf{y} \in \Omega$ such that the segment connecting $\mathbf{x}$ and $\mathbf{y}$ lies in $\Omega$, then there is a point $\mathbf{c}$ on this segment such that
 \begin{align*}
     f(\mathbf{y}) - f(\mathbf{x}) = Df(\mathbf{c}) \cdot (\mathbf{y} - \mathbf{x}).
@@ -6039,6 +6039,238 @@ Now by the Mean Value theorem of one variable (see Theorem \ref{th_48}), for som
 \end{align*}
 and letting $\mathbf{c} = (1 - t)\mathbf{x} + t\mathbf{y}$ proves the theorem.
 \end{proof}
+
+\medskip
+
+\begin{proposition}
+Let $f: \Omega \to \mathbb{R}^m$, where $\Omega \subset \mathbb{R}^n$ is open and $f \in C^1(\Omega)$. Then for any $\mathbf{x}, \mathbf{y} \in \Omega$ such that the segment connecting $\mathbf{x}$ and $\mathbf{y}$ lies in $\Omega$, we have
+\begin{align*}
+    f(\mathbf{y}) - f(\mathbf{x}) = \int^1_0 Df(\mathbf{x} + t(\mathbf{y} - \mathbf{x})) \cdot (\mathbf{y} - \mathbf{x}) \,dt.
+\end{align*}
+\end{proposition}
+\begin{proof}
+Let $h(t) = f(\mathbf{x} + t(\mathbf{y} - \mathbf{x}), t \in [0,1]$, And as before, we have
+\begin{align*}
+    h'(t) = Df((1 - t)\mathbf{x} + t\mathbf{y}) \cdot (\mathbf{y} - \mathbf{x}).
+\end{align*}
+Continuity of the partial derivatives of $f$ implies the continuity of $h'$ and hence
+\begin{align*}
+    f(\mathbf{y}) - f(\mathbf{x}) = h(1) - h(0) = \int^1_0 h'(t) \,dt = \int^1_0 Df(\mathbf{x} + t(\mathbf{y} - \mathbf{x})) \cdot (\mathbf{y} - \mathbf{x}) \,dt.
+\end{align*}
+\end{proof}
+
+\medskip
+
+
+
+
+\section{The Banach Contraction Principle}
+
+Now we need to talk about a fixed point theorem which holds in any complete metric spaces. It will be used in the Inverse Function theorem.
+
+\medskip
+
+\begin{definition}
+Let $X$ be a metric space, with the metric $d$. Let $f: X \to X$ and if there is a number $c < 1$ such that 
+\begin{align}\label{def_711_equ1}
+    d(f(x),f(y)) \leq c d(x,y),
+\end{align}
+for all $x,y \in X$, then $f$ is said to be a contraction of $X$ into $X$. 
+\end{definition}
+
+\medskip
+
+\begin{theorem}[The Banach Contraction Principle]\label{th_710}
+If $X$ is a complete metric space, and if $f$ is a contraction of $X$ into $X$, then there exists one and only one fixed point $x \in X$ such that $f(x) = x$.
+\end{theorem}
+
+\begin{remark}
+In other words, $f$ has a unique fixed point. The uniqueness is trivial since if $f(x) = x$ and $f(y) = y$, then $d(x,y) = d(f(x),f(y)) \leq c d(x,y)$ for $c < 1$, which it is only possible when $d(x,y) = 0$.
+\end{remark}
+
+\begin{proof}
+Pick $x_0 \in X$ be arbitrary, and define $\{x_n\}$ by 
+\begin{align*}
+    x_{n+1} = f(x_n), \quad n = 0,1,2,\cdots.
+\end{align*}
+Let $c < 1$ such that \eqref{def_711_equ1} holds. For $n \geq 1$, we have
+\begin{align*}
+    d(x_n,x_{n+1}) = d(f(x_{n-1}),f(x_n)) \leq c d(x_{n-1},x_n).
+\end{align*}
+Hence, the induction gives
+\begin{align*}
+    d(x_n,x_{n+1}) \leq c^n d(x_1, x_0), \quad n = 0,1,2,\cdots.
+\end{align*}
+If $n < m$, it follows that
+\begin{align*}
+    d(x_n,x_m) & \leq \sum^m_{i=n+1} d(x_i,x_{i-1}) \\
+    & \leq \left(c^n + c^{n+1} + \cdots + c^{m-1}\right) d(x_1,x_0) \\
+    & = c^n \left(1 + c^1 + \cdots + c^{m-n-1}\right) d(x_1,x_0) \\
+    & \leq c^n \left(\sum^\infty_{i=0} c^i \right) d(x_1,x_0)  \\
+    & = \frac{c^n}{1 - c} d(x_1,x_0).
+\end{align*}
+Thus $\{x_n\}$ is a Cauchy sequence. Since $X$ is complete, then $x_n \to x \in X$. Since $f$ is a contraction, then $f$ is continuous (uniformly continuous on $X$), and hence we have
+\begin{align*}
+    f(x) = \lim_{n\to\infty} x_n = x.
+\end{align*}
+\end{proof}
+
+\medskip
+
+
+\section{The Inverse Function Theorem}
+
+The Inverse Function theorem states that a continuously differentiable mapping $f$ is invertible in a neighborhood of any point $\mathbf{x}$ at which the linear transformation $Df(\mathbf{x})$ is invertible.
+
+\medskip
+
+\begin{lemma}\label{lemma_71}
+Let $\operatorname{GL}(\mathbb{R}^n)$ be the set of all invertible linear operators on $\mathbb{R}^n$. If $A \in \operatorname{GL}(\mathbb{R}^n)$ and $B \in L(\mathbb{R}^n)$ and 
+\begin{align*}
+    \left\|B - A\right\| \cdot \left\|A^{-1}\right\| < 1,
+\end{align*}
+then $B \in \operatorname{GL}(\mathbb{R}^n)$.
+\end{lemma}
+\begin{proof}
+Let $\left\|A^{-1}\right\| = 1/\alpha$ and $\left\|B - A\right\| = \beta$, then $\beta < \alpha$. For every $\mathbf{x} \in \mathbb{R}^n$, we have
+\begin{align*}
+    \alpha \left|\mathbf{x}\right| & = \alpha \left|A^{-1} A \mathbf{x}\right| \leq \alpha \left\|A^{-1}\right\| \cdot \left|A\mathbf{x}\right| = \left|A\mathbf{x}\right| \\
+    & \leq \left|(A - B)\mathbf{x}\right| + \left|B\mathbf{x}\right| \leq \beta \left|\mathbf{x}\right| + \left|B\mathbf{x}\right|,
+\end{align*}
+and hence
+\begin{align}\label{lemma_71_equ1}
+    (\alpha - \beta)\left|\mathbf{x} \right| \leq \left|B\mathbf{x}\right|, \quad \mathbf{x} \in \mathbb{R}^n.
+\end{align}
+Since $\alpha - \beta > 0$, we have $B\mathbf{x} \neq 0$ if $\mathbf{x} \neq 0$, hence $B$ is one-to-one. Thus $B \in \operatorname{GL}(\mathbb{R}^n)$. This holds for all $B$ with $\left\|B - A\right\| < \alpha$, and hence $\operatorname{GL}(\mathbb{R}^n)$ is open.
+\end{proof}
+
+\medskip
+
+\begin{lemma}\label{lemma_72}
+The set $\operatorname{GL}(\mathbb{R}^n)$ is an open subset of $L(\mathbb{R}^n)$, and the mapping $A \mapsto A^{-1}$ for $A \in \operatorname{GL}(\mathbb{R}^n)$ is continuous on $\operatorname{GL}(\mathbb{R}^n)$. (This mapping is also obviously a one-to-one mapping of $\operatorname{GL}(\mathbb{R}^n)$ onto $\operatorname{GL}(\mathbb{R}^n)$, which is its own inverse.)
+\end{lemma}
+\begin{proof}
+Replacing $\mathbf{x}$ by $B^{-1} \mathbf{y}$ in \eqref{lemma_71_equ1} yields
+\begin{align*}
+    (\alpha - \beta)\left|B^{-1} \mathbf{y}\right| \leq \left|B B^{-1} \mathbf{y}\right| = \left|\mathbf{y}\right|, \quad \mathbf{y} \in \mathbb{R}^n,
+\end{align*}
+which implies
+\begin{align*}
+    \left\|B^{-1}\right\| \leq \frac{1}{\alpha - \beta}.
+\end{align*} 
+Then the identity $B^{-1} - A^{-1} = B^{-1} (A - B) A^{-1}$ implies that
+\begin{align*}
+    \left\|B^{-1} - A^{-1}\right\| \leq \left\|B^{-1}\right\| \left\|A - B\right\| \left\|A^{-1}\right\| \leq \frac{\beta}{\alpha(\alpha - \beta)} = \frac{1}{\alpha^2/\beta - \alpha},
+\end{align*}
+and the right hand side tends to $0$ as $B \to A$, which proves the continuity of the mapping $A \mapsto A^{-1}$.
+\end{proof}
+    
+\medskip
+
+\begin{definition}
+Let $f: \Omega \to \mathbb{R}^n$, where $\Omega \subset \mathbb{R}^n$ is open. Suppose $f$ is differentiable at $\mathbf{x} \in  \Omega$, we define the Jacobian determinant $Jf(\mathbf{x})$ at $\mathbf{x}$ by
+\begin{align*}
+    Jf(\mathbf{x}) = \det Df(\mathbf{x}).
+\end{align*}
+\end{definition}
+
+\medskip
+
+\begin{theorem}[Inverse Function Theorem]\label{th_711}
+Let $f: \Omega \to \mathbb{R}^n$, where $\Omega \subset \mathbb{R}^n$ is open and $f \in C^1(\Omega)$. Suppose $Df(\mathbf{x}_0)$ is invertible for some $\mathbf{x}_0 \in \Omega$ and $\mathbf{y}_0 = f(\mathbf{x}_0)$. Then
+\begin{enumerate}[label=(\alph*)]
+    \item there exist open neighborhood $U, V \in \mathbb{R}^n$ such that $\mathbf{x}_0 \in U$, $\mathbf{y}_0 \in V$ such that $f$ is one-to-one on $U$ and $f(U) = V$; \label{th_711_a}
+    
+    \item if $f^{-1}: V \to U$ is the inverse of $f$ (which exists, by \ref{th_711_a}), defined on $V$ by
+    \begin{align*}
+        f^{-1}(f(\mathbf{x})) = x, \quad \mathbf{x} \in U,
+    \end{align*}
+    then $f^{-1} \in C^1(V)$. Also, we have
+    \begin{align*}
+        Df^{-1}(\mathbf{y}) = \frac{1}{Df(\mathbf{x})},
+    \end{align*}
+    for $\mathbf{y} \in V$ and $\mathbf{x} = f^{-1}(\mathbf{y}) \in U$. \label{th_711_b}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+~\begin{enumerate}[label=(\alph*)]
+    \item Let $Df(\mathbf{x}_0) = A$, and choose $\lambda$ such that $2 \lambda \left\|A^{-1}\right\| = 1$. Since $Df$ is differentiable at $\mathbf{x}_0$, there is an open ball $U \subset \Omega$ of $\mathbf{x}_0$ such that 
+    \begin{align}\label{th_711_equ1}
+        \left\|Df(\mathbf{x}) - A\right\| < \lambda, \quad \mathbf{x} \in U.
+    \end{align}
+    
+    For each $\mathbf{y} \in \mathbb{R}^n$ we define a function $\varphi$ by
+    \begin{align*}
+        \varphi^{\mathbf{y}}(\mathbf{x}) = \mathbf{x} + A^{-1} \left(\mathbf{y} - f(\mathbf{x})\right), \quad \mathbf{x} \in \Omega.
+    \end{align*}
+    
+    {\em Note that $f(\mathbf{x}) = \mathbf{y}$ if and only if $\mathbf{x}$ is a fixed point of $\varphi^{\mathbf{y}}(\mathbf{x})$.} 
+    
+    Since $D\varphi^{\mathbf{y}}(\mathbf{x}) = I - A^{-1} Df(\mathbf{x}) = A^{-1}\left(A - Df(\mathbf{x})\right)$, if $\mathbf{x} \in U$, by \ref{th_711_equ1}, we have
+    \begin{align*}
+        \left\|D\varphi^{\mathbf{y}}(\mathbf{x})\right\| \leq \left\|A^{-1}\right\| \left\|Df(\mathbf{x}) - A\right\| < \lambda \left\|A^{-1}\right\| < \frac{1}{2}.
+    \end{align*}
+    Hence by Theorem \ref{th_77} and $U$ is convex, we have
+    \begin{align}\label{th_711_equ2}
+        \left|\varphi^{\mathbf{y}}(\mathbf{x}_1) - \varphi^{\mathbf{y}}(\mathbf{x}_2)\right| \leq \frac{1}{2} \left|\mathbf{x}_1 - \mathbf{x}_2\right|,
+    \end{align}
+    for $\mathbf{x}_1, \mathbf{x}_2 \in U$. It follows that $\varphi^{\mathbf{y}}$ has at most one fixed point in $U$, and hence $f(\mathbf{x}) = \mathbf{y}$ for at most one $\mathbf{x} \in U$. Thus $f$ is one-to-one in $U$.
+    
+    \medskip
+    
+    Next, let $V = f(U)$, and let $\mathbf{y}_0 \in V$. Then $\mathbf{y}_0 = f(\mathbf{x}_0)$ for some $\mathbf{x}_0 \in U$. Let $B(\mathbf{x}_0,r)$ be an open ball such that $\overline{B} \subset U$. We will show that $\mathbf{y} \in V$ whenever $\left|\mathbf{y} - \mathbf{y}_0\right| < \lambda r$, which proves that $V$ is open.
+    
+    Fix $\mathbf{y}$ such that $\left|\mathbf{y} - \mathbf{y}_0\right| < \lambda r$. Then we have
+    \begin{align*}
+        \left|\varphi^{\mathbf{y}}(\mathbf{x}_0) - \mathbf{x}_0\right| = \left|A^{-1}\left(\mathbf{y} - f(\mathbf{x}_0)\right)\right| = \left|A^{-1}\left(\mathbf{y} - \mathbf{y}_0\right)\right| < \lambda r \left\|A^{-1}\right\| = \frac{r}{2}.
+    \end{align*}
+    If $\mathbf{x} \in \overline{B}$, then by \eqref{th_711_equ2}, we have
+    \begin{align*}
+        \left|\varphi^{\mathbf{y}}(\mathbf{x}) - \mathbf{x}_0\right| \leq \left|\varphi^{\mathbf{y}}(\mathbf{x}) - \varphi^{\mathbf{y}}(\mathbf{x}_0)\right| + \left|\varphi^{\mathbf{y}}(\mathbf{x}_0) - \mathbf{x}_0\right| < \frac{1}{2} \left|\mathbf{x} - \mathbf{x}_0\right| + \frac{r}{2} = r,
+    \end{align*}
+    hence $\varphi^{\mathbf{y}}(\mathbf{x}) \in \overline{B}$. Thus $\varphi^{\mathbf{y}}$ is a contraction of $\overline{B}$ into $\overline{B}$, and since $\overline{B}$ is complete, by Theorem \ref{th_710}, $\varphi^{\mathbf{y}}$ has a fixed point $\mathbf{x} \in \overline{B}$. For this $\mathbf{x}$, $f(\mathbf{x}) = \mathbf{y}$. Thus, $\mathbf{y} \in \overline{B} \subset f(U) = V$. 
+    
+    \item Let $\mathbf{y} \in V$ and $\mathbf{y} + \mathbf{k} \in V$. Then there exist $\mathbf{x}, \mathbf{x} + \mathbf{h} \in U$ such that $\mathbf{y} = f(\mathbf{x})$ and $\mathbf{y} + \mathbf{k} = f(\mathbf{x} + \mathbf{h})$. Then we have
+    \begin{align*}
+        \varphi^{\mathbf{y}}(\mathbf{x} + \mathbf{h}) - \varphi^{\mathbf{y}}(\mathbf{x}) = \mathbf{h} + A^{-1} \left(f(\mathbf{x}) - f(\mathbf{x} + \mathbf{h})\right) = \mathbf{h} + A^{-1} \mathbf{k}.
+    \end{align*}
+    By \eqref{th_711_equ2}, we have $\left|\mathbf{h} + A^{-1} \mathbf{k}\right| \leq 1/2 \left|\mathbf{h}\right|$, and hence $\left|A^{-1} \mathbf{k}\right| \geq 1/2 \left|\mathbf{h}\right|$. Hence, 
+    \begin{align}\label{th_711_equ3}
+        \left|\mathbf{h}\right| \leq 2 \left\|A^{-1}\right\| \left|\mathbf{k}\right| = \lambda^{-1} \left|\mathbf{k}\right|.
+    \end{align}
+    
+    By Lemma \ref{lemma_71} and \eqref{th_711_equ1}, we have
+    \begin{align*}
+        \left\|Df(\mathbf{x}) - A\right\| \cdot \left\|A^{-1}\right\| < \lambda \frac{1}{2\lambda} < 1,
+    \end{align*}
+    and hence $Df(\mathbf{x})$ has an inverse, denoted by $T$. Since 
+    \begin{align*}
+        f^{-1}(\mathbf{y} + \mathbf{k}) - f^{-1}(\mathbf{y}) - T \mathbf{k} = \mathbf{h} - T \mathbf{k} = -T \left(f(\mathbf{x} + \mathbf{h}) - f(\mathbf{x}) - Df(\mathbf{x}) \mathbf{h}\right),
+    \end{align*}
+    \eqref{th_711_equ3} implies that
+    \begin{align*}
+        \frac{\left|f^{-1}(\mathbf{y} + \mathbf{k}) - f^{-1}(\mathbf{y}) - T \mathbf{k}\right|}{\left|\mathbf{k}\right|} \leq \frac{\left\|T\right\|}{\lambda} \cdot \frac{\left|f(\mathbf{x} + \mathbf{h}) - f(\mathbf{x}) - Df(\mathbf{x}) \mathbf{h}\right|}{\left|\mathbf{h}\right|}.
+    \end{align*}
+    As $\mathbf{k} \to 0$, \eqref{th_711_equ3} implies that $\mathbf{kh} \to 0$ and hence the right hand side tends to $0$, so do the left hand side. Hence we proved that $Df^{-1}(\mathbf{y}) = T$, thus
+    \begin{align*}
+        Df^{-1}(\mathbf{y}) = \frac{1}{Df(\mathbf{x})}, \quad \mathbf{y} \in V,
+    \end{align*}
+    where $\mathbf{y} = f(\mathbf{x})$.
+    
+    Note that $f^{-1}$ is a continuous mapping from $V$ into $U$ (since $f^{-1}$ is differentibale), and $Df$ is a continuous mapping of $U$ into the set $\operatorname{GL}(\mathbb{R}^n)$, and that $Df \mapsto \left(Df\right)^{-1}$ is a continuous mapping of $\operatorname{GL}(\mathbb{R}^n)$ into $\operatorname{GL}(\mathbb{R}^n)$ by Lemma \ref{lemma_72}, thus $f^{-1} \in C^1(V)$.
+\end{enumerate}
+\end{proof}
+
+\medskip
+
+The following result is an immediate consequence of part \ref{th_711_a} of the Inverse Function theorem.
+
+\medskip
+
+\begin{theorem}
+Let $f: \Omega \to \mathbb{R}^n$, where $\Omega \subset \mathbb{R}^n$ is open and $f \in C^1(\Omega)$. If $Df(\mathbf{x})$ is invertible for every $\mathbf{x} \in \Omega$, then $f(U)$ is an open subset of $\mathbb{R}^n$ for every open set $U \subset \Omega$.
+\end{theorem}
+
 
 
 
