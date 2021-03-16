@@ -6271,6 +6271,213 @@ The following result is an immediate consequence of part \ref{th_711_a} of the I
 Let $f: \Omega \to \mathbb{R}^n$, where $\Omega \subset \mathbb{R}^n$ is open and $f \in C^1(\Omega)$. If $Df(\mathbf{x})$ is invertible for every $\mathbf{x} \in \Omega$, then $f(U)$ is an open subset of $\mathbb{R}^n$ for every open set $U \subset \Omega$.
 \end{theorem}
 
+\medskip
+
+\begin{remark}
+If we assume $f \in C^k(\Omega), k \geq 1$ in Theorem \ref{th_711}, then $f^{-1} \in C^k(\Omega)$ as well. Here, $C^k(\Omega)$ is the set of all functions defined on $\Omega$ whose all partial derivatives of orders less than or equal to $k$ are continuous. (We will talk about the derivatives of higher order later). 
+\end{remark}
+\begin{proof}
+We claim that the mapping $T: A \mapsto A^{-1}$ is of class $C^\infty$. Indeed, if $A = \left(a_{ij}\right)^n_{i,j}$, then the entries of the matrix $A^{-1}$ are of the form
+\begin{align}\label{remark_76_equ1}
+    \frac{P(a_{11}, \cdots, a_{nn})}{Q(a_{11}, \cdots, a_{nn})},
+\end{align}
+where $P, Q$ are polynomials and $Q \neq 0$\footnote{Indeed, from linear algebra, we have $A^{-1} = \operatorname{adj}(A)/\det A$. Here, $\operatorname{adj}(A)$ is the classical adjoint matrix of $A$ and $\operatorname{adj}(A)_{ij} = (-1)^{i+j} A_{ji}$, where $(-1)^{i+j} A_{ji} = C_{ji}$ is the cofactor of $A$, defined by $(-1)^{i+j}$ times the determinant of $(n-1) \times (n-1)$ matrix by deleting the $j$th row and $i$th column of $A$.}. In fact, $Q(a_{11}, \cdots, a_{nn}) = \det A$, and clearly \eqref{remark_76_equ1} is a $C^\infty$ function of $a_{11}, \cdots, a_{nn}$. 
+
+We will prove that $Df^{-1} \in C^k$ using the so called {\em bootstrap} argument. Since $f^{-1}$ is continuous, then $Df \in C^{k-1}$, and since the mapping $T: A \to A^{-1}$ is of class $C^\infty$, we have that $Df^{-1} = T \circ Df$ is continuous. Thus $f^{-1} \in C^1$.  
+
+Now we have $f^{-1} \in C^1$, $Df \in C^{k-1}$, and $T \in C^\infty$, then $Df^{-1} \in C^1$ and hence $f^{-1} \in C^2$. Continue this process and we finally have $f^{-1} \in C^{k-1}$, $Df \in C^{k-1}$, and $T \in C^\infty$, then $Df^{-1} \in C^{k-1}$ and hence $f^{-1} \in C^k$.
+\end{proof}
+
+\medskip
+
+\begin{definition}
+If $U, V \subset \mathbb{R}^n$ are open, $f: U \to V$ is of class $C^k, k \geq 1$, one-to-one and onto, and $f^{-1}: V \to U$ is of class $C^k$, then we say $f$ is a $C^k$ diffeomorphism of $U$ and $V$.
+\end{definition}
+
+\begin{remark}
+By the Inverse Function theorem, if $f: \Omega \to \mathbb{R}^n, \Omega \subset \mathbb{R}^n$ is of class $C^k$ and $Jf(\mathbf{x}) \neq 0$, then $f$ is a $C^k$ diffeomorphism in a neighborhood of $\mathbf{x}$.
+\end{remark}
+
+\medskip
+
+\begin{proposition}\label{prop_75}
+Let $U,V \subset \mathbb{R}^n$ be open. A one-to-one and onto mapping $f: U \to V$ of class $C^k, k \geq 1$ is a $C^k$ diffeomorphism if and only if $Jf(\mathbf{x}) \neq 0$ for every $\mathbf{x} \in U$.
+\end{proposition}
+\begin{proof}
+Suppose $Jf(\mathbf{x}) \neq 0$ for every $\mathbf{x} \in U$, then the result is obvious. Conversely, we have $f^{-1} \circ f(\mathbf{x}) = \mathbf{x}$, and hence $I = D(f^{-1} \circ f)(\mathbf{x}) = Df^{-1}(f(\mathbf{x})) \cdot Df(\mathbf{x})$. Clearly, $Df(\mathbf{x})$ is invertible and hence $Jf(\mathbf{x}) \neq 0$.
+\end{proof}
+
+\medskip
+
+
+
+
+\section{Implicit Function Theorem}
+
+If $f$ is continuously differentiable in the plane, then the equation $f(x,y) = 0$ can be solved for $y$ in terms of $x$ in a neighborhood of any point $(a,b)$ at which $f(a,b) = 0$ and $\partial f/\partial y \neq 0$. Similarly, one can solve $x$ in terms of $y$ near $(a,b)$ is $\partial f/\partial x \neq 0$ at $(a,b)$.
+
+\medskip
+
+\begin{definition}
+If $\mathbf{x} = (x_1,\cdots,x_n) \in \mathbb{R}^n$ and $\mathbf{y} = (y_1,\cdots,y_m) \in \mathbb{R}^m$, let us write $(\mathbf{x},\mathbf{y})$ for the point (or vector)
+\begin{align*}
+    (x_1,\cdots,x_n, y_1,\cdots,y_m) \in \mathbb{R}^{n+m}.
+\end{align*}
+Every $A \in L(\mathbb{R}^{n+m}, \mathbb{R}^n)$ can be split into two linear transformations $A_x$ and $A_y$, defined by
+\begin{align*}
+    A_x \mathbf{h} = A(\mathbf{h},0), \quad A_y \mathbf{h} = A(0,\mathbf{k}),
+\end{align*}
+for $\mathbf{h} \in \mathbb{R}^n, \mathbf{k} \in \mathbb{R}^m$. Then $A_x \in L(\mathbb{R}^n)$, $A_y \in L(\mathbb{R}^m,\mathbb{R}^n)$, and
+\begin{align}\label{def_714_equ1}
+    A(\mathbf{h},\mathbf{k}) = A_x \mathbf{h} + A_y \mathbf{k}.
+\end{align}
+\end{definition}
+
+\medskip
+
+Now the linear version of the Implicit Function theorem is almost obvious.
+
+\medskip
+
+\begin{theorem}\label{th_713}
+If $A \in L(\mathbb{R}^{n+m}, \mathbb{R}^n)$ and if $A_{\mathbf{x}}$ is invertible, then for every $\mathbf{k} \in \mathbb{R}^m$, there is a unique $\mathbf{h} \in \mathbb{R}^n$ such that $A(\mathbf{h},\mathbf{k}) = 0$. This $\mathbf{h}$ can be computed from $\mathbf{k}$ by the formula
+\begin{align}\label{th_713_equ1}
+    \mathbf{h} = - (A_x)^{-1} A_y \mathbf{k}.
+\end{align}
+\end{theorem}
+\begin{proof}
+By \eqref{def_714_equ1}, $A(\mathbf{h},\mathbf{k}) = 0$ if and only if $A_x \mathbf{h} + A_y \mathbf{k} = 0$, which is the same as \eqref{th_713_equ1} if $A_x$ is invertible.
+\end{proof}
+
+\medskip
+
+\begin{theorem}[Implicit Function Theorem]\label{th_714}
+Let $f$ be a $C^1$ mapping from an open set $\Omega \subset \mathbb{R}^{n+m}$ into $\mathbb{R}^n$ such that $f(\mathbf{x}_0,\mathbf{y}_0) = 0$ for some $(\mathbf{x}_0,\mathbf{y}_0) \in \Omega$. Let $A = Df(\mathbf{x}_0,\mathbf{y}_0)$ and assume that $A_x$ is invertible. Then there exist open sets $U \subset \mathbb{R}^{n+m}$ and $V \subset \mathbb{R}^m$, with $(\mathbf{x}_0,\mathbf{y}_0) \in U$ and $\mathbf{y}_0 \in V$, satisfying the following property:
+
+For every $\mathbf{y} \in V$, there is a unique $\mathbf{x}$ such that $(\mathbf{x},\mathbf{y}) \in U$ and $f(\mathbf{x},\mathbf{y}) = 0$. If this $\mathbf{x}$ is defined to be $g(\mathbf{y})$, then $g$ is a $C^1$ mapping of $V$ into $\mathbb{R}^n$, $g(\mathbf{y}_0) = \mathbf{x}_0$,
+\begin{align}\label{th_714_equ1}
+    f(g(\mathbf{y}),\mathbf{y}) = 0, \quad \mathbf{y} \in V,
+\end{align}
+and
+\begin{align}\label{th_714_equ1}
+    Dg(\mathbf{y}_0) = -(A_x)^{-1} A_y.
+\end{align}
+\end{theorem}
+
+\begin{remark}
+The equation $f(\mathbf{x},\mathbf{y}) = 0$ can be written as a system of $n$ equations in $n + m$ variables:
+\begin{align*}
+    f_1(x_1, \cdots, x_n, & y_1, \cdots, y_m) = 0, \\
+    & \cdots \\
+    f_n(x_1, \cdots, x_n, & y_1, \cdots, y_m) = 0.
+\end{align*}
+And the assumption that $A_x$ is invertible means that:
+\begin{align*}
+    \det \begin{pmatrix}
+        \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n}
+    \end{pmatrix}(\mathbf{x}_0,\mathbf{y}_0) \neq 0.
+\end{align*}
+If \eqref{th_714_equ1} holds for $\mathbf{x} = \mathbf{x}_0$ and $\mathbf{y} = \mathbf{y}_0$, then \eqref{th_714_equ1} can be solved for $x_1, \cdots, x_n$ in terms of $y_1, \cdots, y_m$ for every $\mathbf{y}$ near $\mathbf{y}_0$, and that these solutions are continuously differentiable functions of $\mathbf{y}$.
+\end{remark}
+
+\begin{proof}
+Define $F(\mathbf{x},\mathbf{y}) = \left(f(\mathbf{x},\mathbf{y}), \mathbf{y}\right)$ for $(\mathbf{x},\mathbf{y}) \in \Omega$. Then $F$ is a $C^1$ mapping of $\Omega$ into $\mathbb{R}^{n+m}$ and we have
+\begin{align*}
+    DF(\mathbf{x}_0,\mathbf{y}_0) = 
+    \begin{pmatrix}
+        \begin{matrix}
+            \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+            \vdots & \ddots & \vdots \\
+            \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n}
+        \end{matrix} & 0 \\
+        0 & \begin{matrix}
+            1 & \cdots & 0 \\
+            \vdots & \ddots & \vdots \\
+            0 & \cdots & 1
+        \end{matrix}
+    \end{pmatrix}(\mathbf{x}_0,\mathbf{y}_0).
+\end{align*}
+Hence, $JF(\mathbf{x}_0,\mathbf{y}_0) \neq 0$. By the Inverse Function theorem \ref{th_711} and Proposition \ref{prop_75}, $F$ is a diffeomorphism on a neighborhood of $(\mathbf{x}_0,\mathbf{y}_0)$, and hence there is a neighborhood of $(\mathbf{x}_0,\mathbf{y}_0)$ of the form $\widetilde{U} \times \widetilde{V}$, where $\widetilde{U} \subset \mathbb{R}^n$ is a neighborhood of $\mathbf{x}_0$ and $\widetilde{V} \subset \mathbb{R}^m$ is a neighborhood of $\mathbf{y}_0$ such that $F|_{\widetilde{U} \times \widetilde{V}}: \widetilde{U} \times \widetilde{V} \to F(\widetilde{U} \times \widetilde{V})$ is a $C^1$ diffeomorphism. 
+
+Let $\widetilde{W} = F(\widetilde{U} \times \widetilde{V})$ and $\widetilde{W}$ is open. Note that $F(\mathbf{x}_0,\mathbf{y}_0) = (0,\mathbf{y}_0) \in \widetilde{W}$. Since $\widetilde{W}$ is open, there is a neighborhood $V \subset \widetilde{V}$ of $\mathbf{y}_0$ such that 
+\begin{align*}
+    \{0\} \times V \subset \widetilde{W}.
+\end{align*}
+Let $U = \widetilde{U} \times V$. Then the mapping
+\begin{align*}
+    F|_{U}: U \to F(U) \coloneqq W
+\end{align*}
+is also a diffeomorphism and $\{0\} \times V \subset W$. The inverse diffeomorphism is of the form
+\begin{align*}
+    \left(F|_{U}\right)^{-1}(\mathbf{x}, \mathbf{y}) = (h(\mathbf{x}, \mathbf{y}), \mathbf{y}).
+\end{align*}
+
+Now let $S \coloneqq \{(\mathbf{x},\mathbf{y}) \,:\, f(\mathbf{x}, \mathbf{y}) = 0\}$. If $(\mathbf{x}, \mathbf{y}) \in S \cap U$, then $(F|_{U})(\mathbf{x}, \mathbf{y}) = (0,\mathbf{y})$, which implies $(\mathbf{x}, \mathbf{y}) = \left(F|_{U}\right)^{-1}(0,\mathbf{y})$. Hence, $(\mathbf{x}, \mathbf{y}) = (h(0, \mathbf{y}), \mathbf{y})$ and then we have $\mathbf{x} = h(0, \mathbf{y})$. Therefore, $S \cap U$ is a graph of a $C^1$ mapping $g: V \to \mathbb{R}^n$, where $g$ is defined as $g(\mathbf{y}) = h(0, \mathbf{y})$. This proves \eqref{th_714_equ1}.
+
+\medskip
+
+Now let $G(\mathbf{y}) = (g(\mathbf{y}), \mathbf{y})$. Then we have $(f \circ G)(\mathbf{y}) = f(g(\mathbf{y}), \mathbf{y}) = 0$, and hence
+\begin{align*}
+    D(f \circ G)(\mathbf{y}) = Df(G(\mathbf{y})) \cdot DG(\mathbf{y}) = 0.
+\end{align*}
+Since
+\begin{align*}
+    Df(g(\mathbf{y})) = \begin{pmatrix}
+        \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} &  \frac{\partial f_1}{\partial y_1} & \cdots & \frac{\partial f_1}{\partial y_m}\\
+        \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} & \frac{\partial f_n}{\partial y_1} & \cdots & \frac{\partial f_n}{\partial y_m}
+    \end{pmatrix},
+\end{align*}
+and
+\begin{align*}
+    DG(\mathbf{y}) = \begin{pmatrix}
+        \frac{\partial g_1}{\partial y_1} & \cdots & \frac{\partial g_1}{\partial y_m} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial g_n}{\partial y_1} & \cdots & \frac{\partial g_n}{\partial y_m} \\
+        1 & \cdots & 0 \\
+        \vdots & \ddots & \vdots \\
+        0 & \cdots & 1
+    \end{pmatrix},
+\end{align*}
+we have
+\begin{align*}
+    \begin{pmatrix}
+        \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n}
+    \end{pmatrix} 
+    \begin{pmatrix}
+        \frac{\partial g_1}{\partial y_1} & \cdots & \frac{\partial g_1}{\partial y_m} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial g_n}{\partial y_1} & \cdots & \frac{\partial g_n}{\partial y_m}
+    \end{pmatrix} + 
+    \begin{pmatrix}
+        \frac{\partial f_1}{\partial y_1} & \cdots & \frac{\partial f_1}{\partial y_m} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial y_1} & \cdots & \frac{\partial f_n}{\partial y_m}
+    \end{pmatrix} = 0,
+\end{align*}
+and hence
+\begin{align*}
+    Dg(\mathbf{y}) = \begin{pmatrix}
+        \frac{\partial g_1}{\partial y_1} & \cdots & \frac{\partial g_1}{\partial y_m} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial g_n}{\partial y_1} & \cdots & \frac{\partial g_n}{\partial y_m}
+    \end{pmatrix} = - \begin{pmatrix}
+        \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n}
+    \end{pmatrix}^{-1} \begin{pmatrix}
+        \frac{\partial f_1}{\partial y_1} & \cdots & \frac{\partial f_1}{\partial y_m} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial y_1} & \cdots & \frac{\partial f_n}{\partial y_m}
+    \end{pmatrix}
+\end{align*}
+holds in the neighborhood of $\mathbf{y}_0$, which is a generalization of \eqref{th_714_equ1}.
+\end{proof}
+
 
 
 
