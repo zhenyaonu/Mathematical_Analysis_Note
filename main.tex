@@ -5479,7 +5479,7 @@ If $f: I \to \mathbb{R}$ is $(n+1)$-times differentiable in an open interval $I$
 \end{align*}
 equals
 \begin{align*}
-    R_n(h) = \frac{f^{(n+1)(x+\theta_1 h)}}{(n+1)!} h^{n+1} = \frac{f^{(n+1)(x+\theta_2 h)}}{(n+1)!} (1-\theta_2)^n h^{n+1}.
+    R_n(h) = \frac{f^{(n+1)}(x+\theta_1 h)}{(n+1)!} h^{n+1} = \frac{f^{(n+1)}(x+\theta_2 h)}{(n+1)!} (1-\theta_2)^n h^{n+1}.
 \end{align*}
 The first remainder is called Lagrange remainder and the second one is Cauchy remainder.
 \end{theorem}
@@ -6359,7 +6359,7 @@ For every $\mathbf{y} \in V$, there is a unique $\mathbf{x}$ such that $(\mathbf
     f(g(\mathbf{y}),\mathbf{y}) = 0, \quad \mathbf{y} \in V,
 \end{align}
 and
-\begin{align}\label{th_714_equ1}
+\begin{align}\label{th_714_equ2}
     Dg(\mathbf{y}_0) = -(A_x)^{-1} A_y.
 \end{align}
 \end{theorem}
@@ -6475,15 +6475,140 @@ and hence
         \frac{\partial f_n}{\partial y_1} & \cdots & \frac{\partial f_n}{\partial y_m}
     \end{pmatrix}
 \end{align*}
-holds in the neighborhood of $\mathbf{y}_0$, which is a generalization of \eqref{th_714_equ1}.
+holds in the neighborhood of $\mathbf{y}_0$, which is a generalization of \eqref{th_714_equ2}.
 \end{proof}
 
 
 
 
+\medskip
 
 
+\section{Derivatives of Higher Order}
 
+\begin{definition}
+Suppose $f$ is a real function defined in an open set $\Omega \subset \mathbb{R}^n$ with partial derivatives $\frac{\partial f}{\partial x_1}, \cdots, \frac{\partial f}{\partial x_n}$. If the function $\frac{\partial f}{\partial x_j}$ are differentiable, then  the second-order partial derivatives of $f$ are defined by
+\begin{align*}
+    \frac{\partial^2 f}{\partial x_i \partial x_j} = \frac{\partial}{\partial x_i} \left(\frac{\partial f}{\partial x_j}\right).
+\end{align*}
+If all these functions are continuous in $\Omega$, we say $f$ is of class $C^2$ in $\Omega$ or $f \in C^2(\Omega)$. A mapping $f$ of $\Omega$ into $\mathbb{R}^m$ is said to be of class $C^2$ if each component of $f$ is of class $C^2$.
+\end{definition}
+
+\medskip
+
+We will show that
+\begin{align*}
+    \frac{\partial^2 f}{\partial x_i \partial x_j} = \frac{\partial^2 f}{\partial x_j \partial x_x}
+\end{align*}
+whenever these derivatives are continuous.
+
+\medskip
+
+\begin{theorem}\label{th_715}
+Suppose $f$ is defined in an open set $\Omega \subset \mathbb{R}^2$, and $\frac{\partial f}{\partial x_1}$ and $\frac{\partial^2 f}{\partial x_2 \partial x_1}$ exist at every point of $\Omega$. Suppose $Q \subset \Omega$ is a closed rectangle with sides parallel to the coordinate axes, having $(x,y)$ and $(x+h,y+k)$ as opposite vertices ($h,k \neq 0$). Let
+\begin{align*}
+    \Delta (f,Q) = f(x+h,y+k) - f(x+h,y) - f(x,y+k) + f(x,y).
+\end{align*}
+Then there is a point $(a,b)$ in the interior of $Q$ such that
+\begin{align}\label{th_715_equ1}
+    \Delta (f,Q) = hk \frac{\partial^2 f}{\partial x_2 \partial x_1}(a,b).
+\end{align}
+\end{theorem}
+\begin{proof}
+Let $u(t) = f(t,y+k) - f(t,y)$. By the Mean Value theorem \ref{th_48}, there is $a \in (x,x+h)$ and $b \in (y,y+k)$ such that
+\begin{align*}
+    \Delta (f,Q) = u(x+h) - u(x) = h u'(a)  = h \left(\frac{\partial f}{\partial x_1}(a,y+k) - \frac{\partial f}{\partial x_1}(a,y)\right) = hk \frac{\partial^2 f}{\partial x_2 \partial x_1}(a,b).
+\end{align*}
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Suppose $f$ is defined in an open set $\Omega \subset \mathbb{R}^2$ and suppose that $\frac{\partial f}{\partial x_1}$, $\frac{\partial f}{\partial x_2}$ and $\frac{\partial^2 f}{\partial x_2 \partial x_1}$  exist at every point of $\Omega$, and $\frac{\partial^2 f}{\partial x_2 \partial x_1}$ is continuous at some point $(x,y) \in \Omega$. Then $\frac{\partial^2 f}{\partial x_1 \partial x_2}$ exists at $(x,y)$ and 
+\begin{align*}
+    \frac{\partial^2 f}{\partial x_1 \partial x_2}(x,y) = \frac{\partial^2 f}{\partial x_2 \partial x_1}(x,y).
+\end{align*}
+\end{theorem}
+\begin{proof}
+Let $A = \frac{\partial^2 f}{\partial x_2 \partial x_1}(x,y)$. Let $\varepsilon > 0$, and $Q$ be a rectangle as in Theorem \ref{th_715}, if $h,k$ are small enough, we have
+\begin{align*}
+    \left|A - \frac{\partial^2 f}{\partial x_2 \partial x_1}(a,b)\right| < \varepsilon,
+\end{align*}
+for $(a,b) \in Q$. Then by \eqref{th_715_equ1}, we have
+\begin{align*}
+    \left|\frac{\Delta (f,Q)}{hk} - A\right| < \varepsilon.
+\end{align*}
+Fix $h$ and letting $k \to 0$, since $\frac{\partial f}{\partial x_2}$ exists in $\Omega$, we have
+\begin{align*}
+    \left|\frac{1}{h}\left(\frac{\partial f}{\partial x_2}(x+h,y) - \frac{\partial f}{\partial x_2}(x,y)\right) - A\right| < \varepsilon,
+\end{align*}
+and since this inequality holds for all sufficiently small $h \neq 0$, it follows that $\frac{\partial^2 f}{\partial x_1 \partial x_2}(x,y) = A$.
+\end{proof}
+
+\medskip
+
+\begin{theorem}
+Suppose $f$ is defined in an open set $\Omega \subset \mathbb{R}^2$. If $f \in C^2(\Omega)$, then
+\begin{align*}
+    \frac{\partial^2 f}{\partial x_1 \partial x_2}(x,y) = \frac{\partial^2 f}{\partial x_2 \partial x_1}(x,y),
+\end{align*}
+for all $(x,y) \in \Omega$.
+\end{theorem}
+
+\medskip
+
+By induction, we obtain the symmetry of the higher order partial derivatives. For example, if $f: \mathbb{R}^5 \to \mathbb{R}$ has continuous fourth order partial derivatives, then
+\begin{align*}
+    \frac{\partial^4 f}{\partial x_1^2 \partial x_3 \partial x_5} = \frac{\partial^4 f}{\partial x_1 \partial x_5 \partial x_3 \partial x_1} = \frac{\partial^4 f}{\partial x_3 \partial x_1^2 \partial x_5} = \cdots
+\end{align*}
+
+\medskip
+
+\begin{definition}
+Let $\Omega \subset \mathbb{R}^n$ be an open set. We say that $f \in C^k(\Omega)$, where $k \geq 1$ is an integer, if all derivatives of order less than or equal to $k$ are continuous in $\Omega$.
+\end{definition}
+
+\medskip
+
+To denote higher order partial derivatives, we introduce a convenient notation.
+
+\medskip
+
+\begin{definition}
+For an integer $n$, A multiindex is any sequence of nonnegative integers $\alpha = (\alpha_1,\cdots,\alpha_n)$. For a multiindex $\alpha$, $x \in \mathbb{R}^n$ and a function $f: \Omega \to \mathbb{R}$, where $\Omega \subset \mathbb{R}^n$ is open, we define
+\begin{align*}
+    \left|\alpha\right| & = \alpha_1 + \alpha_2 + \cdots + \alpha_n, \\ \alpha! & = \alpha_1! \alpha_2! \cdots \alpha_n!, \\
+    x^{\alpha} & = x_1^{\alpha_1} x_2^{\alpha_2} \cdots x_n^{\alpha_n},
+\end{align*}
+and
+\begin{align*}
+    D^{\alpha} f = \frac{\partial^{\left|\alpha\right|}f}{\partial x_1^{\alpha_1} \cdots \partial x_n^{\alpha_n}}.
+\end{align*}
+\end{definition}
+
+\medskip
+
+Recall the generalization of the binomial formula:
+\begin{align*}
+    (x_1 + \cdots + x_n)^k = \sum_{\alpha_1 + \cdots + \alpha_n = k} \frac{k!}{\alpha_1! \cdots \alpha_n!} x_1^{\alpha_1} \cdots x_n^{\alpha_n} = \sum_{\left|\alpha\right|=k} \frac{k!}{\alpha!} x^{\alpha},
+\end{align*}
+where in the last step we use the notation in the above definition.
+
+\medskip
+
+Now we can talk about the multi-variable version of the Taylor theorem. Suppose $f \in C^k(\Omega), \Omega \subset \mathbb{R}^n$. For $\mathbf{x} \in \Omega$ and $\mathbf{h} \in \mathbb{R}^n$ such that $\mathbf{x} + \mathbf{h} \in \Omega$, and for all $t \in [0,1]$, we have
+\begin{align*}
+    \dv{}{t}f(\mathbf{x} + t\mathbf{h}) & = \sum^n_{i=1} \frac{\partial f}{\partial x_i}(\mathbf{x} + t\mathbf{h}) h_i, \\
+    \dv{^2}{t^2}f(\mathbf{x} + t\mathbf{h}) & = \sum^n_{i_1,i_2=1} \frac{\partial^2 f}{\partial x_{i_1} \partial x_{i_2}}(\mathbf{x} + t\mathbf{h}) h_{i_1} h_{i_2}, \\
+    & \cdots \\
+    \dv{^k}{t^k}f(\mathbf{x} + t\mathbf{h}) & = \sum^n_{i_1,\cdots,i_k=1} \frac{\partial^k f}{\partial x_{i_1} \cdots \partial x_{i_k}} (\mathbf{x} + t\mathbf{h}) h_{i_1} \cdots h_{i_2} \\
+    & = \sum_{\left|\alpha\right|=k} \frac{k!}{\alpha!} D^{\alpha} f(\mathbf{x} + t\mathbf{h}) \mathbf{h}^{\alpha}.
+\end{align*}
+
+Denote $g(t) = f(\mathbf{x} + t\mathbf{h})$. From the Taylor's theorem \ref{th_628} for $g$, we have
+\begin{align*}
+    g(1) - g(0) = 
+\end{align*}
 
 
 
