@@ -6607,8 +6607,32 @@ Now we can talk about the multi-variable version of the Taylor theorem. Suppose 
 
 Denote $g(t) = f(\mathbf{x} + t\mathbf{h})$. From the Taylor's theorem \ref{th_628} for $g$, we have
 \begin{align*}
-    g(1) - g(0) = 
+    g(1) = g(0) + g'(0) + \frac{g''(0)}{2!} + \cdots + \frac{g^{(k-1)}(0)}{(k-1)!} + \frac{g^{(k)}(\theta)}{k!},
 \end{align*}
+where $\theta \in (0,1)$. Since
+\begin{align*}
+    g(0) & = f(\mathbf{x}) = \sum_{\left|\alpha\right|=0}  \frac{D^{\alpha} f(\mathbf{x})}{\alpha!} \mathbf{h}^{\alpha}, \\
+    \frac{g^{(r)}(\mathbf{x})}{r!} & = \frac{1}{r!} \sum^n_{i_1,\cdots,i_r=1} \frac{\partial^r f}{\partial x_{i_1} \cdots \partial x_{i_r}}(\mathbf{x}) h_{i_1} \cdots h_{i_r}, \\
+    & = \sum_{\left|\alpha\right| = r} \frac{D^{\alpha} f(\mathbf{x})}{\alpha!} \mathbf{h}^{\alpha}, \quad r = 1,2,\cdots,k,
+\end{align*}
+and
+\begin{align*}
+    \frac{g^{(k)}(\theta)}{k!} = \sum_{\left|\alpha\right| = k} \frac{D^{\alpha} f(\mathbf{x} + \theta \mathbf{h})}{\alpha!} \mathbf{h}^{\alpha},
+\end{align*}
+we obtain the Taylor's theorem.
+
+\medskip
+
+\begin{theorem}[Taylor's Theorem]
+Suppose $f \in C^k(\Omega)$, where $\Omega \subset \mathbb{R}^n$ is open. Let $\mathbf{x}, \mathbf{y} \in \Omega$. If the segment connecting $\mathbf{x}$ and $\mathbf{y}$ lies in $\Omega$, then there is a point $\mathbf{c}$ on this segment such that
+\begin{align*}
+    f(\mathbf{y}) & = f(\mathbf{x}) + \sum^{k-1}_{r=1} \frac{1}{r!} \sum^n_{i_1,\cdots,i_r=1} \frac{\partial^r f}{\partial x_{i_1} \cdots \partial x_{i_r}}(\mathbf{x}) (y_{i_1} - x_{i_1}) \cdots (y_{i_r} - x_{i_r}) \\
+    & + \frac{1}{k!} \sum^n_{i_1,\cdots,i_k=1} \frac{\partial^k f}{\partial x_{i_1} \cdots \partial x_{i_k}}(\mathbf{c}) (y_{i_1} - x_{i_1}) \cdots (y_{i_k} - x_{i_k}) \\
+    & = \sum_{\left|\alpha\right| \leq k - 1} \frac{D^{\alpha} f(\mathbf{x})}{\alpha!} (\mathbf{y} - \mathbf{x})^{\alpha} + \sum_{\left|\alpha\right| = k} \frac{D^{\alpha} f(\mathbf{c})}{\alpha!} (\mathbf{y} - \mathbf{x})^{\alpha}.
+\end{align*}
+\end{theorem}
+
+
 
 
 
