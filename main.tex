@@ -6560,7 +6560,7 @@ and since this inequality holds for all sufficiently small $h \neq 0$, it follow
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}\label{th_717}
 Suppose $f$ is defined in an open set $\Omega \subset \mathbb{R}^2$. If $f \in C^2(\Omega)$, then
 \begin{align*}
     \frac{\partial^2 f}{\partial x_1 \partial x_2}(x,y) = \frac{\partial^2 f}{\partial x_2 \partial x_1}(x,y),
@@ -6666,7 +6666,252 @@ and hence
 
 
 
+\section{Another Point of View on Derivatives of Higher Order}
 
+If $f: \Omega \to \mathbb{R}^m, \Omega \subset \mathbb{R}^n$ is differentiable in $\Omega$, then $Df(\mathbf{x})$ can be viewed as a linear mapping from $\mathbb{R}^n$ into $\mathbb{R}^m$, that is $Df(\mathbf{x}) \in L(\mathbb{R}^n, \mathbb{R}^m)$. If $Df(\mathbf{x})$ is differentiable, then the derivative is denoted by 
+\begin{align*}
+    D^2f(\mathbf{x}) = D(Df)(\mathbf{x}),
+\end{align*}
+and it is a linear mapping from $\mathbb{R}^n$ into $L(\mathbb{R}^n, \mathbb{R}^m)$, that is $D^2f(\mathbf{x}) \in L(\mathbb{R}^n, L(\mathbb{R}^n, \mathbb{R}^m))$. Hence, if $u, v \in \mathbb{R}^n$, then $D^2f(\mathbf{x})u \in L(\mathbb{R}^n, \mathbb{R}^m)$ is a linear mapping from $\mathbb{R}^n$ into $\mathbb{R}^m$, and then
+\begin{align*}
+    \left(D^2f(\mathbf{x})u\right)v \in \mathbb{R}^m.
+\end{align*}
+This defines a bilinear mapping $B_{\mathbf{x}}: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}^m$ by the formula
+\begin{align*}
+    B_{\mathbf{x}}(u,v) = \left(D^2f(\mathbf{x})u\right)v.
+\end{align*}
+
+\medskip
+
+\begin{theorem}\label{th_719}
+If $f: \Omega \to \mathbb{R}$, where $\Omega \subset \mathbb{R}^n$ is open, is of class $C^2$, then $D^2f(\mathbf{x}): \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ has the following matrix form
+\begin{align*}
+    D^2f(\mathbf{x}) = \begin{pmatrix}
+        \frac{\partial^2 f}{\partial x_1 \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n \partial x_n}
+    \end{pmatrix}(\mathbf{x}),
+\end{align*}
+that is, for $u = (u_1, \cdots, u_n),  v = (v_1, \cdots, v_n)$, we have
+\begin{align*}
+    D^2f(\mathbf{x})(u,v) = \begin{pmatrix}
+        u_1 & \cdots & u_n    
+    \end{pmatrix} 
+    \begin{pmatrix}
+        \frac{\partial^2 f(\mathbf{x})}{\partial x_1 \partial x_1} & \cdots & \frac{\partial^2 f(\mathbf{x})}{\partial x_1 \partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial^2 f(\mathbf{x})}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f(\mathbf{x})}{\partial x_n \partial x_n}
+    \end{pmatrix} 
+    \begin{pmatrix}
+        v_1 \\
+        \vdots \\
+        v_n
+    \end{pmatrix} = \sum^n_{i,j=1} \frac{\partial^2 f(\mathbf{x})}{\partial x_j \partial x_i} u_i v_j.
+\end{align*}
+\end{theorem}
+\begin{proof}
+The matrix representation of $Df$ is the vector function
+\begin{align*}
+    Df = \begin{pmatrix}
+        \frac{\partial f}{\partial x_1} & \cdots & \frac{\partial f}{\partial x_1n}
+    \end{pmatrix}: \Omega \to \mathbb{R}^n,
+\end{align*}
+then by Theorem \ref{th_75}, the derivative of this mapping has the form
+\begin{align}\label{th_719_equ1}
+    D^2f = D(Df) = \begin{pmatrix}
+        \frac{\partial^2 f}{\partial x_1 \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n \partial x_n}
+    \end{pmatrix}.
+\end{align}
+\end{proof}
+
+\medskip
+
+\begin{definition}
+If $f: \Omega \to \mathbb{R}, \Omega \subset \mathbb{R}^n$, is of class $C^2$, then the function $H_{\mathbf{x}}(f): \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ defined by
+\begin{align*}
+    H_{\mathbf{x}}(f)(u,v) = D^2f(\mathbf{x})(u,v)
+\end{align*}
+is called the Hessian of $f$ at $\mathbf{x}$. Clearly, the Hessian has the matrix form as in \eqref{th_719_equ1}.
+\end{definition}
+
+\medskip
+
+\begin{theorem}
+If $f: \Omega \to \mathbb{R}^m, \Omega \subset \mathbb{R}^n$, is of class $C^2$, then the linear mapping $D^2f(\mathbf{x}): \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ is symmetric, that is for all $u, v \in \mathbb{R}^n$,
+\begin{align*}
+    D^2f(\mathbf{x})(u,v) = D^2f(\mathbf{x})(v,u).
+\end{align*}
+\end{theorem}
+\begin{proof}
+It follows directly from Theorem \ref{th_717}, the symmetry of the second order partial derivatives
+\begin{align*}
+    \frac{\partial^2 f_k}{\partial x_i \partial x_j}(\mathbf{x}) = \frac{\partial^2 f_k}{\partial x_j \partial x_i}(\mathbf{x}), \quad i,j = 1,2,\cdots,n, \quad k = 1, 2,\cdots,m.
+\end{align*}
+\end{proof}
+
+\medskip
+
+
+
+\section{Local Maximum and Minimum}
+
+\begin{definition}
+Let $f: \Omega \to \mathbb{R}$, where $\Omega \subset \mathbb{R}^n$ is open. If there is a neighborhood of $\mathbf{x}_0 \in \Omega$ such that $f(\mathbf{x}_0) \geq f(\mathbf{x})$ for all $\mathbf{x}$ in this neighborhood, then we say  $f$ has local maximum at $\mathbf{x}_0$. Similarly, we can define the local minimum.
+
+An extreme point is a point of local maximum or local minimum. If $Df(\mathbf{x}_0) = 0$, then we say $\mathbf{x}_0$ is a critical point of $f$.
+\end{definition}
+
+\medskip
+
+\begin{proposition}
+Let $f: \Omega \to \mathbb{R}$, where $\Omega \subset \mathbb{R}^n$ is open, is differentiable at $\mathbf{x}_0 \in \Omega$ and $\mathbf{x}_0$ is an extreme point of $f$, then $Df(\mathbf{x}_0) = 0$.
+\end{proposition}
+\begin{proof}
+Note that $0$ is an extreme point of $f(\mathbf{x}_0 + t e_i), i = 1,2,\cdots, n$, and hence
+\begin{align*}
+    0 = \dv{}{t}\Bigg|_{t=0} f(\mathbf{x}_0 + t e_i) = \frac{\partial f}{\partial x_i}(\mathbf{x}_0), i = 1,2,\cdots, n.
+\end{align*}
+Thus, $Df(\mathbf{x}_0) = \nabla f(\mathbf{x}_0) = 0$.
+\end{proof}
+
+\medskip
+
+Now we will discuss the sufficient conditions for local maximum and minimum. To do this, we talk about some basic theories of bilinear forms.
+
+\medskip
+
+\begin{definition}
+A bilinear mapping $A: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ is called positive definite if $A(u,u) > 0$ for all $u \in \mathbb{R}^n, u \neq 0$.  It is called positive semidefinite if $A(u,u) \geq 0$ for all $u \in \mathbb{R}^n$. Similarly, we can define the bilinear mapping that is negative definite or negative semidefinite.
+\end{definition}
+
+\medskip
+
+\begin{theorem}[Sylvester's Criterion]
+Given a symmetric bilinear mapping $A: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ defined by
+\begin{align*}
+    A = \begin{pmatrix}
+        a_{11} & \cdots & a_{1n} \\
+        \vdots & \ddots & \vdots \\
+        a_{1n} & \cdots & a_{nn}
+    \end{pmatrix}.
+\end{align*}
+Then,
+\begin{enumerate}[label=(\alph*)]
+    \item $A$ is positive definie if and only if $\det A_k > 0$ for all $k = 1,2,\cdots,n$, where
+    \begin{align*}
+        A_k = \begin{pmatrix}
+        a_{11} & \cdots & a_{1k} \\
+        \vdots & \ddots & \vdots \\
+        a_{1k} & \cdots & a_{kk}
+    \end{pmatrix}.
+    \end{align*}
+    
+    \item $A$ is negative positive if and only if $\det A_k < 0$ for odd $k$ and $\det A_k > 0$ for even $k$.
+\end{enumerate}
+\end{theorem}
+
+\medskip
+
+\begin{theorem}
+If a symmetric bilinear mapping $A: \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ is positive semidefinite, then $\det A_k \geq 0$ for all $k = 1,2,\cdots,n$.
+\end{theorem}
+
+\medskip
+
+Now we can discuss the sufficient conditions for local maximum and minimum.
+
+\medskip
+
+\begin{theorem}
+Let $f: \Omega \to \mathbb{R}$, where $\Omega \subset \mathbb{R}^n$ is open, be of class $C^2$, and $\mathbf{x}_0 \in \Omega$ be a critical point.
+\begin{enumerate}[label=(\alph*)]
+    \item If $H_{\mathbf{x}_0}(f)$ is positive (negative) definite, then $f$ has a local mimimum (maximum) at $\mathbf{x}_0$.
+    
+    \item If $f$ has local minimum (maximum) at $\mathbf{x}_0$, then $H_{\mathbf{x}_0}(f)$ is positive (negative) semidefinite.
+\end{enumerate}
+\end{theorem}
+
+\medskip
+
+\section{Differentiation of Derivatives}
+
+\begin{theorem}\label{th_724}
+Let $\Omega \subset \mathbb{R}^n$ be open and $-\infty < a < b < +\infty$. Suppose that $f(\mathbf{x},t) = f(x_1,\cdots,x_n,t): \Omega \times [a,b] \to \mathbb{R}$is a function satisfying
+\begin{enumerate}[label=(\alph*)]
+    \item $t \mapsto f(\mathbf{x},t)$ is continuous for every $\mathbf{x} \in \Omega$;
+    
+    \item the partial derivatives
+    \begin{align*}
+        \frac{\partial f}{\partial x_i}: \Omega \times [a,b] \to \mathbb{R}, \quad i = 1,2,\cdots,n
+    \end{align*}
+    are continuous.
+\end{enumerate}
+Then the function
+\begin{align*}
+    g(x) = \int^b_a f(\mathbf{x},t) \,dt, \quad \mathbf{x} \in \Omega
+\end{align*}
+is of class $C^1(\Omega)$ and 
+\begin{align}\label{th_724_equ1}
+    \frac{\partial g}{\partial x_i}(\mathbf{x}) = \int^b_a \frac{\partial f}{\partial x_i}(\mathbf{x},t) \,dt.
+\end{align}
+\end{theorem}
+
+\medskip
+
+We need a lemma to prove this theorem.
+
+\medskip
+
+\begin{lemma}\label{lemma_73}
+Given a continuous function $f(x,t): X \times [a,b] \to \mathbb{R}$, where $X$ is a metric space. Then for every $x \in X$ and every $\varepsilon > 0$, there is $\delta > 0$ such that $d_X(x,y) < \delta$ implies
+\begin{align*}
+    \sup_{t\in[a,b]} \left|f(x,t) - f(y,t)\right| < \varepsilon.
+\end{align*}
+\end{lemma}
+\begin{proof}
+We prove it by contradiction. Suppose there exists $\varepsilon > 0$ such that for all $\delta > 0$, there exists $y \in X$ such that $d_X(x,y) < \delta$ and
+\begin{align*}
+    \sup_{t\in[a,b]} \left|f(x,t) - f(y,t)\right| \geq \varepsilon.
+\end{align*}
+Taking $\delta = 1/n$, then there is a sequence $\{x_n\} \in X$ such that $d_X(x,x_n) < 1/n$ and
+\begin{align*}
+    \sup_{t\in[a,b]} \left|f(x,t) - f(x_n,t)\right| \geq \varepsilon.
+\end{align*}
+For each $x_n$, there is a $t_n \in [a,b]$ at which the supremum is attained, then
+\begin{align*}
+    \left|f(x,t_n) - f(x_n,t_n)\right| \geq \varepsilon.
+\end{align*}
+Now $x_n \to x$ and since $[a,b]$ is compact, there is a subsequence $\{t_{n_k}\}$ such that $t_{n_k} \to t_0 \in [a,b]$ as $k \to \infty$. Hence, by the continuity of $f$, we have
+\begin{align*}
+    0 = \left|f(x,t_0) - f(x,t_0)\right| \leftarrow \left|f(x,t_{n_k}) - f(x_{n_k},t_{n_k})\right| \geq \varepsilon,
+\end{align*}
+which is a contradiction.
+\end{proof}
+
+\medskip
+
+\begin{proof}[Proof of Theorem \ref{th_724}]
+Since $\partial f/\partial x_i$ is continuous, by Lemma \ref{lemma_73}, for any $\varepsilon > 0$, there is $\delta > 0$ such that $\left\|\mathbf{x} - \mathbf{y}\right\|$ implies
+\begin{align}\label{th_724_equ2}
+    \sup_{t\in[a,b]} \left|\frac{\partial f}{\partial x_i}(\mathbf{x},t) - \frac{\partial f}{\partial x_i}(\mathbf{y},t)\right| < \frac{\varepsilon}{b - a},
+\end{align}
+and hence
+\begin{align*}
+    \left|\int^b_a \frac{\partial f}{\partial x_i}(\mathbf{x},t) \,dt - \int^b_a \frac{\partial f}{\partial x_i}(\mathbf{y},t) \,dt\right| \leq \int^b_a \left|\frac{\partial f}{\partial x_i}(\mathbf{x},t) - \frac{\partial f}{\partial x_i}(\mathbf{y},t)\right| \,dt \leq (b-a) \frac{\varepsilon}{b - a} = \varepsilon.
+\end{align*}
+Let $\left|h\right| < \delta$, by \eqref{th_724_equ2} and the Mean-Value theorem \ref{th_48} (for $1$ dimensional real valued function), then we have
+\begin{align*}
+    \left|\frac{f(\mathbf{x} + he_i,t) - f(\mathbf{x},t)}{h} - \frac{\partial f}{\partial x_i}(\mathbf{x},t)\right| = \left|\frac{\partial f(\mathbf{x} + h \theta_t e_i,t)}{\partial x_i} - \frac{\partial f}{\partial x_i}(\mathbf{x},t)\right| < \frac{\varepsilon}{b - a},
+\end{align*}
+for some $\theta_t \in (0,1)$. Hence we have
+\begin{align*}
+    \left|\frac{g(\mathbf{x} + he_i,t) - g(\mathbf{x},t)}{h} - \int^b_a \frac{\partial f}{\partial x_i}(\mathbf{x},t) \,dt\right| & = \left|\int^b_a \frac{f(\mathbf{x} + he_i,t) - f(\mathbf{x},t)}{h} \,dt - \int^b_a \frac{\partial f}{\partial x_i}(\mathbf{x},t) \,dt\right| \\
+    & \leq \int^b_a \left|\frac{\partial f(\mathbf{x} + h \theta_t e_i,t)}{\partial x_i} - \frac{\partial f}{\partial x_i}(\mathbf{x},t)\right| \,dt < \varepsilon,
+\end{align*}
+provided by $\left|h\right| < \delta$, which proves \eqref{th_724_equ1}.
+\end{proof}
 
 
 
