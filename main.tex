@@ -5377,7 +5377,7 @@ which proves \eqref{th_626_equ1}.
 
 
 
-\section{Taylor's Theorems}
+\section{Taylor's Theorems}\label{sec_69}
 
 In Corollary \ref{coro_6251}, we proved that if a power series $f(x) = \sum^\infty_{n=0} c_n x^n$ has radius of convergence $R > 0$, then $f$ is infinitely differentiable on $(-R,R)$ and
 \begin{align*}
@@ -5473,7 +5473,7 @@ thus the theorem follows.
 \medskip
 
 \begin{theorem}[Taylor's theorem with Lagrange and Cauchy remainders]\label{th_628}
-If $f: I \to \mathbb{R}$ is $(n+1)$-times differentiable in an open interval $I$. If $x, x + h \in I$, then there are $\theta_1, \theta_2 \in (0,1)$ such that the remainder term $R_n(h)$ in
+Suppose $f: I \to \mathbb{R}$ is $(n+1)$-times differentiable in an open interval $I$. If $x, x + h \in I$, then there are $\theta_1, \theta_2 \in (0,1)$ such that the remainder term $R_n(h)$ in
 \begin{align*}
     f(x + h) = f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n + R_n(h)
 \end{align*}
@@ -5511,6 +5511,19 @@ Now apply Cauchy Mean Value theorem \ref{th_47} to function $g(t)$ and $u(t) = -
 \end{align*}
 and this proves the Lagrange remainder.
 \end{proof}
+
+\medskip
+
+\begin{theorem}[Taylor's theorem with Integral remainders]\label{th_629}
+Suppose $f: I \to \mathbb{R}$ is $(n+1)$-times differentiable in an open interval $I$ and $f^{(n+1)}$ is continuous in $I$. If $x, x+h \in I$, then we have
+\begin{align*}
+    f(x + h) = f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n + R_n(h),
+\end{align*}
+where
+\begin{align*}
+    R_n(h) = \frac{1}{n!} \int^{x+h}_x f^{(n+1)}(t) (x +  h - t)^n \,dt.
+\end{align*}
+\end{theorem}
 
 
 
@@ -5814,7 +5827,7 @@ In other words,
         \frac{\partial f_1}{\partial x_1}(\mathbf{x}_0) & \frac{\partial f_1}{\partial x_2}(\mathbf{x}_0) & \cdots & \frac{\partial f_1}{\partial x_n}(\mathbf{x}_0) \\
         \frac{\partial f_2}{\partial x_1}(\mathbf{x}_0) & \frac{\partial f_2}{\partial x_2}(\mathbf{x}_0) & \cdots & \frac{\partial f_2}{\partial x_n}(\mathbf{x}_0) \\
         \vdots & \vdots & \ddots & \vdots \\
-        \frac{\partial f_n}{\partial x_1}(\mathbf{x}_0) & \frac{\partial f_n}{\partial x_2}(\mathbf{x}_0) & \cdots & \frac{\partial f_n}{\partial x_n}(\mathbf{x}_0)
+        \frac{\partial f_m}{\partial x_1}(\mathbf{x}_0) & \frac{\partial f_m}{\partial x_2}(\mathbf{x}_0) & \cdots & \frac{\partial f_m}{\partial x_n}(\mathbf{x}_0)
     \end{pmatrix},
 \end{align*}
 and this matrix is called Jacobian matrix of $f$ at $\mathbf{x}_0$.
@@ -6623,7 +6636,7 @@ we obtain the Taylor's theorem.
 
 \medskip
 
-\begin{theorem}[Taylor's Theorem]
+\begin{theorem}[Taylor's Theorem]\label{th_718}
 Suppose $f \in C^k(\Omega)$, where $\Omega \subset \mathbb{R}^n$ is open. Let $\mathbf{x}, \mathbf{y} \in \Omega$. If the segment connecting $\mathbf{x}$ and $\mathbf{y}$ lies in $\Omega$, then there is a point $\mathbf{c}$ on this segment such that
 \begin{align*}
     f(\mathbf{y}) & = f(\mathbf{x}) + \sum^{k-1}_{r=1} \frac{1}{r!} \sum^n_{i_1,\cdots,i_r=1} \frac{\partial^r f}{\partial x_{i_1} \cdots \partial x_{i_r}}(\mathbf{x}) (y_{i_1} - x_{i_1}) \cdots (y_{i_r} - x_{i_r}) \\
@@ -6631,6 +6644,32 @@ Suppose $f \in C^k(\Omega)$, where $\Omega \subset \mathbb{R}^n$ is open. Let $\
     & = \sum_{\left|\alpha\right| \leq k - 1} \frac{D^{\alpha} f(\mathbf{x})}{\alpha!} (\mathbf{y} - \mathbf{x})^{\alpha} + \sum_{\left|\alpha\right| = k} \frac{D^{\alpha} f(\mathbf{c})}{\alpha!} (\mathbf{y} - \mathbf{x})^{\alpha}.
 \end{align*}
 \end{theorem}
+
+\medskip
+
+\begin{remark}
+There are many other versions of Taylor's theorem in $1$-dimension (see Section \ref{sec_69}) and each version leads to a corresponding results in higher dimension cases. For example, recall Theorem \ref{th_629} with the Integral remainder. Now if $f \in C^k(\Omega)$ and $\mathbf{x}, \mathbf{y} \in \Omega$ are such that the segment connecting $\mathbf{x}$ and $\mathbf{y}$ lies in $\Omega$, then for
+\begin{align*}
+    g(t) = f(\mathbf{x} + t\mathbf{h}),  \quad \mathbf{h} = \mathbf{y} - \mathbf{x},
+\end{align*}
+by Theorem \ref{th_629}, we have
+\begin{align*}
+    g(1) = g(0) + g'(0) + \frac{g''(0)}{2!} + \cdots + \frac{g^{(k-1)}(0)}{(k-1)!} + \frac{1}{(k-1)!} \int^1_0 g^{(k)}(t) (1 - t)^k \,dt,
+\end{align*}
+and hence
+\begin{align*}
+    f(\mathbf{y}) = \sum_{\left|\alpha\right| \leq k - 1} \frac{D^{\alpha} f(\mathbf{x})}{\alpha!} (\mathbf{y} - \mathbf{x})^{\alpha} + \frac{1}{(k-1)!} \int^1_0 (1 - t)^k \sum_{\left|\alpha\right| = k} \frac{D^{\alpha} f(\mathbf{x} + t(\mathbf{y} - \mathbf{x}))}{\alpha!} \,dt.
+\end{align*}
+\end{remark}
+
+\medskip
+
+
+
+
+
+
+
 
 
 
