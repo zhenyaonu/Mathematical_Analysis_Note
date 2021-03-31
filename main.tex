@@ -2730,7 +2730,7 @@ For any $\varepsilon > 0$, since $f$ is uniformly continuous, then there is a $\
 
 \medskip
 
-\begin{theorem}[Extension Theorem]\label{th_316_added}
+\begin{theorem}[Extension theorem]\label{th_316_added}
 Let $Y$ be a complete metric space, and $X$ a metric space. Let $A \subset X$ and $f: A \to Y$ be a uniformly continuous function, then there is a unique uniformly continuous function $g: \overline{A} \to Y$ such that $g(x) = f(x)$.
 \end{theorem}
 \begin{proof}
@@ -3200,7 +3200,7 @@ Since $f$ is not constant, then either $f(c_1) > f(a)$ or $f(c_2) < f(a)$. Suppo
 
 \medskip
 
-\begin{theorem}[Cauchy Mean Value Theorem]\label{th_47}
+\begin{theorem}[Cauchy Mean-Value]\label{th_47}
 Suppose $f$ and $g$ are continuous real functions on $[a,b]$ which are differentiable in $(a,b)$, and $g'(x) \neq 0$ for all $x \in (a,b)$, then there is a point $c \in (a,b)$ at which 
 \begin{align*}
     \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
@@ -3227,7 +3227,7 @@ This theorem is the {\em generalized Mean Value theorem}, and the following is t
 
 \medskip
 
-\begin{theorem}[Mean Value Theorem]\label{th_48}
+\begin{theorem}[Mean-Value]\label{th_48}
 If $f: [a,b] \to \mathbb{R}$ is continuous and differentiable on $(a,b)$, then there is a point $c \in (a,b)$ such that
 \begin{align*}
     f(b) - f(a) = (b - a) f'(c).
@@ -3490,7 +3490,7 @@ Thus we can see that L'Hospital's rule fails in this case. However, there is a c
 
 \medskip
 
-\begin{theorem}[Mean Value Theorem]\label{th_414}
+\begin{theorem}[Mean-Value]\label{th_414}
 Suppose $f$ is a continuous mapping of $[a,b]$ into $\mathbb{R}^n$ and $f$ is differentiable in $(a,b)$. Then there exists $x \in (a,b)$ such that
 \begin{align*}
     \left|f(b) - f(a)\right| \leq (b - a) \left|f'(x)\right|.
@@ -3803,7 +3803,7 @@ Since $\varepsilon$ is arbitrary, $h \in \mathscr(\alpha)$.
         \int^b_a f \,d(c\alpha) = c \int^b_a f \,d\alpha.
     \end{align*} \label{th_59_e}
     
-    \item (Mean Value Theorem) If $f: [a,b] \to \mathbb{R}$ is continuous, there is $\xi \in [a,b]$ such that
+    \item (Mean-Value) If $f: [a,b] \to \mathbb{R}$ is continuous, there is $\xi \in [a,b]$ such that
     \begin{align*}
         \frac{1}{\alpha(b) - \alpha(a)} \int^b_a f \,d\alpha = f(\xi).
     \end{align*} \label{th_59_f}
@@ -3935,7 +3935,7 @@ Assume $\alpha$ increases monotonically and $\alpha' \in \mathscr{R}$ on $[a,b]$
 
 \medskip
 
-\begin{theorem}[Change of variable]\label{th_514}
+\begin{theorem}[Change of Variable]\label{th_514}
 Suppose $\varphi$ is a strictly increasing continuous function that maps an interval $[A,B]$ onto $[a,b]$. Suppose $\alpha$ is monotonically increasing on $[a,b]$ and $f \in \mathscr{R}(\alpha)$ on $[a,b]$. Define $\beta$ and $g$ on $[A,B]$ by 
 \begin{align*}
     \beta(y) = \alpha(\varphi(y)), \quad g(y) = f(\varphi(y)).
@@ -3959,7 +3959,7 @@ Next we discuss a special case of change of variable, which will be often used t
 
 \medskip
 
-\begin{corollary}[Change of variable]\label{coro_5141}
+\begin{corollary}[Change of Variable]\label{coro_5141}
 Taking $\alpha(x) = x$ in the above theorem. Then $\beta = \varphi$, assume $\varphi' \in \mathscr{R}$ on $[A,B]$. Applying Theorem \ref{th_513} to the left side of \eqref{th_514_equ1} implies
 \begin{align*}
     \int^b_a f(x) \,dx = \int^B_A f(\varphi(y)) \varphi'(y) \,dy.
@@ -5436,7 +5436,7 @@ and in this case, $f(x) + f'(x) h$ is the Taylor polynomial of degree $n = 1$, a
 
 \medskip
 
-\begin{theorem}[Taylor's theorem with Peano's remainder]\label{th_627}
+\begin{theorem}[Taylor's Theorem with Peano's remainder]\label{th_627}
 If $f: I \to \mathbb{R}$ is $(n-1)$-times differentiable in an open interval $I$ and if $f$ is $n$-times differentiable at $x \in I$, then there is a function $\psi$, continuous at $0$, $\psi(0) = 0$ such that
 \begin{align}\label{th_627_equ1}
     f(x + h) = f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n + h^n \psi(h),
@@ -5472,7 +5472,7 @@ thus the theorem follows.
 
 \medskip
 
-\begin{theorem}[Taylor's theorem with Lagrange and Cauchy remainders]\label{th_628}
+\begin{theorem}[Taylor's Theorem with Lagrange and Cauchy remainders]\label{th_628}
 Suppose $f: I \to \mathbb{R}$ is $(n+1)$-times differentiable in an open interval $I$. If $x, x + h \in I$, then there are $\theta_1, \theta_2 \in (0,1)$ such that the remainder term $R_n(h)$ in
 \begin{align*}
     f(x + h) = f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n + R_n(h)
@@ -5514,7 +5514,7 @@ and this proves the Lagrange remainder.
 
 \medskip
 
-\begin{theorem}[Taylor's theorem with Integral remainders]\label{th_629}
+\begin{theorem}[Taylor's Theorem with Integral remainders]\label{th_629}
 Suppose $f: I \to \mathbb{R}$ is $(n+1)$-times differentiable in an open interval $I$ and $f^{(n+1)}$ is continuous in $I$. If $x, x+h \in I$, then we have
 \begin{align*}
     f(x + h) = f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \cdots + \frac{f^{(n)}(x)}{n!}h^n + R_n(h),
@@ -6035,7 +6035,7 @@ Now we discuss another Mean Value theorem.
 
 \medskip
 
-\begin{theorem}[Mean Value Theorem]\label{th_79}
+\begin{theorem}[Mean-Value]\label{th_79}
 Let $f: \Omega \to \mathbb{R}^m$ be differentiable on an open set $\Omega \subset \mathbb{R}^n$. Then for any $\mathbf{x}, \mathbf{y} \in \Omega$ such that the segment connecting $\mathbf{x}$ and $\mathbf{y}$ lies in $\Omega$, then there is a point $\mathbf{c}$ on this segment such that
 \begin{align*}
     f(\mathbf{y}) - f(\mathbf{x}) = Df(\mathbf{c}) \cdot (\mathbf{y} - \mathbf{x}).
@@ -6093,7 +6093,7 @@ for all $x,y \in X$, then $f$ is said to be a contraction of $X$ into $X$.
 
 \medskip
 
-\begin{theorem}[The Banach Contraction Principle]\label{th_710}
+\begin{theorem}[Banach Contraction Principle]\label{th_710}
 If $X$ is a complete metric space, and if $f$ is a contraction of $X$ into $X$, then there exists one and only one fixed point $x \in X$ such that $f(x) = x$.
 \end{theorem}
 
@@ -6325,7 +6325,7 @@ Suppose $Jf(\mathbf{x}) \neq 0$ for every $\mathbf{x} \in U$, then the result is
 
 
 
-\section{Implicit Function Theorem}
+\section{Implicit Function Theorem}\label{section_75}
 
 If $f$ is continuously differentiable in the plane, then the equation $f(x,y) = 0$ can be solved for $y$ in terms of $x$ in a neighborhood of any point $(a,b)$ at which $f(a,b) = 0$ and $\partial f/\partial y \neq 0$. Similarly, one can solve $x$ in terms of $y$ near $(a,b)$ is $\partial f/\partial x \neq 0$ at $(a,b)$.
 
@@ -6765,7 +6765,7 @@ An extreme point is a point of local maximum or local minimum. If $Df(\mathbf{x}
 
 \medskip
 
-\begin{proposition}
+\begin{proposition}\label{prop_76}
 Let $f: \Omega \to \mathbb{R}$, where $\Omega \subset \mathbb{R}^n$ is open, is differentiable at $\mathbf{x}_0 \in \Omega$ and $\mathbf{x}_0$ is an extreme point of $f$, then $Df(\mathbf{x}_0) = 0$.
 \end{proposition}
 \begin{proof}
@@ -6913,15 +6913,122 @@ for some $\theta_t \in (0,1)$. Hence we have
 provided by $\left|h\right| < \delta$, which proves \eqref{th_724_equ1}.
 \end{proof}
 
+\medskip
+
+\begin{example}
+Let 
+\begin{align*}
+    f(x) = \int^1_0 e^{-t^2} \cos(xt) \,dt,
+\end{align*}
+clearly $f(x,t) \in C^1$ and by the above theorem, 
+\begin{align*}
+    f'(x) = \int^1_0 \left(e^{-t^2} \cos(xt)\right)' \,dt = - \int^1_0 t e^{-t^2} \sin(xt) \,dt.
+\end{align*}
+If we replace $[0,1]$ by $(-\infty, \infty)$, do we still have
+\begin{align*}
+    \left(\int^1_0 e^{-t^2} \cos(xt) \,dt\right)' = - \int^{\infty}_{-\infty} t e^{-t^2} \sin(xt) \,dt,
+\end{align*}
+where the derivative is with respect to $x$?
+\end{example}
+\begin{proof}
+Let
+\begin{align}
+    f(x) = \int^{\infty}_{-\infty} e^{-t^2} \cos(xt) \,dt, 
+\end{align}
+and
+\begin{align}
+    g(x) = - \int^{\infty}_{-\infty} t e^{-t^2} \sin(xt) \,dt,
+\end{align}
+and we need to prove that $f'(x) = g(x), - \infty < t < \infty$. First, both integral exist since $\left|e^{-t^2} \cos(xt)\right| \leq e^{-t^2}$ and $\left|t e^{-t^2} \sin(xt)\right| \leq \left|x\right| e^{-t^2}$. Second, let $h > 0$, we consider
+\begin{align*}
+    \left|\frac{\cos(y+h) - \cos y}{h} + \sin y \right| = \left|\frac{1}{h} \int^{y+h}_{y} (\sin y - \sin t) \,dt \right| \leq \frac{1}{h} \int^{y+h}_{y} \left|y - t\right| \,dt \leq \frac{\left|h\right|}{2},
+\end{align*}
+and similarly for $h < 0$. Then we have
+\begin{align*}
+    \left|\frac{f(x+h) - f(x)}{h} - g(x)\right| & = \left|\int^{\infty}_{-\infty} t e^{-t^2} \left(\frac{\cos((x+h)t) - \cos(xt)}{ht} + \sin(xt) \right) \,dt\right| \\
+    & \leq \int^{\infty}_{-\infty} \left| t e^{-t^2} \frac{\left|ht\right|}{2} \right| \,dt = \left|h\right| \int^{\infty}_{-\infty} t^2 e^{-t^2} \,dt \xrightarrow[]{h \to 0} 0.
+\end{align*}
+\end{proof}
+
+
+\medskip
 
 
 
 
+\section{Lagrange Multiplier Theorem}
 
+Now we continue to discuss some results following Section \ref{section_75}. Consider a equation $F(x,y) = 0$, where $F:\mathbb{R}^2 \to \mathbb{R}$ is of class $C^k, k \geq 1$. Then the set $S = \{(x,y) \,:\, F(x,y) = 0\}$ represents a kind of a curve, but the curve may degenerate at points where the Implicit Function theorem cannot be applied. If $(x_0,y_0) \in S$, i.e, $F(x_0,y_0) = 0$ and if $F_y(x_0,y_0) \neq 0$, then the set $S$ in a neighborhood of $(x_0,y_0)$ is a graph of a function $y = f(x)$. If $F(x_0,y_0) = 0$ and $F_x(x_0,y_0) \neq 0$, then the set $S$ in a neighborhood of $(x_0,y_0)$ is a graph of a function $x = g(x)$. In each of these two cases, $S$ is a graph of a function in a neighborhood of $(x_0,y_0)$.
 
+\medskip
 
+\begin{theorem}
+If $f: \Omega \to \mathbb{R}, \Omega \subset \mathbb{R}^2$ is a function of class $C^k$ such that for every $(x,y) \in S$, where $S = \{(x,y) \,:\, F(x,y) = 0\}$, we have $\nabla F(x,y) \neq 0$, then in a neighborhood of any point $(x,y) \in S$, the set $S$ is a graph of a $C^k$ function of variable $x$ of variable $y$. Hence $S$ is a regular curve with no self intersections.
+\end{theorem}
 
+\begin{remark}
+The theorem also holds for the case when $\Omega \subset \mathbb{R}^n$, and the result is similar.
+\end{remark}
 
+\medskip
+
+\begin{theorem}[Lagrange Multiplier]\label{th_726}
+Given two $C^k, k\geq 1$ functions $f,g: \Omega \to \mathbb{R}$ defined on open set $\Omega \subset \mathbb{R}^n$. Suppose that $\nabla g(\mathbf{x}) \neq 0$ at every point in the set $S = \{\mathbf{x} \in \Omega \,:\, g(\mathbf{x}) = 0\}$. If $f|_S$ attains maximum and minimum at $\mathbf{x}_0 \in S$, then there is $\lambda \in \mathbb{R}$ such that 
+\begin{align*}
+    \nabla f(\mathbf{x}_0) = \lambda \nabla g(\mathbf{x}_0).
+\end{align*}
+\end{theorem}
+
+\begin{remark}
+We are interested in values of $f$ along the surface $S$. In other words, the maximum and minimum of $f|_S$ is the the maximum and minimum of $f$ subject to the constrain $g = 0$.
+\end{remark}
+
+\begin{proof}
+Suppose $f|_S$ attains the maximum or minimum at point $\mathbf{x}_0 = (x^0_1, \cdots, x^0_n) \in S$. Since $\nabla g(\mathbf{x}_0) \neq 0$, then at least one of the partial derivatives is nonzero at $\mathbf{x}_0$. Suppose $g_{x_n}(\mathbf{x}_0) \neq 0$, then by the Implicit Function theorem \ref{th_714}, in a neighborhood of $\mathbf{x}_0$, $S$ is a graph of a function of variables $x_1, \cdots, x_{n-1}$, that is, it is the set of points of the form
+\begin{align*}
+    \left(x_1, \cdots, x_{n-1}, h(x_1, \cdots, x_{n-1})\right),
+\end{align*}
+where $h(x^0_1, \cdots, x^0_{n-1}) = x^0_n$. By the definition of $S$, we have
+\begin{align*}
+    g\left(x_1, \cdots, x_{n-1}, h(x_1, \cdots, x_{n-1})\right) = 0,
+\end{align*}
+and the partial derivatives with respect to $x_1, \cdots, x_{n-1}$ are
+\begin{align}\label{th_726_equ1}
+    g_{x_i} + g_{x_n} h_{x_i} = 0, \quad i = 1, \cdots, n-1,
+\end{align}
+and hence $g_{x_i} = - g_{x_n} h_{x_i}$. Since $f|_S$ attains the maximum or minimum at $\mathbf{x}_0$, then the function
+\begin{align*}
+    (x_1, \cdots, x_{n-1}) \mapsto f\left(x_1, \cdots, x_{n-1}, h(x_1, \cdots, x_{n-1})\right)
+\end{align*}
+attains the maximum or minimum at $(x^0_1, \cdots, x^0_{n-1})$. By Proposition \ref{prop_76}, the partial derivatives of this function at $(x^0_1, \cdots, x^0_{n-1})$ equal to zero, that is,
+\begin{align}\label{th_726_equ2}
+    f_{x_i} + f_{x_n} h_{x_i} = 0, \quad i = 1, \cdots, n-1,
+\end{align}
+and hence $f_{x_i} = - f_{x_n} h_{x_i}$. Since $g_{x_n}(\mathbf{x}_0) \neq 0$, there is $\lambda \in \mathbb{R}$ such that
+\begin{align}\label{th_726_equ3}
+    f_{x_n}(x^0_1, \cdots, x^0_n) = \lambda g_{x_n}(x^0_1, \cdots, x^0_n),
+\end{align}
+and by \eqref{th_726_equ1} and \eqref{th_726_equ1}, we have
+\begin{align*}
+    f_{x_i} = - f_{x_n} h_{x_i} = - \lambda g_{x_n} h_{x_i} = \lambda g_{x_i}, \quad i = 1, \cdots, n-1.
+\end{align*}
+Thus, by \eqref{th_726_equ3}, we have $f_{x_i}(\mathbf{x}_0) = \lambda g_{x_i}(\mathbf{x}_0)$ for $i = 1,\cdots, n$, and hence $\nabla f(\mathbf{x}_0) = \lambda \nabla g(\mathbf{x}_0).$
+\end{proof}
+
+\medskip
+
+\begin{remark}
+Define $\mathcal{L}(\mathbf{x},\lambda) = f(\mathbf{x}) - \lambda g(\mathbf{x}), \mathbf{x} \in \Omega$, and this is called the Lagrange function. Above theorem is for the single constrain $g = 0$. We will show the result for multiple constrains below.
+\end{remark}
+
+\medskip
+
+\begin{theorem}
+Let the assumptions be the same as in Theorem \ref{th_726}, and we have $M$ constrains: $g_i(\mathbf{x}) = 0, \mathbf{x} \in \Omega$ for $i = 1, \cdots, M$,. If $f$ attains the maximum or the minimum at $\mathbf{x}_0$, then there are $M$ scalars $\lambda_1, \cdots, \lambda_M \in \mathbb{R}$ such that
+\begin{align*}
+    \nabla f(\mathbf{x}_0) = \sum^M_{i=1} \nabla g_i(\mathbf{x}_0).
+\end{align*}
+\end{theorem}
 
 
 
