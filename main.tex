@@ -1,4 +1,4 @@
-\documentclass[10pt]{book}
+\documentclass[11pt]{book}
 \pagestyle{plain}
 %\documentclass{article}
 
@@ -926,7 +926,7 @@ Suppose to the contrary that there is a $\varepsilon > 0$ such that $X$ cannot b
 \medskip
 
 \begin{theorem}\label{th_125}
-A metric space $X$ is compact if and only if it is complete and totally bounded.
+A metric space $X$ is compact if and only if it is complete (see Definition \ref{def_26}) and totally bounded.
 \end{theorem}
 \begin{proof}
 Suppose $X$ is compact, by the previous lemma, $X$ is totally bounded. Now let $\{x_n\}$ be a Cauchy sequence in $X$. Since $X$ is compact, by Theorem \ref{th_123}, there exists a subsequence $\{x_{n_k}\}$ such that converges to a point in $X$, say $x_0$. Hence $X$ is complete.
@@ -1578,7 +1578,7 @@ If $\{x_n\}$ is a sequence in $X$ and if $E_n$ consists of the points $x_n, x_{n
 
 \medskip
 
-\begin{definition}
+\begin{definition}\label{def_26}
 A metric space $X$ in which every Cauchy sequence converges is said to be complete.
 \end{definition}
 
@@ -4439,7 +4439,7 @@ Then $f_n \to f$ uniformly on $K$.
 \begin{proof}
 Let $g_n = f_n - f$. Then $g_n$ is continuous and $g_n \to 0$ pointwise, also $g_n \geq g_{n+1}$. It suffices to prove that $g_n \to 0$ uniformly on $K$.
 
-For any $\varepsilon > 0$. Let $K_n$ be the set of all $x \in K$ for which $g_n(x) \geq \varepsilon$. By Corollary \ref{coro_361}, $K_n$ is closed and hence compact (Theorem \ref{th_116}). Since $g_n \geq g_{n+1}$, we have $K_n \supset K_{n+1}$. Fix $x \in K$, and since $g_n(x) \to 0$, then $x \notin K_n$ for $n$ large enough. Hence $x \notin \bigcup K_n$. In other words, $\bigcup K_n = \emptyset$, and hence $k_N = \emptyset$ for some $N$. Thus $0 \leq g_n(x) < \varepsilon$ for all $x \in K$ and all $n \geq N$, and the theorem follows. 
+For any $\varepsilon > 0$. Let $K_n$ be the set of all $x \in K$ for which $g_n(x) \geq \varepsilon$. By Corollary \ref{coro_361}, $K_n$ is closed and hence compact (Theorem \ref{th_116}). Since $g_n \geq g_{n+1}$, we have $K_n \supset K_{n+1}$. Fix $x \in K$, and since $g_n(x) \to 0$, then $x \notin K_n$ for $n$ large enough. Hence $x \notin \bigcap K_n$. In other words, $\bigcap K_n = \emptyset$, and hence $K_N = \emptyset$ for some $N$. Thus $0 \leq g_n(x) < \varepsilon$ for all $x \in K$ and all $n \geq N$, and the theorem follows. 
 \end{proof}
 
 \medskip
@@ -7023,7 +7023,7 @@ Define $\mathcal{L}(\mathbf{x},\lambda) = f(\mathbf{x}) - \lambda g(\mathbf{x}),
 
 \medskip
 
-\begin{theorem}
+\begin{theorem}[Lagrange Multiplier]\label{th_727}
 Let the assumptions be the same as in Theorem \ref{th_726}, and we have $M$ constrains: $g_i(\mathbf{x}) = 0, \mathbf{x} \in \Omega$ for $i = 1, \cdots, M$,. If $f$ attains the maximum or the minimum at $\mathbf{x}_0$, then there are $M$ scalars $\lambda_1, \cdots, \lambda_M \in \mathbb{R}$ such that
 \begin{align*}
     \nabla f(\mathbf{x}_0) = \sum^M_{i=1} \nabla g_i(\mathbf{x}_0).
