@@ -3321,7 +3321,7 @@ Now we know that a function $f$ may have a derivative $f'$ which exists at every
 \medskip
 
 \begin{theorem}
-Suppose $f$ is a real differentiable function on $[a,b]$ and $f'(a) < \lambda < f'(x)$, then there is a point $c \in (a,b)$ such that $f'(c) = \lambda$. Similar result holds for $f'(a) > f'(b)$.
+Suppose $f$ is a real differentiable function on $[a,b]$ and $f'(a) < \lambda < f'(b)$, then there is a point $c \in (a,b)$ such that $f'(c) = \lambda$. Similar result holds for $f'(a) > f'(b)$.
 \end{theorem}
 \begin{proof}
 Let $g(x) = f(x) - \lambda x$, then $g'(a) < 0$, and hence $g(x_1) < g(a)$ for some $x_1 \in (a,b)$. Similarly, $g'(b) > 0$ and there is $x_2 \in (a,b)$ such that $g(x_2) < g(b)$. Since $g$ is continuous on a compact set, $g$ attains its maximum and minimum, and the above properties implies that the maximum and minimum are not attained at the endpoints. Hence $g$ attains its maximum at $x_1 \in (a,b)$ and thus $g'(x_1) = 0$, which implies $f'(x_1) = \lambda$.
@@ -5303,7 +5303,7 @@ Since $\sum^\infty_{n=1} n c_n r^{n-1}$ converges absolutely on $[-r,r]$, $G(x)$
 \begin{corollary}\label{coro_6251}
 If $f(x) = \sum^\infty_{n=0} c_n x^n$ has the radius of convergence $R > 0$, then the function $f(x)$ is of class $C^\infty(-R,R)$ and
 \begin{align*}
-    f(x) = \sum^\infty_{n=0} \frac{f^{(n)}}{n!} x^n,
+    f(x) = \sum^\infty_{n=0} \frac{f^{(n)(0)}}{n!} x^n,
 \end{align*}
 for all $x \in (-R,R)$.
 \end{corollary}
